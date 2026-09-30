@@ -1,93 +1,123 @@
 # Créditos de imágenes
 
-## Demos de servicios (landing, e-commerce, marketplaces, web apps, dashboards, gestión, reservas, catálogos)
+## Fotos de Unsplash
 
-Todas las imágenes son **ilustraciones propias** dibujadas en SVG y exportadas a WebP por los scripts
-de `scripts/demos/<vertical>.mjs` (algunas demos usan SVG en línea). No hay fotos de terceros, así
-que no requieren atribución. Si en algún momento se reemplazan por fotos (por ejemplo de Unsplash),
-basta con guardarlas con el mismo nombre de archivo en `public/demos/<vertical>/<estilo>/` y registrar
-autor y URL acá.
+Las fotos reales vienen de [Unsplash](https://unsplash.com/license) (licencia libre, sin atribución
+obligatoria). Se descargan, recortan y exportan a WebP con los scripts de `scripts/demos/fotos-*.mjs`
+y `scripts/demos/fotografia-fotos.mjs` (correrlos después de los scripts de ilustraciones, que
+regeneran los mismos archivos). El resto de las imágenes de demos son **ilustraciones propias** en SVG
+exportadas por `scripts/demos/<vertical>.mjs`.
 
-## Demos de fotografía
+Portfolios de fotografía: generadas con `scripts/demos/fotografia-fotos.mjs`.
 
-## Estado actual
 
-Las fotos de las demos son **placeholders generados** (`scripts/placeholders.mjs`): en el entorno donde se armó el sitio no había acceso a Unsplash.
-Las capturas de las tarjetas del home (`captura.webp`) son capturas reales de cada demo (`scripts/capturas-demos.mjs`).
+### Fotografía · editorial
 
-## Cómo reemplazarlas
+| archivo | ID Unsplash | URL | qué muestra |
+|---|---|---|---|
+| editorial/foto-01.webp | 1537633552985-df8429e8048b | https://images.unsplash.com/photo-1537633552985-df8429e8048b | novios abrazados en la playa, con el velo largo al viento (vertical) |
+| editorial/foto-02.webp | 1591604466107-ec97de577aff | https://images.unsplash.com/photo-1591604466107-ec97de577aff | novios abrazados junto a un lago en otoño (horizontal) |
+| editorial/foto-03.webp | 1465495976277-4387d4b0b4c6 | https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6 | manos de los novios con anillos sobre el ramo (cuadrada) |
+| editorial/foto-04.webp | 1504703395950-b89145a5425b | https://images.unsplash.com/photo-1504703395950-b89145a5425b | retrato de mujer con polera celeste frente a una persiana (vertical) |
+| editorial/foto-05.webp | 1500648767791-00dcc994a43e | https://images.unsplash.com/photo-1500648767791-00dcc994a43e | retrato de hombre sonriendo sobre fondo gris (vertical) |
+| editorial/foto-06.webp | 1469371670807-013ccf25f16a | https://images.unsplash.com/photo-1469371670807-013ccf25f16a | pasillo de ceremonia al aire libre con arreglos de flores (horizontal) |
+| editorial/foto-07.webp | 1519741497674-611481863552 | https://images.unsplash.com/photo-1519741497674-611481863552 | novia con el ramo a contraluz (horizontal) |
+| editorial/foto-08.webp | 1511285560929-80b456fea0bc | https://images.unsplash.com/photo-1511285560929-80b456fea0bc | novios soltando globos blancos frente a los invitados (cuadrada) |
+| editorial/foto-09.webp | 1494790108377-be9c29b29330 | https://images.unsplash.com/photo-1494790108377-be9c29b29330 | retrato de mujer riendo con suéter rojo (vertical) |
+| editorial/foto-10.webp | 1519225421980-715cb0215aed | https://images.unsplash.com/photo-1519225421980-715cb0215aed | mesa de banquete con flores y copas (horizontal) |
+| editorial/foto-11.webp | 1438761681033-6461ffad8d80 | https://images.unsplash.com/photo-1438761681033-6461ffad8d80 | retrato de mujer pelirroja junto a un lago (horizontal) |
+| editorial/foto-12.webp | 1606800052052-a08af7148866 | https://images.unsplash.com/photo-1606800052052-a08af7148866 | anillos de oro sobre tela (cuadrada) |
+| editorial/foto-13.webp | 1522673607200-164d1b6ce486 | https://images.unsplash.com/photo-1522673607200-164d1b6ce486 | dos sillas decoradas con flores sobre el pasto (horizontal) |
+| editorial/foto-14.webp | 1507003211169-0a1dd7228f2d | https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d | retrato de hombre sonriendo con remera blanca (vertical) |
+| editorial/foto-15.webp | 1583939003579-730e3918a45a | https://images.unsplash.com/photo-1583939003579-730e3918a45a | beso de los novios mientras los invitados tiran pétalos (vertical) |
 
-1. Buscar cada foto en [Unsplash](https://unsplash.com) (licencia Unsplash, uso libre) con las búsquedas sugeridas de abajo, respetando la orientación.
-2. Convertir a WebP con lado mayor de 2000 px como máximo, por ejemplo:
-   `cwebp -q 80 -resize 2000 0 original.jpg -o foto-02.webp` para horizontales, `-resize 0 2000` para verticales y cuadradas (o Squoosh, o cualquier conversor).
-3. Guardarla con el mismo nombre en `/public/demos/fotografia/<estilo>/`.
-4. Completar autor y URL en la tabla correspondiente.
-5. Cuando estén todas las de una demo, poner `placeholder: false` en `src/content/demos.ts` (así el `alt` pasa a describir la foto) y regenerar las capturas con `node scripts/capturas-demos.mjs`.
+### Fotografía · cinematico
 
-Orientaciones: vertical 4:5, horizontal 3:2, cuadrada 1:1.
+| archivo | ID Unsplash | URL | qué muestra |
+|---|---|---|---|
+| cinematico/foto-01.webp | 1534308143481-c55f00be8bd7 | https://images.unsplash.com/photo-1534308143481-c55f00be8bd7 | hombre de saco y anteojos de perfil al atardecer (horizontal) |
+| cinematico/foto-02.webp | 1506794778202-cad84cf45f1d | https://images.unsplash.com/photo-1506794778202-cad84cf45f1d | retrato de hombre con barba sobre fondo negro (vertical) |
+| cinematico/foto-03.webp | 1534528741775-53994a69daeb | https://images.unsplash.com/photo-1534528741775-53994a69daeb | retrato de mujer iluminada con luz azul (vertical) |
+| cinematico/foto-04.webp | 1487412947147-5cebf100ffc2 | https://images.unsplash.com/photo-1487412947147-5cebf100ffc2 | maquillaje de ojos y labios en primer plano (horizontal) |
+| cinematico/foto-05.webp | 1485968579580-b6d095142e6e | https://images.unsplash.com/photo-1485968579580-b6d095142e6e | mujer con saco escocés en una calle (vertical) |
+| cinematico/foto-06.webp | 1502716119720-b23a93e5fe1b | https://images.unsplash.com/photo-1502716119720-b23a93e5fe1b | vestido rojo a lunares en movimiento en un campo (horizontal) |
+| cinematico/foto-07.webp | 1524504388940-b1c1722653e1 | https://images.unsplash.com/photo-1524504388940-b1c1722653e1 | retrato de mujer rubia en clave baja (vertical) |
+| cinematico/foto-08.webp | 1469334031218-e382a71b716b | https://images.unsplash.com/photo-1469334031218-e382a71b716b | mujer con anteojos de sol frente a una pared amarilla (horizontal) |
+| cinematico/foto-09.webp | 1515886657613-9f3515b0c78f | https://images.unsplash.com/photo-1515886657613-9f3515b0c78f | mujer con conjunto deportivo amarillo en una cancha de básquet (vertical) |
+| cinematico/foto-10.webp | 1496747611176-843222e1e57c | https://images.unsplash.com/photo-1496747611176-843222e1e57c | vestido floreado junto al mar (horizontal) |
+| cinematico/foto-11.webp | 1539109136881-3be0616acf4b | https://images.unsplash.com/photo-1539109136881-3be0616acf4b | mujer con tapado celeste frente a una catedral (vertical) |
+| cinematico/foto-12.webp | 1521572163474-6864f9cf17ab | https://images.unsplash.com/photo-1521572163474-6864f9cf17ab | modelo con remera blanca lisa (cuadrada) |
+| cinematico/foto-13.webp | 1509631179647-0177331693ae | https://images.unsplash.com/photo-1509631179647-0177331693ae | mujer con pantalón a rayas sobre fondo turquesa (vertical) |
+| cinematico/foto-14.webp | 1552374196-1ab2a1c593e8 | https://images.unsplash.com/photo-1552374196-1ab2a1c593e8 | hombre sentado con saco camel y pantalón claro (vertical) |
 
-## Editorial (`/public/demos/fotografia/editorial/`)
+### Fotografía · documental
 
-Estilo: Blanco, mucho aire y fotos en una grilla asimétrica. Elegante y calmo.
+| archivo | ID Unsplash | URL | qué muestra |
+|---|---|---|---|
+| documental/foto-01.webp | 1475503572774-15a45e5d60b9 | https://images.unsplash.com/photo-1475503572774-15a45e5d60b9 | familia caminando de la mano en la orilla del mar (horizontal) |
+| documental/foto-02.webp | 1555252333-9f8e92e65df9 | https://images.unsplash.com/photo-1555252333-9f8e92e65df9 | piecitos de bebé asomando de una toalla blanca (cuadrada) |
+| documental/foto-03.webp | 1503454537195-1dcabb73ffb9 | https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9 | nena riendo con la cara pintada de colores (vertical) |
+| documental/foto-04.webp | 1484665754804-74b091211472 | https://images.unsplash.com/photo-1484665754804-74b091211472 | mamá levantando a su hija en el parque (horizontal) |
+| documental/foto-05.webp | 1511795409834-ef04bbd61622 | https://images.unsplash.com/photo-1511795409834-ef04bbd61622 | mesa larga de festejo con flores y copas (horizontal) |
+| documental/foto-06.webp | 1543342384-1f1350e27861 | https://images.unsplash.com/photo-1543342384-1f1350e27861 | papá y mamá con su bebé recién nacido (vertical) |
+| documental/foto-07.webp | 1502086223501-7ea6ecd79368 | https://images.unsplash.com/photo-1502086223501-7ea6ecd79368 | chicos saltando en un bosque verde (horizontal) |
+| documental/foto-08.webp | 1516627145497-ae6968895b74 | https://images.unsplash.com/photo-1516627145497-ae6968895b74 | nena jugando con una cámara de juguete (cuadrada) |
+| documental/foto-09.webp | 1536640712-4d4c36ff0e4e | https://images.unsplash.com/photo-1536640712-4d4c36ff0e4e | nena corriendo sobre un puente (vertical) |
+| documental/foto-10.webp | 1491013516836-7db643ee125a | https://images.unsplash.com/photo-1491013516836-7db643ee125a | bebé de ojos celestes mordiendo un juguete (cuadrada) |
+| documental/foto-11.webp | 1502781252888-9143ba7f074e | https://images.unsplash.com/photo-1502781252888-9143ba7f074e | cuatro chicos riendo sentados en el pasto (horizontal) |
+| documental/foto-12.webp | 1476703993599-0035a21b17a9 | https://images.unsplash.com/photo-1476703993599-0035a21b17a9 | mamá con sus dos hijos en el sillón (horizontal) |
+| documental/foto-13.webp | 1519689680058-324335c77eba | https://images.unsplash.com/photo-1519689680058-324335c77eba | bebé en un flotador con anteojos de sol (horizontal) |
+| documental/foto-14.webp | 1583939003579-730e3918a45a | https://images.unsplash.com/photo-1583939003579-730e3918a45a | novios besándose entre pétalos y amigos (vertical) |
+| documental/foto-15.webp | 1511895426328-dc8714191300 | https://images.unsplash.com/photo-1511895426328-dc8714191300 | familia grande de espaldas mirando el atardecer en la playa (horizontal) |
 
-| Archivo | Orientación | Búsqueda sugerida | Autor | URL |
-|---|---|---|---|---|
-| foto-01.webp | vertical | retrato de mujer con luz de ventana | TODO | TODO |
-| foto-02.webp | horizontal | novios caminando en un campo al atardecer | TODO | TODO |
-| foto-03.webp | cuadrada | detalle de manos con anillos | TODO | TODO |
-| foto-04.webp | vertical | ramo de flores blancas sobre una mesa | TODO | TODO |
-| foto-05.webp | vertical | retrato de hombre en blanco y negro | TODO | TODO |
-| foto-06.webp | horizontal | ceremonia al aire libre bajo árboles | TODO | TODO |
-| foto-07.webp | vertical | vestido de novia colgado junto a una ventana | TODO | TODO |
-| foto-08.webp | cuadrada | pareja riendo abrazada | TODO | TODO |
-| foto-09.webp | vertical | retrato de perfil con fondo neutro | TODO | TODO |
-| foto-10.webp | horizontal | mesa de banquete con velas | TODO | TODO |
-| foto-11.webp | vertical | novia mirando por la ventana | TODO | TODO |
-| foto-12.webp | cuadrada | zapatos y detalles de la boda | TODO | TODO |
-| foto-13.webp | horizontal | pareja bailando de noche | TODO | TODO |
-| foto-14.webp | vertical | retrato de mujer mayor sonriendo | TODO | TODO |
-| foto-15.webp | horizontal | salida de la ceremonia con pétalos | TODO | TODO |
+### Landing y e-commerce
 
-## Cinemático (`/public/demos/fotografia/cinematico/`)
+Generadas con `node scripts/demos/fotos-landing-ecommerce.mjs` (correr después de `landing.mjs` y `ecommerce.mjs`). Licencia Unsplash.
 
-Estilo: Fondo negro y fotos a sangre, una tras otra. Impacto y drama.
+| Archivo | ID | URL | Qué muestra |
+|---|---|---|---|
+| public/demos/landing/impacto/hero-atleta-envion.webp | 1581009146145-b5ef050c2e1e | https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e | Atleta haciendo curl con barra en gimnasio oscuro (recortado para dejar afuera el logo del disco) |
+| public/demos/landing/impacto/disciplina-funcional.webp | 1583454110551-21f2fa2afe61 | https://images.unsplash.com/photo-1583454110551-21f2fa2afe61 | Mano con reloj agarrando una mancuerna |
+| public/demos/landing/impacto/disciplina-halterofilia.webp | 1517836357463-d25dfeac3438 | https://images.unsplash.com/photo-1517836357463-d25dfeac3438 | Barra olímpica con disco y agarre (recortado sin zapatillas ni short con marca) |
+| public/demos/landing/impacto/disciplina-hiit.webp | 1571019613454-1cb2f99b2d8b | https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b | Mujer haciendo abdominales frente a ventanal (recortado sin las zapatillas) |
+| public/demos/landing/impacto/disciplina-movilidad.webp | 1506126613408-eca07ce68773 | https://images.unsplash.com/photo-1506126613408-eca07ce68773 | Silueta en postura de yoga frente a ventana al atardecer |
+| public/demos/landing/sereno/hero-retrato-calma.webp | 1570172619644-dfd03ed5d881 | https://images.unsplash.com/photo-1570172619644-dfd03ed5d881 | Tratamiento facial con máscara y pincel |
+| public/demos/landing/sereno/producto-facial.webp | 1515377905703-c4788e51af15 | https://images.unsplash.com/photo-1515377905703-c4788e51af15 | Manos con gotero de sérum, luz cálida |
+| public/demos/landing/sereno/producto-corporal.webp | 1544161515-4ab6ce6db874 | https://images.unsplash.com/photo-1544161515-4ab6ce6db874 | Masaje con aceite en la espalda |
+| public/demos/landing/sereno/producto-relax.webp | 1600334129128-685c5582fd35 | https://images.unsplash.com/photo-1600334129128-685c5582fd35 | Masaje con piedras calientes y flores blancas |
+| public/demos/landing/sereno/producto-manos.webp | 1540555700478-4be289fbecef | https://images.unsplash.com/photo-1540555700478-4be289fbecef | Frasco dosificador blanco, toalla, vela y tulipanes |
+| public/demos/landing/sereno/espacio-cabina.webp | 1521590832167-7bcbfaa6381f | https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f | Salón de estética con sillones rosados y espejo |
+| public/demos/ecommerce/urbano/drop-hero.webp | 1512436991641-6745cdb1723f | https://images.unsplash.com/photo-1512436991641-6745cdb1723f | Perchero con ropa en tonos neutros |
+| public/demos/ecommerce/urbano/lookbook-01.webp | 1515886657613-9f3515b0c78f | https://images.unsplash.com/photo-1515886657613-9f3515b0c78f | Conjunto deportivo amarillo en cancha de básquet |
+| public/demos/ecommerce/urbano/lookbook-02.webp | 1521572163474-6864f9cf17ab | https://images.unsplash.com/photo-1521572163474-6864f9cf17ab | Remera blanca lisa (sin cara) |
+| public/demos/ecommerce/urbano/lookbook-03.webp | 1552374196-1ab2a1c593e8 | https://images.unsplash.com/photo-1552374196-1ab2a1c593e8 | Chico sentado con saco camel y pantalón claro |
+| public/demos/ecommerce/natural/hero-coleccion.webp | 1540555700478-4be289fbecef | https://images.unsplash.com/photo-1540555700478-4be289fbecef | Frasco dosificador blanco, toalla, vela y tulipanes |
 
-| Archivo | Orientación | Búsqueda sugerida | Autor | URL |
-|---|---|---|---|---|
-| foto-01.webp | horizontal | modelo con luz dura y sombras marcadas | TODO | TODO |
-| foto-02.webp | vertical | retrato en clave baja con fondo negro | TODO | TODO |
-| foto-03.webp | horizontal | moda urbana de noche con luces de neón | TODO | TODO |
-| foto-04.webp | horizontal | silueta a contraluz | TODO | TODO |
-| foto-05.webp | vertical | detalle de tela en movimiento | TODO | TODO |
-| foto-06.webp | horizontal | modelo en escalera de hormigón | TODO | TODO |
-| foto-07.webp | vertical | retrato con humo y luz lateral | TODO | TODO |
-| foto-08.webp | horizontal | editorial de moda en blanco y negro | TODO | TODO |
-| foto-09.webp | horizontal | figura caminando en un pasillo oscuro | TODO | TODO |
-| foto-10.webp | vertical | rostro parcialmente iluminado | TODO | TODO |
-| foto-11.webp | horizontal | moda en paisaje desértico | TODO | TODO |
-| foto-12.webp | cuadrada | manos con joyas sobre fondo negro | TODO | TODO |
-| foto-13.webp | horizontal | modelo reflejado en un vidrio | TODO | TODO |
-| foto-14.webp | vertical | retrato con luz roja | TODO | TODO |
+### Reservas
 
-## Documental cálido (`/public/demos/fotografia/documental/`)
+Generadas con `node scripts/demos/fotos-reservas.mjs` (correr después de `reservas.mjs`). Licencia Unsplash.
 
-Estilo: Colores cálidos y luminosos, galería tipo mosaico. Cercano y espontáneo.
+| archivo | ID | URL | qué muestra |
+|---|---|---|---|
+| public/demos/reservas/barberia/hero-sillon.webp | 1585747860715-2ba37e788b70 | https://images.unsplash.com/photo-1585747860715-2ba37e788b70 | Interior de barbería: sillones negros, espejos, ladrillo, lámparas |
+| public/demos/reservas/barberia/herramientas.webp | 1503951914875-452162b0f3f1 | https://images.unsplash.com/photo-1503951914875-452162b0f3f1 | Afeitado a navaja, cliente reclinado, ambiente oscuro |
+| public/demos/reservas/cabanas/hero-sierras.webp | 1542718610-a1d656d1884c | https://images.unsplash.com/photo-1542718610-a1d656d1884c | Cabaña en una loma al atardecer (espejada) |
+| public/demos/reservas/cabanas/cabana-algarrobo.webp | 1449158743715-0a90ebb6d2d8 | https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8 | Cabaña de troncos en el bosque |
+| public/demos/reservas/cabanas/cabana-molles.webp | 1568605114967-8130f3a36994 | https://images.unsplash.com/photo-1568605114967-8130f3a36994 | Casa de madera con chimenea de piedra, iluminada al anochecer |
+| public/demos/reservas/cabanas/cabana-tala.webp | 1470770841072-f978cf4d019e | https://images.unsplash.com/photo-1470770841072-f978cf4d019e | Cabaña con muelle sobre el lago y cerro boscoso (recorte) |
+| public/demos/reservas/cabanas/cabana-mirador.webp | 1600585154340-be6161a56a0c | https://images.unsplash.com/photo-1600585154340-be6161a56a0c | Casa moderna de techo plano con ventanales, al anochecer |
+| public/demos/reservas/cabanas/interior-living.webp | 1502672260266-1c1ef2d93688 | https://images.unsplash.com/photo-1502672260266-1c1ef2d93688 | Living con sillón gris, plantas y silla de madera |
+| public/demos/reservas/canchas/hero-cancha.webp | 1658491830143-72808ca237e3 | https://images.unsplash.com/photo-1658491830143-72808ca237e3 | Cancha de pádel azul techada con red |
 
-| Archivo | Orientación | Búsqueda sugerida | Autor | URL |
-|---|---|---|---|---|
-| foto-01.webp | horizontal | familia jugando en el pasto | TODO | TODO |
-| foto-02.webp | cuadrada | bebé recién nacido durmiendo | TODO | TODO |
-| foto-03.webp | vertical | niña riendo con el pelo al viento | TODO | TODO |
-| foto-04.webp | vertical | padre levantando a su hijo en brazos | TODO | TODO |
-| foto-05.webp | horizontal | cumpleaños infantil con torta y velas | TODO | TODO |
-| foto-06.webp | cuadrada | manos de bebé sobre la mano de la madre | TODO | TODO |
-| foto-07.webp | horizontal | hermanos saltando en la cama | TODO | TODO |
-| foto-08.webp | vertical | abuela y nieta cocinando | TODO | TODO |
-| foto-09.webp | horizontal | familia caminando en la playa | TODO | TODO |
-| foto-10.webp | vertical | niño con globo en una plaza | TODO | TODO |
-| foto-11.webp | vertical | madre amamantando con luz de ventana | TODO | TODO |
-| foto-12.webp | horizontal | perro y niños en el jardín | TODO | TODO |
-| foto-13.webp | cuadrada | pies de bebé con mantita tejida | TODO | TODO |
-| foto-14.webp | horizontal | festejo familiar alrededor de una mesa | TODO | TODO |
-| foto-15.webp | vertical | niña soplando un diente de león | TODO | TODO |
-| foto-16.webp | horizontal | familia abrazada al atardecer | TODO | TODO |
+### Productores, vinoteca y deco
+
+Generadas por `scripts/demos/fotos-productores-catalogos.mjs`.
+
+| archivo | ID | URL | qué muestra |
+|---|---|---|---|
+| public/demos/marketplaces/productores/hero-puesto.webp | 1488459716781-31db52582fe9 | https://images.unsplash.com/photo-1488459716781-31db52582fe9 | Puesto de mercado lleno de frutas y verduras (hero) |
+| public/demos/marketplaces/productores/producto-queso-semiduro.webp | 1486297678162-eb2a19b0a32d | https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d | Hormas de queso semiduro sobre piedra |
+| public/demos/marketplaces/productores/producto-pan-masa-madre.webp | 1509440159596-0249088772ff | https://images.unsplash.com/photo-1509440159596-0249088772ff | Hogazas de masa madre con espigas |
+| public/demos/catalogos/vinoteca/hero-copa.webp (nueva) | 1474722883778-792e7990302f | https://images.unsplash.com/photo-1474722883778-792e7990302f | Copa de tinto con uvas, fondo oscuro (fondo del hero) |
+| public/demos/catalogos/vinoteca/degustacion.webp (nueva) | 1510812431401-41d2bd2722f3 | https://images.unsplash.com/photo-1510812431401-41d2bd2722f3 | Brindis con copas de tinto (sección Visitanos) |
+| public/demos/catalogos/deco/casa-living.webp (nueva) | 1600210492486-724fe5c67fb0 | https://images.unsplash.com/photo-1600210492486-724fe5c67fb0 | Living amplio con sillones coñac y plantas (sección "Del taller a tu casa") |
