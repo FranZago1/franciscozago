@@ -127,7 +127,7 @@ export default function BarberiaDemo() {
               <div className="relative aspect-[4/3] overflow-hidden rounded-[3px] ring-1 ring-[#c29b5a]/30">
                 <Image
                   src="/demos/reservas/barberia/hero-sillon.webp"
-                  alt="Ilustración del salón: sillón de barbero bordó, espejo con marco dorado, poste de barbería y estante con productos"
+                  alt="Salón de la barbería: sillones de barbero de cuero negro frente a espejos, pared de ladrillo, lámparas colgantes y piso de mosaico"
                   fill
                   priority
                   sizes="(min-width: 1152px) 540px, (min-width: 1024px) 45vw, 100vw"
@@ -276,7 +276,7 @@ export default function BarberiaDemo() {
           <div className="relative aspect-[14/9] overflow-hidden rounded-[3px]">
             <Image
               src="/demos/reservas/barberia/herramientas.webp"
-              alt="Ilustración de herramientas sobre cuero: navaja, tijera, peine dorado, brocha y pomada"
+              alt="Barbero afeitando a navaja a un cliente reclinado en el sillón, en penumbra cálida"
               fill
               sizes="(min-width: 1024px) 540px, 100vw"
               className="object-cover"

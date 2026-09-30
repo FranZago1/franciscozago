@@ -28,13 +28,13 @@ export const cabanas: Cabana[] = [
   {
     id: "algarrobo",
     nombre: "El Algarrobo",
-    bajada: "Refugio en A para dos, con hidromasaje y el arroyo a veinte pasos.",
+    bajada: "Refugio de troncos para dos, con hidromasaje y el arroyo a veinte pasos.",
     capacidad: 2,
     maxAdultos: 2,
     dormitorios: 1,
     tarifa: 78000,
     img: "/demos/reservas/cabanas/cabana-algarrobo.webp",
-    alt: "Ilustración de la cabaña El Algarrobo: techo a dos aguas hasta el piso, entre pinos, al atardecer",
+    alt: "Cabaña El Algarrobo: cabaña de troncos con chimenea de piedra, en un claro entre pinos altos",
     destacados: ["Hidromasaje", "Hogar a leña", "Ideal parejas"],
   },
   {
@@ -46,7 +46,7 @@ export const cabanas: Cabana[] = [
     dormitorios: 2,
     tarifa: 98000,
     img: "/demos/reservas/cabanas/cabana-molles.webp",
-    alt: "Ilustración de la cabaña Los Molles: madera clara, zócalo de piedra y chimenea humeante",
+    alt: "Cabaña Los Molles al anochecer: madera, techo a dos aguas, chimenea de piedra y ventanas encendidas",
     destacados: ["2 dormitorios", "Parrilla", "Hogar a leña"],
   },
   {
@@ -58,7 +58,7 @@ export const cabanas: Cabana[] = [
     dormitorios: 2,
     tarifa: 112000,
     img: "/demos/reservas/cabanas/cabana-tala.webp",
-    alt: "Ilustración de la cabaña La Tala: techo verde, galería de madera y chimenea",
+    alt: "Cabaña La Tala: cabaña de madera con galería y muelle sobre el agua, al pie de un cerro con bosque",
     destacados: ["Acepta mascotas", "Galería", "Patio cerrado"],
   },
   {
@@ -70,7 +70,7 @@ export const cabanas: Cabana[] = [
     dormitorios: 3,
     tarifa: 145000,
     img: "/demos/reservas/cabanas/cabana-mirador.webp",
-    alt: "Ilustración de la cabaña El Mirador de noche: ventanal iluminado, techo plano y deck",
+    alt: "Cabaña El Mirador al anochecer: techo plano, ventanales iluminados y deck frente al jardín, bajo un árbol grande",
     destacados: ["3 dormitorios", "Deck con vista", "Jacuzzi exterior"],
   },
 ];
@@ -197,7 +197,7 @@ export const resenas = [
 ];
 
 export const galeria = [
-  { img: "/demos/reservas/cabanas/interior-living.webp", alt: "Ilustración del living: hogar de piedra encendido, sillón verde y ventanal a las sierras", t: "Living con hogar" },
+  { img: "/demos/reservas/cabanas/interior-living.webp", alt: "Living luminoso con sillón gris, silla de madera, biblioteca, plantas colgantes y ventana", t: "Living" },
   { img: "/demos/reservas/cabanas/galeria-arroyo.webp", alt: "Ilustración del arroyo entre piedras y árboles nativos", t: "El arroyo" },
   { img: "/demos/reservas/cabanas/interior-dormitorio.webp", alt: "Ilustración de un dormitorio con respaldo de madera, acolchado verde y ventana al monte", t: "Dormitorios" },
   { img: "/demos/reservas/cabanas/galeria-pileta.webp", alt: "Ilustración de la pileta rodeada de pinos con una reposera y sombrilla", t: "Pileta" },

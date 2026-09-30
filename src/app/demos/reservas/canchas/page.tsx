@@ -135,7 +135,7 @@ export default function CanchasDemo() {
               <div className="relative aspect-[3/2] overflow-hidden rounded-[2rem] shadow-[0_40px_80px_-40px_rgba(10,27,61,0.6)]">
                 <Image
                   src="/demos/reservas/canchas/hero-cancha.webp"
-                  alt="Ilustración de tres canchas de pádel de noche, con luces encendidas y las sierras al atardecer"
+                  alt="Cancha de pádel techada de césped azul, con la red en primer plano y el alambrado de fondo"
                   fill
                   priority
                   sizes="(min-width: 1280px) 660px, (min-width: 1024px) 52vw, 100vw"

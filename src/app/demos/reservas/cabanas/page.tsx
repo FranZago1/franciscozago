@@ -48,11 +48,11 @@ export default function CabanasDemo() {
         <section className="relative isolate min-h-[88svh] overflow-hidden">
           <Image
             src="/demos/reservas/cabanas/hero-sierras.webp"
-            alt="Ilustración de cabañas con ventanas encendidas entre pinos y algarrobos, con las sierras de Córdoba al atardecer"
+            alt="Cabaña de madera en una loma con pastizales y pinos, con las sierras en la bruma del atardecer"
             fill
             priority
             sizes="100vw"
-            className="-z-10 object-cover object-[60%_center]"
+            className="-z-10 object-cover object-[75%_center]"
           />
           <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-b from-[#1f2a23]/55 via-[#1f2a23]/10 to-[#1f2a23]/70" />
           <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-r from-[#1f2a23]/65 via-[#1f2a23]/20 to-transparent" />
