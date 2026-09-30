@@ -1,0 +1,37 @@
+import type { Metadata } from "next";
+import { ContactForm } from "@/components/ContactForm";
+import { Contacto } from "@/components/Contacto";
+import { Demos } from "@/components/Demos";
+import { Hero } from "@/components/Hero";
+import { PersonJsonLd } from "@/components/JsonLd";
+import { OtrosProyectos } from "@/components/OtrosProyectos";
+import { Proceso } from "@/components/Proceso";
+import { Section } from "@/components/Section";
+import { Servicios } from "@/components/Servicios";
+import { StackSection } from "@/components/StackSection";
+import { TrabajoCard } from "@/components/TrabajoCard";
+import { trabajosCliente } from "@/content/trabajos";
+
+export const metadata: Metadata = { alternates: { canonical: "/" } };
+
+export default function Home() {
+  return (
+    <>
+      <PersonJsonLd />
+      <Hero />
+      <Section id="trabajos" title="Trabajos">
+        <div className="grid gap-16">
+          {trabajosCliente.map((t) => (
+            <TrabajoCard key={t.slug} trabajo={t} />
+          ))}
+        </div>
+      </Section>
+      <Servicios />
+      <Demos />
+      <Proceso />
+      <OtrosProyectos />
+      <StackSection />
+      <Contacto form={<ContactForm />} />
+    </>
+  );
+}
