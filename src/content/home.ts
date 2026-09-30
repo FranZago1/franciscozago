@@ -37,23 +37,6 @@ export const heroStickers = {
   dato: { texto: "2 sitios en producción", color: "choco" as StickerColor },
 };
 
-export const sobreMi = {
-  marco: "¿Qué tal?",
-  frase: [
-    "Diseño",
-    { icono: "pluma", bg: "mostaza" },
-    "y programo",
-    { icono: "codigo", bg: "celeste" },
-    "sitios y sistemas completos, desde la idea hasta el sitio publicado.",
-  ] as Segmento[],
-  bloques: [
-    { texto: "Diseño web", icono: "cursor", color: "mostaza" },
-    { texto: "Desarrollo full-stack", icono: "codigo", color: "menta" },
-    { texto: "E-commerce", icono: "tienda", color: "rosa" },
-    { texto: "Sistemas a medida", icono: "gestion", color: "celeste" },
-  ] as { texto: string; icono: IconName; color: StickerColor }[],
-};
-
 export const serviciosCopy = {
   titulo: "Qué puedo construirte",
   cierre: "Cada proyecto se presupuesta a medida. Contame qué necesitás y te respondo con una propuesta.",

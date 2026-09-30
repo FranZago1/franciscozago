@@ -34,7 +34,7 @@ export const servicios: Servicio[] = [
     icono: "camara",
     color: "menta",
     linea: "Tu trabajo presentado como se merece.",
-    evidencia: { label: "Ver demos", href: "/#demos" },
+    evidencia: { label: "Ver demos", href: "/demos/fotografia" },
   },
   {
     nombre: "Web apps",

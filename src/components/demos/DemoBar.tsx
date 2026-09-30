@@ -43,7 +43,13 @@ export function DemoBar({ estilo }: { estilo: string }) {
               Pedilo por WhatsApp
             </a>
             <Link
-              href="/#demos"
+              href="/demos/fotografia"
+              className="hidden text-white/80 underline underline-offset-4 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4FB3B8] sm:inline"
+            >
+              Otros estilos
+            </Link>
+            <Link
+              href="/"
               className="text-white/80 underline underline-offset-4 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4FB3B8]"
             >
               Volver al portfolio

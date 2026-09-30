@@ -1,5 +1,6 @@
 import { Button } from "@/components/Button";
 import { Draggable } from "@/components/canvas/Draggable";
+import { InvertCursor } from "@/components/canvas/InvertCursor";
 import { SelectionFrame } from "@/components/canvas/SelectionFrame";
 import { Cinta, CursorTag, Polaroid } from "@/components/canvas/Sticker";
 import { Titular } from "@/components/canvas/Titular";
@@ -17,8 +18,9 @@ export function Hero() {
   return (
     <>
       {/* Lienzo con el wordmark y los stickers arrastrables */}
-      <section aria-label="Presentación" className="wrap relative overflow-hidden">
-        <div className="relative flex min-h-[560px] flex-col items-center justify-center pt-24 pb-36 md:min-h-[640px] md:pt-20 md:pb-24">
+      <section aria-label="Presentación" className="relative overflow-hidden">
+        <InvertCursor />
+        <div className="wrap relative flex min-h-[560px] flex-col items-center justify-center pt-24 pb-36 md:min-h-[640px] md:pt-20 md:pb-24">
           <p className="label-mono text-[13px] text-muted md:text-sm">
             <span className="text-accent">(00)</span> {hero.saludo}
           </p>
@@ -74,10 +76,10 @@ export function Hero() {
               <Cinta color={st.dato.color}>{st.dato.texto}</Cinta>
             </span>
           </Draggable>
+          <p className="label-mono pointer-events-none absolute bottom-2 left-5 hidden text-[11px] text-muted md:block">
+            Arrastrá los elementos
+          </p>
         </div>
-        <p className="label-mono pointer-events-none absolute bottom-2 left-5 hidden text-[11px] text-muted md:block">
-          Arrastrá los elementos
-        </p>
       </section>
 
       {/* Propuesta */}

@@ -10,7 +10,7 @@ import { waLink } from "@/lib/wa";
 export function Servicios() {
   return (
     <section id="servicios" aria-labelledby="servicios-titulo" className="wrap mt-32 md:mt-44">
-      <Eyebrow n="03" className="mb-4">Servicios</Eyebrow>
+      <Eyebrow n="02" className="mb-4">Servicios</Eyebrow>
       <h2 id="servicios-titulo" className="text-[clamp(2.2rem,5vw,3.6rem)] leading-none font-medium tracking-[-0.035em]">
         {serviciosCopy.titulo}
       </h2>

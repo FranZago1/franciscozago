@@ -12,7 +12,7 @@ const notas: { color: StickerColor; giro: string }[] = [
 export function Proceso() {
   return (
     <section id="proceso" aria-labelledby="proceso-titulo" className="wrap mt-32 md:mt-44">
-      <Eyebrow n="05" className="mb-4">Proceso</Eyebrow>
+      <Eyebrow n="03" className="mb-4">Proceso</Eyebrow>
       <h2 id="proceso-titulo" className="text-[clamp(2.2rem,5vw,3.6rem)] leading-none font-medium tracking-[-0.035em]">
         Cómo trabajo
       </h2>

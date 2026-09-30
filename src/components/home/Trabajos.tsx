@@ -108,7 +108,7 @@ function Carpeta({ t, i }: { t: Trabajo; i: number }) {
 export function Trabajos() {
   return (
     <section id="trabajos" aria-labelledby="trabajos-titulo" className="wrap mt-32 md:mt-44">
-      <Eyebrow n="02" className="mb-4">
+      <Eyebrow n="01" className="mb-4">
         Trabajos
       </Eyebrow>
       <div className="mb-10 flex items-end justify-between gap-6">

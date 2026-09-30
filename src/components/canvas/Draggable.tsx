@@ -53,9 +53,8 @@ export function Draggable({ children, className = "", rotate = 0, decorativo = t
     s.inicioY = e.clientY;
     s.baseX = s.x;
     s.baseY = s.y;
-    el.style.zIndex = String(++zTop);
-    el.setPointerCapture(e.pointerId);
-    aplicar(s.x, s.y, true);
+    // La captura del puntero recién se toma cuando hay arrastre (ver onPointerMove):
+    // si se tomara acá, un click simple caería en este div y no en un link interno.
   }
 
   function onPointerMove(e: React.PointerEvent<HTMLDivElement>) {
@@ -63,7 +62,15 @@ export function Draggable({ children, className = "", rotate = 0, decorativo = t
     if (!s.activo) return;
     const dx = e.clientX - s.inicioX;
     const dy = e.clientY - s.inicioY;
-    if (Math.abs(dx) + Math.abs(dy) > 4) s.movio = true;
+    if (!s.movio) {
+      if (Math.abs(dx) + Math.abs(dy) <= 4) return;
+      s.movio = true;
+      const el = ref.current;
+      if (el) {
+        el.style.zIndex = String(++zTop);
+        el.setPointerCapture(e.pointerId);
+      }
+    }
     const l = limites.current;
     s.x = Math.min(l.maxX, Math.max(l.minX, s.baseX + dx));
     s.y = Math.min(l.maxY, Math.max(l.minY, s.baseY + dy));
@@ -74,7 +81,7 @@ export function Draggable({ children, className = "", rotate = 0, decorativo = t
     const s = estado.current;
     if (!s.activo) return;
     s.activo = false;
-    ref.current?.releasePointerCapture(e.pointerId);
+    if (ref.current?.hasPointerCapture(e.pointerId)) ref.current.releasePointerCapture(e.pointerId);
     aplicar(s.x, s.y, false);
   }
 

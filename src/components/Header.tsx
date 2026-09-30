@@ -6,7 +6,6 @@ import { Ruler } from "./canvas/Ruler";
 const nav = [
   { href: "/#trabajos", label: "Trabajos" },
   { href: "/#servicios", label: "Servicios" },
-  { href: "/#demos", label: "Demos" },
   { href: "/#contacto", label: "Contacto" },
 ];
 

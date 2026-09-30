@@ -44,12 +44,13 @@ Escala: cuerpo 17 px; titulares de sección `clamp(2.2rem, 5vw, 3.6rem)`; titula
 - `Sticker`: `Cinta` (etiqueta de color), `CursorTag` (cursor de colaboración con nombre), `Polaroid` (captura suelta).
 - `Icons`: íconos geométricos propios en grilla de 24, de dos colores.
 - `Eyebrow`: rótulo de sección `(0N) Nombre`.
+- `InvertCursor`: cursor del hero (solo mouse). Cuadrado blanco con `mix-blend-mode: difference` que invierte lo que tiene debajo, con handles y etiqueta "Vos".
 
 ## Motion
 
 Un solo momento orquestado: al cargar, entra el nombre y aparecen los stickers en secuencia
 (CSS puro). El resto responde al usuario: arrastre, hover (elementos que suben 2 px o se
-enderezan), marcador de la regla y apilado de carpetas con `position: sticky`. Con
+enderezan), cursor inversor en el hero, marcador de la regla y apilado de carpetas con `position: sticky`. Con
 `prefers-reduced-motion` no hay entrada; el arrastre sigue disponible.
 
 ## Demos de fotografía (tokens propios, independientes del portfolio)

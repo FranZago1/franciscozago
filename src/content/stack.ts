@@ -1,5 +1,6 @@
 export type StackFila = { categoria: string; items: string[] };
 
+/** Stack técnico. Hoy no se muestra en el home (se sacó la sección); queda como referencia. */
 export const stack: StackFila[] = [
   { categoria: "Frontend", items: ["React", "Next.js", "React Native", "Tailwind CSS", "Framer Motion", "GSAP"] },
   { categoria: "Backend", items: ["Node.js", "NestJS", "Go (Gin)", "REST APIs", "JWT", "RBAC", "RabbitMQ"] },

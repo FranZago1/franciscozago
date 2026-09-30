@@ -199,3 +199,11 @@ body:has([data-demo="cinematico"]) {
     scale: 1;
   }
 }
+
+/* Zona del cursor inversor: se oculta el cursor nativo (el cuadrado lo reemplaza). */
+@media (hover: hover) and (pointer: fine) {
+  .invert-zone,
+  .invert-zone * {
+    cursor: none !important;
+  }
+}
