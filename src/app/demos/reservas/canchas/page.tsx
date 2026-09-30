@@ -205,7 +205,7 @@ export default function CanchasDemo() {
               <table className="w-full min-w-[30rem] text-left">
                 <caption className="sr-only">Precio por hora según tipo de cancha y horario</caption>
                 <thead>
-                  <tr className="text-xs tracking-wider text-[#0a1b3d]/55 uppercase">
+                  <tr className="text-xs tracking-wider text-[#0a1b3d]/60 uppercase">
                     <th scope="col" className="p-5 font-bold">
                       Cancha
                     </th>
@@ -267,7 +267,7 @@ export default function CanchasDemo() {
                     <li key={t as string} className="rounded-2xl bg-[#f4f7fc] p-4">
                       <Icono width={22} height={22} className="text-[#1553d6]" />
                       <p className="mt-3 font-bold">{t as string}</p>
-                      <p className="text-sm text-[#0a1b3d]/60">{d as string}</p>
+                      <p className="text-sm text-[#0a1b3d]/62">{d as string}</p>
                     </li>
                   );
                 })}
