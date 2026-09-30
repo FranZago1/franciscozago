@@ -54,7 +54,7 @@ function Vista({ b }: { b: Borrador }) {
       </div>
       <div className="p-4">
         <p className={`${display} text-[1.7rem] font-extrabold tracking-[-0.02em]`}>{Number(b.precio) ? pesos(Number(b.precio)) : "$ —"}</p>
-        <p className={`mt-1 line-clamp-2 min-h-[2.6em] font-semibold leading-snug ${b.titulo ? "" : "text-(--sv-gris)/60"}`}>{b.titulo || "El título de tu aviso"}</p>
+        <p className={`mt-1 line-clamp-2 min-h-[2.6em] font-semibold leading-snug ${b.titulo ? "" : "text-(--sv-gris)/85"}`}>{b.titulo || "El título de tu aviso"}</p>
         <div className="mt-3 flex flex-wrap items-center gap-2 text-[0.8rem] font-semibold text-(--sv-gris)">
           {cat && (
             <span className="rounded-full border-2 border-(--sv-negro) px-2 py-0.5 text-(--sv-negro)" style={{ background: cat.color }}>
@@ -166,7 +166,7 @@ export function Publicar() {
           <h2 id="publicar-titulo" className={`${display} mt-4 text-5xl font-extrabold leading-[0.92] tracking-[-0.04em] sm:text-7xl`}>
             Publicá tu aviso.
           </h2>
-          <p className="mt-4 text-lg font-medium text-white/85">Mirá cómo va quedando a medida que lo completás. Sin comisión, sin letra chica.</p>
+          <p className="mt-4 text-lg font-medium text-white/95">Mirá cómo va quedando a medida que lo completás. Sin comisión, sin letra chica.</p>
         </div>
 
         <div className="mt-10 grid gap-8 lg:grid-cols-[1.45fr_1fr] lg:items-start">
@@ -484,7 +484,7 @@ export function Publicar() {
             <div className="mx-auto max-w-sm lg:mx-0">
               <Vista b={b} />
             </div>
-            <p className="mt-4 max-w-sm text-sm font-medium text-white/80">Así lo van a ver los compradores en el listado.</p>
+            <p className="mt-4 max-w-sm text-sm font-medium text-white/95">Así lo van a ver los compradores en el listado.</p>
           </div>
         </div>
       </div>

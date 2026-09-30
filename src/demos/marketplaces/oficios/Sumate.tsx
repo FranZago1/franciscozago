@@ -189,7 +189,7 @@ export function Sumate() {
                   "Quiero sumarme"
                 )}
               </button>
-              <p className="mt-3 text-center text-xs text-white/50">Es una demo: el formulario no envía nada.</p>
+              <p className="mt-3 text-center text-xs text-white/55">Es una demo: el formulario no envía nada.</p>
             </form>
           )}
         </div>

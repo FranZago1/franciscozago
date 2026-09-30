@@ -20,8 +20,9 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-(--dv-linea) bg-(--dv-papel)/92 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:h-[4.5rem] sm:px-6 lg:px-8">
-        <a href="#inicio" className={`rounded-lg text-(--dv-verde) ${foco}`} aria-label="Del Valle Mercado, inicio">
+        <a href="#inicio" className={`rounded-lg text-(--dv-verde) ${foco}`}>
           <Logo />
+          <span className="sr-only">, inicio</span>
         </a>
         <nav aria-label="Secciones" className="hidden lg:block">
           <ul className="flex items-center gap-1 text-[0.95rem] font-medium">
@@ -45,7 +46,7 @@ export function Header() {
           type="button"
           onClick={() => setCarritoAbierto(true)}
           className={`group relative inline-flex items-center gap-2 rounded-full bg-(--dv-verde) py-2.5 pl-4 pr-3 text-sm font-semibold text-(--dv-papel) shadow-[0_2px_0_#0F2E18] transition hover:bg-(--dv-verde2) active:translate-y-px ${foco}`}
-          aria-label={`Abrir tu pedido, ${cantidad} ${cantidad === 1 ? "producto" : "productos"}`}
+          aria-label={`Tu pedido, ${cantidad} ${cantidad === 1 ? "producto" : "productos"}`}
         >
           <Icon name="basket" size={19} stroke={1.9} />
           <span className="hidden sm:inline">Tu pedido</span>

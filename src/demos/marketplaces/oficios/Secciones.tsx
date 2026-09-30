@@ -287,7 +287,7 @@ export function Hero() {
               </span>
               Presupuesto recibido
             </p>
-            <p className="mt-2 text-sm text-white/85">Diego: “Puedo ir hoy a las 16 h. El cambio de térmica sale</p>
+            <p className="mt-2 text-sm text-white/95">Diego: “Puedo ir hoy a las 16 h. El cambio de térmica sale</p>
             <p className={`${mono} mt-1 text-2xl font-semibold`}>$ 38.000”</p>
           </div>
         </div>

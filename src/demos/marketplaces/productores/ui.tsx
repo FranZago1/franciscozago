@@ -13,7 +13,7 @@ export const tokens = {
   "--dv-verde2": "#2F6B3F",
   "--dv-brote": "#9CCB6E",
   "--dv-mostaza": "#E3A72F",
-  "--dv-tomate": "#C4452A",
+  "--dv-tomate": "#B33F26",
   "--dv-tinta": "#1D2A1F",
   "--dv-gris": "#566150",
   "--dv-linea": "#DACDAF",
@@ -33,8 +33,8 @@ export function Logo({ claro = false }: { claro?: boolean }) {
         <path d="M11 31h18" stroke={claro ? "#1F4D2B" : "#F6EFDF"} strokeWidth="2.4" strokeLinecap="round" />
       </svg>
       <span className="flex flex-col leading-none">
-        <span className={`${display} text-[1.35rem] font-semibold tracking-[-0.01em]`}>Del Valle</span>
-        <span className="mt-0.5 text-[0.62rem] font-semibold uppercase tracking-[0.28em] opacity-75">Mercado</span>
+        <span className={`${display} text-[1.35rem] font-semibold tracking-[-0.01em]`}>Del Valle</span>{" "}
+        <span className="mt-0.5 text-[0.62rem] font-semibold uppercase tracking-[0.28em] opacity-80">Mercado</span>
       </span>
     </span>
   );

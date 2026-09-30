@@ -12,8 +12,9 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b-[2.5px] border-(--sv-negro) bg-(--sv-fondo)">
       <div className="mx-auto flex h-16 max-w-7xl items-center gap-3 px-4 sm:h-[4.5rem] sm:gap-5 sm:px-6 lg:px-8">
-        <a href="#inicio" className={`shrink-0 rounded-full ${foco}`} aria-label="Segunda Vuelta, inicio">
+        <a href="#inicio" className={`shrink-0 rounded-full ${foco}`}>
           <Logo />
+          <span className="sr-only">, inicio</span>
         </a>
         <form
           role="search"

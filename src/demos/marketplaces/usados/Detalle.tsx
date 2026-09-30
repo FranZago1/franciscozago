@@ -432,7 +432,7 @@ function Chat() {
                     </span>
                   )}
                   <p>{m.texto}</p>
-                  <p className={`mt-0.5 text-right text-[0.68rem] font-semibold ${m.de === "yo" ? "text-white/70" : "text-(--sv-gris)"}`}>
+                  <p className={`mt-0.5 text-right text-[0.68rem] font-semibold ${m.de === "yo" ? "text-white/95" : "text-(--sv-gris)"}`}>
                     <span className="sr-only">{m.de === "yo" ? "Vos" : a.vendedor.nombre}, </span>
                     {m.hora}
                   </p>

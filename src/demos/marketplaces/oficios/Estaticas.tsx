@@ -96,7 +96,7 @@ export function Testimonios() {
           {testimonios.map((t) => (
             <li key={t.autor}>
               <figure className="flex h-full flex-col rounded-2xl border-2 border-(--ma-linea) bg-white p-6">
-                <div className="flex gap-0.5 text-(--ma-amarillo2)" aria-label="5 estrellas">
+                <div role="img" className="flex gap-0.5 text-(--ma-amarillo2)" aria-label="5 estrellas">
                   {[0, 1, 2, 3, 4].map((i) => (
                     <Icon key={i} name="star" size={17} filled stroke={1.2} />
                   ))}

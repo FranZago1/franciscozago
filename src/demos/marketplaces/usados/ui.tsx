@@ -7,7 +7,7 @@ export const sans = "[font-family:var(--font-sv-sans)]";
 export const tokens = {
   "--sv-fondo": "#FFF6E5",
   "--sv-negro": "#141414",
-  "--sv-violeta": "#7B5CFF",
+  "--sv-violeta": "#6F4DFF",
   "--sv-amarillo": "#FFE14D",
   "--sv-rosa": "#FF5CA8",
   "--sv-verde": "#3DDC97",

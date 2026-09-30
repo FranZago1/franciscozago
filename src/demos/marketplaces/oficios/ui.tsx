@@ -74,7 +74,7 @@ export function ChipOficio({ id, claro = false }: { id: OficioId; claro?: boolea
 
 export function Verificado({ matricula, chico = false }: { matricula: string; chico?: boolean }) {
   return (
-    <span className={`inline-flex items-center gap-1.5 rounded-md border border-(--ma-verde)/25 bg-(--ma-verde)/8 px-2 py-1 text-(--ma-verde) ${chico ? "text-[0.72rem]" : "text-[0.78rem]"}`}>
+    <span className={`inline-flex items-center gap-1.5 rounded-md border border-(--ma-verde)/25 bg-(--ma-verde)/8 px-2 py-1 text-[#117D57] ${chico ? "text-[0.72rem]" : "text-[0.78rem]"}`}>
       <Icon name="shield" size={chico ? 14 : 15} stroke={2.2} />
       <span className={`${mono} font-medium`}>{matricula}</span>
       <span className="font-semibold">verificada</span>
