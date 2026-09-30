@@ -737,7 +737,7 @@ function SelectorDia({ hoy, dia, onElegir, propias }: { hoy: DiaISO | null; dia:
                     {i === 0 ? "Hoy" : i === 1 ? "Mañ" : nombreDiaCorto(d)}
                   </span>
                   <span className={`${display} text-3xl leading-none font-extrabold`}>{p.d}</span>
-                  <span className={`text-[10px] font-semibold uppercase ${activo ? "text-white/75" : "text-[#0a1b3d]/60"}`}>{fechaCorta(d).split(" ")[2]}</span>
+                  <span className={`text-[10px] font-semibold uppercase ${activo ? "text-white/90" : "text-[#0a1b3d]/60"}`}>{fechaCorta(d).split(" ")[2]}</span>
                   <span className={`mt-1.5 h-1 w-9 overflow-hidden rounded-full ${activo ? "bg-white/25" : "bg-[#0a1b3d]/10"}`} aria-hidden="true">
                     <span className={`block h-full rounded-full ${libre < 0.3 ? "bg-[#e0703a]" : activo ? "bg-[#d8f03c]" : "bg-[#2e9e5b]"}`} style={{ width: `${Math.round(libre * 100)}%` }} />
                   </span>
