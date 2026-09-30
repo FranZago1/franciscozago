@@ -93,7 +93,7 @@ export function Resumen() {
                     </span>
                     <span className="hidden sm:block"><BarraStock p={p} ancho="w-20" /></span>
                     <span className={`${mono} w-14 text-right text-sm font-bold ${p.stock <= 0 ? "text-[#C0262D]" : "text-[#8A5A00]"}`}>
-                      {p.stock}<span className="font-normal text-[#9A968D]">/{p.minimo}</span>
+                      {p.stock}<span className="font-normal text-[#6F6C66]">/{p.minimo}</span>
                     </span>
                   </button>
                 </li>

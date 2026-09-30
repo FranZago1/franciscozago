@@ -24,7 +24,7 @@ const iconosComodidades = [IconoCafe, IconoPileta, IconoFuego, IconoWifi, IconoA
 
 function Logo({ claro = false }: { claro?: boolean }) {
   return (
-    <a href="#inicio" className="flex items-center gap-2.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#e8c79a]" aria-label={`${complejo.nombre}, inicio`}>
+    <a href="#inicio" className="flex items-center gap-2.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#e8c79a]">
       <svg viewBox="0 0 40 40" width="38" height="38" aria-hidden="true">
         <circle cx="20" cy="20" r="19" fill={claro ? "#f7f2e8" : "#2f4a3a"} />
         <path d="M7 27l8-10 5 6 4-4 9 8z" fill={claro ? "#2f4a3a" : "#e8c79a"} />
@@ -33,8 +33,9 @@ function Logo({ claro = false }: { claro?: boolean }) {
       </svg>
       <span className={`${serif} text-lg leading-none font-medium ${claro ? "text-[#f7f2e8]" : "text-[#2a2620]"}`}>
         Arroyo Manso
-        <span className={`${sans} mt-1 block text-[9px] font-semibold tracking-[0.16em] whitespace-nowrap uppercase sm:text-[10px] sm:tracking-[0.25em] ${claro ? "text-[#e8c79a]" : "text-[#b5653a]"}`}>Cabañas · Calamuchita</span>
+        <span className={`${sans} mt-1 block text-[9px] font-semibold tracking-[0.16em] whitespace-nowrap uppercase sm:text-[10px] sm:tracking-[0.25em] ${claro ? "text-[#e8c79a]" : "text-[#a45b34]"}`}>Cabañas · Calamuchita</span>
       </span>
+      <span className="sr-only">, inicio</span>
     </a>
   );
 }

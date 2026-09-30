@@ -47,7 +47,7 @@ export function Tareas() {
             <p className="text-lg font-extrabold text-[#0F172A]">
               {hechasHoy} de {totalHoy} hechas
             </p>
-            <p className="text-sm text-[#64748B]">
+            <p className="text-sm text-[#5F6E84]">
               {grupos.atrasadas.length ? `${grupos.atrasadas.length} atrasada${grupos.atrasadas.length > 1 ? "s" : ""} de días anteriores` : "Nada atrasado. Bien ahí."}
             </p>
           </div>
@@ -73,7 +73,7 @@ function Grupo({ titulo, tareas, tono, vacio }: { titulo: string; tareas: Tarea[
   const { abrirNuevaTarea } = useCrm();
   return (
     <section className="mt-7" aria-labelledby={`g-${titulo}`}>
-      <h2 id={`g-${titulo}`} className={`mb-3 flex items-center gap-2 text-[13px] font-bold uppercase tracking-[0.08em] ${tono === "rojo" ? "text-[#B42318]" : "text-[#64748B]"}`}>
+      <h2 id={`g-${titulo}`} className={`mb-3 flex items-center gap-2 text-[13px] font-bold uppercase tracking-[0.08em] ${tono === "rojo" ? "text-[#B42318]" : "text-[#5F6E84]"}`}>
         {titulo}
         <span className={`rounded-full px-1.5 py-0.5 text-[11px] ${tono === "rojo" ? "bg-[#FEF1F0]" : "bg-[#E8EDF2]"}`}>{tareas.length}</span>
       </h2>
@@ -113,16 +113,16 @@ function FilaTarea({ t }: { t: Tarea }) {
       >
         <Icon name="check" className="size-4" strokeWidth={3} />
       </button>
-      <div className={`w-14 shrink-0 text-sm max-sm:hidden font-bold tabular-nums ${t.hecha ? "text-[#94A3B8]" : pasada ? "text-[#B42318]" : "text-[#0F172A]"}`}>
+      <div className={`w-14 shrink-0 text-sm max-sm:hidden font-bold tabular-nums ${t.hecha ? "text-[#677180]" : pasada ? "text-[#B42318]" : "text-[#0F172A]"}`}>
         {d === 0 ? hora(t.fecha) : <span className="text-xs leading-tight">{diaRelativo(t.fecha, now)}<br />{hora(t.fecha)}</span>}
       </div>
       <div className="min-w-0 flex-1">
-        <p className={`flex items-start gap-2 text-sm font-semibold ${t.hecha ? "text-[#94A3B8] line-through" : "text-[#0F172A]"}`}>
-          <Icon name={ICONO_TAREA[t.tipo]} className="mt-0.5 size-4 shrink-0 text-[#64748B]" />
+        <p className={`flex items-start gap-2 text-sm font-semibold ${t.hecha ? "text-[#677180] line-through" : "text-[#0F172A]"}`}>
+          <Icon name={ICONO_TAREA[t.tipo]} className="mt-0.5 size-4 shrink-0 text-[#5F6E84]" />
           {t.texto}
         </p>
         <div className="mt-1.5 flex flex-wrap items-center gap-2">
-          <span className={`text-xs font-bold tabular-nums sm:hidden ${t.hecha ? "text-[#94A3B8]" : pasada ? "text-[#B42318]" : "text-[#0F172A]"}`}>
+          <span className={`text-xs font-bold tabular-nums sm:hidden ${t.hecha ? "text-[#677180]" : pasada ? "text-[#B42318]" : "text-[#0F172A]"}`}>
             {d === 0 ? hora(t.fecha) : `${diaRelativo(t.fecha, now)} ${hora(t.fecha)}`}
           </span>
           <button type="button" onClick={() => abrirFicha(c.id)} className="inline-flex items-center gap-1.5 rounded-full py-0.5 pl-0.5 pr-2 text-xs font-bold text-[#0F4C5C] ring-1 ring-[#DCE5EA] hover:bg-[#E7F0F2]">

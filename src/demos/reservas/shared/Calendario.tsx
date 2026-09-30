@@ -222,7 +222,7 @@ export function Calendario({
           return (
             <div key={`${m.y}-${m.m}`}>
               <h4 id={idTitulo} className={tema.titulo}>
-                {nombreMes(m.m)} <span className="opacity-60">{m.y}</span>
+                {nombreMes(m.m)} <span className="opacity-65">{m.y}</span>
               </h4>
               <table role="grid" aria-labelledby={idTitulo} className={tema.tabla}>
                 <thead>

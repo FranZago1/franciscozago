@@ -240,10 +240,10 @@ function Crm() {
         <Logo />
         <div className="leading-tight">
           <p className="text-[15px] font-extrabold tracking-tight text-[#0C3440]">Portal Sur</p>
-          <p className="text-xs font-medium text-[#64748B]">Inmobiliaria · CRM</p>
+          <p className="text-xs font-medium text-[#5F6E84]">Inmobiliaria · CRM</p>
         </div>
       </div>
-      <p className="px-5 pb-2 text-[11px] font-bold uppercase tracking-[0.12em] text-[#94A3B8]">Gestión</p>
+      <p className="px-5 pb-2 text-[11px] font-bold uppercase tracking-[0.12em] text-[#677180]">Gestión</p>
       <ul className="space-y-0.5 px-3">
         {NAV.map((n) => {
           const activo = vista === n.id;
@@ -255,11 +255,11 @@ function Crm() {
                 aria-current={activo ? "page" : undefined}
                 className={`group flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-semibold transition ${activo ? "bg-[#E7F0F2] text-[#0C3440]" : "text-[#475569] hover:bg-[#F1F5F8] hover:text-[#0F172A]"}`}
               >
-                <Icon name={n.icon} className={`size-[18px] ${activo ? "text-[#0F4C5C]" : "text-[#94A3B8] group-hover:text-[#64748B]"}`} />
+                <Icon name={n.icon} className={`size-[18px] ${activo ? "text-[#0F4C5C]" : "text-[#94A3B8] group-hover:text-[#5F6E84]"}`} />
                 <span className="flex-1 text-left">{n.label}</span>
                 {counts[n.id] !== null ? (
                   <span
-                    className={`min-w-6 rounded-full px-1.5 py-0.5 text-center text-[11px] font-bold tabular-nums ${n.id === "tareas" && (counts[n.id] ?? 0) > 0 ? "bg-[#0F4C5C] text-white" : "bg-[#EEF2F6] text-[#64748B]"}`}
+                    className={`min-w-6 rounded-full px-1.5 py-0.5 text-center text-[11px] font-bold tabular-nums ${n.id === "tareas" && (counts[n.id] ?? 0) > 0 ? "bg-[#0F4C5C] text-white" : "bg-[#EEF2F6] text-[#5F6E84]"}`}
                   >
                     {counts[n.id]}
                   </span>
@@ -269,7 +269,7 @@ function Crm() {
           );
         })}
       </ul>
-      <p className="px-5 pb-2 pt-7 text-[11px] font-bold uppercase tracking-[0.12em] text-[#94A3B8]">Atajos</p>
+      <p className="px-5 pb-2 pt-7 text-[11px] font-bold uppercase tracking-[0.12em] text-[#677180]">Atajos</p>
       <ul className="space-y-0.5 px-3">
         <li>
           <button type="button" onClick={() => { setMenu(false); setForm({ open: true }); }} className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm font-semibold text-[#475569] hover:bg-[#F1F5F8] hover:text-[#0F172A]">
@@ -285,7 +285,7 @@ function Crm() {
       <div className="mt-auto p-4">
         <div className="rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-3.5">
           <p className="text-xs font-bold text-[#0F172A]">Demo con datos ficticios</p>
-          <p className="mt-1 text-xs leading-relaxed text-[#64748B]">Tus cambios se guardan solo en este navegador.</p>
+          <p className="mt-1 text-xs leading-relaxed text-[#5F6E84]">Tus cambios se guardan solo en este navegador.</p>
           <button type="button" onClick={() => setConfirmReset(true)} className="mt-2.5 inline-flex items-center gap-1.5 text-xs font-bold text-[#0F4C5C] hover:underline">
             <Icon name="refresh" className="size-3.5" strokeWidth={2.2} /> Restablecer demo
           </button>
@@ -330,7 +330,7 @@ function Crm() {
         panelClassName="h-full w-[84vw] max-w-[300px] bg-white shadow-2xl"
         headerClassName="absolute right-2 top-3 z-10"
         tituloClassName="sr-only"
-        cerrarClassName="rounded-lg text-[#64748B] hover:bg-[#F1F5F8]"
+        cerrarClassName="rounded-lg text-[#5F6E84] hover:bg-[#F1F5F8]"
         overlayClassName="bg-[#0C3440]/40 backdrop-blur-[2px]"
       >
         {sidebar}
@@ -355,7 +355,7 @@ function Crm() {
         titulo="¿Restablecer la demo?"
         panelClassName="w-full rounded-t-2xl bg-white p-6 shadow-2xl sm:max-w-md sm:rounded-2xl"
         tituloClassName="text-lg font-bold text-[#0F172A]"
-        cerrarClassName="-mr-2 -mt-1 rounded-lg text-[#64748B] hover:bg-[#F1F5F8]"
+        cerrarClassName="-mr-2 -mt-1 rounded-lg text-[#5F6E84] hover:bg-[#F1F5F8]"
         footerClassName="mt-6 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end"
         footer={
           <>
@@ -513,7 +513,7 @@ function Topbar({
                         <Avatar nombre={c.nombre} size="sm" />
                         <span className="min-w-0 flex-1">
                           <span className="block truncate text-sm font-semibold">{c.nombre}</span>
-                          <span className="block truncate text-xs text-[#64748B]">
+                          <span className="block truncate text-xs text-[#5F6E84]">
                             {c.operacion} · {c.zona}
                           </span>
                         </span>
@@ -523,7 +523,7 @@ function Topbar({
                   ))}
                 </ul>
               ) : (
-                <p className="px-4 py-5 text-center text-sm text-[#64748B]">No hay clientes que coincidan con “{q}”.</p>
+                <p className="px-4 py-5 text-center text-sm text-[#5F6E84]">No hay clientes que coincidan con “{q}”.</p>
               )}
             </div>
           ) : null}
@@ -551,7 +551,7 @@ function Topbar({
             <Avatar nombre={USUARIO} />
             <div className="leading-tight">
               <p className="text-sm font-bold">{USUARIO}</p>
-              <p className="text-xs text-[#64748B]">Asesora comercial</p>
+              <p className="text-xs text-[#5F6E84]">Asesora comercial</p>
             </div>
           </div>
         </div>
@@ -580,7 +580,7 @@ function Esqueleto() {
 
 export function FooterDemo(): ReactNode {
   return (
-    <footer className="mt-12 flex flex-wrap items-center justify-between gap-2 border-t border-[#E2E8F0] pt-5 text-xs text-[#64748B]">
+    <footer className="mt-12 flex flex-wrap items-center justify-between gap-2 border-t border-[#E2E8F0] pt-5 text-xs text-[#5F6E84]">
       <p>Demo con contenido ficticio · Inmobiliaria Portal Sur no existe.</p>
       <p>Personas, propiedades y precios inventados.</p>
     </footer>

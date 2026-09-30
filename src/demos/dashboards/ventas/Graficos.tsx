@@ -117,7 +117,7 @@ export function Embudo({ datos }: { datos: Resumen["embudo"] }) {
               <li key={d.id} style={{ height: FILA }} onPointerEnter={() => marcar(i)} className="flex flex-col justify-center">
                 <div className="mb-1.5 flex items-baseline justify-between gap-2 text-[13px]">
                   <span className="truncate text-[#344054]">
-                    <span className="mr-1.5 text-[11px] font-semibold text-[#98a2b3] tabular-nums">{i + 1}</span>
+                    <span className="mr-1.5 text-[11px] font-semibold text-[#6F7683] tabular-nums">{i + 1}</span>
                     {d.nombre}
                   </span>
                   <span className="shrink-0 tabular-nums">

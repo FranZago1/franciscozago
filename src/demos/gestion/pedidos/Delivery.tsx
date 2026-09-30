@@ -13,7 +13,7 @@ const ETAPA: Record<Etapa, { t: string; c: string; orden: number }> = {
   cocina: { t: "En cocina", c: "bg-[#EFE7DA] text-[#5D5047]", orden: 1 },
   despachar: { t: "Listo para salir", c: "bg-[#DDEBCF] text-[#3F6420]", orden: 0 },
   camino: { t: "En camino", c: "bg-[#FDE8DC] text-[#A5360B]", orden: 2 },
-  entregado: { t: "Entregado", c: "bg-[#F1ECE4] text-[#8A7B6C]", orden: 3 },
+  entregado: { t: "Entregado", c: "bg-[#F1ECE4] text-[#726559]", orden: 3 },
 };
 
 function etapaDe(p: Pedido): Etapa {
@@ -92,8 +92,8 @@ export function Delivery() {
           </button>
         </div>
       );
-    if (e === "cocina") return <span className="text-sm text-[#8A7B6C]">{p.estado === "nuevo" ? "Esperando cocina" : "En el fuego"}</span>;
-    return <span className="text-sm text-[#8A7B6C]">Llegó {hora(p.delivery!.llegada!)}</span>;
+    if (e === "cocina") return <span className="text-sm text-[#726559]">{p.estado === "nuevo" ? "Esperando cocina" : "En el fuego"}</span>;
+    return <span className="text-sm text-[#726559]">Llegó {hora(p.delivery!.llegada!)}</span>;
   };
 
   const tiempo = (p: Pedido) => {
@@ -101,7 +101,7 @@ export function Delivery() {
     const m = minutos(fin - Date.parse(p.creado));
     return (
       <span className={`${cond} text-xl font-bold tabular-nums ${!p.delivery?.llegada && m >= 40 ? "text-[#C4301C]" : ""}`}>
-        {m}′ <span className="text-xs font-semibold text-[#8A7B6C] [font-family:var(--font-brasa)]">desde {hora(p.creado)}</span>
+        {m}′ <span className="text-xs font-semibold text-[#726559] [font-family:var(--font-brasa)]">desde {hora(p.creado)}</span>
       </span>
     );
   };
@@ -110,7 +110,7 @@ export function Delivery() {
     <div>
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <p className="text-sm font-semibold text-[#8A7B6C]">Pedidos a domicilio de hoy</p>
+          <p className="text-sm font-semibold text-[#726559]">Pedidos a domicilio de hoy</p>
           <h1 className={`${cond} text-4xl font-bold uppercase leading-none tracking-wide`}>Delivery</h1>
         </div>
         <button type="button" className={btn.brasa} onClick={() => tomarPedido({ tipo: "delivery" })}>
@@ -143,7 +143,7 @@ export function Delivery() {
           <div className="p-10 text-center">
             <Icon name="bike" className="mx-auto size-10 text-[#C9B9A5]" />
             <p className="mt-2 font-bold">No hay deliveries en esta vista</p>
-            <p className="text-sm text-[#8A7B6C]">Probá con otro filtro o cargá un pedido nuevo.</p>
+            <p className="text-sm text-[#726559]">Probá con otro filtro o cargá un pedido nuevo.</p>
           </div>
         ) : (
           <>
@@ -153,13 +153,13 @@ export function Delivery() {
                 <tr className="border-b border-[#EFE5D6] text-left">
                   {COLS.map((c) => (
                     <th key={c.id} scope="col" aria-sort={sort.aria(c.id)} className={`px-4 py-3 first:pl-5 ${c.id === "total" ? "text-right" : ""}`}>
-                      <button type="button" onClick={() => sort.toggle(c.id)} className={`inline-flex items-center gap-1 text-xs font-bold uppercase tracking-[0.08em] ${sort.key === c.id ? "text-[#A5360B]" : "text-[#8A7B6C] hover:text-[#1F1A17]"}`}>
+                      <button type="button" onClick={() => sort.toggle(c.id)} className={`inline-flex items-center gap-1 text-xs font-bold uppercase tracking-[0.08em] ${sort.key === c.id ? "text-[#A5360B]" : "text-[#726559] hover:text-[#1F1A17]"}`}>
                         {c.label}
                         <Icon name={sort.key === c.id ? (sort.dir === "asc" ? "arrow-up" : "arrow-down") : "sort"} className={`size-3.5 ${sort.key === c.id ? "" : "opacity-40"}`} strokeWidth={2.2} />
                       </button>
                     </th>
                   ))}
-                  <th scope="col" className="px-4 py-3 pr-5 text-left text-xs font-bold uppercase tracking-[0.08em] text-[#8A7B6C]">Acción</th>
+                  <th scope="col" className="px-4 py-3 pr-5 text-left text-xs font-bold uppercase tracking-[0.08em] text-[#726559]">Acción</th>
                 </tr>
               </thead>
               <tbody>
@@ -170,16 +170,16 @@ export function Delivery() {
                     <tr key={p.id} className="border-b border-[#F3EBDF] align-top last:border-0">
                       <td className="py-3.5 pl-5 pr-4">
                         <p className={`${cond} text-2xl font-bold text-[#A5360B]`}>#{p.numero}</p>
-                        <p className="text-xs text-[#8A7B6C]">{p.lineas.reduce((a, l) => a + l.cant, 0)} ítems · {p.origen.pago}</p>
+                        <p className="text-xs text-[#726559]">{p.lineas.reduce((a, l) => a + l.cant, 0)} ítems · {p.origen.pago}</p>
                       </td>
                       <td className="max-w-[320px] px-4 py-3.5">
                         <p className="font-bold">{p.origen.cliente}</p>
                         <p className="flex items-center gap-1 text-[#5D5047]"><Icon name="pin" className="size-3.5 shrink-0" />{p.origen.direccion}</p>
-                        <p className="text-xs text-[#8A7B6C]">{p.origen.telefono}{p.nota ? ` · “${p.nota}”` : ""}</p>
+                        <p className="text-xs text-[#726559]">{p.origen.telefono}{p.nota ? ` · “${p.nota}”` : ""}</p>
                       </td>
                       <td className="px-4 py-3.5">
                         <span className={`inline-block whitespace-nowrap rounded-full px-2.5 py-1 text-xs font-bold ${ETAPA[e].c}`}>{ETAPA[e].t}</span>
-                        {p.delivery?.repartidor && e !== "despachar" ? <p className="mt-1 text-xs text-[#8A7B6C]">{p.delivery.repartidor}</p> : null}
+                        {p.delivery?.repartidor && e !== "despachar" ? <p className="mt-1 text-xs text-[#726559]">{p.delivery.repartidor}</p> : null}
                       </td>
                       <td className="whitespace-nowrap px-4 py-3.5">{tiempo(p)}</td>
                       <td className={`${cond} whitespace-nowrap px-4 py-3.5 text-right text-xl font-bold tabular-nums`}>{pesos(totalPedido(p))}</td>
@@ -191,7 +191,7 @@ export function Delivery() {
             </table>
 
             <div className="flex items-center gap-2 border-b border-[#EFE5D6] px-4 py-2 lg:hidden">
-              <label htmlFor="dl-sort" className="text-xs font-bold text-[#8A7B6C]">Ordenar</label>
+              <label htmlFor="dl-sort" className="text-xs font-bold text-[#726559]">Ordenar</label>
               <select id="dl-sort" className="h-8 flex-1 rounded-lg border border-[#E0D3C0] bg-white px-2 text-sm font-semibold" value={`${sort.key}:${sort.dir}`} onChange={(ev) => { const [key, dir] = ev.target.value.split(":") as [Col, "asc" | "desc"]; sort.setSort({ key, dir }); }}>
                 <option value="etapa:asc">Por estado (urgentes primero)</option>
                 <option value="hora:desc">Más recientes</option>
@@ -216,7 +216,7 @@ export function Delivery() {
                       </div>
                     </div>
                     <p className="mt-1 flex items-start gap-1 text-sm text-[#5D5047]"><Icon name="pin" className="mt-0.5 size-3.5 shrink-0" />{p.origen.direccion}</p>
-                    <p className="text-xs text-[#8A7B6C]">{p.origen.telefono} · {p.origen.pago}{p.delivery?.repartidor ? ` · ${p.delivery.repartidor}` : ""}</p>
+                    <p className="text-xs text-[#726559]">{p.origen.telefono} · {p.origen.pago}{p.delivery?.repartidor ? ` · ${p.delivery.repartidor}` : ""}</p>
                     <div className="mt-2.5 flex flex-wrap items-center justify-between gap-2">
                       {tiempo(p)}
                       {acciones(p)}
@@ -233,7 +233,7 @@ export function Delivery() {
         open={!!aviso}
         onClose={() => setAviso(null)}
         titulo="Así le llegaría el aviso"
-        subtitulo={<p className="text-sm text-[#8A7B6C]">Vista previa: en la demo no se envía ningún mensaje.</p>}
+        subtitulo={<p className="text-sm text-[#726559]">Vista previa: en la demo no se envía ningún mensaje.</p>}
         panelClassName="w-full rounded-t-3xl bg-[#FBF7F0] text-[#1F1A17] shadow-2xl sm:max-w-md sm:rounded-3xl"
         overlayClassName="bg-[#1F1A17]/55"
         headerClassName="px-5 pb-3 pt-5"
@@ -260,7 +260,7 @@ export function Delivery() {
 function Kpi({ k, v, alerta }: { k: string; v: string; alerta?: boolean }) {
   return (
     <div className={`rounded-2xl border px-4 py-3 ${alerta ? "border-[#D9480F] bg-[#FDE8DC]" : "border-[#E4D8C6] bg-[#FFFCF7]"}`}>
-      <p className={`text-xs font-bold uppercase tracking-[0.08em] ${alerta ? "text-[#A5360B]" : "text-[#8A7B6C]"}`}>{k}</p>
+      <p className={`text-xs font-bold uppercase tracking-[0.08em] ${alerta ? "text-[#A5360B]" : "text-[#726559]"}`}>{k}</p>
       <p className={`${cond} mt-0.5 truncate text-3xl font-bold`}>{v}</p>
     </div>
   );

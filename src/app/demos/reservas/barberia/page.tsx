@@ -19,7 +19,7 @@ const nav = [
 
 function Logo() {
   return (
-    <a href="#inicio" className="flex items-center gap-3 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#c29b5a]" aria-label={`${negocio.nombre}, inicio`}>
+    <a href="#inicio" className="flex items-center gap-3 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#c29b5a]">
       <svg viewBox="0 0 48 48" width="42" height="42" aria-hidden="true">
         <circle cx="24" cy="24" r="22.5" fill="none" stroke="#c29b5a" strokeWidth="1.5" />
         <circle cx="24" cy="24" r="18.5" fill="none" stroke="#c29b5a" strokeWidth=".75" strokeDasharray="1.5 2.2" />
@@ -31,6 +31,7 @@ function Logo() {
         <span className={`${serif} block text-2xl text-[#efe6d6]`}>Don Filo</span>
         <span className="mt-1 block text-[9px] font-semibold tracking-[0.35em] text-[#c29b5a] uppercase">Barbería · {negocio.desde}</span>
       </span>
+      <span className="sr-only">, inicio</span>
     </a>
   );
 }
@@ -191,7 +192,7 @@ export default function BarberiaDemo() {
                         </div>
                         <div className="mt-2 flex flex-wrap items-center justify-between gap-x-4 gap-y-1">
                           <p className="text-sm text-[#efe6d6]/60">
-                            {s.detalle} <span className="text-[#efe6d6]/40">· {duracionTexto(s.minutos)}</span>
+                            {s.detalle} <span className="text-[#efe6d6]/50">· {duracionTexto(s.minutos)}</span>
                           </p>
                           <ReservarCon
                             servicio={s.id}
@@ -368,7 +369,7 @@ export default function BarberiaDemo() {
                     <th scope="row" className="py-3 text-left font-medium">
                       {d}
                     </th>
-                    <td className={`py-3 text-right tabular-nums ${h === "Cerrado" ? "text-[#efe6d6]/45" : ""}`}>{h}</td>
+                    <td className={`py-3 text-right tabular-nums ${h === "Cerrado" ? "text-[#efe6d6]/50" : ""}`}>{h}</td>
                   </tr>
                 ))}
               </tbody>

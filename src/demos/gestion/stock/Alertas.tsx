@@ -141,7 +141,7 @@ export function Alertas() {
                     <p className="text-xs text-[#6B6860]">
                       {oc.items.length} ítems · <span className={mono}>{pesos(total)}</span> · {oc.estado === "enviado" ? `enviado ${diaRelativo(oc.fecha, now).toLowerCase()} ${hora(oc.fecha)}` : `recibido ${diaRelativo(oc.recibido ?? oc.fecha, now).toLowerCase()}`}
                     </p>
-                    <p className="mt-0.5 truncate text-[11px] text-[#9A968D]">{oc.items.map((i) => `${i.cantidad}× ${producto(i.productoId)?.nombre.split(" ").slice(0, 2).join(" ") ?? "—"}`).join(" · ")}</p>
+                    <p className="mt-0.5 truncate text-[11px] text-[#6F6C66]">{oc.items.map((i) => `${i.cantidad}× ${producto(i.productoId)?.nombre.split(" ").slice(0, 2).join(" ") ?? "—"}`).join(" · ")}</p>
                   </div>
                   {oc.estado === "enviado" ? (
                     <button type="button" className={`${btn.oscuro} max-sm:w-full`} onClick={() => recibirPedido(oc.id)}>
@@ -236,7 +236,7 @@ export function Alertas() {
                       <td className={`${mono} py-2 pr-2 font-bold`}>{cant}</td>
                       <td className="py-2 pr-2">
                         <span className="block leading-snug">{p.nombre}</span>
-                        <span className={`${mono} text-[11px] text-[#9A968D]`}>{p.sku} · {pesos(p.costo)} c/u</span>
+                        <span className={`${mono} text-[11px] text-[#6F6C66]`}>{p.sku} · {pesos(p.costo)} c/u</span>
                       </td>
                       <td className={`${mono} whitespace-nowrap py-2 text-right`}>{pesos(p.costo * cant)}</td>
                     </tr>

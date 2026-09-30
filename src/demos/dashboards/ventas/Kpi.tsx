@@ -29,7 +29,7 @@ export function Kpi({
     <article className="group relative flex flex-col justify-between gap-3 rounded-2xl border border-[#e8eaee] bg-white p-4 shadow-[0_1px_2px_rgba(16,24,40,0.04)] transition-shadow hover:shadow-[0_4px_16px_-6px_rgba(16,24,40,0.12)] sm:p-5">
       <div className="flex items-center gap-2 text-[13px] font-medium text-[#475467]">
         <span className="grid size-7 place-items-center rounded-lg bg-[#f2f5fa] text-[#2a5ea8]">{icono}</span>
-        <h3 className="whitespace-nowrap">{etiqueta}</h3>
+        <h2 className="whitespace-nowrap">{etiqueta}</h2>
         <Sparkline valores={serie} color="#2a78d6" className="ml-auto hidden w-[72px] shrink-0 sm:block 2xl:w-[88px]" alto={28} />
       </div>
       <div className="flex flex-col gap-3">

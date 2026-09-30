@@ -51,7 +51,7 @@ export function Embudo() {
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <h1 className="text-2xl font-extrabold tracking-tight text-[#0C3440] sm:text-[28px]">Embudo de ventas</h1>
-          <p className="mt-1 text-sm text-[#64748B]">Arrastrá las tarjetas entre etapas o usá las flechas de cada una.</p>
+          <p className="mt-1 text-sm text-[#5F6E84]">Arrastrá las tarjetas entre etapas o usá las flechas de cada una.</p>
         </div>
       </div>
 
@@ -96,7 +96,7 @@ export function Embudo() {
           ))}
         </div>
         <div className="flex items-center gap-2">
-          <label htmlFor="emb-asesor" className="text-xs font-semibold text-[#64748B] max-sm:sr-only">
+          <label htmlFor="emb-asesor" className="text-xs font-semibold text-[#5F6E84] max-sm:sr-only">
             Asesor
           </label>
           <select
@@ -134,7 +134,7 @@ export function Embudo() {
             const alquileres = cards.filter((c) => c.operacion === "Alquiler");
             const activo = sobre === etapa.id && arrastrando !== null;
             return (
-              <section
+              <div
                 role="listitem"
                 key={etapa.id}
                 aria-labelledby={`col-${etapa.id}`}
@@ -169,7 +169,7 @@ export function Embudo() {
                   <p className="mt-1.5 text-[13px] font-bold tabular-nums text-[#334155]">
                     {usdCorto(compras)}
                     {alquileres.length ? (
-                      <span className="font-medium text-[#64748B]">
+                      <span className="font-medium text-[#5F6E84]">
                         {" "}
                         · {alquileres.length} alquiler{alquileres.length > 1 ? "es" : ""}
                       </span>
@@ -201,12 +201,12 @@ export function Embudo() {
                     />
                   ))}
                   {cards.length === 0 ? (
-                    <li className="grid flex-1 place-items-center rounded-xl border border-dashed border-[#CBD5E1] px-3 py-6 text-center text-xs font-medium text-[#94A3B8]">
+                    <li className="grid flex-1 place-items-center rounded-xl border border-dashed border-[#CBD5E1] px-3 py-6 text-center text-xs font-medium text-[#677180]">
                       {arrastrando ? "Soltá acá" : "Sin clientes en esta etapa"}
                     </li>
                   ) : null}
                 </ul>
-              </section>
+              </div>
             );
           })}
         </div>
@@ -246,13 +246,12 @@ function Tarjeta({
         type="button"
         onClick={() => abrirFicha(c.id)}
         className="block w-full rounded-xl p-3 pb-2 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0F4C5C]"
-        aria-label={`${c.nombre}, ${c.operacion} en ${c.zona}. Abrir ficha`}
       >
         <div className="flex items-start gap-2">
           <p className="min-w-0 flex-1 truncate text-sm font-bold text-[#0F172A]">{c.nombre}</p>
           <PrioridadFlag p={c.prioridad} />
         </div>
-        <p className="mt-0.5 flex items-center gap-1 truncate text-xs text-[#64748B]">
+        <p className="mt-0.5 flex items-center gap-1 truncate text-xs text-[#5F6E84]">
           <Icon name="pin" className="size-3.5 shrink-0" />
           {c.zona}
         </p>
@@ -277,13 +276,14 @@ function Tarjeta({
             </span>
           </p>
         ) : (
-          <p className="mt-2.5 flex items-center gap-1.5 rounded-lg bg-[#F4F6F9] px-2 py-1.5 text-xs font-semibold text-[#94A3B8]">
+          <p className="mt-2.5 flex items-center gap-1.5 rounded-lg bg-[#F4F6F9] px-2 py-1.5 text-xs font-semibold text-[#677180]">
             <Icon name="calendar" className="size-3.5" /> Sin próxima acción
           </p>
         )}
+        <span className="sr-only">. Abrir ficha</span>
       </button>
       <div className="flex items-center justify-between border-t border-[#EEF2F6] px-2 py-1.5">
-        <span className="flex items-center gap-1.5 pl-1 text-[11px] font-semibold text-[#64748B]">
+        <span className="flex items-center gap-1.5 pl-1 text-[11px] font-semibold text-[#5F6E84]">
           <Avatar nombre={c.asesor} size="sm" />
           {c.asesor.split(" ")[0]}
         </span>
@@ -294,7 +294,7 @@ function Tarjeta({
             onClick={() => prev && moverEtapa(c.id, prev.id)}
             aria-label={prev ? `Mover a ${prev.nombre}` : "Primera etapa"}
             title={prev ? `Mover a ${prev.nombre}` : undefined}
-            className="grid size-7 place-items-center rounded-md text-[#64748B] transition hover:bg-[#EEF2F6] hover:text-[#0F4C5C] disabled:opacity-30 disabled:hover:bg-transparent"
+            className="grid size-7 place-items-center rounded-md text-[#5F6E84] transition hover:bg-[#EEF2F6] hover:text-[#0F4C5C] disabled:opacity-30 disabled:hover:bg-transparent"
           >
             <Icon name="chevron-left" className="size-4" strokeWidth={2.2} />
           </button>
@@ -304,7 +304,7 @@ function Tarjeta({
             onClick={() => next && moverEtapa(c.id, next.id)}
             aria-label={next ? `Mover a ${next.nombre}` : "Última etapa"}
             title={next ? `Mover a ${next.nombre}` : undefined}
-            className="grid size-7 place-items-center rounded-md text-[#64748B] transition hover:bg-[#EEF2F6] hover:text-[#0F4C5C] disabled:opacity-30 disabled:hover:bg-transparent"
+            className="grid size-7 place-items-center rounded-md text-[#5F6E84] transition hover:bg-[#EEF2F6] hover:text-[#0F4C5C] disabled:opacity-30 disabled:hover:bg-transparent"
           >
             <Icon name="chevron-right" className="size-4" strokeWidth={2.2} />
           </button>
@@ -331,7 +331,7 @@ function Kpi({
 }) {
   return (
     <div className="rounded-xl border border-[#E2E8F0] bg-white p-3.5 shadow-[0_1px_2px_rgba(15,23,42,.04)] sm:p-4">
-      <div className="flex items-center gap-2 text-[#64748B]">
+      <div className="flex items-center gap-2 text-[#5F6E84]">
         <span className="grid size-7 place-items-center rounded-lg bg-[#E7F0F2] text-[#0F4C5C]">
           <Icon name={icon} className="size-4" strokeWidth={2} />
         </span>
@@ -343,10 +343,10 @@ function Kpi({
           <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-[#EEF2F6]">
             <div className="h-full rounded-full bg-[#0F4C5C] transition-[width] duration-500" style={{ width: `${Math.round(progreso * 100)}%` }} />
           </div>
-          <span className="text-[11px] font-semibold text-[#64748B]">{extra}</span>
+          <span className="text-[11px] font-semibold text-[#5F6E84]">{extra}</span>
         </div>
       ) : (
-        <p className={`mt-1 flex items-center gap-1 text-xs font-semibold ${tono === "up" ? "text-[#0F766E]" : "text-[#64748B]"}`}>
+        <p className={`mt-1 flex items-center gap-1 text-xs font-semibold ${tono === "up" ? "text-[#0F766E]" : "text-[#5F6E84]"}`}>
           {tono === "up" ? <Icon name="trend-up" className="size-3.5" strokeWidth={2.2} /> : null}
           {extra}
         </p>

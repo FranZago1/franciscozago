@@ -82,7 +82,7 @@ export function NuevoPedido() {
     <div>
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <p className="text-sm font-semibold text-[#8A7B6C]">Comanda #{state.proximo}</p>
+          <p className="text-sm font-semibold text-[#726559]">Comanda #{state.proximo}</p>
           <h1 className={`${cond} text-4xl font-bold uppercase leading-none tracking-wide`}>Nuevo pedido</h1>
         </div>
       </div>
@@ -210,10 +210,10 @@ export function NuevoPedido() {
                       <Plato cat={it.cat} className="size-16 shrink-0 transition group-hover:rotate-6 motion-reduce:transition-none" />
                       <span className="min-w-0 flex-1">
                         <span className="block font-bold leading-snug">{it.nombre}</span>
-                        <span className="block truncate text-xs text-[#8A7B6C]">{it.desc}</span>
+                        <span className="block truncate text-xs text-[#726559]">{it.desc}</span>
                         <span className={`${cond} mt-0.5 block text-lg font-bold text-[#A5360B]`}>{pesos(it.precio)}</span>
                       </span>
-                      <span className={`grid size-9 shrink-0 place-items-center rounded-full transition ${enComanda ? "bg-[#D9480F] text-white" : "bg-[#EFE5D6] text-[#5D5047] group-hover:bg-[#D9480F] group-hover:text-white"}`}>
+                      <span className={`grid size-9 shrink-0 place-items-center rounded-full transition ${enComanda ? "bg-[#D2460F] text-white" : "bg-[#EFE5D6] text-[#5D5047] group-hover:bg-[#D2460F] group-hover:text-white"}`}>
                         {enComanda ? <span className={`${cond} text-lg font-bold`}>{enComanda}</span> : <Icon name="plus" className="size-4" strokeWidth={2.6} />}
                       </span>
                     </button>
@@ -300,7 +300,7 @@ function Modificadores({ item, onClose, onAdd }: { item: ItemMenu | null; onClos
       open={!!item}
       onClose={onClose}
       titulo={item?.nombre ?? ""}
-      subtitulo={item ? <p className="text-sm text-[#8A7B6C]">{item.desc}</p> : null}
+      subtitulo={item ? <p className="text-sm text-[#726559]">{item.desc}</p> : null}
       panelClassName="max-h-[92dvh] w-full rounded-t-3xl bg-[#FBF7F0] text-[#1F1A17] shadow-2xl sm:max-w-md sm:rounded-3xl"
       overlayClassName="bg-[#1F1A17]/55"
       headerClassName="px-5 pb-3 pt-5"
@@ -349,7 +349,7 @@ function ModForm({ item, onAdd }: { item: ItemMenu; onAdd: (l: Omit<Linea, "key"
         {(item.mods ?? []).map((g) => (
           <fieldset key={g.id}>
             <legend className="mb-2 text-sm font-bold">
-              {g.nombre} <span className="font-medium text-[#8A7B6C]">{g.tipo === "uno" ? "· elegí uno" : "· opcional"}</span>
+              {g.nombre} <span className="font-medium text-[#726559]">{g.tipo === "uno" ? "· elegí uno" : "· opcional"}</span>
             </legend>
             <div className="grid gap-1.5">
               {g.opciones.map((o) => {

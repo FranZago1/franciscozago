@@ -116,7 +116,7 @@ export function Movimientos() {
                         <td className="px-2.5 py-2">
                           {p ? (
                             <button type="button" onClick={() => abrirAjuste(p.id)} className="block max-w-[300px] truncate text-left font-semibold hover:text-[#B4400C] hover:underline">
-                              <span className={`${mono} mr-2 text-[11px] font-normal text-[#9A968D]`}>{p.sku}</span>{p.nombre}
+                              <span className={`${mono} mr-2 text-[11px] font-normal text-[#6F6C66]`}>{p.sku}</span>{p.nombre}
                             </button>
                           ) : "—"}
                         </td>

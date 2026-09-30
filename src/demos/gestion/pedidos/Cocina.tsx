@@ -227,7 +227,7 @@ function Comanda({ p, accion }: { p: Pedido; accion?: string }) {
             <button
               type="button"
               onClick={() => avanzar(p.id)}
-              className={`${cond} flex h-12 flex-1 items-center justify-center gap-2 rounded-xl text-xl font-bold uppercase tracking-wide transition active:translate-y-px ${p.estado === "nuevo" ? "bg-[#FFF7EC] text-[#0E0C0B] hover:bg-white" : p.estado === "preparacion" ? "bg-[#4ADE80] text-[#052E12] hover:bg-[#6EE79A]" : "bg-[#D9480F] text-white hover:bg-[#EA580C]"}`}
+              className={`${cond} flex h-12 flex-1 items-center justify-center gap-2 rounded-xl text-xl font-bold uppercase tracking-wide transition active:translate-y-px ${p.estado === "nuevo" ? "bg-[#FFF7EC] text-[#0E0C0B] hover:bg-white" : p.estado === "preparacion" ? "bg-[#4ADE80] text-[#052E12] hover:bg-[#6EE79A]" : "bg-[#D2460F] text-white hover:bg-[#EA580C]"}`}
             >
               {accionTxt}
               {p.estado === "preparacion" && hechos > 0 ? <span className="text-base opacity-70">({hechos}/{p.lineas.length})</span> : null}

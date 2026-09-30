@@ -20,7 +20,7 @@ export function PedidosApp() {
       className="inset-x-3 top-3 items-center sm:inset-x-auto sm:bottom-28 sm:left-5 sm:top-auto sm:items-start lg:left-28"
       render={(t, cerrar) => (
         <div className="flex w-full max-w-sm items-center gap-3 rounded-2xl bg-[#1F1A17] py-2.5 pl-3 pr-2 text-sm text-[#F5EEE3] shadow-[0_14px_36px_-10px_rgba(31,26,23,.7)] ring-1 ring-white/10">
-          <span className={`grid size-7 shrink-0 place-items-center rounded-full ${t.tono === "error" ? "bg-[#C4301C]" : t.tono === "alerta" ? "bg-[#E8A33D] text-[#1F1A17]" : "bg-[#D9480F]"}`}>
+          <span className={`grid size-7 shrink-0 place-items-center rounded-full ${t.tono === "error" ? "bg-[#C4301C]" : t.tono === "alerta" ? "bg-[#E8A33D] text-[#1F1A17]" : "bg-[#D2460F]"}`}>
             <Icon name={t.tono === "ok" ? "check" : t.tono === "info" ? "flame" : "alert"} className="size-4" strokeWidth={2.4} />
           </span>
           <span className="min-w-0 flex-1 font-semibold">{t.texto}</span>
@@ -215,8 +215,8 @@ function App() {
               aria-current={activo ? "page" : undefined}
               className={
                 compacto
-                  ? `relative flex w-full flex-col items-center gap-1 rounded-2xl py-2.5 text-[11px] font-bold transition ${activo ? "bg-[#D9480F] text-white shadow-[0_8px_20px_-8px_rgba(217,72,15,.9)]" : "text-[#C9B9A5] hover:bg-white/[.06] hover:text-white"}`
-                  : `relative flex w-full items-center gap-3 rounded-xl px-3 py-3 text-[15px] font-bold transition ${activo ? "bg-[#D9480F] text-white" : "text-[#E9DCCB] hover:bg-white/[.06]"}`
+                  ? `relative flex w-full flex-col items-center gap-1 rounded-2xl py-2.5 text-[11px] font-bold transition ${activo ? "bg-[#D2460F] text-white shadow-[0_8px_20px_-8px_rgba(217,72,15,.9)]" : "text-[#C9B9A5] hover:bg-white/[.06] hover:text-white"}`
+                  : `relative flex w-full items-center gap-3 rounded-xl px-3 py-3 text-[15px] font-bold transition ${activo ? "bg-[#D2460F] text-white" : "text-[#E9DCCB] hover:bg-white/[.06]"}`
               }
             >
               <Icon name={n.icon} className={compacto ? "size-6" : "size-5"} strokeWidth={n.id === "nuevo" ? 2.4 : 1.9} />
@@ -257,7 +257,7 @@ function App() {
             {ctx ? (
               <Ctx.Provider value={ctx}>
                 {vista === "salon" ? <Salon /> : vista === "cocina" ? <Cocina /> : vista === "nuevo" ? <NuevoPedido key={JSON.stringify(preOrigen)} /> : <Delivery />}
-                <footer className={`mt-12 flex flex-wrap justify-between gap-2 border-t pt-4 text-xs ${oscuro ? "border-white/10 text-white/40" : "border-[#E4D8C6] text-[#8A7B6C]"}`}>
+                <footer className={`mt-12 flex flex-wrap justify-between gap-2 border-t pt-4 text-xs ${oscuro ? "border-white/10 text-white/40" : "border-[#E4D8C6] text-[#726559]"}`}>
                   <p>Demo con contenido ficticio · Parrilla La Brasa no existe.</p>
                   <p>Menú, precios, clientes y direcciones inventados.</p>
                 </footer>
@@ -388,7 +388,7 @@ function Topbar({ ctx, oscuro, onMenu }: { ctx: BrasaCtx | null; oscuro: boolean
         </button>
         <div className="hidden leading-none xl:block">
           <p className={`${cond} text-2xl font-bold uppercase tracking-wide`}>La Brasa</p>
-          <p className={`text-[11px] font-semibold ${oscuro ? "text-white/50" : "text-[#8A7B6C]"}`}>Parrilla · Turno noche</p>
+          <p className={`text-[11px] font-semibold ${oscuro ? "text-white/50" : "text-[#726559]"}`}>Parrilla · Turno noche</p>
         </div>
         <div ref={wrap} className="relative min-w-0 flex-1 sm:max-w-sm xl:ml-6">
           <label htmlFor="br-buscar" className="sr-only">Buscar pedido por número, mesa o cliente</label>
@@ -429,18 +429,18 @@ function Topbar({ ctx, oscuro, onMenu }: { ctx: BrasaCtx | null; oscuro: boolean
                   {res.map((p) => (
                     <li key={p.id}>
                       <button type="button" data-res onClick={() => elegir(p)} className="flex w-full items-center gap-3 px-3.5 py-2.5 text-left hover:bg-[#F5EEE3] focus:bg-[#F5EEE3] focus:outline-none">
-                        <span className={`${cond} w-12 text-lg font-bold text-[#D9480F]`}>#{p.numero}</span>
+                        <span className={`${cond} w-12 text-lg font-bold text-[#C1400D]`}>#{p.numero}</span>
                         <span className="min-w-0 flex-1">
                           <span className="block truncate text-sm font-bold">{etiquetaOrigen(p, ctx.state.mesas)}</span>
-                          <span className="block truncate text-xs text-[#8A7B6C]">{p.lineas.map((l) => `${l.cant}× ${l.nombre}`).join(", ")}</span>
+                          <span className="block truncate text-xs text-[#726559]">{p.lineas.map((l) => `${l.cant}× ${l.nombre}`).join(", ")}</span>
                         </span>
-                        <span className="text-xs font-semibold text-[#8A7B6C]">{pesos(totalPedido(p))}</span>
+                        <span className="text-xs font-semibold text-[#726559]">{pesos(totalPedido(p))}</span>
                       </button>
                     </li>
                   ))}
                 </ul>
               ) : (
-                <p className="px-4 py-4 text-sm text-[#8A7B6C]">No hay pedidos que coincidan.</p>
+                <p className="px-4 py-4 text-sm text-[#726559]">No hay pedidos que coincidan.</p>
               )}
             </div>
           ) : null}
@@ -457,7 +457,7 @@ function Topbar({ ctx, oscuro, onMenu }: { ctx: BrasaCtx | null; oscuro: boolean
             <span className="grid size-9 place-items-center rounded-full bg-[#F0B24A] text-xs font-bold text-[#1F1A17]">GP</span>
             <div className="leading-tight">
               <p className="text-sm font-bold">{USUARIO}</p>
-              <p className={`text-xs ${oscuro ? "text-white/50" : "text-[#8A7B6C]"}`}>Encargada de salón</p>
+              <p className={`text-xs ${oscuro ? "text-white/50" : "text-[#726559]"}`}>Encargada de salón</p>
             </div>
           </div>
         </div>

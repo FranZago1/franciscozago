@@ -159,7 +159,7 @@ function Contenido({ p, tipoInicial, onClose }: { p: Producto; tipoInicial?: Tip
             {p.stock}
             <Icon name="arrow-right" className="size-4 text-[#9A968D]" />
             <span className={final < 0 ? "text-[#C0262D]" : estadoFinal === "ok" ? "text-[#1F7A3E]" : "text-[#8A5A00]"}>{final}</span>
-            <span className={`ml-auto text-sm ${delta > 0 ? "text-[#1F7A3E]" : delta < 0 ? "text-[#B4400C]" : "text-[#9A968D]"}`}>
+            <span className={`ml-auto text-sm ${delta > 0 ? "text-[#1F7A3E]" : delta < 0 ? "text-[#B4400C]" : "text-[#6F6C66]"}`}>
               {delta > 0 ? "+" : ""}{delta}
             </span>
           </p>

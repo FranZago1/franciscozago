@@ -23,7 +23,7 @@ const sans = "[font-family:var(--font-pc-sans)]";
 
 function Logo() {
   return (
-    <a href="#inicio" className="flex items-center gap-2.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1553d6]" aria-label={`${club.nombre}, inicio`}>
+    <a href="#inicio" className="flex items-center gap-2.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#1553d6]">
       <svg viewBox="0 0 40 40" width="38" height="38" aria-hidden="true">
         <rect width="40" height="40" rx="11" fill="#1553d6" />
         <circle cx="20" cy="20" r="11" fill="#d8f03c" />
@@ -33,6 +33,7 @@ function Logo() {
         Pádel Club
         <span className="block text-[#1553d6]">Sierras</span>
       </span>
+      <span className="sr-only">, inicio</span>
     </a>
   );
 }

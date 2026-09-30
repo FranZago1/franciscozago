@@ -82,7 +82,7 @@ function FichaContenido({ c }: { c: Cliente }) {
 
         {/* Stepper de etapas */}
         <div className="mt-5">
-          <p className="mb-2 text-xs font-bold text-[#64748B]" id="stepper-label">Etapa del embudo</p>
+          <p className="mb-2 text-xs font-bold text-[#5F6E84]" id="stepper-label">Etapa del embudo</p>
           <div role="radiogroup" aria-labelledby="stepper-label" className="grid grid-cols-5 gap-1">
             {ETAPAS.map((e, i) => {
               const hecho = i <= etapaIdx;
@@ -96,7 +96,7 @@ function FichaContenido({ c }: { c: Cliente }) {
                   className="group flex flex-col gap-1.5 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0F4C5C]"
                 >
                   <span className={`h-1.5 rounded-full transition ${hecho ? "" : "bg-[#D5DDE5] group-hover:bg-[#B8C4D0]"}`} style={hecho ? { background: ETAPAS[etapaIdx]!.color } : undefined} />
-                  <span className={`truncate text-[11px] font-bold ${e.id === c.etapa ? "text-[#0F172A]" : "text-[#94A3B8] group-hover:text-[#475569]"}`}>{e.nombre}</span>
+                  <span className={`truncate text-[11px] font-bold ${e.id === c.etapa ? "text-[#0F172A]" : "text-[#677180] group-hover:text-[#475569]"}`}>{e.nombre}</span>
                 </button>
               );
             })}
@@ -137,7 +137,7 @@ function FichaContenido({ c }: { c: Cliente }) {
               </span>
               <div className="min-w-0 flex-1">
                 <p className="text-sm font-bold text-[#0F172A]">{t.texto}</p>
-                <p className={`mt-0.5 text-xs font-semibold ${diaDiff(t.fecha, now) < 0 ? "text-[#B42318]" : "text-[#64748B]"}`}>
+                <p className={`mt-0.5 text-xs font-semibold ${diaDiff(t.fecha, now) < 0 ? "text-[#B42318]" : "text-[#5F6E84]"}`}>
                   {diaDiff(t.fecha, now) < 0 ? "Atrasada · " : ""}
                   {diaRelativo(t.fecha, now)} a las {hora(t.fecha)}
                 </p>
@@ -200,7 +200,7 @@ function FichaContenido({ c }: { c: Cliente }) {
                   <Image src={`/demos/gestion/clientes/${p.img}.webp`} alt="" width={64} height={44} className="h-11 w-16 rounded-md object-cover" />
                   <span className="min-w-0 flex-1">
                     <span className="block truncate text-sm font-bold">{p.titulo}</span>
-                    <span className="block text-xs text-[#64748B]">{p.barrio} · {p.operacion === "Compra" ? usd(p.precio) : `${pesosCorto(p.precio)}/mes`}</span>
+                    <span className="block text-xs text-[#5F6E84]">{p.barrio} · {p.operacion === "Compra" ? usd(p.precio) : `${pesosCorto(p.precio)}/mes`}</span>
                   </span>
                   <Icon name="plus" className="size-4 text-[#0F4C5C]" />
                 </button>
@@ -237,7 +237,7 @@ function FichaContenido({ c }: { c: Cliente }) {
                   </div>
                   <div className="p-3">
                     <p className="truncate text-sm font-bold">{p.titulo}</p>
-                    <p className="mt-0.5 text-xs text-[#64748B]">
+                    <p className="mt-0.5 text-xs text-[#5F6E84]">
                       {p.barrio} · {p.ambientes ? `${p.ambientes} amb. · ` : ""}
                       {p.m2} m²
                     </p>
@@ -250,7 +250,7 @@ function FichaContenido({ c }: { c: Cliente }) {
             })}
           </ul>
         ) : (
-          <p className="rounded-xl border border-dashed border-[#CBD5E1] px-4 py-5 text-center text-sm text-[#64748B]">
+          <p className="rounded-xl border border-dashed border-[#CBD5E1] px-4 py-5 text-center text-sm text-[#5F6E84]">
             Todavía no marcaste propiedades para este cliente.
           </p>
         )}
@@ -314,7 +314,7 @@ function FichaContenido({ c }: { c: Cliente }) {
               </span>
               <div className="min-w-0 flex-1 pt-0.5">
                 <p className="text-sm text-[#0F172A]">{it.texto}</p>
-                <p className="mt-0.5 text-xs text-[#94A3B8]">
+                <p className="mt-0.5 text-xs text-[#677180]">
                   {diaRelativo(it.fecha, now)} · {hora(it.fecha)} · {it.autor}
                 </p>
               </div>
@@ -327,7 +327,7 @@ function FichaContenido({ c }: { c: Cliente }) {
       <Seccion
         titulo="Notas internas"
         accion={
-          <span className="text-xs font-semibold text-[#64748B]" aria-live="polite">
+          <span className="text-xs font-semibold text-[#5F6E84]" aria-live="polite">
             {notasEstado === "guardando" ? "Guardando…" : notasEstado === "guardado" ? "Guardado" : ""}
           </span>
         }
@@ -365,7 +365,7 @@ function Dato({ icon, k, v }: { icon: Parameters<typeof Icon>[0]["name"]; k: str
     <div className="flex min-w-0 gap-2.5">
       <Icon name={icon} className="mt-0.5 size-4 shrink-0 text-[#94A3B8]" />
       <div className="min-w-0">
-        <dt className="text-xs font-semibold text-[#64748B]">{k}</dt>
+        <dt className="text-xs font-semibold text-[#5F6E84]">{k}</dt>
         <dd className="truncate font-semibold text-[#0F172A]">{v}</dd>
       </div>
     </div>

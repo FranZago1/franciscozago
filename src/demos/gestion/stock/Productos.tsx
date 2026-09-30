@@ -95,7 +95,7 @@ export function Productos() {
                 className={`flex flex-1 items-center justify-center gap-1.5 whitespace-nowrap border-r border-[#BDB9B0] px-3 py-1.5 text-xs font-bold uppercase tracking-[0.05em] last:border-0 ${est === k ? "bg-[#1C1E22] text-white" : "hover:bg-[#F6F5F2]"}`}
               >
                 {t}
-                <span className={`${mono} text-[11px] ${est === k ? "text-[#F26B1D]" : "text-[#9A968D]"}`}>{cuenta[k]}</span>
+                <span className={`${mono} text-[11px] ${est === k ? "text-[#F26B1D]" : "text-[#6F6C66]"}`}>{cuenta[k]}</span>
               </button>
             ))}
           </div>
@@ -145,7 +145,7 @@ export function Productos() {
                         <td className="px-2.5 py-2">
                           <div className="flex items-center gap-2.5">
                             <span className={`${mono} w-16 whitespace-nowrap text-right font-bold ${e === "ok" ? "" : e === "bajo" ? "text-[#8A5A00]" : "text-[#C0262D]"}`}>
-                              {p.stock}<span className="font-normal text-[#9A968D]">/{p.minimo}</span>
+                              {p.stock}<span className="font-normal text-[#6F6C66]">/{p.minimo}</span>
                             </span>
                             <BarraStock p={p} />
                           </div>
@@ -207,7 +207,7 @@ export function Productos() {
                       <div className="min-w-0 flex-1">
                         <div className="flex items-baseline justify-between">
                           <span className={`${mono} text-lg font-bold ${e === "ok" ? "" : e === "bajo" ? "text-[#8A5A00]" : "text-[#C0262D]"}`}>
-                            {p.stock} <span className="text-xs font-normal text-[#9A968D]">mín. {p.minimo}</span>
+                            {p.stock} <span className="text-xs font-normal text-[#6F6C66]">mín. {p.minimo}</span>
                           </span>
                           <span className={`${mono} text-sm font-semibold`}>{pesos(p.venta)}</span>
                         </div>

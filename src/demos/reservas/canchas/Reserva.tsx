@@ -300,7 +300,7 @@ export function Reserva() {
                         </span>
                         <span className="text-sm leading-tight">
                           <span id="pc-paletas-label" className="block font-semibold">Alquiler de paletas</span>
-                          <span className="text-[#0a1b3d]/60">{pesos(PRECIO_PALETA)} c/u</span>
+                          <span className="text-[#0a1b3d]/62">{pesos(PRECIO_PALETA)} c/u</span>
                         </span>
                       </span>
                       <span className="flex items-center gap-1" role="group" aria-labelledby="pc-paletas-label">
@@ -322,7 +322,7 @@ export function Reserva() {
                         </span>
                         <span className="text-sm leading-tight">
                           <span className="block font-semibold">Tubo de pelotas nuevo</span>
-                          <span className="text-[#0a1b3d]/60">{pesos(PRECIO_PELOTAS)} · 3 pelotas</span>
+                          <span className="text-[#0a1b3d]/62">{pesos(PRECIO_PELOTAS)} · 3 pelotas</span>
                         </span>
                       </span>
                       <input type="checkbox" checked={pelotas} onChange={(e) => setPelotas(e.target.checked)} className="size-5 accent-[#1553d6]" />
@@ -382,7 +382,8 @@ export function Reserva() {
                 </div>
 
                 {/* Totales */}
-                <dl className="grid gap-1.5 text-sm">
+                <div className="grid gap-1.5 text-sm">
+                <dl className="grid gap-1.5">
                   <Linea t={`Cancha (${duracion} min)`} v={cot.cancha} />
                   {cot.luz ? <Linea t="Iluminación" v={cot.luz} /> : null}
                   {paletas ? <Linea t={`Paletas × ${paletas}`} v={paletas * PRECIO_PALETA} /> : null}
@@ -395,8 +396,9 @@ export function Reserva() {
                     <dt className="font-semibold">Seña para confirmar (30 %)</dt>
                     <dd className="font-bold tabular-nums">{pesos(sena)}</dd>
                   </div>
-                  <p className="text-xs text-[#0a1b3d]/55">El resto ({pesos(total - sena)}) lo pagás en el club. Por jugador: {pesos(total / 4)}.</p>
                 </dl>
+                  <p className="text-xs text-[#0a1b3d]/60">El resto ({pesos(total - sena)}) lo pagás en el club. Por jugador: {pesos(total / 4)}.</p>
+                </div>
 
                 {/* Datos */}
                 <div className="grid gap-3">
@@ -463,7 +465,7 @@ export function Reserva() {
                     <>Pagar seña y reservar {selValida ? pesos(sena) : ""}</>
                   )}
                 </button>
-                <p className="text-center text-xs text-[#0a1b3d]/55">Demo: no se cobra nada ni se reserva una cancha real.</p>
+                <p className="text-center text-xs text-[#0a1b3d]/60">Demo: no se cobra nada ni se reserva una cancha real.</p>
               </fieldset>
             </form>
           </div>
@@ -648,7 +650,7 @@ function Segmentado({
 }) {
   return (
     <fieldset className="flex flex-wrap items-center gap-2.5">
-      <legend className="float-left mr-1 text-xs font-bold tracking-[0.15em] text-[#0a1b3d]/60 uppercase">{etiqueta}</legend>
+      <legend className="float-left mr-1 text-xs font-bold tracking-[0.15em] text-[#0a1b3d]/62 uppercase">{etiqueta}</legend>
       <div className="flex rounded-xl bg-white p-1 ring-1 ring-[#0a1b3d]/10">
         {opciones.map((o) => (
           <label
@@ -727,18 +729,21 @@ function SelectorDia({ hoy, dia, onElegir, propias }: { hoy: DiaISO | null; dia:
                   tabIndex={activo ? 0 : -1}
                   data-dia={d}
                   onClick={() => onElegir(d)}
-                  aria-label={`${fechaLarga(d)}${i === 0 ? ", hoy" : ""}, ${Math.round(libre * 100)} % libre`}
                   className={`flex w-[4.4rem] shrink-0 snap-start flex-col items-center rounded-2xl px-2 pt-2.5 pb-2 transition focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-[#1553d6] ${
                     activo ? "bg-[#1553d6] text-white shadow-[0_10px_24px_-10px_rgba(21,83,214,0.8)]" : "bg-white text-[#0a1b3d] ring-1 ring-[#0a1b3d]/8 hover:ring-[#1553d6]/50"
                   }`}
                 >
-                  <span className={`text-[11px] font-bold tracking-wider uppercase ${activo ? "text-[#d8f03c]" : "text-[#0a1b3d]/55"}`}>
+                  <span className={`text-[11px] font-bold tracking-wider uppercase ${activo ? "text-[#d8f03c]" : "text-[#0a1b3d]/60"}`}>
                     {i === 0 ? "Hoy" : i === 1 ? "Mañ" : nombreDiaCorto(d)}
                   </span>
                   <span className={`${display} text-3xl leading-none font-extrabold`}>{p.d}</span>
-                  <span className={`text-[10px] font-semibold uppercase ${activo ? "text-white/75" : "text-[#0a1b3d]/45"}`}>{fechaCorta(d).split(" ")[2]}</span>
+                  <span className={`text-[10px] font-semibold uppercase ${activo ? "text-white/75" : "text-[#0a1b3d]/60"}`}>{fechaCorta(d).split(" ")[2]}</span>
                   <span className={`mt-1.5 h-1 w-9 overflow-hidden rounded-full ${activo ? "bg-white/25" : "bg-[#0a1b3d]/10"}`} aria-hidden="true">
                     <span className={`block h-full rounded-full ${libre < 0.3 ? "bg-[#e0703a]" : activo ? "bg-[#d8f03c]" : "bg-[#2e9e5b]"}`} style={{ width: `${Math.round(libre * 100)}%` }} />
+                  </span>
+                  <span className="sr-only">
+                    , {fechaLarga(d)}
+                    {i === 0 ? ", hoy" : ""}, {Math.round(libre * 100)} % libre
                   </span>
                 </button>
               );
@@ -831,13 +836,13 @@ function Planilla({
       <table role="grid" aria-label={`Canchas y horarios del ${fechaLarga(dia)}`} aria-describedby="pc-ayuda-grilla" className="w-full min-w-[34rem] table-fixed border-separate border-spacing-0" onKeyDown={teclas}>
         <thead>
           <tr>
-            <th scope="col" className="sticky top-0 left-0 z-30 w-16 bg-white px-2 py-3 text-left text-[11px] font-bold tracking-wider text-[#0a1b3d]/50 uppercase shadow-[0_1px_0_#e3e8f2]">
+            <th scope="col" className="sticky top-0 left-0 z-30 w-16 bg-white px-2 py-3 text-left text-[11px] font-bold tracking-wider text-[#0a1b3d]/60 uppercase shadow-[0_1px_0_#e3e8f2]">
               Hora
             </th>
             {cols.map((c) => (
               <th key={c.id} scope="col" className="sticky top-0 z-20 bg-white px-1.5 py-2.5 text-left shadow-[0_1px_0_#e3e8f2]">
                 <span className={`${display} block text-lg leading-none font-bold text-[#0a1b3d] uppercase italic`}>{c.nombre}</span>
-                <span className="mt-1 flex items-center gap-1 text-[11px] font-semibold text-[#0a1b3d]/55">
+                <span className="mt-1 flex items-center gap-1 text-[11px] font-semibold text-[#0a1b3d]/60">
                   {c.techada ? <IconoTecho width={12} height={12} /> : <IconoSol width={12} height={12} />}
                   {c.apodo ?? (c.techada ? "Techada" : "Descubierta")}
                 </span>
@@ -853,7 +858,7 @@ function Planilla({
               <tr key={b}>
                 <th
                   scope="row"
-                  className={`sticky left-0 z-10 h-11 bg-white px-2 text-left align-top text-xs tabular-nums ${enPunto ? "pt-1 font-bold text-[#0a1b3d]" : "pt-1 text-[#0a1b3d]/40"}`}
+                  className={`sticky left-0 z-10 h-11 bg-white px-2 text-left align-top text-xs tabular-nums ${enPunto ? "pt-1 font-bold text-[#0a1b3d]" : "pt-1 text-[#0a1b3d]/60"}`}
                 >
                   {hhmm(t)}
                 </th>
@@ -892,6 +897,9 @@ function Planilla({
                         : puede
                           ? `libre, ${pesos(cotizar(c, dia, t, duracion).cancha)} por ${duracion} minutos`
                           : `libre, pero no entran ${duracion} minutos seguidos`;
+                  // Nombre accesible = texto visible (si hay) + descripción solo para lectores de pantalla.
+                  const conTexto = Boolean((oc && esInicioOc) || primeroSel);
+                  const descripcion = `${c.nombre}, ${hhmm(t)}${oc && esInicioOc && !pasado ? "" : `, ${estadoTexto}`}`;
                   return (
                     <td
                       key={c.id}
@@ -904,7 +912,6 @@ function Planilla({
                         data-celda={`${ci}-${b}`}
                         tabIndex={enfocada ? 0 : -1}
                         aria-disabled={!puede || undefined}
-                        aria-label={`${c.nombre}, ${hhmm(t)}, ${estadoTexto}`}
                         onClick={() => {
                           setFoco({ c: ci, b });
                           onElegir(c, b);
@@ -926,6 +933,10 @@ function Planilla({
                             <IconoMas width={14} height={14} grosor={2.5} />
                           </span>
                         ) : null}
+                        <span className="sr-only">
+                          {conTexto ? ", " : ""}
+                          {descripcion}
+                        </span>
                       </button>
                     </td>
                   );
@@ -957,7 +968,7 @@ function Leyenda() {
           </li>
         ))}
       </ul>
-      <p id="pc-ayuda-grilla" className="mt-2 text-xs text-[#0a1b3d]/50">
+      <p id="pc-ayuda-grilla" className="mt-2 text-xs text-[#0a1b3d]/62">
         Con teclado: flechas para moverte por la grilla y Enter para elegir el horario de inicio.
       </p>
     </div>
@@ -1020,7 +1031,7 @@ function Companeros({
               </span>
               <span className="min-w-0 flex-1 text-sm leading-tight">
                 <span className="block font-semibold">{j.nombre}</span>
-                <span className="text-xs text-[#0a1b3d]/60">
+                <span className="text-xs text-[#0a1b3d]/62">
                   {j.categoria} · {j.lado} · {j.partidos} partidos
                 </span>
               </span>

@@ -189,7 +189,7 @@ export function LeyendaCalor() {
         <span>Más</span>
         <span className="sr-only">Escala de ocupación en tramos de 20 %: de 0 a 100 %</span>
       </div>
-      <span className="hidden text-[#8a948e] sm:inline" aria-hidden="true">
+      <span className="hidden text-[#707873] sm:inline" aria-hidden="true">
         0 · 20 · 40 · 60 · 80 · 100 %
       </span>
       <span className="flex items-center gap-1.5">

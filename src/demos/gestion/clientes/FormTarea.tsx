@@ -14,12 +14,12 @@ export function FormTarea({ open, clienteId, onClose }: { open: boolean; cliente
       open={open}
       onClose={onClose}
       titulo="Nueva tarea"
-      subtitulo={<p className="mt-0.5 text-sm text-[#64748B]">Agendá la próxima acción con un cliente.</p>}
+      subtitulo={<p className="mt-0.5 text-sm text-[#5F6E84]">Agendá la próxima acción con un cliente.</p>}
       panelClassName="max-h-[92dvh] w-full rounded-t-2xl bg-white shadow-2xl sm:max-w-lg sm:rounded-2xl"
       overlayClassName="bg-[#0C3440]/40 backdrop-blur-[2px]"
       headerClassName="border-b border-[#E6EBF0] px-5 py-4 sm:px-6"
       tituloClassName="text-lg font-extrabold tracking-tight text-[#0C3440]"
-      cerrarClassName="-mr-2 rounded-lg text-[#64748B] hover:bg-[#F1F5F8]"
+      cerrarClassName="-mr-2 rounded-lg text-[#5F6E84] hover:bg-[#F1F5F8]"
     >
       {open ? <Form clienteId={clienteId} onClose={onClose} /> : null}
     </Dialog>
@@ -73,7 +73,7 @@ function Form({ clienteId, onClose }: { clienteId?: string; onClose: () => void 
                 role="radio"
                 aria-checked={tipo === t.id}
                 onClick={() => setTipo(t.id)}
-                className={`flex flex-col items-center gap-1 rounded-lg border py-2 text-[11px] font-bold transition ${tipo === t.id ? "border-[#0F4C5C] bg-[#E7F0F2] text-[#0F4C5C]" : "border-[#E2E8F0] text-[#64748B] hover:border-[#B8C4D0]"}`}
+                className={`flex flex-col items-center gap-1 rounded-lg border py-2 text-[11px] font-bold transition ${tipo === t.id ? "border-[#0F4C5C] bg-[#E7F0F2] text-[#0F4C5C]" : "border-[#E2E8F0] text-[#5F6E84] hover:border-[#B8C4D0]"}`}
               >
                 <Icon name={ICONO_TAREA[t.id]} className="size-[18px]" />
                 {t.nombre}

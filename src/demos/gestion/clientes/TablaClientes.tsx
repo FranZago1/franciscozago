@@ -88,7 +88,7 @@ export function TablaClientes() {
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <h1 className="text-2xl font-extrabold tracking-tight text-[#0C3440] sm:text-[28px]">Clientes</h1>
-          <p className="mt-1 text-sm text-[#64748B]">
+          <p className="mt-1 text-sm text-[#5F6E84]">
             {state.clientes.length} clientes en la cartera · {state.clientes.filter((c) => c.etapa !== "cerrado").length} activos
           </p>
         </div>
@@ -148,7 +148,7 @@ export function TablaClientes() {
             </select>
           </div>
           <div className="flex items-center justify-between gap-3 lg:ml-auto">
-            <p className="text-xs font-semibold text-[#64748B]" aria-live="polite">
+            <p className="text-xs font-semibold text-[#5F6E84]" aria-live="polite">
               {filas.length} {filas.length === 1 ? "resultado" : "resultados"}
             </p>
             {filtrosActivos > 0 ? (
@@ -186,7 +186,7 @@ export function TablaClientes() {
                         <button
                           type="button"
                           onClick={() => sort.toggle(col.id)}
-                          className={`group inline-flex items-center gap-1 whitespace-nowrap rounded text-xs font-bold uppercase tracking-[0.06em] transition ${sort.key === col.id ? "text-[#0F4C5C]" : "text-[#64748B] hover:text-[#0F172A]"}`}
+                          className={`group inline-flex items-center gap-1 whitespace-nowrap rounded text-xs font-bold uppercase tracking-[0.06em] transition ${sort.key === col.id ? "text-[#0F4C5C]" : "text-[#5F6E84] hover:text-[#0F172A]"}`}
                         >
                           {col.label}
                           <Icon
@@ -223,16 +223,16 @@ export function TablaClientes() {
                                 {c.nombre}
                                 <PrioridadFlag p={c.prioridad} />
                               </button>
-                              <p className="max-w-[190px] truncate text-xs text-[#64748B]">{c.email}</p>
+                              <p className="max-w-[190px] truncate text-xs text-[#5F6E84]">{c.email}</p>
                             </div>
                           </div>
                         </td>
                         <td className="px-3 py-3"><EtapaBadge etapa={c.etapa} /></td>
                         <td className="whitespace-nowrap px-3 py-3 text-right">
                           <span className="block font-bold tabular-nums">
-                            {c.operacion === "Compra" ? usd(c.presupuesto) : <>{pesosCorto(c.presupuesto)}<span className="font-medium text-[#64748B]">/mes</span></>}
+                            {c.operacion === "Compra" ? usd(c.presupuesto) : <>{pesosCorto(c.presupuesto)}<span className="font-medium text-[#5F6E84]">/mes</span></>}
                           </span>
-                          <span className="text-xs font-medium text-[#64748B]">{c.operacion}</span>
+                          <span className="text-xs font-medium text-[#5F6E84]">{c.operacion}</span>
                         </td>
                         <td className="whitespace-nowrap px-3 py-3 text-[#334155]">{c.zona}</td>
                         <td className="px-3 py-3">
@@ -251,7 +251,7 @@ export function TablaClientes() {
 
             {/* Mobile: tarjetas */}
             <div className="border-b border-[#EEF2F6] px-3 py-2 md:hidden">
-              <label htmlFor="tc-sort" className="mr-2 text-xs font-semibold text-[#64748B]">Ordenar por</label>
+              <label htmlFor="tc-sort" className="mr-2 text-xs font-semibold text-[#5F6E84]">Ordenar por</label>
               <select
                 id="tc-sort"
                 className="h-8 rounded-md border border-[#D5DDE5] bg-white px-2 text-xs font-semibold"
@@ -281,7 +281,7 @@ export function TablaClientes() {
                           <PrioridadFlag p={c.prioridad} />
                           <span className="ml-auto"><EtapaBadge etapa={c.etapa} /></span>
                         </div>
-                        <p className="mt-0.5 text-xs text-[#64748B]">
+                        <p className="mt-0.5 text-xs text-[#5F6E84]">
                           {c.operacion} · {c.zona} ·{" "}
                           <span className="font-bold text-[#0F172A]">
                             {c.operacion === "Compra" ? usd(c.presupuesto) : `${pesosCorto(c.presupuesto)}/mes`}
@@ -289,7 +289,7 @@ export function TablaClientes() {
                         </p>
                         <div className="mt-2 flex items-center justify-between gap-2 text-xs">
                           <ProximaCelda t={t} now={now} />
-                          <span className="shrink-0 text-[#94A3B8]">{haceDias(c.ultimoContacto, now)}</span>
+                          <span className="shrink-0 text-[#677180]">{haceDias(c.ultimoContacto, now)}</span>
                         </div>
                       </div>
                     </button>
@@ -305,7 +305,7 @@ export function TablaClientes() {
 }
 
 function ProximaCelda({ t, now }: { t: ReturnType<ReturnType<typeof useCrm>["proximaTarea"]>; now: number }) {
-  if (!t) return <span className="text-xs font-medium text-[#94A3B8]">Sin agendar</span>;
+  if (!t) return <span className="text-xs font-medium text-[#677180]">Sin agendar</span>;
   const d = diaDiff(t.fecha, now);
   const cls = d < 0 ? "text-[#B42318]" : d === 0 ? "text-[#9A5B0B]" : "text-[#475569]";
   return (

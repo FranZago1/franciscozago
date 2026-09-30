@@ -5,7 +5,7 @@ export const cond = "[font-family:var(--font-brasa-cond)]";
 
 export const btn = {
   brasa:
-    "inline-flex items-center justify-center gap-2 rounded-xl bg-[#D9480F] px-4 py-2.5 text-sm font-bold text-white shadow-[0_6px_16px_-6px_rgba(217,72,15,.7)] transition hover:bg-[#C23F0C] active:translate-y-px disabled:opacity-50 disabled:shadow-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D9480F]",
+    "inline-flex items-center justify-center gap-2 rounded-xl bg-[#D2460F] px-4 py-2.5 text-sm font-bold text-white shadow-[0_6px_16px_-6px_rgba(217,72,15,.7)] transition hover:bg-[#C23F0C] active:translate-y-px disabled:opacity-50 disabled:shadow-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D9480F]",
   carbon:
     "inline-flex items-center justify-center gap-2 rounded-xl bg-[#1F1A17] px-4 py-2.5 text-sm font-bold text-[#F5EEE3] transition hover:bg-[#3A302A] active:translate-y-px disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D9480F]",
   suave:
@@ -23,7 +23,7 @@ export const ESTADO_MESA: Record<EstadoMesa, { nombre: string; fill: string; str
   libre: { nombre: "Libre", fill: "#FBF7F0", stroke: "#CDBDA6", texto: "#6B5E53", chip: "bg-[#EFE7DA] text-[#5D5047]" },
   ocupada: { nombre: "Ocupada", fill: "#3A302A", stroke: "#1F1A17", texto: "#F5EEE3", chip: "bg-[#3A302A] text-[#F5EEE3]" },
   pidiendo: { nombre: "Pidiendo", fill: "#F0B24A", stroke: "#B97A12", texto: "#3A2606", chip: "bg-[#F6D08C] text-[#5A3A05]" },
-  cuenta: { nombre: "Cuenta", fill: "#D9480F", stroke: "#9E300A", texto: "#FFFFFF", chip: "bg-[#D9480F] text-white" },
+  cuenta: { nombre: "Cuenta", fill: "#D2460F", stroke: "#9E300A", texto: "#FFFFFF", chip: "bg-[#D2460F] text-white" },
 };
 
 /** "mm:ss" o "h:mm:ss" */

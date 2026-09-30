@@ -70,12 +70,12 @@ export function FormCliente({
       open={open}
       onClose={onClose}
       titulo={c ? `Editar a ${c.nombre}` : "Nuevo cliente"}
-      subtitulo={<p className="mt-0.5 text-sm text-[#64748B]">{c ? "Actualizá los datos del cliente." : "Los campos con * son obligatorios."}</p>}
+      subtitulo={<p className="mt-0.5 text-sm text-[#5F6E84]">{c ? "Actualizá los datos del cliente." : "Los campos con * son obligatorios."}</p>}
       panelClassName="max-h-[92dvh] w-full rounded-t-2xl bg-white shadow-2xl sm:max-w-2xl sm:rounded-2xl"
       overlayClassName="bg-[#0C3440]/40 backdrop-blur-[2px]"
       headerClassName="border-b border-[#E6EBF0] px-5 py-4 sm:px-6"
       tituloClassName="text-lg font-extrabold tracking-tight text-[#0C3440]"
-      cerrarClassName="-mr-2 rounded-lg text-[#64748B] hover:bg-[#F1F5F8]"
+      cerrarClassName="-mr-2 rounded-lg text-[#5F6E84] hover:bg-[#F1F5F8]"
     >
       {open ? <Formulario key={id ?? "nuevo"} idEdit={id} onClose={onClose} onCreado={onCreado} /> : null}
     </Dialog>
@@ -159,7 +159,7 @@ function Formulario({ idEdit, onClose, onCreado }: { idEdit?: string; onClose: (
         ) : null}
 
         <fieldset>
-          <legend className="mb-3 text-[13px] font-bold uppercase tracking-[0.08em] text-[#64748B]">Contacto</legend>
+          <legend className="mb-3 text-[13px] font-bold uppercase tracking-[0.08em] text-[#5F6E84]">Contacto</legend>
           <div className="grid gap-4 sm:grid-cols-2">
             <Campo id="f-nombre" label="Nombre y apellido *" error={err.nombre} className="sm:col-span-2">
               <input id="f-nombre" name="nombre" className={input} value={v.nombre} onChange={(e) => set("nombre", e.target.value)} autoComplete="off" placeholder="Ej.: Carolina Paredes" aria-invalid={!!err.nombre} aria-describedby={err.nombre ? "f-nombre-err" : undefined} data-autofocus />
@@ -174,7 +174,7 @@ function Formulario({ idEdit, onClose, onCreado }: { idEdit?: string; onClose: (
         </fieldset>
 
         <fieldset>
-          <legend className="mb-3 text-[13px] font-bold uppercase tracking-[0.08em] text-[#64748B]">Búsqueda</legend>
+          <legend className="mb-3 text-[13px] font-bold uppercase tracking-[0.08em] text-[#5F6E84]">Búsqueda</legend>
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
               <span className={label} id="f-op-label">Operación</span>
@@ -186,7 +186,7 @@ function Formulario({ idEdit, onClose, onCreado }: { idEdit?: string; onClose: (
                     role="radio"
                     aria-checked={v.operacion === o}
                     onClick={() => set("operacion", o)}
-                    className={`rounded-md py-1.5 text-sm font-bold transition ${v.operacion === o ? "bg-white text-[#0F4C5C] shadow-[0_1px_3px_rgba(15,23,42,.12)]" : "text-[#64748B] hover:text-[#0F172A]"}`}
+                    className={`rounded-md py-1.5 text-sm font-bold transition ${v.operacion === o ? "bg-white text-[#0F4C5C] shadow-[0_1px_3px_rgba(15,23,42,.12)]" : "text-[#5F6E84] hover:text-[#0F172A]"}`}
                   >
                     {o}
                   </button>
@@ -195,7 +195,7 @@ function Formulario({ idEdit, onClose, onCreado }: { idEdit?: string; onClose: (
             </div>
             <Campo id="f-presupuesto" label={v.operacion === "Compra" ? "Presupuesto (US$) *" : "Presupuesto mensual ($) *"} error={err.presupuesto}>
               <div className="relative">
-                <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-sm font-semibold text-[#94A3B8]">
+                <span className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-sm font-semibold text-[#677180]">
                   {v.operacion === "Compra" ? "US$" : "$"}
                 </span>
                 <input
@@ -225,7 +225,7 @@ function Formulario({ idEdit, onClose, onCreado }: { idEdit?: string; onClose: (
         </fieldset>
 
         <fieldset>
-          <legend className="mb-3 text-[13px] font-bold uppercase tracking-[0.08em] text-[#64748B]">Seguimiento</legend>
+          <legend className="mb-3 text-[13px] font-bold uppercase tracking-[0.08em] text-[#5F6E84]">Seguimiento</legend>
           <div className="grid gap-4 sm:grid-cols-3">
             <Campo id="f-etapa" label="Etapa">
               <select id="f-etapa" name="etapa" className={input} value={v.etapa} onChange={(e) => set("etapa", e.target.value as Etapa)}>
@@ -252,7 +252,7 @@ function Formulario({ idEdit, onClose, onCreado }: { idEdit?: string; onClose: (
       </div>
 
       <div className="sticky bottom-0 mt-auto flex flex-col-reverse gap-2 border-t border-[#E6EBF0] bg-white/95 px-5 py-4 backdrop-blur sm:flex-row sm:items-center sm:px-6">
-        <p className="text-xs text-[#94A3B8] sm:mr-auto">Demo: los datos quedan solo en tu navegador.</p>
+        <p className="text-xs text-[#677180] sm:mr-auto">Demo: los datos quedan solo en tu navegador.</p>
         <button type="button" className={btn.secundario} onClick={onClose}>Cancelar</button>
         <button type="submit" className={btn.primario} disabled={estado === "guardando"}>
           {estado === "guardando" ? (

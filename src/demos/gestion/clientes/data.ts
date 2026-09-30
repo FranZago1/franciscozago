@@ -51,12 +51,12 @@ export type Propiedad = {
 
 export type CrmState = { clientes: Cliente[]; tareas: Tarea[] };
 
-export const ETAPAS: { id: Etapa; nombre: string; color: string; suave: string }[] = [
-  { id: "nuevo", nombre: "Nuevo", color: "#64748B", suave: "#EEF1F5" },
-  { id: "contactado", nombre: "Contactado", color: "#2F7DA8", suave: "#E6F1F7" },
-  { id: "visita", nombre: "Visita", color: "#0F766E", suave: "#E3F3F1" },
-  { id: "negociacion", nombre: "Negociación", color: "#B7791F", suave: "#FBF1DF" },
-  { id: "cerrado", nombre: "Cerrado", color: "#15803D", suave: "#E5F4EA" },
+export const ETAPAS: { id: Etapa; nombre: string; color: string; suave: string; tinta: string }[] = [
+  { id: "nuevo", nombre: "Nuevo", color: "#64748B", suave: "#EEF1F5", tinta: "#5F6E84" },
+  { id: "contactado", nombre: "Contactado", color: "#2F7DA8", suave: "#E6F1F7", tinta: "#2B739B" },
+  { id: "visita", nombre: "Visita", color: "#0F766E", suave: "#E3F3F1", tinta: "#0F766E" },
+  { id: "negociacion", nombre: "Negociación", color: "#B7791F", suave: "#FBF1DF", tinta: "#966319" },
+  { id: "cerrado", nombre: "Cerrado", color: "#15803D", suave: "#E5F4EA", tinta: "#157E3C" },
 ];
 
 export const etapaDe = (id: Etapa) => ETAPAS.find((e) => e.id === id)!;

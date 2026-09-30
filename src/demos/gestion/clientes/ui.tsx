@@ -44,7 +44,7 @@ export function EtapaBadge({ etapa }: { etapa: Etapa }) {
   return (
     <span
       className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-2 py-0.5 text-xs font-semibold"
-      style={{ background: e.suave, color: e.color }}
+      style={{ background: e.suave, color: e.tinta }}
     >
       <span className="size-1.5 rounded-full" style={{ background: e.color }} aria-hidden="true" />
       {e.nombre}
@@ -52,17 +52,17 @@ export function EtapaBadge({ etapa }: { etapa: Etapa }) {
   );
 }
 
-const PRIO: Record<Prioridad, { c: string; t: string }> = {
-  alta: { c: "#D92D20", t: "Prioridad alta" },
-  media: { c: "#DC8A0E", t: "Prioridad media" },
-  baja: { c: "#94A3B8", t: "Prioridad baja" },
+const PRIO: Record<Prioridad, { c: string; tinta: string; t: string }> = {
+  alta: { c: "#D92D20", tinta: "#D92D20", t: "Prioridad alta" },
+  media: { c: "#DC8A0E", tinta: "#A6680B", t: "Prioridad media" },
+  baja: { c: "#94A3B8", tinta: "#677180", t: "Prioridad baja" },
 };
 
 export function PrioridadFlag({ p, conTexto = false }: { p: Prioridad; conTexto?: boolean }) {
   return (
     <span className="inline-flex items-center gap-1 text-xs font-semibold" style={{ color: PRIO[p].c }}>
       <Icon name="flag" className="size-3.5" strokeWidth={2.2} title={conTexto ? undefined : PRIO[p].t} />
-      {conTexto ? <span className="capitalize">{p}</span> : null}
+      {conTexto ? <span className="capitalize" style={{ color: PRIO[p].tinta }}>{p}</span> : null}
     </span>
   );
 }
@@ -99,7 +99,7 @@ export function Seccion({
   return (
     <section className={`border-t border-[#E6EBF0] px-5 py-5 sm:px-6 ${className}`}>
       <div className="mb-3 flex items-center justify-between gap-3">
-        <h3 className="text-[13px] font-bold uppercase tracking-[0.08em] text-[#64748B]">{titulo}</h3>
+        <h3 className="text-[13px] font-bold uppercase tracking-[0.08em] text-[#5F6E84]">{titulo}</h3>
         {accion}
       </div>
       {children}
@@ -114,7 +114,7 @@ export function Vacio({ icono, titulo, texto, children }: { icono: IconName; tit
         <Icon name={icono} />
       </span>
       <p className="font-semibold text-[#0F172A]">{titulo}</p>
-      <p className="mt-1 max-w-sm text-sm text-[#64748B]">{texto}</p>
+      <p className="mt-1 max-w-sm text-sm text-[#5F6E84]">{texto}</p>
       {children ? <div className="mt-4">{children}</div> : null}
     </div>
   );

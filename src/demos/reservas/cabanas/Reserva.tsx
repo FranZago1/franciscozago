@@ -252,7 +252,7 @@ export function Reserva() {
       </p>
       <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 md:py-28">
         <div className="text-center">
-          <p className="inline-flex items-center gap-2 text-sm font-semibold text-[#b5653a]">
+          <p className="inline-flex items-center gap-2 text-sm font-semibold text-[#9a5631]">
             <IconoHoja width={16} height={16} /> Reservá directo, sin comisiones
           </p>
           <h2 id="reservar-titulo" className={`${serif} mt-3 text-5xl leading-tight font-medium md:text-6xl`}>
@@ -359,7 +359,7 @@ export function Reserva() {
                                   setHasta(null);
                                   setAviso("Fechas borradas.");
                                 }}
-                                className="font-semibold text-[#b5653a] underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-[#b5653a]"
+                                className="font-semibold text-[#9a5631] underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-[#b5653a]"
                               >
                                 Borrar fechas
                               </button>
@@ -494,7 +494,7 @@ export function Reserva() {
                                         <span className="text-lg font-semibold tabular-nums">{pesos(cc.total)}</span>
                                       </>
                                     ) : (
-                                      <span className="text-sm font-semibold text-[#b5653a]">{!entra ? `No entran ${adultos + menores} huéspedes` : "Ocupada en esas fechas"}</span>
+                                      <span className="text-sm font-semibold text-[#9a5631]">{!entra ? `No entran ${adultos + menores} huéspedes` : "Ocupada en esas fechas"}</span>
                                     )}
                                   </span>
                                 </span>
@@ -621,17 +621,17 @@ function Resumen({ cabana, desde, hasta, adultos, menores }: { cabana?: Cabana; 
       <div className="p-5">
         <dl className="grid grid-cols-2 gap-3 text-sm">
           <div className="rounded-xl bg-white/8 p-3">
-            <dt className="text-xs text-[#f7f2e8]/60">Llegada</dt>
+            <dt className="text-xs text-[#f7f2e8]/75">Llegada</dt>
             <dd className="mt-0.5 font-semibold">{desde ? fechaCorta(desde) : "—"}</dd>
-            <dd className="text-xs text-[#f7f2e8]/60">desde las {complejo.checkIn}</dd>
+            <dd className="text-xs text-[#f7f2e8]/75">desde las {complejo.checkIn}</dd>
           </div>
           <div className="rounded-xl bg-white/8 p-3">
-            <dt className="text-xs text-[#f7f2e8]/60">Salida</dt>
+            <dt className="text-xs text-[#f7f2e8]/75">Salida</dt>
             <dd className="mt-0.5 font-semibold">{hasta ? fechaCorta(hasta) : "—"}</dd>
-            <dd className="text-xs text-[#f7f2e8]/60">hasta las {complejo.checkOut}</dd>
+            <dd className="text-xs text-[#f7f2e8]/75">hasta las {complejo.checkOut}</dd>
           </div>
           <div className="col-span-2 flex justify-between rounded-xl bg-white/8 p-3">
-            <dt className="text-[#f7f2e8]/60">Huéspedes</dt>
+            <dt className="text-[#f7f2e8]/75">Huéspedes</dt>
             <dd className="font-semibold">
               {adultos} {adultos === 1 ? "adulto" : "adultos"}
               {menores ? ` + ${menores} ${menores === 1 ? "menor" : "menores"}` : ""}
@@ -660,7 +660,7 @@ function Resumen({ cabana, desde, hasta, adultos, menores }: { cabana?: Cabana; 
               <span>Seña (30 %)</span>
               <span className="tabular-nums">{pesos(cot.sena)}</span>
             </p>
-            <p className="mt-1 text-xs text-[#f7f2e8]/60">El resto lo abonás al llegar. Desayuno serrano incluido.</p>
+            <p className="mt-1 text-xs text-[#f7f2e8]/65">El resto lo abonás al llegar. Desayuno serrano incluido.</p>
           </div>
         ) : (
           <p className="mt-5 text-sm text-[#f7f2e8]/65">Fines de semana +15 %. Temporada alta +25 %. Desayuno incluido.</p>

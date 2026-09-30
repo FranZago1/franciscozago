@@ -12,7 +12,7 @@ const ESTADO_COCINA = {
   nuevo: { t: "En cola", c: "bg-[#EFE7DA] text-[#5D5047]" },
   preparacion: { t: "En el fuego", c: "bg-[#FBE0CF] text-[#A5360B]" },
   listo: { t: "Listo para servir", c: "bg-[#DDEBCF] text-[#3F6420]" },
-  entregado: { t: "Servido", c: "bg-[#F1ECE4] text-[#8A7B6C]" },
+  entregado: { t: "Servido", c: "bg-[#F1ECE4] text-[#726559]" },
 } as const;
 
 export function Salon() {
@@ -36,7 +36,7 @@ export function Salon() {
     <div>
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <p className="text-sm font-semibold text-[#8A7B6C]">Turno noche · {state.mesas.length} mesas</p>
+          <p className="text-sm font-semibold text-[#726559]">Turno noche · {state.mesas.length} mesas</p>
           <h1 className={`${cond} text-4xl font-bold uppercase leading-none tracking-wide`}>Salón</h1>
         </div>
         <dl className="flex flex-wrap gap-2">
@@ -74,7 +74,7 @@ export function Salon() {
               </button>
             ))}
           </div>
-          <p className="px-2 pb-1 pt-2 text-xs text-[#8A7B6C]">Tocá una mesa para ver su estado, tomar el pedido o cobrar. También podés recorrerlas con Tab.</p>
+          <p className="px-2 pb-1 pt-2 text-xs text-[#726559]">Tocá una mesa para ver su estado, tomar el pedido o cobrar. También podés recorrerlas con Tab.</p>
         </div>
         <div ref={panel} className="scroll-mt-20">
           {sel ? <PanelMesa key={sel.id} m={sel} /> : <SinSeleccion />}
@@ -87,9 +87,9 @@ export function Salon() {
 function Dato({ k, v, s }: { k: string; v: string; s: string }) {
   return (
     <div className="rounded-2xl border border-[#E4D8C6] bg-[#FFFCF7] px-3 py-2.5 sm:px-4 sm:py-3">
-      <p className="text-[11px] font-bold uppercase tracking-[0.08em] text-[#8A7B6C] sm:text-xs">{k}</p>
+      <p className="text-[11px] font-bold uppercase tracking-[0.08em] text-[#726559] sm:text-xs">{k}</p>
       <p className={`${cond} mt-0.5 truncate text-2xl font-bold sm:text-3xl`}>{v}</p>
-      <p className="truncate text-[11px] text-[#8A7B6C] sm:text-xs">{s}</p>
+      <p className="truncate text-[11px] text-[#726559] sm:text-xs">{s}</p>
     </div>
   );
 }
@@ -99,7 +99,7 @@ function SinSeleccion() {
     <div className="flex h-full min-h-48 flex-col items-center justify-center rounded-3xl border-2 border-dashed border-[#E0D3C0] p-6 text-center">
       <span className="grid size-12 place-items-center rounded-full bg-[#EFE5D6] text-[#D9480F]"><Icon name="table" /></span>
       <p className="mt-3 font-bold">Elegí una mesa</p>
-      <p className="mt-1 max-w-60 text-sm text-[#8A7B6C]">Vas a ver los comensales, lo que pidieron y cuánto van consumiendo.</p>
+      <p className="mt-1 max-w-60 text-sm text-[#726559]">Vas a ver los comensales, lo que pidieron y cuánto van consumiendo.</p>
     </div>
   );
 }
@@ -187,7 +187,7 @@ function MesaSvg({ m, activa, onSel, now }: { m: Mesa; activa: boolean; onSel: (
     }
   }
   const mins = m.desde && m.estado !== "libre" ? minutos(now - Date.parse(m.desde)) : null;
-  const etiqueta = `Mesa ${m.numero}, ${m.zona}, ${m.lugares} lugares, ${e.nombre}${m.estado !== "libre" ? `, ${m.comensales} comensales` : ""}`;
+  const etiqueta = `Mesa ${m.numero}, ${m.zona}, ${m.lugares} lugares, ${e.nombre}${m.estado !== "libre" ? `, ${m.comensales} comensales` : ""}${mins !== null ? `, hace ${mins} minutos` : ""}`;
 
   return (
     <g
@@ -224,7 +224,7 @@ function MesaSvg({ m, activa, onSel, now }: { m: Mesa; activa: boolean; onSel: (
         {m.numero}
       </text>
       {mins !== null ? (
-        <text y="20" textAnchor="middle" fontSize="13" fontWeight="600" fill={e.texto} opacity=".85">
+        <text y="20" textAnchor="middle" fontSize="13" fontWeight="600" fill={e.texto} opacity=".85" aria-hidden="true">
           {m.comensales}p · {mins}′
         </text>
       ) : null}
@@ -250,7 +250,7 @@ function PanelMesa({ m }: { m: Mesa }) {
         </span>
         <div className="min-w-0 flex-1">
           <h2 id="pm-titulo" className={`${cond} text-2xl font-bold uppercase leading-tight`}>Mesa {m.numero}</h2>
-          <p className="text-sm text-[#8A7B6C]">{m.zona} · {m.lugares} lugares · mozo {m.mozo}</p>
+          <p className="text-sm text-[#726559]">{m.zona} · {m.lugares} lugares · mozo {m.mozo}</p>
           <span className={`mt-1.5 inline-block rounded-full px-2.5 py-0.5 text-xs font-bold ${e.chip}`}>
             {e.nombre}
             {m.desde && m.estado !== "libre" ? ` · hace ${minutos(now - Date.parse(m.desde))} min` : ""}
@@ -272,7 +272,7 @@ function PanelMesa({ m }: { m: Mesa }) {
             <button type="button" className={`${btn.suave} size-11 px-0`} onClick={() => setComensales((c) => Math.min(m.lugares + 2, c + 1))} aria-label="Uno más">
               <Icon name="plus" />
             </button>
-            <span className="text-sm text-[#8A7B6C]">de {m.lugares} lugares</span>
+            <span className="text-sm text-[#726559]">de {m.lugares} lugares</span>
           </div>
           <div className="mt-4 grid gap-2">
             <button type="button" className={btn.carbon} onClick={() => setEstadoMesa(m.id, "ocupada", comensales)}>
@@ -300,7 +300,7 @@ function PanelMesa({ m }: { m: Mesa }) {
                           <span className="w-6 shrink-0 font-bold">{l.cant}×</span>
                           <span className="min-w-0 flex-1">
                             {l.nombre}
-                            {l.mods.length ? <span className="block text-xs text-[#8A7B6C]">{l.mods.join(" · ")}</span> : null}
+                            {l.mods.length ? <span className="block text-xs text-[#726559]">{l.mods.join(" · ")}</span> : null}
                           </span>
                           <span className="tabular-nums text-[#5D5047]">{pesos(l.precio * l.cant)}</span>
                         </li>
@@ -342,7 +342,7 @@ function PanelMesa({ m }: { m: Mesa }) {
                 </button>
               )}
               {total === 0 ? (
-                <button type="button" className="col-span-2 py-1 text-sm font-semibold text-[#8A7B6C] underline-offset-4 hover:underline" onClick={() => setEstadoMesa(m.id, "libre", 0)}>
+                <button type="button" className="col-span-2 py-1 text-sm font-semibold text-[#726559] underline-offset-4 hover:underline" onClick={() => setEstadoMesa(m.id, "libre", 0)}>
                   Liberar mesa sin consumo
                 </button>
               ) : null}
@@ -355,7 +355,7 @@ function PanelMesa({ m }: { m: Mesa }) {
         open={cobrar}
         onClose={() => setCobrar(false)}
         titulo={`Cuenta · Mesa ${m.numero}`}
-        subtitulo={<p className="text-sm text-[#8A7B6C]">{m.comensales} comensales · mozo {m.mozo}</p>}
+        subtitulo={<p className="text-sm text-[#726559]">{m.comensales} comensales · mozo {m.mozo}</p>}
         panelClassName="max-h-[94dvh] w-full rounded-t-3xl bg-[#FBF7F0] text-[#1F1A17] shadow-2xl sm:max-w-md sm:rounded-3xl"
         overlayClassName="bg-[#1F1A17]/60"
         headerClassName="px-5 pb-2 pt-5"
@@ -371,7 +371,7 @@ function PanelMesa({ m }: { m: Mesa }) {
         <div className="px-5 pb-5">
           <div className="rounded-2xl bg-white p-4 font-mono text-[13px] shadow-[0_1px_0_#E4D8C6] [font-family:ui-monospace,monospace]">
             <p className="text-center font-bold tracking-widest">PARRILLA LA BRASA</p>
-            <p className="text-center text-[11px] text-[#8A7B6C]">Documento no válido como factura · demo</p>
+            <p className="text-center text-[11px] text-[#726559]">Documento no válido como factura · demo</p>
             <div className="my-3 border-t border-dashed border-[#C9B9A5]" />
             {pedidos.flatMap((p) => p.lineas).map((l) => (
               <p key={l.id} className="flex justify-between gap-3">
@@ -383,7 +383,7 @@ function PanelMesa({ m }: { m: Mesa }) {
             <p className="flex justify-between"><span>Subtotal</span><span>{pesos(total)}</span></p>
             <p className="flex justify-between"><span>Propina sugerida ({propina}%)</span><span>{pesos(Math.round((total * propina) / 100))}</span></p>
             <p className="mt-1 flex justify-between text-base font-bold"><span>TOTAL</span><span>{pesos(total + Math.round((total * propina) / 100))}</span></p>
-            {m.comensales > 1 ? <p className="mt-1 text-right text-[11px] text-[#8A7B6C]">{pesos(Math.round((total * (1 + propina / 100)) / m.comensales))} por persona</p> : null}
+            {m.comensales > 1 ? <p className="mt-1 text-right text-[11px] text-[#726559]">{pesos(Math.round((total * (1 + propina / 100)) / m.comensales))} por persona</p> : null}
           </div>
           <fieldset className="mt-4">
             <legend className="mb-2 text-sm font-bold">Propina</legend>

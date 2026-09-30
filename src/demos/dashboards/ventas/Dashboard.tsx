@@ -71,11 +71,11 @@ function Navegacion({ activo, onIr }: { activo: string; onIr: (h: string) => voi
         );
       })}
       <div className="my-3 h-px bg-[#eceef1]" />
-      <span className="flex cursor-not-allowed items-center gap-3 rounded-[10px] px-3 py-2 text-[14px] font-medium text-[#98a2b3]">
+      <span className="flex cursor-not-allowed items-center gap-3 rounded-[10px] px-3 py-2 text-[14px] font-medium text-[#6F7683]">
         <IcoClientes className="size-[18px]" /> Clientes
         <span className="ml-auto rounded-full bg-[#f2f4f7] px-1.5 py-0.5 text-[10.5px] text-[#667085]">Pronto</span>
       </span>
-      <span className="flex cursor-not-allowed items-center gap-3 rounded-[10px] px-3 py-2 text-[14px] font-medium text-[#98a2b3]">
+      <span className="flex cursor-not-allowed items-center gap-3 rounded-[10px] px-3 py-2 text-[14px] font-medium text-[#6F7683]">
         <IcoAjustes className="size-[18px]" /> Ajustes
       </span>
     </nav>
