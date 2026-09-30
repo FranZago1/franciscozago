@@ -23,14 +23,27 @@ export function Servicios() {
             </span>
             <h3 className="mt-5 text-2xl font-medium tracking-tight">{s.nombre}</h3>
             <p className="mt-1.5 text-muted">{s.linea}</p>
-            {s.evidencia ? (
-              <Link
-                href={s.evidencia.href}
-                className="label-mono mt-4 inline-flex items-center gap-1 border-b-[1.5px] border-ink pb-0.5 text-[13px] font-medium hover:border-accent hover:text-accent"
-              >
-                {s.evidencia.label}
-                <Icon name="flecha" className="size-3.5" />
-              </Link>
+            {s.demos || s.evidencia ? (
+              <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2">
+                {s.demos ? (
+                  <Link
+                    href={`/demos/${s.demos}`}
+                    className="label-mono inline-flex items-center gap-1 border-b-[1.5px] border-ink pb-0.5 text-[13px] font-medium hover:border-accent hover:text-accent"
+                  >
+                    Ver demos<span className="sr-only"> de {s.nombre}</span>
+                    <Icon name="flecha" className="size-3.5" />
+                  </Link>
+                ) : null}
+                {s.evidencia ? (
+                  <Link
+                    href={s.evidencia.href}
+                    className="label-mono inline-flex items-center gap-1 border-b-[1.5px] border-line pb-0.5 text-[13px] font-medium text-muted hover:border-accent hover:text-accent"
+                  >
+                    {s.evidencia.label}
+                    <Icon name="flecha" className="size-3.5" />
+                  </Link>
+                ) : null}
+              </div>
             ) : null}
           </li>
         ))}

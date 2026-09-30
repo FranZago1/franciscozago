@@ -3,17 +3,17 @@ import { DemosVertical } from "@/components/DemosVertical";
 import { SiteShell } from "@/components/SiteShell";
 
 export const metadata: Metadata = {
-  title: "Demos de portfolios de fotografía",
-  description: "Tres estilos de portfolio para fotógrafos: editorial, cinemático y documental. Elegí uno y lo armamos con tus fotos.",
-  alternates: { canonical: "/demos/fotografia" },
+  title: "Demos de tiendas online",
+  description: "Tres tiendas online de ejemplo con carrito funcionando: ropa urbana, cosmética natural y electrónica.",
+  alternates: { canonical: "/demos/ecommerce" },
   // Esta pantalla sí se indexa; las demos individuales siguen con noindex (app/demos/layout.tsx).
   robots: { index: true, follow: true },
 };
 
-export default function DemosFotografiaPage() {
+export default function DemosEcommercePage() {
   return (
     <SiteShell>
-      <DemosVertical vertical="fotografia" />
+      <DemosVertical vertical="ecommerce" />
     </SiteShell>
   );
 }
