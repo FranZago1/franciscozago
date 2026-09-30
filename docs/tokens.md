@@ -22,7 +22,7 @@ tres lugares y nada más.
 
 | Rol | Familia | Dónde | Por qué |
 |---|---|---|---|
-| Display serif | **Newsreader** (Google Fonts, variable con eje óptico) | Solo el titular del hero y "Hablemos" | Serif editorial diseñada para titulares de prensa: contraste alto en tamaños grandes gracias al eje `opsz`, carácter sin ser decorativa. Soporta bien acentos, ñ y ¿¡. Da el tono de kushbothra sin copiar su fuente. |
+| Display serif | **Newsreader** 400 (Google Fonts, instancia estática) | Solo el titular del hero y "Hablemos" | Serif editorial pensada para prensa: carácter sin ser decorativa. Se usa la instancia estática (~38 kB) y no la variable con eje óptico (129 kB): con la variable el LCP mobile subía a 2,9 s y Lighthouse bajaba a 93. Soporta bien acentos, ñ y ¿¡. Da el tono de kushbothra sin copiar su fuente. |
 | Sans de lectura | **Hanken Grotesk** (variable) | Todo lo demás | Grotesca con aperturas amplias y buena legibilidad en tamaños chicos de mobile. Es neutra sin ser genérica (proporciones algo más estrechas y terminaciones más cálidas que las grotescas de sistema) y no es Inter/Geist. |
 
 Ambas con `display: "swap"` y subset `latin` (incluye latin-1: á é í ó ú ñ ¿ ¡).

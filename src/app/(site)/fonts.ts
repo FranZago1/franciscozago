@@ -10,6 +10,5 @@ export const newsreader = Newsreader({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-newsreader",
-  axes: ["opsz"],
-  weight: "variable",
+  weight: "400",
 });

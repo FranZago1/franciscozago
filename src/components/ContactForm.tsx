@@ -3,15 +3,14 @@
 import { useId, useState } from "react";
 import { contactoCopy } from "@/content/home";
 import { tiposDeProyecto } from "@/content/servicios";
-import {
-  contactSchema,
-  erroresPorCampo,
-  type ContactField,
-  type ContactResponse,
-} from "@/lib/contact-schema";
+import type { ContactField, ContactResponse } from "@/lib/contact-schema";
 import { waLink } from "@/lib/wa";
 
 type Estado = "idle" | "enviando" | "enviado" | "error";
+
+// zod se carga recién cuando la persona interactúa con el formulario, para no sumar
+// peso al JS inicial del home. La validación en cliente sigue siendo la misma que en el servidor.
+const cargarEsquema = () => import("@/lib/contact-schema");
 
 const inputBase =
   "w-full rounded-[10px] border bg-white font-sans px-3.5 py-3 text-base text-ink placeholder:text-muted/70 transition-colors focus:border-accent focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-accent";
@@ -27,6 +26,7 @@ export function ContactForm() {
     const form = e.currentTarget;
     const datos = Object.fromEntries(new FormData(form)) as Record<string, string>;
 
+    const { contactSchema, erroresPorCampo } = await cargarEsquema();
     const parsed = contactSchema.safeParse(datos);
     if (!parsed.success) {
       const campos = erroresPorCampo(parsed.error);
@@ -87,7 +87,7 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} noValidate className="grid gap-5" aria-describedby={`${id}-ayuda`}>
+    <form onSubmit={onSubmit} onFocus={() => void cargarEsquema()} noValidate className="grid gap-5" aria-describedby={`${id}-ayuda`}>
       <p id={`${id}-ayuda`} className="text-muted">
         O dejame tus datos y te contesto yo. Con tu email o tu WhatsApp alcanza.
       </p>

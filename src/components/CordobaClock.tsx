@@ -30,7 +30,7 @@ export function CordobaClock() {
   }, []);
 
   return (
-    <span className="inline-flex min-w-[5.5rem] justify-end tabular-nums sm:min-w-[7.5rem]">
+    <span className="inline-flex min-w-[2.75rem] justify-end tabular-nums sm:min-w-[7.5rem]">
       {hora ? (
         <time aria-label={`Hora en Córdoba: ${hora}`}>
           {hora}
