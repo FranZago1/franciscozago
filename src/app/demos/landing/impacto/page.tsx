@@ -58,7 +58,7 @@ function Marquesina() {
 function Intensidad({ valor }: { valor: number }) {
   return (
     <div className="flex items-center gap-3">
-      <span className="text-[11px] font-bold tracking-[0.2em] text-white/45 uppercase">Intensidad</span>
+      <span className="text-[11px] font-bold tracking-[0.2em] text-white/60 uppercase">Intensidad</span>
       <span className="flex gap-1" role="img" aria-label={`Intensidad ${valor} de 5`}>
         {[1, 2, 3, 4, 5].map((i) => (
           <span key={i} className={`h-3 w-2 -skew-x-12 ${i <= valor ? "bg-[#FF4D00]" : "bg-white/15"}`} />
@@ -502,7 +502,7 @@ export default function ImpactoDemo() {
               </p>
             </div>
             <div className="lg:col-span-3">
-              <h3 className="text-xs font-bold tracking-[0.25em] text-white/40 uppercase">Dónde</h3>
+              <h3 className="text-xs font-bold tracking-[0.25em] text-white/60 uppercase">Dónde</h3>
               <p className="mt-4 flex gap-3 text-sm text-white/75">
                 <Icono nombre="pin" grosor={2} className="size-5 shrink-0 text-[#FF4D00]" />
                 Pasaje Los Algarrobos 1180
@@ -511,7 +511,7 @@ export default function ImpactoDemo() {
               </p>
             </div>
             <div className="lg:col-span-3">
-              <h3 className="text-xs font-bold tracking-[0.25em] text-white/40 uppercase">Box abierto</h3>
+              <h3 className="text-xs font-bold tracking-[0.25em] text-white/60 uppercase">Box abierto</h3>
               <dl className="mt-4 space-y-1.5 text-sm text-white/75">
                 <div className="flex justify-between gap-6">
                   <dt>Lunes a viernes</dt>
@@ -521,14 +521,14 @@ export default function ImpactoDemo() {
                   <dt>Sábados</dt>
                   <dd className="tabular-nums">8 a 14 h</dd>
                 </div>
-                <div className="flex justify-between gap-6 text-white/45">
+                <div className="flex justify-between gap-6 text-white/60">
                   <dt>Domingos</dt>
                   <dd>Descanso</dd>
                 </div>
               </dl>
             </div>
             <div className="lg:col-span-2">
-              <h3 className="text-xs font-bold tracking-[0.25em] text-white/40 uppercase">Seguinos</h3>
+              <h3 className="text-xs font-bold tracking-[0.25em] text-white/60 uppercase">Seguinos</h3>
               <p className="mt-4 flex items-center gap-2 text-sm text-white/75">
                 <Icono nombre="camara" grosor={2} className="size-5 text-[#FF4D00]" />
                 @fuerzanorte.box
@@ -541,7 +541,7 @@ export default function ImpactoDemo() {
             </p>
           </div>
           <div className="border-t border-white/10">
-            <div className={`${wrap} flex flex-col gap-2 py-6 text-xs text-white/45 sm:flex-row sm:justify-between`}>
+            <div className={`${wrap} flex flex-col gap-2 py-6 text-xs text-white/60 sm:flex-row sm:justify-between`}>
               <p>© 2026 Fuerza Norte. Demo con contenido ficticio.</p>
               <p>Diseño y desarrollo: Francisco Zago</p>
             </div>

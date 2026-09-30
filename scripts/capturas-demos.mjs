@@ -26,6 +26,12 @@ for (const vertical of readdirSync(appDemos)) {
 
 const browser = await chromium.launch({ args: ["--no-proxy-server"] });
 const page = await browser.newPage({ viewport: { width: 800, height: 1000 }, deviceScaleFactor: 1 });
+// Estados guardados que la captura necesita: saltear el modal de edad de la vinoteca.
+await page.addInitScript(() => {
+  try {
+    localStorage.setItem("cava-aldea-mayor-18", "si");
+  } catch {}
+});
 for (const [vertical, demo] of rutas) {
   if (filtro && !`${vertical}/${demo}`.includes(filtro)) continue;
   await page.goto(`${base}/demos/${vertical}/${demo}`, { waitUntil: "load" });

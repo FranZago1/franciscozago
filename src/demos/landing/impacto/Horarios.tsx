@@ -105,7 +105,7 @@ export function Horarios() {
           <caption className="sr-only">Horarios semanales de clases. Elegí una para precargar tu reserva.</caption>
           <thead>
             <tr>
-              <th scope="col" className="w-20 pb-3 text-xs font-medium tracking-[0.2em] text-white/40 uppercase">
+              <th scope="col" className="w-20 pb-3 text-xs font-medium tracking-[0.2em] text-white/60 uppercase">
                 Hora
               </th>
               {dias.map((d) => (
@@ -202,14 +202,16 @@ export function Horarios() {
                 key={d.id}
                 type="button"
                 aria-pressed={activo}
-                aria-label={`${d.largo}, ${cantidad} clases`}
                 onClick={() => setDiaMovil(d.id)}
                 className={`flex flex-col items-center py-2.5 transition-colors ${
                   activo ? "bg-[#F2EEE6] text-black" : "text-[#F2EEE6] hover:bg-white/5"
                 } border-l border-white/15 first:border-l-0`}
               >
-                <span className={`${display} text-xl uppercase`}>{d.corto}</span>
-                <span className={`text-[11px] tabular-nums ${activo ? "text-black/60" : "text-white/45"}`}>{cantidad} cl.</span>
+                <span className={`${display} text-xl uppercase`}>
+                  {d.corto}
+                  <span className="sr-only"> ({d.largo})</span>
+                </span>
+                <span className={`text-[11px] tabular-nums ${activo ? "text-black/60" : "text-white/60"}`}>{cantidad} cl.</span>
               </button>
             );
           })}

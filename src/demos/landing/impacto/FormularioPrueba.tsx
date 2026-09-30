@@ -252,7 +252,7 @@ export function FormularioPrueba() {
         </div>
         <div>
           <label htmlFor={id("email")} className="text-xs font-bold tracking-[0.2em] text-white/60 uppercase">
-            Email <span className="font-medium tracking-normal normal-case text-white/40">(opcional)</span>
+            Email <span className="font-medium tracking-normal normal-case text-white/60">(opcional)</span>
           </label>
           <input
             id={id("email")}
@@ -440,7 +440,7 @@ export function FormularioPrueba() {
             </>
           )}
         </button>
-        <p id={id("aviso")} className="text-xs text-white/45">
+        <p id={id("aviso")} className="text-xs text-white/60">
           Demo: el formulario valida y simula el envío, pero no manda datos a ningún lado.
         </p>
       </div>
