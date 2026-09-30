@@ -8,8 +8,8 @@ export const site = {
   whatsapp: "5493516822148",
   github: "https://github.com/FranZago1",
   linkedin: "https://www.linkedin.com/in/francisco-zago-ab1829357",
-  // TODO: usuario de Instagram (sin @). Mientras sea null, el botón de Instagram no se muestra.
-  instagram: null as string | null,
+  // Usuario de Instagram (sin @). Si es null, el botón de Instagram no se muestra.
+  instagram: "fran.zago" as string | null,
   // TODO: dominio definitivo (ej. "https://franciscozago.com"). Si no hay, se usa la URL de Vercel.
   dominio: null as string | null,
   disponible: true,

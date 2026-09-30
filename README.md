@@ -66,8 +66,12 @@ solo entrega al email dueño de la cuenta, que tiene que ser `zagofran1@gmail.co
 
 ## Deploy en Vercel
 
-1. Importar el repo en Vercel (framework: Next.js, sin cambios en build ni output).
+1. Importar el repo en Vercel. `vercel.json` fija el framework en Next.js, así que funciona aunque
+   el proyecto se haya importado con otro Framework Preset (por ejemplo "Other", que es lo que Vercel
+   elige si el repo no tenía `package.json` al importarlo). Root Directory: vacío (`./`).
 2. Cargar `RESEND_API_KEY` y `CONTACT_TO_EMAIL`.
 3. Deploy. La URL base para metadata, sitemap y OG se toma de `site.dominio`; si es `null`, de
    `VERCEL_PROJECT_PRODUCTION_URL`.
-4. Con dominio propio: agregarlo en Vercel → Domains y completar `dominio` en `src/content/site.ts`.
+4. Si el sitio no se ve: en Deployments, el último deploy tiene que ser del último commit de `main`
+   y estar en "Ready" (si está en "Error", revisar el log del build); abrir la URL de Production.
+5. Con dominio propio: agregarlo en Vercel → Domains y completar `dominio` en `src/content/site.ts`.
