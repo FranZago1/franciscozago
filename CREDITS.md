@@ -1,5 +1,15 @@
 # Créditos de imágenes
 
+## Demos de servicios (landing, e-commerce, marketplaces, web apps, dashboards, gestión, reservas, catálogos)
+
+Todas las imágenes son **ilustraciones propias** dibujadas en SVG y exportadas a WebP por los scripts
+de `scripts/demos/<vertical>.mjs` (algunas demos usan SVG en línea). No hay fotos de terceros, así
+que no requieren atribución. Si en algún momento se reemplazan por fotos (por ejemplo de Unsplash),
+basta con guardarlas con el mismo nombre de archivo en `public/demos/<vertical>/<estilo>/` y registrar
+autor y URL acá.
+
+## Demos de fotografía
+
 ## Estado actual
 
 Las fotos de las demos son **placeholders generados** (`scripts/placeholders.mjs`): en el entorno donde se armó el sitio no había acceso a Unsplash.

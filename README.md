@@ -32,22 +32,33 @@ Todo está en `src/content/`:
 | `home.ts` | Titular del hero (con chips de imagen), bajada y textos de secciones |
 | `trabajos.ts` | TrendaHaus, BenicioShop y UniChat (home + páginas de caso) |
 | `servicios.ts` | Los 9 servicios y las opciones del formulario |
-| `demos.ts` | Demos agrupadas por vertical, fotógrafos ficticios y fotos |
+| `verticales.ts` | Registro de todas las demos: 9 verticales (una por servicio) × 3 estilos |
+| `demos.ts` | Datos de las demos de fotografía (fotógrafos ficticios y fotos) |
 | `stack.ts` | Stack por categoría y pasos de "Cómo trabajo" |
 
 Los links de WhatsApp se arman siempre con `waLink()` de `src/lib/wa.ts`.
 Buscá `TODO` en `src/content/` para ver lo que falta completar. En `npm run dev` las imágenes
 pendientes muestran una marca amarilla "TODO" (en producción no aparece).
 
+## Demos
+
+Cada servicio tiene 3 demos navegables en `/demos/<vertical>/<estilo>` (27 en total), con contenido
+ficticio y `noindex`. La pantalla `/demos/<vertical>` lista las 3 y se llega desde "Ver demos" en Servicios.
+
+- Página y fuentes: `src/app/demos/<vertical>/<estilo>/`; componentes y datos: `src/demos/<vertical>/`.
+- Ilustraciones: generadas en SVG y exportadas a WebP por `node scripts/demos/<vertical>.mjs`
+  (en `public/demos/<vertical>/<estilo>/`). Se pueden reemplazar por fotos con el mismo nombre de archivo.
+- Reglas de calidad para demos nuevas: [`docs/demos-brief.md`](./docs/demos-brief.md).
+- Vistas previas de las tarjetas: `node scripts/capturas-demos.mjs http://localhost:3000 [filtro]`
+  con el sitio corriendo (requiere Playwright global). Después hay que volver a compilar.
+
 ## Imágenes
 
 - **Trabajos:** `public/trabajos/<slug>/desktop.webp` (16:10), `mobile.webp` (390×844 aprox.) y
   opcional `video.mp4` corto sin audio. Al reemplazarlas, poner `placeholder: false` (y `video` si hay)
   en `trabajos.ts`.
-- **Demos:** ver [`CREDITS.md`](./CREDITS.md) con la lista de fotos y búsquedas sugeridas en Unsplash.
+- **Demos:** ver [`CREDITS.md`](./CREDITS.md).
 - `node scripts/placeholders.mjs` regenera los placeholders que falten (no pisa archivos existentes).
-- `node scripts/capturas-demos.mjs http://localhost:3000` rehace las capturas de las demos que se
-  ven en el home (requiere Playwright instalado globalmente).
 
 ## Formulario de contacto
 
