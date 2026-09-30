@@ -230,3 +230,10 @@ body:has([data-demo="cinematico"]) {
     transform: translate(-4px, 4px) rotate(calc(var(--g, 3deg) * -0.6));
   }
 }
+
+/* Entrada de página al navegar (template.tsx). Solo opacidad: un transform en este
+   contenedor rompería los elementos fixed/sticky de las demos. */
+@media (prefers-reduced-motion: no-preference) {
+  .entrada { animation: entrada 0.45s cubic-bezier(0.22, 1, 0.36, 1) backwards; }
+}
+@keyframes entrada { from { opacity: 0; } to { opacity: 1; } }

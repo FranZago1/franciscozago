@@ -155,28 +155,21 @@ export const trabajos: Trabajo[] = [
     nombre: "UniChat",
     queEs: "Un chat con IA que responde usando tus propios documentos.",
     tipo: "Web app con IA",
-    // TODO: año del proyecto
-    // TODO: rol en el proyecto (¿individual o en equipo?)
     cliente: "Proyecto universitario.",
-    // TODO: repo si es público (ej. "https://github.com/FranZago1/unichat")
     lineaHome: "Un chat con IA que responde usando tus propios documentos.",
-    tags: ["Microservicios en Go", "RAG", "RabbitMQ", "Apache Solr", "Streaming"],
+    tags: ["IA", "Microservicios en Go", "Streaming"],
     problema:
-      "Buscar una respuesta dentro de muchos documentos lleva tiempo. La idea: poder preguntar en lenguaje natural y que la respuesta salga de esos documentos, no de internet.",
+      "Buscar una respuesta dentro de muchos documentos lleva tiempo. La idea: preguntar en lenguaje natural y que la respuesta salga de esos documentos.",
     solucion: [
       "Un chat donde preguntás y la IA responde en base a tus documentos.",
-      "Las respuestas aparecen a medida que se generan, sin esperar a que terminen.",
-      "Puede funcionar con un modelo de IA local o en la nube.",
+      "Las respuestas aparecen a medida que se generan.",
     ],
     porDentro: [
-      "Arquitectura de microservicios en Go.",
-      "Pipeline RAG: los documentos se indexan y los fragmentos relevantes se pasan como contexto al modelo.",
-      "Mensajería asincrónica entre servicios con RabbitMQ.",
-      "Búsqueda vectorial con Apache Solr.",
-      "Respuestas en streaming con Server-Sent Events (SSE).",
-      "Proveedor de IA intercambiable entre local y nube.",
+      "Microservicios en Go comunicados con RabbitMQ.",
+      "Pipeline RAG con búsqueda vectorial en Apache Solr.",
+      "Respuestas en streaming con Server-Sent Events.",
     ],
-    stack: ["Go", "RabbitMQ", "Apache Solr", "RAG", "Embeddings", "SSE", "LLMs"],
+    stack: ["Go", "RabbitMQ", "Apache Solr", "RAG", "SSE"],
     // Recreación de la interfaz generada con scripts/unichat-capturas.mjs (no son capturas reales).
     media: {
       desktop: "/trabajos/unichat/desktop.webp",

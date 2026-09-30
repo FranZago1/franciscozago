@@ -10,12 +10,12 @@ export const site = {
   linkedin: "https://www.linkedin.com/in/francisco-zago-ab1829357",
   // Usuario de Instagram (sin @). Si es null, el botón de Instagram no se muestra.
   instagram: "fran.zago" as string | null,
-  // TODO: dominio definitivo (ej. "https://franciscozago.com"). Si no hay, se usa la URL de Vercel.
-  dominio: null as string | null,
+  // Dominio definitivo. Si es null, se usa la URL de Vercel.
+  dominio: "https://franciscozago.dev" as string | null,
   disponible: true,
   titulo: "Francisco Zago — Desarrollo web en Córdoba",
   descripcion:
-    "Diseño y desarrollo sitios, tiendas online y sistemas web para negocios de Córdoba y Argentina. Escribime por WhatsApp y armamos tu proyecto.",
+    "Desarrollo sitios, tiendas online y sistemas web para negocios de Córdoba y Argentina. Escribime por WhatsApp y armamos tu proyecto.",
 } as const;
 
 /** URL base del sitio para metadata, sitemap y OG. */

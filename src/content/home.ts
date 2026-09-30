@@ -58,7 +58,6 @@ export const serviciosCopy = {
 
 export const contactoCopy = {
   titulo: "Hablemos",
-  // TODO: confirmar que se puede cumplir "te respondo en el día"; si no, cambiar esta línea.
   linea: "Contame tu idea y te respondo en el día.",
   mensajeWa: "Hola Fran, vi tu portfolio y quiero consultarte por un proyecto.",
   asuntoEmail: "Consulta desde tu portfolio",
