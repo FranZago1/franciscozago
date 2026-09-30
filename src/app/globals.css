@@ -84,3 +84,38 @@
 body:has([data-demo="cinematico"]) {
   background: #000000;
 }
+
+/* Entrada del hero: único momento orquestado. Opacidad mínima (no 0) para que el
+   navegador registre el pintado del titular como LCP desde el primer frame. */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-word {
+    animation: hero-word 650ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: calc(var(--i, 0) * 55ms);
+  }
+  .hero-chip {
+    animation: hero-chip 700ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    animation-delay: calc(var(--i, 0) * 55ms + 120ms);
+  }
+}
+
+@keyframes hero-word {
+  from {
+    opacity: 0.01;
+    transform: translateY(0.3em);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes hero-chip {
+  from {
+    opacity: 0.01;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

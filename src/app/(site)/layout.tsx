@@ -1,4 +1,5 @@
 import { Footer } from "@/components/Footer";
+import { CordobaClock } from "@/components/CordobaClock";
 import { Header } from "@/components/Header";
 import { hanken, newsreader } from "./fonts";
 
@@ -11,7 +12,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
       >
         Saltar al contenido
       </a>
-      <Header />
+      <Header clock={<CordobaClock />} />
       <main id="contenido">{children}</main>
       <Footer />
     </div>
