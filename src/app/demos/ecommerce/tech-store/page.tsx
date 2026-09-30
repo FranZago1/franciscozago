@@ -91,7 +91,7 @@ export default function TechStoreDemo() {
                 </span>
                 <div>
                   <p className="text-sm font-bold">{t}</p>
-                  <p className="text-xs text-[#16181D]/60">{d}</p>
+                  <p className="text-xs text-[#16181D]/62">{d}</p>
                 </div>
               </li>
             ))}
@@ -113,18 +113,19 @@ export default function TechStoreDemo() {
               const off = Math.round((1 - p.precio / (p.precioAnterior ?? p.precio)) * 100);
               return (
                 <li key={p.id}>
-                  <BotonDetalle id={p.id} label={`${p.nombre}, ${off} % off, ${pesos(p.precio)}. Ver detalle`} className={`group flex w-full items-center gap-4 rounded-2xl border border-[#16181D]/8 p-3 text-left transition-shadow hover:shadow-[0_18px_40px_-24px_rgba(22,24,29,0.35)] ${foco}`}>
+                  <BotonDetalle id={p.id} className={`group flex w-full items-center gap-4 rounded-2xl border border-[#16181D]/8 p-3 text-left transition-shadow hover:shadow-[0_18px_40px_-24px_rgba(22,24,29,0.35)] ${foco}`}>
                     <span className="relative size-28 shrink-0 overflow-hidden rounded-xl bg-[#EEF1F5] sm:size-32">
                       <Image src={p.imagen} alt="" fill sizes="128px" className="object-cover transition-transform duration-500 group-hover:scale-105 motion-reduce:transition-none" />
                     </span>
                     <span className="min-w-0">
                       <span className={`${mono} inline-block rounded-md bg-[#2F5BFF] px-1.5 py-0.5 text-xs font-semibold text-white`}>-{off}%</span>
                       <span className="mt-2 block font-semibold">{p.nombre}</span>
-                      <span className="block text-xs text-[#16181D]/45 line-through tabular-nums">{pesos(p.precioAnterior ?? 0)}</span>
+                      <span className="block text-xs text-[#16181D]/62 line-through tabular-nums"><span className="sr-only">Antes </span>{pesos(p.precioAnterior ?? 0)}</span>
                       <span className="block text-xl font-bold tracking-[-0.02em] tabular-nums">{pesos(p.precio)}</span>
-                      <span className="block text-xs text-[#0F8A5F]">
+                      <span className="block text-xs text-[#0D8259]">
                         12 × {pesos(cuota(p.precio, 12))} sin interés
                       </span>
+                      <span className="sr-only">. Ver detalle</span>
                     </span>
                   </BotonDetalle>
                 </li>
@@ -139,7 +140,7 @@ export default function TechStoreDemo() {
             <h2 id="catalogo-titulo" className="text-3xl font-extrabold tracking-[-0.035em] sm:text-4xl">
               Catálogo
             </h2>
-            <p className="text-sm text-[#16181D]/60">Combiná filtros y tildá «Comparar» en hasta 3 productos.</p>
+            <p className="text-sm text-[#16181D]/62">Combiná filtros y tildá «Comparar» en hasta 3 productos.</p>
           </div>
           <Catalogo />
         </section>
@@ -151,14 +152,14 @@ export default function TechStoreDemo() {
               <h2 id="ayuda-titulo" className="text-3xl font-extrabold tracking-[-0.035em] sm:text-4xl">
                 Envíos, cuotas y garantía
               </h2>
-              <p className="mt-3 max-w-sm text-[#16181D]/60">Lo que más nos preguntan antes de comprar. Si te queda una duda, escribinos y te responde una persona.</p>
+              <p className="mt-3 max-w-sm text-[#16181D]/62">Lo que más nos preguntan antes de comprar. Si te queda una duda, escribinos y te responde una persona.</p>
               <div className="mt-6 flex items-center gap-3 rounded-2xl bg-white p-4">
                 <span className="grid size-11 place-items-center rounded-xl bg-[#EEF2FF] text-[#2F5BFF]">
                   <IconoTarjeta className="size-5" />
                 </span>
                 <p className="text-sm">
                   <strong className="block">Pagás con Mercado Pago</strong>
-                  <span className="text-[#16181D]/60">Tarjetas de crédito, débito o dinero en cuenta.</span>
+                  <span className="text-[#16181D]/62">Tarjetas de crédito, débito o dinero en cuenta.</span>
                 </p>
               </div>
             </div>
@@ -191,7 +192,7 @@ export default function TechStoreDemo() {
             ["Sucursal", ["Nueva Córdoba, Córdoba", "Lun a sáb, 10 a 20 h", "@voltio.demo"]],
           ].map(([t, items]) => (
             <div key={t as string}>
-              <p className={`${mono} text-xs tracking-[0.12em] text-white/45 uppercase`}>{t as string}</p>
+              <p className={`${mono} text-xs tracking-[0.12em] text-white/50 uppercase`}>{t as string}</p>
               <ul className="mt-3 space-y-2 text-sm text-white/75">
                 {(items as string[]).map((i) => (
                   <li key={i}>{i}</li>
@@ -200,7 +201,7 @@ export default function TechStoreDemo() {
             </div>
           ))}
         </div>
-        <p className="mx-auto max-w-[1320px] border-t border-white/10 px-4 pt-6 pb-32 text-xs text-white/45 sm:px-6">
+        <p className="mx-auto max-w-[1320px] border-t border-white/10 px-4 pt-6 pb-32 text-xs text-white/50 sm:px-6">
           Demo con contenido ficticio. Voltio y las marcas Nodo, Kairo, Sónica y Vektra no existen: productos, precios y cuotas son inventados.
         </p>
       </footer>

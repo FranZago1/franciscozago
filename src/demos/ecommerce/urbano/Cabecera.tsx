@@ -43,7 +43,7 @@ export function Cabecera() {
           type="button"
           onClick={() => tienda.abrir("carrito")}
           className={`group relative -mr-2 flex h-10 items-center gap-2 px-2 text-xs font-bold tracking-[0.18em] uppercase ${foco}`}
-          aria-label={`Abrir carrito, ${cantidad} ${cantidad === 1 ? "producto" : "productos"}`}
+          aria-label={`Carrito, ${cantidad} ${cantidad === 1 ? "producto" : "productos"}`}
         >
           <span className="hidden sm:inline">Carrito</span>
           <span className="relative">

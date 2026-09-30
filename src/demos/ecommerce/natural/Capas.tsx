@@ -49,22 +49,22 @@ function Ficha() {
               <IconoCerrar />
             </button>
           </div>
-          <p className="mt-5 text-sm text-[#2D3524]/55 italic">{ing.cientifico}</p>
+          <p className="mt-5 text-sm text-[#2D3524]/72 italic">{ing.cientifico}</p>
           <h2 id="hb-ficha-titulo" className={`${serif} mt-1 text-4xl`}>
             {ing.nombre}
           </h2>
           <p className="mt-3 text-lg leading-relaxed text-[#2D3524]/85">{ing.resumen}</p>
           <dl className="mt-6 grid gap-4 rounded-3xl bg-white p-5 text-sm sm:grid-cols-2">
             <div>
-              <dt className="text-[#2D3524]/55">Origen</dt>
+              <dt className="text-[#2D3524]/72">Origen</dt>
               <dd className="mt-0.5 font-medium">{ing.origen}</dd>
             </div>
             <div>
-              <dt className="text-[#2D3524]/55">Ideal para</dt>
+              <dt className="text-[#2D3524]/72">Ideal para</dt>
               <dd className="mt-0.5 font-medium">{ing.apto}</dd>
             </div>
             <div className="sm:col-span-2">
-              <dt className="text-[#2D3524]/55">Qué hace</dt>
+              <dt className="text-[#2D3524]/72">Qué hace</dt>
               <dd className="mt-2">
                 <ul className="grid gap-1.5">
                   {ing.beneficios.map((b) => (
@@ -186,9 +186,9 @@ export function Resenas({ lista }: { lista: Resena[] }) {
                 </span>
                 <div className="min-w-0 flex-1 text-sm">
                   <p className="font-medium">
-                    {r.autor} <span className="font-normal text-[#2D3524]/55">· {r.ciudad}</span>
+                    {r.autor} <span className="font-normal text-[#2D3524]/72">· {r.ciudad}</span>
                   </p>
-                  <p className="text-xs text-[#2D3524]/55">
+                  <p className="text-xs text-[#2D3524]/72">
                     Compra verificada · {r.hace}
                   </p>
                 </div>
@@ -199,7 +199,7 @@ export function Resenas({ lista }: { lista: Resena[] }) {
                     <Image src={p.imagen} alt="" fill sizes="40px" className="object-cover" />
                   </span>
                   <span className="min-w-0 flex-1 truncate">{p.nombre}</span>
-                  <span className="pr-2 text-[#2D3524]/60" aria-hidden="true">
+                  <span className="pr-2 text-[#2D3524]/72" aria-hidden="true">
                     →
                   </span>
                 </button>

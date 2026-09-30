@@ -87,19 +87,19 @@ function DetalleContenido({ p }: { p: ProductoTech }) {
         <button type="button" onClick={() => tienda.verDetalle(null)} className={`absolute top-3 right-3 grid size-10 place-items-center rounded-lg hover:bg-[#16181D]/6 ${foco}`} aria-label="Cerrar detalle">
           <IconoCerrar />
         </button>
-        <p className={`${mono} text-xs tracking-[0.12em] text-[#16181D]/50 uppercase`}>
+        <p className={`${mono} text-xs tracking-[0.12em] text-[#16181D]/62 uppercase`}>
           {p.marca} · {p.categoria} · SKU VT-{p.id.toUpperCase()}
         </p>
         <h2 id="vt-detalle-titulo" className="mt-2 pr-10 text-3xl font-bold tracking-[-0.03em] sm:text-4xl">
           {p.nombre}
         </h2>
-        <div className="mt-2 flex items-center gap-2 text-sm text-[#16181D]/60">
+        <div className="mt-2 flex items-center gap-2 text-sm text-[#16181D]/62">
           <Estrellas valor={p.rating} colorLleno="#F5A524" colorVacio="#16181D" />
           <span className={mono}>{String(p.rating).replace(".", ",")}</span> · {p.opiniones} opiniones
         </div>
 
         <div className="mt-5">
-          {p.precioAnterior ? <p className="text-sm text-[#16181D]/45 line-through tabular-nums">{pesos(p.precioAnterior)}</p> : null}
+          {p.precioAnterior ? <p className="text-sm text-[#16181D]/62 line-through tabular-nums">{pesos(p.precioAnterior)}</p> : null}
           <p className="text-4xl font-bold tracking-[-0.03em] tabular-nums">{pesos(p.precio)}</p>
         </div>
         <div className="mt-3 flex flex-wrap items-center gap-2 rounded-xl bg-[#ECFDF5] p-3 text-sm text-[#0B6B4A]">
@@ -142,7 +142,7 @@ function DetalleContenido({ p }: { p: ProductoTech }) {
               setHecho(true);
               window.setTimeout(() => setHecho(false), 1600);
             }}
-            className={`inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-xl px-6 font-semibold text-white transition-colors disabled:bg-[#16181D]/10 disabled:text-[#16181D]/45 ${foco} ${hecho ? "bg-[#0F8A5F]" : "bg-[#2F5BFF] hover:bg-[#2249E0]"}`}
+            className={`inline-flex min-h-12 flex-1 items-center justify-center gap-2 rounded-xl px-6 font-semibold text-white transition-colors disabled:bg-[#16181D]/10 disabled:text-[#16181D]/45 ${foco} ${hecho ? "bg-[#0D8259]" : "bg-[#2F5BFF] hover:bg-[#2249E0]"}`}
           >
             {hecho ? (
               <>
@@ -187,7 +187,7 @@ function DetalleContenido({ p }: { p: ProductoTech }) {
               Calcular
             </button>
           </div>
-          <p id={`${uid}-cp-res`} aria-live="polite" className={`mt-2 min-h-5 text-sm ${envio === "error" ? "text-[#C4231A]" : "font-medium text-[#0F8A5F]"}`}>
+          <p id={`${uid}-cp-res`} aria-live="polite" className={`mt-2 min-h-5 text-sm ${envio === "error" ? "text-[#C4231A]" : "font-medium text-[#0D8259]"}`}>
             {envio === "error" ? "Ingresá un código postal de 4 números." : envio ?? ""}
           </p>
         </form>
@@ -201,7 +201,7 @@ function DetalleContenido({ p }: { p: ProductoTech }) {
             <tbody>
               {p.specs.map(([k, v]) => (
                 <tr key={k} className="border-b border-[#16181D]/8 last:border-0">
-                  <th scope="row" className="w-2/5 py-2.5 pr-4 text-left font-medium text-[#16181D]/60">
+                  <th scope="row" className="w-2/5 py-2.5 pr-4 text-left font-medium text-[#16181D]/62">
                     {k}
                   </th>
                   <td className={`${mono} py-2.5 text-[13px]`}>{v}</td>
@@ -246,7 +246,7 @@ function Comparador() {
       <div className="p-4 pb-8 sm:p-8">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
-            <p className={`${mono} text-xs tracking-[0.12em] text-[#16181D]/50 uppercase`}>Comparador</p>
+            <p className={`${mono} text-xs tracking-[0.12em] text-[#16181D]/62 uppercase`}>Comparador</p>
             <h2 id="vt-comp-titulo" className="text-2xl font-bold tracking-[-0.02em] sm:text-3xl">
               {ps.length} productos lado a lado
             </h2>
@@ -282,7 +282,7 @@ function Comparador() {
                         <IconoCerrar className="size-4" />
                       </button>
                     </div>
-                    <p className={`${mono} mt-3 text-[11px] tracking-[0.1em] text-[#16181D]/50 uppercase`}>{p.marca}</p>
+                    <p className={`${mono} mt-3 text-[11px] tracking-[0.1em] text-[#16181D]/62 uppercase`}>{p.marca}</p>
                     <p className="font-semibold leading-snug">{p.nombre}</p>
                   </th>
                 ))}
@@ -290,43 +290,43 @@ function Comparador() {
             </thead>
             <tbody>
               <tr>
-                <th scope="row" className="sticky left-0 z-10 border-t border-[#16181D]/8 bg-white py-3 pr-3 text-left font-medium text-[#16181D]/60">
+                <th scope="row" className="sticky left-0 z-10 border-t border-[#16181D]/8 bg-white py-3 pr-3 text-left font-medium text-[#16181D]/62">
                   Precio
                 </th>
                 {ps.map((p) => (
                   <td key={p.id} className={`border-t border-[#16181D]/8 px-2 py-3 sm:px-3 ${ps.length > 1 && p.precio === minPrecio ? "bg-[#ECFDF5]" : ""}`}>
                     <span className="text-lg font-bold tabular-nums">{pesos(p.precio)}</span>
-                    {ps.length > 1 && p.precio === minPrecio ? <span className="block text-xs font-semibold text-[#0F8A5F]">El más barato</span> : null}
+                    {ps.length > 1 && p.precio === minPrecio ? <span className="block text-xs font-semibold text-[#0D8259]">El más barato</span> : null}
                   </td>
                 ))}
               </tr>
               <tr>
-                <th scope="row" className="sticky left-0 z-10 border-t border-[#16181D]/8 bg-white py-3 pr-3 text-left font-medium text-[#16181D]/60">
+                <th scope="row" className="sticky left-0 z-10 border-t border-[#16181D]/8 bg-white py-3 pr-3 text-left font-medium text-[#16181D]/62">
                   Cuotas
                 </th>
                 {ps.map((p) => (
-                  <td key={p.id} className="border-t border-[#16181D]/8 px-2 py-3 text-[#0F8A5F] sm:px-3">
+                  <td key={p.id} className="border-t border-[#16181D]/8 px-2 py-3 text-[#0D8259] sm:px-3">
                     12 × {pesos(cuota(p.precio, 12))}
                   </td>
                 ))}
               </tr>
               <tr>
-                <th scope="row" className="sticky left-0 z-10 border-t border-[#16181D]/8 bg-white py-3 pr-3 text-left font-medium text-[#16181D]/60">
+                <th scope="row" className="sticky left-0 z-10 border-t border-[#16181D]/8 bg-white py-3 pr-3 text-left font-medium text-[#16181D]/62">
                   Puntuación
                 </th>
                 {ps.map((p) => (
                   <td key={p.id} className={`border-t border-[#16181D]/8 px-2 py-3 sm:px-3 ${ps.length > 1 && p.rating === maxRating ? "bg-[#FFF8E6]" : ""}`}>
-                    <span className={`${mono} font-semibold`}>{String(p.rating).replace(".", ",")}</span> <span className="text-[#16181D]/50">/ 5 · {p.opiniones}</span>
+                    <span className={`${mono} font-semibold`}>{String(p.rating).replace(".", ",")}</span> <span className="text-[#16181D]/62">/ 5 · {p.opiniones}</span>
                   </td>
                 ))}
               </tr>
               {visibles.map((f) => (
                 <tr key={f.k}>
-                  <th scope="row" className="sticky left-0 z-10 border-t border-[#16181D]/8 bg-white py-3 pr-3 text-left font-medium text-[#16181D]/60">
+                  <th scope="row" className="sticky left-0 z-10 border-t border-[#16181D]/8 bg-white py-3 pr-3 text-left font-medium text-[#16181D]/62">
                     {f.k}
                   </th>
                   {f.vals.map((v, i) => (
-                    <td key={i} className={`${mono} border-t border-[#16181D]/8 px-2 py-3 text-[13px] sm:px-3 ${f.distinta ? "bg-[#F4F7FF]" : ""} ${v === "—" ? "text-[#16181D]/35" : ""}`}>
+                    <td key={i} className={`${mono} border-t border-[#16181D]/8 px-2 py-3 text-[13px] sm:px-3 ${f.distinta ? "bg-[#F4F7FF]" : ""} ${v === "—" ? "text-[#16181D]/62" : ""}`}>
                       {v}
                     </td>
                   ))}
@@ -350,7 +350,7 @@ function Comparador() {
             </tbody>
           </table>
         </div>
-        <p className="mt-4 flex items-center gap-2 text-xs text-[#16181D]/55">
+        <p className="mt-4 flex items-center gap-2 text-xs text-[#16181D]/62">
           <span className="inline-block size-3 rounded bg-[#F4F7FF] ring-1 ring-[#2F5BFF]/30" aria-hidden="true" /> Las filas resaltadas tienen valores distintos entre productos.
         </p>
       </div>

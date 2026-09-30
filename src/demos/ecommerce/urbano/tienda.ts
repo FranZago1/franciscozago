@@ -30,7 +30,7 @@ export const tema: TemaTienda = {
   imagen: "bg-[#E4E2DC]",
   acento: "text-[#0B0B0B]",
   toast: "",
-  paso: "border-t-4 border-[#0B0B0B]/15 pt-2 text-xs font-bold tracking-[0.1em] uppercase text-[#0B0B0B]/50",
+  paso: "border-t-4 border-[#0B0B0B]/15 pt-2 text-xs font-bold tracking-[0.1em] uppercase text-[#0B0B0B]/60",
   pasoOn: "!border-[#0B0B0B] !text-[#0B0B0B]",
   control: "border-2 border-[#0B0B0B]/20 bg-white",
 };

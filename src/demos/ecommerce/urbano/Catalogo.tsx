@@ -58,7 +58,7 @@ export function Catalogo() {
             Ocultar agotados
           </label>
           <label className="flex items-center gap-2">
-            <span className="text-[#0B0B0B]/55">Ordenar</span>
+            <span className="text-[#0B0B0B]/60">Ordenar</span>
             <select
               value={orden}
               onChange={(e) => setOrden(e.target.value as Orden)}
@@ -72,7 +72,7 @@ export function Catalogo() {
         </div>
       </div>
 
-      <p className="mt-4 text-xs font-bold tracking-[0.14em] text-[#0B0B0B]/55 uppercase" aria-live="polite">
+      <p className="mt-4 text-xs font-bold tracking-[0.14em] text-[#0B0B0B]/60 uppercase" aria-live="polite">
         {lista.length} {lista.length === 1 ? "producto" : "productos"}
         {cat !== "Todo" ? ` en ${cat.toLowerCase()}` : ""}
       </p>
@@ -97,7 +97,6 @@ type Variante = "normal" | "grande" | "ancha";
 
 function Tarjeta({ p, variante }: { p: ProductoUrbano; variante: Variante }) {
   const disponibles = p.talles.filter((t) => !p.sinStock?.includes(t));
-  const etiqueta = `${p.nombre}, ${pesos(p.precio)}${p.agotado ? ", agotado" : ""}. Ver detalle`;
   const badges = (
     <div className="absolute top-2.5 left-2.5 flex flex-col items-start gap-1.5">
       {p.nuevo ? <span className="bg-[#D4FF2E] px-2 py-1 text-[10px] font-black tracking-[0.16em] text-[#0B0B0B] uppercase">Nuevo</span> : null}
@@ -108,7 +107,7 @@ function Tarjeta({ p, variante }: { p: ProductoUrbano; variante: Variante }) {
   const imagen = (sizes: string, extra = "") => (
     <Image
       src={p.imagen}
-      alt={p.alt}
+      alt=""
       fill
       sizes={sizes}
       className={`object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04] motion-reduce:transition-none ${p.agotado ? "opacity-60 grayscale" : ""} ${extra}`}
@@ -117,7 +116,7 @@ function Tarjeta({ p, variante }: { p: ProductoUrbano; variante: Variante }) {
 
   if (variante === "ancha") {
     return (
-      <button type="button" onClick={() => tienda.verDetalle(p.id)} className={`group grid w-full grid-cols-2 bg-[#0B0B0B] text-left text-[#F3F2EE] md:block md:bg-transparent md:text-inherit lg:grid lg:h-full lg:bg-[#0B0B0B] lg:text-[#F3F2EE] ${foco}`} aria-label={etiqueta}>
+      <button type="button" onClick={() => tienda.verDetalle(p.id)} className={`group grid w-full grid-cols-2 bg-[#0B0B0B] text-left text-[#F3F2EE] md:block md:bg-transparent md:text-inherit lg:grid lg:h-full lg:bg-[#0B0B0B] lg:text-[#F3F2EE] ${foco}`}>
         <div className="relative aspect-[4/5] overflow-hidden bg-[#E4E2DC] lg:aspect-auto lg:h-full lg:min-h-[420px]">
           {imagen("(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw")}
           {badges}
@@ -142,7 +141,7 @@ function Tarjeta({ p, variante }: { p: ProductoUrbano; variante: Variante }) {
 
   const grande = variante === "grande";
   return (
-    <button type="button" onClick={() => tienda.verDetalle(p.id)} className={`group flex w-full flex-col text-left ${grande ? "h-full" : ""} ${foco}`} aria-label={etiqueta}>
+    <button type="button" onClick={() => tienda.verDetalle(p.id)} className={`group flex w-full flex-col text-left ${grande ? "h-full" : ""} ${foco}`}>
       <div className={`relative overflow-hidden bg-[#E4E2DC] ${grande ? "aspect-[4/5] md:aspect-[4/5] lg:aspect-auto lg:min-h-[560px] lg:flex-1" : "aspect-[4/5]"}`}>
         {imagen(grande ? "(min-width: 1024px) 50vw, (min-width: 768px) 33vw, 100vw" : "(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw")}
         {badges}
@@ -154,6 +153,7 @@ function Tarjeta({ p, variante }: { p: ProductoUrbano; variante: Variante }) {
         ) : null}
       </div>
       <Info p={p} grande={grande} />
+      <span className="sr-only">Ver detalle</span>
     </button>
   );
 }
@@ -163,12 +163,12 @@ function Info({ p, grande = false }: { p: ProductoUrbano; grande?: boolean }) {
     <div className="mt-3 flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between sm:gap-3">
       <div className="min-w-0">
         <h3 className={`${display} text-lg leading-tight uppercase sm:text-xl ${grande ? "lg:text-4xl" : ""}`}>{p.nombre}</h3>
-        <p className="mt-0.5 text-xs text-[#0B0B0B]/55">{p.color}</p>
+        <p className="mt-0.5 text-xs text-[#0B0B0B]/60">{p.color}</p>
       </div>
       <div className="shrink-0 sm:text-right">
         <p className={`text-sm font-bold tabular-nums ${p.agotado ? "text-[#0B0B0B]/40 line-through" : ""}`}>{pesos(p.precio)}</p>
         {!p.agotado ? (
-          <p className="hidden text-[11px] text-[#0B0B0B]/55 sm:block">
+          <p className="hidden text-[11px] text-[#0B0B0B]/60 sm:block">
             {config.cuotasSinInteres} × {pesos(cuota(p.precio, config.cuotasSinInteres))}
           </p>
         ) : null}

@@ -31,7 +31,7 @@ export function Catalogo() {
             </button>
           ))}
         </div>
-        <p className="text-sm text-[#2D3524]/60" aria-live="polite">
+        <p className="text-sm text-[#2D3524]/72" aria-live="polite">
           {lista.length} productos
         </p>
       </div>
@@ -82,7 +82,7 @@ function Tarjeta({ p }: { p: ProductoNatural }) {
         </button>
       </div>
       <div className="mt-3 flex flex-1 flex-col px-1">
-        <div className="flex items-center gap-1.5 text-xs text-[#2D3524]/65">
+        <div className="flex items-center gap-1.5 text-xs text-[#2D3524]/72">
           <Estrellas valor={p.rating} className="size-3.5" colorLleno="#B8743F" colorVacio="#2D3524" />
           <span>
             {String(p.rating).replace(".", ",")} ({p.resenas})
@@ -93,10 +93,10 @@ function Tarjeta({ p }: { p: ProductoNatural }) {
             {p.nombre}
           </button>
         </h3>
-        <p className="mt-1 hidden text-sm leading-snug text-[#2D3524]/65 sm:block">{p.bajada}</p>
+        <p className="mt-1 hidden text-sm leading-snug text-[#2D3524]/72 sm:block">{p.bajada}</p>
         <p className="mt-auto flex items-baseline gap-2 pt-2">
           <span className="font-semibold tabular-nums">{pesos(p.precio)}</span>
-          <span className="text-xs text-[#2D3524]/55">{p.tamano}</span>
+          <span className="text-xs text-[#2D3524]/72">{p.tamano}</span>
         </p>
       </div>
     </article>

@@ -98,7 +98,7 @@ function QuizContenido() {
   return (
     <div className="p-5 pb-8 sm:p-8">
       <div className="flex items-center justify-between gap-4">
-        <p className="text-sm font-medium text-[#2D3524]/60">{resultado ? "Tu rutina" : `Pregunta ${paso + 1} de ${total}`}</p>
+        <p className="text-sm font-medium text-[#2D3524]/72">{resultado ? "Tu rutina" : `Pregunta ${paso + 1} de ${total}`}</p>
         <button type="button" onClick={() => quiz.set(false)} className={`grid size-10 place-items-center rounded-full hover:bg-[#2D3524]/8 ${foco}`} aria-label="Cerrar test">
           <IconoCerrar />
         </button>
@@ -131,7 +131,7 @@ function QuizContenido() {
                     </span>
                     <span>
                       <span className="block font-semibold">{o.texto}</span>
-                      <span className="block text-sm text-[#2D3524]/60">{o.ayuda}</span>
+                      <span className="block text-sm text-[#2D3524]/72">{o.ayuda}</span>
                     </span>
                   </label>
                 );
@@ -172,7 +172,7 @@ function QuizContenido() {
                 <li key={x.id} className="flex items-center gap-3 rounded-2xl bg-white p-3">
                   <span className="grid size-8 shrink-0 place-items-center rounded-full bg-[#ECEEE3] text-sm font-semibold">{i + 1}</span>
                   <span className="min-w-0 flex-1">
-                    <span className="block text-xs text-[#2D3524]/55">{x.momento}</span>
+                    <span className="block text-xs text-[#2D3524]/72">{x.momento}</span>
                     <span className="block truncate font-medium">{p.nombre}</span>
                   </span>
                   <span className="text-sm tabular-nums">{pesos(p.precio)}</span>
@@ -182,7 +182,7 @@ function QuizContenido() {
           </ol>
           <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <p>
-              <span className="text-sm text-[#2D3524]/60">Total de la rutina</span>
+              <span className="text-sm text-[#2D3524]/72">Total de la rutina</span>
               <span className="block text-2xl font-semibold tabular-nums">{pesos(precioRutina(resultado))}</span>
             </p>
             <button
@@ -238,7 +238,7 @@ function Extra({ id, agregado, onAgregar }: { id: string; agregado: boolean; onA
         <Image src={p.imagen} alt={p.alt} fill sizes="64px" className="object-cover" />
       </div>
       <div className="min-w-0 flex-1">
-        <p className="text-sm text-[#2D3524]/60">Como tenés más tiempo, sumá:</p>
+        <p className="text-sm text-[#2D3524]/72">Como tenés más tiempo, sumá:</p>
         <p className="font-semibold">
           {p.nombre} · {pesos(p.precio)}
         </p>

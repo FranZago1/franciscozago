@@ -63,7 +63,7 @@ export default function NaturalDemo() {
               </div>
               <div className="text-sm">
                 <Estrellas valor={4.8} colorLleno="#B8743F" colorVacio="#2D3524" />
-                <p className="mt-0.5 text-[#2D3524]/70">
+                <p className="mt-0.5 text-[#2D3524]/72">
                   <strong className="text-[#2D3524]">4,8</strong> en {totalResenas.toLocaleString("es-AR")} reseñas verificadas
                 </p>
               </div>
@@ -75,7 +75,7 @@ export default function NaturalDemo() {
             </div>
             <div className="absolute bottom-6 -left-1 rounded-3xl bg-[#F6F5EF] p-4 shadow-[0_20px_40px_-20px_rgba(45,53,36,0.45)] sm:left-0 md:-left-6">
               <p className={`${serif} text-3xl`}>98 %</p>
-              <p className="text-sm text-[#2D3524]/70">de origen natural</p>
+              <p className="text-sm text-[#2D3524]/72">de origen natural</p>
             </div>
             <div className="absolute top-10 right-0 hidden items-center gap-2 rounded-full bg-[#F6F5EF] py-2 pr-4 pl-2 text-sm shadow-[0_16px_30px_-18px_rgba(45,53,36,0.5)] sm:flex md:-right-4">
               <span className="grid size-8 place-items-center rounded-full bg-[#ECEEE3]">
@@ -96,7 +96,7 @@ export default function NaturalDemo() {
                 </span>
                 <div>
                   <p className="font-semibold">{t}</p>
-                  <p className="mt-0.5 text-sm leading-snug text-[#2D3524]/65">{d}</p>
+                  <p className="mt-0.5 text-sm leading-snug text-[#2D3524]/72">{d}</p>
                 </div>
               </li>
             ))}
@@ -110,7 +110,7 @@ export default function NaturalDemo() {
             <h2 id="rutinas-titulo" className={`${serif} mt-2 text-[clamp(2.4rem,5vw,3.8rem)] leading-[1.05] font-light`}>
               Rutinas armadas, <em>sin pensar de más</em>
             </h2>
-            <p className="mt-4 text-lg text-[#2D3524]/70">Tres pasos que funcionan juntos. Las agregás al carrito de una vez y después ajustás lo que quieras.</p>
+            <p className="mt-4 text-lg text-[#2D3524]/72">Tres pasos que funcionan juntos. Las agregás al carrito de una vez y después ajustás lo que quieras.</p>
           </div>
           <ul className="mt-12 grid gap-6 lg:grid-cols-3">
             {rutinas.map((r) => {
@@ -121,7 +121,7 @@ export default function NaturalDemo() {
                     <Image src={r.imagen} alt={r.alt} fill sizes="(min-width: 1024px) 33vw, 100vw" className="object-cover" />
                   </div>
                   <div className="flex flex-1 flex-col p-6">
-                    <p className="text-sm text-[#2D3524]/60">{r.para}</p>
+                    <p className="text-sm text-[#2D3524]/72">{r.para}</p>
                     <h3 className={`${serif} mt-1 text-3xl`}>{r.nombre}</h3>
                     <ol className="mt-5 space-y-1">
                       {r.pasos.map((x, i) => {
@@ -134,12 +134,12 @@ export default function NaturalDemo() {
                                 <Image src={p.imagen} alt="" fill sizes="48px" className="object-cover" />
                               </span>
                               <span className="min-w-0 flex-1">
-                                <span className="block text-xs text-[#2D3524]/55">
+                                <span className="block text-xs text-[#2D3524]/72">
                                   Paso {i + 1} · {x.momento}
                                 </span>
                                 <span className="block truncate font-medium">{p.nombre}</span>
                               </span>
-                              <span className="text-sm text-[#2D3524]/70 tabular-nums">{pesos(p.precio)}</span>
+                              <span className="text-sm text-[#2D3524]/72 tabular-nums">{pesos(p.precio)}</span>
                             </BotonProducto>
                           </li>
                         );
@@ -147,7 +147,7 @@ export default function NaturalDemo() {
                     </ol>
                     <div className="mt-auto pt-6">
                       <p className="mb-3 flex items-baseline justify-between border-t border-[#2D3524]/10 pt-4">
-                        <span className="text-sm text-[#2D3524]/60">Total de la rutina</span>
+                        <span className="text-sm text-[#2D3524]/72">Total de la rutina</span>
                         <span className="text-xl font-semibold tabular-nums">{pesos(total)}</span>
                       </p>
                       <BotonRutina id={r.id} />
@@ -164,7 +164,7 @@ export default function NaturalDemo() {
             </div>
             <div className="relative max-w-xl">
               <h2 className={`${serif} text-[clamp(2rem,4.4vw,3.2rem)] leading-[1.08] font-light`}>¿No sabés por dónde empezar?</h2>
-              <p className="mt-3 text-lg text-[#2D3524]/80">Respondé 3 preguntas cortas y te recomendamos la rutina que va con tu piel. La podés sumar al carrito en un toque.</p>
+              <p className="mt-3 text-lg text-[#2D3524]/85">Respondé 3 preguntas cortas y te recomendamos la rutina que va con tu piel. La podés sumar al carrito en un toque.</p>
               <BotonQuiz className={`${botonPrimario} mt-7`}>Empezar el test</BotonQuiz>
             </div>
           </div>
@@ -176,7 +176,7 @@ export default function NaturalDemo() {
             <h2 id="tienda-titulo" className={`${serif} text-[clamp(2.4rem,5vw,3.8rem)] leading-[1.05] font-light`}>
               La tienda
             </h2>
-            <p className="max-w-sm text-[#2D3524]/65">Todo se hace en tandas chicas en nuestro taller. Si algo se agota, vuelve en dos semanas.</p>
+            <p className="max-w-sm text-[#2D3524]/72">Todo se hace en tandas chicas en nuestro taller. Si algo se agota, vuelve en dos semanas.</p>
           </div>
           <Catalogo />
         </section>
@@ -188,7 +188,7 @@ export default function NaturalDemo() {
               <h2 id="ing-titulo" className={`${serif} text-[clamp(2.4rem,5vw,3.8rem)] leading-[1.05] font-light`}>
                 Ingredientes <em>a la vista</em>
               </h2>
-              <p className="text-lg text-[#2D3524]/70 md:justify-self-end md:text-right">Sabemos de dónde viene cada uno. Tocá una ficha para ver origen, qué hace y en qué productos está.</p>
+              <p className="text-lg text-[#2D3524]/72 md:justify-self-end md:text-right">Sabemos de dónde viene cada uno. Tocá una ficha para ver origen, qué hace y en qué productos está.</p>
             </div>
             <ul className="mt-12 grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3">
               {ingredientes.map((i) => (
@@ -201,7 +201,7 @@ export default function NaturalDemo() {
                       <Ilustracion id={i.id} className="size-16 sm:size-20" />
                     </span>
                     <span className={`${serif} mt-5 block text-2xl leading-tight sm:text-3xl`}>{i.nombre}</span>
-                    <span className="mt-1 block text-sm text-[#2D3524]/55 italic">{i.cientifico}</span>
+                    <span className="mt-1 block text-sm text-[#2D3524]/72 italic">{i.cientifico}</span>
                     <span className="mt-3 hidden text-[#2D3524]/75 sm:block">{i.resumen}</span>
                     <span className="mt-auto inline-flex items-center gap-1.5 pt-5 text-sm font-semibold text-[#8E4F43]">
                       Ver ficha <span className="transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
@@ -224,7 +224,7 @@ export default function NaturalDemo() {
                 <p className={`${serif} text-7xl leading-none`}>4,8</p>
                 <div className="pb-1">
                   <Estrellas valor={4.8} className="size-5" colorLleno="#B8743F" colorVacio="#2D3524" />
-                  <p className="mt-1 text-sm text-[#2D3524]/65">{totalResenas.toLocaleString("es-AR")} reseñas</p>
+                  <p className="mt-1 text-sm text-[#2D3524]/72">{totalResenas.toLocaleString("es-AR")} reseñas</p>
                 </div>
               </div>
               <dl className="mt-6 space-y-2">
@@ -234,11 +234,11 @@ export default function NaturalDemo() {
                     <dd className="h-2 overflow-hidden rounded-full bg-[#2D3524]/10">
                       <span className="block h-full rounded-full bg-[#B8743F]" style={{ width: `${pct}%` }} />
                     </dd>
-                    <dd className="text-right text-[#2D3524]/60 tabular-nums">{pct} %</dd>
+                    <dd className="text-right text-[#2D3524]/72 tabular-nums">{pct} %</dd>
                   </div>
                 ))}
               </dl>
-              <p className="mt-6 text-sm text-[#2D3524]/60">Solo publicamos reseñas de compras verificadas. No borramos las malas.</p>
+              <p className="mt-6 text-sm text-[#2D3524]/72">Solo publicamos reseñas de compras verificadas. No borramos las malas.</p>
             </div>
             <div className="min-w-0">
               <Resenas lista={resenas} />
@@ -269,7 +269,7 @@ export default function NaturalDemo() {
         <div className="grid grid-cols-2 gap-10 md:grid-cols-[1.5fr_1fr_1fr_1fr]">
           <div className="col-span-2 md:col-span-1">
             <Logo className="text-3xl" />
-            <p className="mt-3 max-w-xs text-sm text-[#2D3524]/65">Cosmética natural hecha a mano en Chacras de Coria, Mendoza.</p>
+            <p className="mt-3 max-w-xs text-sm text-[#2D3524]/72">Cosmética natural hecha a mano en Chacras de Coria, Mendoza.</p>
           </div>
           {[
             ["Tienda", ["Rostro", "Cuerpo", "Labios", "Cabello"]],
@@ -278,7 +278,7 @@ export default function NaturalDemo() {
           ].map(([t, items]) => (
             <div key={t as string}>
               <p className="text-sm font-semibold">{t as string}</p>
-              <ul className="mt-3 space-y-2 text-sm text-[#2D3524]/65">
+              <ul className="mt-3 space-y-2 text-sm text-[#2D3524]/72">
                 {(items as string[]).map((i) => (
                   <li key={i}>{i}</li>
                 ))}
@@ -286,7 +286,7 @@ export default function NaturalDemo() {
             </div>
           ))}
         </div>
-        <p className="mt-12 border-t border-[#2D3524]/10 pt-6 text-sm text-[#2D3524]/55">
+        <p className="mt-12 border-t border-[#2D3524]/10 pt-6 text-sm text-[#2D3524]/72">
           Demo con contenido ficticio. Hoja &amp; Barro no existe: productos, reseñas y precios son inventados.
         </p>
       </footer>

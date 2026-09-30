@@ -30,7 +30,7 @@ export function Cabecera() {
       <label htmlFor={id} className="sr-only">
         Buscar productos
       </label>
-      <IconoBuscar className="pointer-events-none absolute top-1/2 left-3.5 size-[18px] -translate-y-1/2 text-[#16181D]/45" />
+      <IconoBuscar className="pointer-events-none absolute top-1/2 left-3.5 size-[18px] -translate-y-1/2 text-[#16181D]/62" />
       <input
         id={id}
         type="search"
@@ -99,7 +99,7 @@ export function Cabecera() {
                       <Image src={p.imagen} alt="" fill sizes="28px" className="object-cover" />
                     </span>
                     <span className="hidden max-w-[9rem] truncate text-xs font-medium sm:inline">{p.nombre}</span>
-                    <button type="button" onClick={() => alternarComparar(id)} className={`grid size-6 place-items-center rounded text-[#16181D]/55 hover:bg-[#16181D]/6 hover:text-[#16181D] ${foco}`} aria-label={`Quitar ${p.nombre} del comparador`}>
+                    <button type="button" onClick={() => alternarComparar(id)} className={`grid size-6 place-items-center rounded text-[#16181D]/62 hover:bg-[#16181D]/6 hover:text-[#16181D] ${foco}`} aria-label={`Quitar ${p.nombre} del comparador`}>
                       <IconoCerrar className="size-3.5" trazo={2.2} />
                     </button>
                   </li>

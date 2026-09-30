@@ -71,7 +71,7 @@ function Contenido({ p }: { p: ProductoUrbano }) {
         <button type="button" onClick={() => tienda.verDetalle(null)} className={`absolute top-3 right-3 grid size-10 place-items-center bg-[#F3F2EE] transition-colors hover:bg-[#0B0B0B] hover:text-[#D4FF2E] ${foco}`} aria-label="Cerrar detalle">
           <IconoCerrar trazo={2.25} />
         </button>
-        <p className="text-[11px] font-bold tracking-[0.2em] text-[#0B0B0B]/55 uppercase">
+        <p className="text-[11px] font-bold tracking-[0.2em] text-[#0B0B0B]/60 uppercase">
           {p.categoria}
           {p.nuevo ? <span className="ml-2 bg-[#D4FF2E] px-1.5 py-0.5 text-[#0B0B0B]">Nuevo</span> : null}
         </p>
@@ -230,7 +230,7 @@ function Contenido({ p }: { p: ProductoUrbano }) {
           <div className="p-5 sm:p-8">
             <div className="flex items-start justify-between gap-4">
               <div>
-                <p className="text-[11px] font-bold tracking-[0.2em] text-[#0B0B0B]/55 uppercase">Guía de talles</p>
+                <p className="text-[11px] font-bold tracking-[0.2em] text-[#0B0B0B]/60 uppercase">Guía de talles</p>
                 <h3 id="guia-titulo" className={`${display} mt-1 text-4xl uppercase`}>
                   {tabla.titulo}
                 </h3>

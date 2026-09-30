@@ -38,7 +38,7 @@ export const tema: TemaTienda = {
   overlay: "bg-[#0B0D12]/55 backdrop-blur-[3px]",
   titulo: "text-2xl font-bold tracking-[-0.02em]",
   borde: "border-[#16181D]/10",
-  suave: "text-[#16181D]/60",
+  suave: "text-[#16181D]/62",
   superficie: "bg-[#F3F5F8]",
   boton: `inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-[#2F5BFF] px-6 text-[15px] font-semibold text-white shadow-[0_1px_0_rgba(255,255,255,0.25)_inset,0_6px_16px_-8px_rgba(47,91,255,0.8)] transition-all hover:bg-[#2249E0] active:translate-y-px disabled:pointer-events-none disabled:opacity-45 ${foco}`,
   botonSec: `inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-[#16181D]/15 bg-white px-5 text-[15px] font-semibold transition-colors hover:border-[#16181D]/35 hover:bg-[#F3F5F8] ${foco}`,
@@ -53,7 +53,7 @@ export const tema: TemaTienda = {
   imagen: "rounded-lg bg-[#EEF1F5]",
   acento: "text-[#2F5BFF]",
   toast: "",
-  paso: "rounded-lg border border-[#16181D]/10 px-3 py-2 text-xs font-semibold text-[#16181D]/45",
+  paso: "rounded-lg border border-[#16181D]/10 px-3 py-2 text-xs font-semibold text-[#16181D]/62",
   pasoOn: "!border-[#2F5BFF] !text-[#2F5BFF] bg-[#F4F7FF]",
   control: "rounded-lg border-[#16181D]/15 bg-white",
 };

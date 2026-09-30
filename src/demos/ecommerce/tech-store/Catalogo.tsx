@@ -83,7 +83,7 @@ export function Catalogo() {
             <strong className="text-[#16181D]">{lista.length}</strong> {lista.length === 1 ? "resultado" : "resultados"}
           </p>
           <label className="ml-auto flex items-center gap-2 text-sm">
-            <span className="hidden text-[#16181D]/60 sm:inline">Ordenar por</span>
+            <span className="hidden text-[#16181D]/62 sm:inline">Ordenar por</span>
             <select value={orden} onChange={(e) => setOrden(e.target.value as Orden)} className={`h-11 rounded-xl border border-[#16181D]/15 bg-white px-3 font-medium ${foco}`} aria-label="Ordenar por">
               <option value="relevancia">Relevancia</option>
               <option value="menor">Menor precio</option>
@@ -103,7 +103,7 @@ export function Catalogo() {
               </li>
             ))}
             <li>
-              <button type="button" onClick={limpiar} className={`rounded-lg px-2 py-1.5 text-sm font-medium text-[#16181D]/60 underline underline-offset-4 hover:text-[#16181D] ${foco}`}>
+              <button type="button" onClick={limpiar} className={`rounded-lg px-2 py-1.5 text-sm font-medium text-[#16181D]/62 underline underline-offset-4 hover:text-[#16181D] ${foco}`}>
                 Limpiar todo
               </button>
             </li>
@@ -121,7 +121,7 @@ export function Catalogo() {
         ) : (
           <div className="mt-6 rounded-2xl border border-dashed border-[#16181D]/20 px-6 py-16 text-center">
             <p className="text-lg font-semibold">No encontramos productos con esos filtros.</p>
-            <p className="mt-1 text-[#16181D]/60">Probá con otra marca o ampliá el rango de precio.</p>
+            <p className="mt-1 text-[#16181D]/62">Probá con otra marca o ampliá el rango de precio.</p>
             <button type="button" onClick={limpiar} className={`mt-5 rounded-xl bg-[#16181D] px-5 py-3 text-sm font-semibold text-white ${foco}`}>
               Limpiar filtros
             </button>
@@ -167,21 +167,21 @@ function PanelFiltros({ f, setF }: { f: Filtros; setF: React.Dispatch<React.SetS
   return (
     <div className="space-y-7 text-sm">
       <fieldset>
-        <legend className={`${mono} text-[11px] font-medium tracking-[0.12em] text-[#16181D]/50 uppercase`}>Categoría</legend>
+        <legend className={`${mono} text-[11px] font-medium tracking-[0.12em] text-[#16181D]/62 uppercase`}>Categoría</legend>
         <ul className="mt-3 space-y-1">
           {categorias.map((c) => (
             <li key={c}>
               <label className="flex cursor-pointer items-center gap-3 rounded-lg px-2 py-1.5 hover:bg-[#F3F5F8]">
                 <input type="checkbox" checked={f.cats.includes(c)} onChange={() => alternar("cats", c)} className={check} />
                 <span className="flex-1">{c}</span>
-                <span className={`${mono} text-xs text-[#16181D]/40`}>{conteo((p) => p.categoria === c)}</span>
+                <span className={`${mono} text-xs text-[#16181D]/62`}>{conteo((p) => p.categoria === c)}</span>
               </label>
             </li>
           ))}
         </ul>
       </fieldset>
       <fieldset>
-        <legend className={`${mono} text-[11px] font-medium tracking-[0.12em] text-[#16181D]/50 uppercase`}>Marca</legend>
+        <legend className={`${mono} text-[11px] font-medium tracking-[0.12em] text-[#16181D]/62 uppercase`}>Marca</legend>
         <ul className="mt-3 grid grid-cols-2 gap-1">
           {marcas.map((m) => (
             <li key={m}>
@@ -194,7 +194,7 @@ function PanelFiltros({ f, setF }: { f: Filtros; setF: React.Dispatch<React.SetS
         </ul>
       </fieldset>
       <fieldset>
-        <legend className={`${mono} text-[11px] font-medium tracking-[0.12em] text-[#16181D]/50 uppercase`}>Precio</legend>
+        <legend className={`${mono} text-[11px] font-medium tracking-[0.12em] text-[#16181D]/62 uppercase`}>Precio</legend>
         <div className="mt-3 grid grid-cols-2 gap-2">
           {(
             [
@@ -203,7 +203,7 @@ function PanelFiltros({ f, setF }: { f: Filtros; setF: React.Dispatch<React.SetS
             ] as const
           ).map(([k, l]) => (
             <div key={k}>
-              <label htmlFor={`${id}-${k}`} className="text-xs text-[#16181D]/60">
+              <label htmlFor={`${id}-${k}`} className="text-xs text-[#16181D]/62">
                 {l} ($)
               </label>
               <input
@@ -238,7 +238,7 @@ function PanelFiltros({ f, setF }: { f: Filtros; setF: React.Dispatch<React.SetS
         </div>
       </fieldset>
       <fieldset className="space-y-2">
-        <legend className={`${mono} mb-3 text-[11px] font-medium tracking-[0.12em] text-[#16181D]/50 uppercase`}>Disponibilidad</legend>
+        <legend className={`${mono} mb-3 text-[11px] font-medium tracking-[0.12em] text-[#16181D]/62 uppercase`}>Disponibilidad</legend>
         {(
           [
             ["stock", "Solo con stock"],
@@ -260,20 +260,20 @@ function PanelFiltros({ f, setF }: { f: Filtros; setF: React.Dispatch<React.SetS
 }
 
 export function EnvioBadge({ p }: { p: ProductoTech }) {
-  if (!p.stock) return <span className="text-xs font-medium text-[#16181D]/45">Sin stock por ahora</span>;
+  if (!p.stock) return <span className="text-xs font-medium text-[#16181D]/62">Sin stock por ahora</span>;
   if (p.entrega <= 1)
     return (
-      <span className="inline-flex items-center gap-1 text-xs font-semibold text-[#0F8A5F]">
+      <span className="inline-flex items-center gap-1 text-xs font-semibold text-[#0D8259]">
         <IconoRayo className="size-3.5" trazo={2.2} /> Llega mañana
       </span>
     );
   if (p.precio >= config.envioGratisDesde)
     return (
-      <span className="inline-flex items-center gap-1 text-xs font-semibold text-[#0F8A5F]">
+      <span className="inline-flex items-center gap-1 text-xs font-semibold text-[#0D8259]">
         <IconoCamion className="size-3.5" trazo={2} /> Envío gratis
       </span>
     );
-  return <span className="inline-flex items-center gap-1 text-xs font-medium text-[#16181D]/60">Llega en {p.entrega} días hábiles</span>;
+  return <span className="inline-flex items-center gap-1 text-xs font-medium text-[#16181D]/62">Llega en {p.entrega} días hábiles</span>;
 }
 
 export const descuento = (p: ProductoTech) => (p.precioAnterior ? Math.round((1 - p.precio / p.precioAnterior) * 100) : 0);
@@ -296,7 +296,7 @@ function Tarjeta({ p }: { p: ProductoTech }) {
         </label>
       </div>
       <div className="flex flex-1 flex-col px-1 pt-3">
-        <p className={`${mono} text-[11px] tracking-[0.1em] text-[#16181D]/50 uppercase`}>
+        <p className={`${mono} text-[11px] tracking-[0.1em] text-[#16181D]/62 uppercase`}>
           {p.marca} · {p.categoria}
         </p>
         <h3 className="mt-1 text-[15px] leading-snug font-semibold sm:text-base">
@@ -311,15 +311,15 @@ function Tarjeta({ p }: { p: ProductoTech }) {
             </li>
           ))}
         </ul>
-        <div className="mt-2 flex items-center gap-1.5 text-xs text-[#16181D]/55">
+        <div className="mt-2 flex items-center gap-1.5 text-xs text-[#16181D]/62">
           <Estrellas valor={p.rating} className="size-3.5" colorLleno="#F5A524" colorVacio="#16181D" />
           <span className={mono}>{String(p.rating).replace(".", ",")}</span>
           <span>({p.opiniones})</span>
         </div>
         <div className="mt-auto pt-3">
-          {p.precioAnterior ? <p className="text-xs text-[#16181D]/45 line-through tabular-nums">{pesos(p.precioAnterior)}</p> : null}
+          {p.precioAnterior ? <p className="text-xs text-[#16181D]/62 line-through tabular-nums">{pesos(p.precioAnterior)}</p> : null}
           <p className="text-lg font-bold tracking-[-0.02em] tabular-nums sm:text-xl">{pesos(p.precio)}</p>
-          <p className="text-xs text-[#0F8A5F]">
+          <p className="text-xs text-[#0D8259]">
             {config.cuotasSinInteres} × {pesos(cuota(p.precio, config.cuotasSinInteres))} sin interés
           </p>
           <div className="mt-1.5">
@@ -333,7 +333,7 @@ function Tarjeta({ p }: { p: ProductoTech }) {
               setHecho(true);
               window.setTimeout(() => setHecho(false), 1500);
             }}
-            className={`relative z-10 mt-3 flex h-10 w-full items-center justify-center gap-1.5 rounded-xl text-sm font-semibold transition-colors disabled:bg-[#16181D]/6 disabled:text-[#16181D]/40 ${foco} ${hecho ? "bg-[#0F8A5F] text-white" : "bg-[#16181D] text-white hover:bg-[#2F5BFF]"}`}
+            className={`relative z-10 mt-3 flex h-10 w-full items-center justify-center gap-1.5 rounded-xl text-sm font-semibold transition-colors disabled:bg-[#16181D]/6 disabled:text-[#16181D]/40 ${foco} ${hecho ? "bg-[#0D8259] text-white" : "bg-[#16181D] text-white hover:bg-[#2F5BFF]"}`}
           >
             {hecho ? (
               <>

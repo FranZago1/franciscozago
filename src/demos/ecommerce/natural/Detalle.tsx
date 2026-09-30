@@ -44,7 +44,7 @@ function Contenido({ p }: { p: ProductoNatural }) {
         <button type="button" onClick={() => tienda.verDetalle(null)} className={`absolute top-3 right-3 grid size-10 place-items-center rounded-full bg-[#F6F5EF] transition-colors hover:bg-[#2D3524]/8 ${foco}`} aria-label="Cerrar detalle">
           <IconoCerrar />
         </button>
-        <p className="text-sm text-[#2D3524]/60">
+        <p className="text-sm text-[#2D3524]/72">
           {p.categoria} · {p.tamano}
         </p>
         <h2 id="hb-detalle-titulo" className={`${serif} mt-2 pr-10 text-4xl leading-[1.05] sm:text-5xl`}>
@@ -60,7 +60,7 @@ function Contenido({ p }: { p: ProductoNatural }) {
 
         <div className="mt-6 flex items-baseline gap-3">
           <p className="text-2xl font-semibold tabular-nums">{pesos(p.precio)}</p>
-          <p className="text-sm text-[#2D3524]/60">
+          <p className="text-sm text-[#2D3524]/72">
             o {config.cuotasSinInteres} cuotas sin interés de {pesos(cuota(p.precio, config.cuotasSinInteres))}
           </p>
         </div>
@@ -97,7 +97,7 @@ function Contenido({ p }: { p: ProductoNatural }) {
             )}
           </button>
         </div>
-        <p className="mt-3 text-sm text-[#2D3524]/60">Envío gratis desde {pesos(config.envioGratisDesde)} · Caja compostable</p>
+        <p className="mt-3 text-sm text-[#2D3524]/72">Envío gratis desde {pesos(config.envioGratisDesde)} · Caja compostable</p>
 
         <section aria-labelledby="hb-uso" className="mt-8 rounded-3xl bg-[#ECEEE3] p-5">
           <h3 id="hb-uso" className="flex items-center gap-2 font-semibold">
@@ -153,7 +153,7 @@ function Contenido({ p }: { p: ProductoNatural }) {
                   <Estrellas valor={r.estrellas} className="size-3.5" colorLleno="#B8743F" colorVacio="#2D3524" />
                   <p className={`${serif} mt-2 text-lg`}>{r.titulo}</p>
                   <p className="mt-1 text-sm leading-relaxed text-[#2D3524]/75">{r.texto}</p>
-                  <p className="mt-2 text-xs text-[#2D3524]/55">
+                  <p className="mt-2 text-xs text-[#2D3524]/72">
                     {r.autor}, {r.ciudad} · {r.hace}
                   </p>
                 </li>
