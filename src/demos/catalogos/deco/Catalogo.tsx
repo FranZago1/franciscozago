@@ -207,7 +207,7 @@ export function Catalogo({
                   </svg>
                 </span>
                 {m.nombre}
-                <span className="ml-auto text-[12px] text-[#9A8E82] tabular-nums">
+                <span className="ml-auto text-[12px] text-[#766A5E] tabular-nums">
                   {PRODUCTOS.filter((p) => p.materiales.includes(m.id)).length}
                 </span>
               </label>

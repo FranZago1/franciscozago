@@ -118,7 +118,7 @@ export function Bultos({
   const w = tam === "sm" ? "w-8" : "w-9";
 
   if (deshabilitado) {
-    return <span className={`inline-flex ${h} items-center rounded-md bg-[#EEF1F5] px-3 text-[13px] text-[#8A94A3]`}>Sin stock</span>;
+    return <span className={`inline-flex ${h} items-center rounded-md bg-[#EEF1F5] px-3 text-[13px] text-[#626D7E]`}>Sin stock</span>;
   }
   if (valor === 0) {
     return (

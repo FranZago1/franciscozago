@@ -39,7 +39,7 @@ export default function DecoDemo() {
               <li key={p.titulo} className="border-t border-[#F4EFE7]/20 pt-5">
                 <div className="flex items-center justify-between">
                   <p.icono className="size-6 text-[#E3B79B]" />
-                  <span className="text-[12px] tracking-[0.2em] text-[#F4EFE7]/50">0{i + 1}</span>
+                  <span className="text-[12px] tracking-[0.2em] text-[#F4EFE7]/65">0{i + 1}</span>
                 </div>
                 <h3 className={`${serif} mt-4 text-[26px] leading-tight`}>{p.titulo}</h3>
                 <p className="mt-2 text-[14px] leading-relaxed text-[#D9D2C3]">{p.texto}</p>

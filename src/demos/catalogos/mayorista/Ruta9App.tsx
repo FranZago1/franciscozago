@@ -65,7 +65,7 @@ function Stock({ s }: { s: Articulo["stock"] }) {
 function Precio({ a }: { a: Articulo }) {
   return (
     <span className="flex flex-col items-end leading-tight">
-      {a.antes ? <span className={`${mono} text-[11.5px] text-[#8A94A3] line-through`}>{ars(a.antes)}</span> : null}
+      {a.antes ? <span className={`${mono} text-[11.5px] text-[#626D7E] line-through`}>{ars(a.antes)}</span> : null}
       <span className={`${mono} text-[14px] font-semibold tabular-nums ${a.antes ? "text-[#D62B2B]" : "text-[#0F1B2D]"}`}>
         {ars(a.precio)}
       </span>
@@ -205,7 +205,7 @@ export function Ruta9App() {
                 >
                   {on ? <span className="absolute inset-y-1.5 left-0 w-[3px] rounded-full bg-[#D62B2B]" aria-hidden="true" /> : null}
                   {r.nombre}
-                  <span className={`${mono} text-[12px] ${on ? "text-[#1747A6]" : "text-[#8A94A3]"}`}>{n}</span>
+                  <span className={`${mono} text-[12px] ${on ? "text-[#1747A6]" : "text-[#626D7E]"}`}>{n}</span>
                 </button>
               </li>
             );
@@ -354,7 +354,7 @@ export function Ruta9App() {
             <svg viewBox="0 0 200 60" className="absolute top-0 -right-6 h-full opacity-20" aria-hidden="true">
               <path d="M40 0h40L40 60H0zM110 0h40l-40 60H70zM180 0h40l-40 60h-40z" fill="#fff" />
             </svg>
-            <p className="relative text-[11px] font-semibold tracking-[0.14em] text-white/80 uppercase">Ofertas de la semana</p>
+            <p className="relative text-[11px] font-semibold tracking-[0.14em] text-white/95 uppercase">Ofertas de la semana</p>
             <p className="relative text-[16px] font-bold sm:text-[18px]">
               Yerba, aceite, lavandina y cerveza rubia con precio especial por bulto.
             </p>
@@ -484,7 +484,7 @@ export function Ruta9App() {
                       key={a.id}
                       className={`grid grid-cols-[52px_minmax(0,1fr)] gap-x-3 gap-y-2 px-3 md:gap-x-2.5 py-2.5 transition-colors md:grid-cols-[44px_78px_minmax(0,1fr)_84px_96px_118px] md:items-center ${
                         n ? "bg-[#F0F5FF]" : "hover:bg-[#FAFBFC]"
-                      } ${a.stock === "sin" ? "opacity-60" : ""}`}
+                      }`}
                     >
                       <div className="relative row-span-2 size-[52px] overflow-hidden rounded-md bg-[#F3F5F8] md:row-span-1 md:size-11">
                         <Image
@@ -492,7 +492,7 @@ export function Ruta9App() {
                           alt={`${a.nombre} ${a.marca} ${a.presentacion}`}
                           fill
                           sizes="52px"
-                          className="object-cover"
+                          className={`object-cover ${a.stock === "sin" ? "opacity-60" : ""}`}
                         />
                       </div>
                       <span className={`${mono} hidden text-[13px] text-[#27344A] md:block`}>
@@ -505,7 +505,7 @@ export function Ruta9App() {
                             <Resaltado texto={a.marca} q={q} />
                           </span>
                           {a.antes ? (
-                            <span className="ml-1.5 rounded bg-[#FDECEC] px-1.5 py-0.5 align-[1px] text-[10.5px] font-bold tracking-[0.04em] text-[#D62B2B] uppercase">
+                            <span className="ml-1.5 rounded bg-[#FDECEC] px-1.5 py-0.5 align-[1px] text-[10.5px] font-bold tracking-[0.04em] text-[#CC2929] uppercase">
                               Oferta
                             </span>
                           ) : null}
@@ -558,7 +558,7 @@ export function Ruta9App() {
                 return (
                   <li
                     key={a.id}
-                    className={`flex flex-col rounded-lg border bg-white p-3 transition-shadow hover:shadow-[0_4px_14px_-6px_rgba(15,27,45,0.2)] ${n ? "border-[#1747A6] ring-1 ring-[#1747A6]" : "border-[#D8DEE7]"} ${a.stock === "sin" ? "opacity-60" : ""}`}
+                    className={`flex flex-col rounded-lg border bg-white p-3 transition-shadow hover:shadow-[0_4px_14px_-6px_rgba(15,27,45,0.2)] ${n ? "border-[#1747A6] ring-1 ring-[#1747A6]" : "border-[#D8DEE7]"}`}
                   >
                     <div className="relative aspect-square overflow-hidden rounded-md bg-[#F3F5F8]">
                       <Image
@@ -566,7 +566,7 @@ export function Ruta9App() {
                         alt={`${a.nombre} ${a.marca} ${a.presentacion}`}
                         fill
                         sizes="(min-width: 1536px) 260px, (min-width: 640px) 30vw, 45vw"
-                        className="object-cover"
+                        className={`object-cover ${a.stock === "sin" ? "opacity-60" : ""}`}
                       />
                       {a.antes ? (
                         <span className="absolute top-2 left-2 rounded bg-[#D62B2B] px-1.5 py-0.5 text-[10.5px] font-bold tracking-[0.04em] text-white uppercase">
@@ -593,7 +593,7 @@ export function Ruta9App() {
                     ) : null}
                     <div className="mt-auto flex items-end justify-between gap-2 pt-3">
                       <div className="leading-tight">
-                        {a.antes ? <span className={`${mono} block text-[11.5px] text-[#8A94A3] line-through`}>{ars(a.antes)}</span> : null}
+                        {a.antes ? <span className={`${mono} block text-[11.5px] text-[#626D7E] line-through`}>{ars(a.antes)}</span> : null}
                         <span className={`${mono} text-[15px] font-semibold ${a.antes ? "text-[#D62B2B]" : ""}`}>{ars(a.precio)}</span>
                         <span className="text-[11.5px] text-[#5B6778]"> u.</span>
                         <span className={`${mono} block text-[12px] text-[#5B6778]`}>{ars(precioBulto(a))} bulto</span>

@@ -216,7 +216,7 @@ export function Pedido({ pedido, onEnviar, avisar }: { pedido: Lista; onEnviar: 
             <dd className={`${mono} text-[22px] font-semibold text-[#0F1B2D] tabular-nums`}>{ars(total)}</dd>
           </div>
         </dl>
-        <p className="text-[11.5px] text-[#8A94A3]">Precios sin IVA. Sujeto a confirmación de stock.</p>
+        <p className="text-[11.5px] text-[#626D7E]">Precios sin IVA. Sujeto a confirmación de stock.</p>
         <button
           type="button"
           onClick={onEnviar}
