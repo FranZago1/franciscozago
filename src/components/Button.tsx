@@ -1,18 +1,46 @@
 import Link from "next/link";
 import type { ComponentProps } from "react";
+import { Icon, type IconName } from "./canvas/Icons";
 
 type Variant = "primary" | "secondary";
 
-const base =
-  "inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-base font-medium leading-none transition-colors";
-const variants: Record<Variant, string> = {
-  primary: "bg-ink text-white hover:bg-accent",
-  secondary: "border border-line text-ink hover:border-ink",
+type Props = ComponentProps<typeof Link> & {
+  variant?: Variant;
+  external?: boolean;
+  icono?: IconName;
+  /** Color de fondo del cuadrito del ícono (solo primary). */
+  iconoBg?: string;
 };
 
-type Props = ComponentProps<typeof Link> & { variant?: Variant; external?: boolean };
-
-export function Button({ variant = "primary", external, className = "", ...props }: Props) {
+/** Botón rectangular con etiqueta mono. El primario lleva un cuadrito de color con ícono. */
+export function Button({
+  variant = "primary",
+  external,
+  icono,
+  iconoBg = "var(--color-celeste)",
+  className = "",
+  children,
+  ...props
+}: Props) {
   const ext = external ? { target: "_blank", rel: "noopener noreferrer" } : {};
-  return <Link className={`${base} ${variants[variant]} ${className}`} {...ext} {...props} />;
+  const estilos =
+    variant === "primary"
+      ? "bg-ink text-white hover:-translate-y-0.5 hover:shadow-[0_6px_0_0_var(--color-accent)]"
+      : "border-[1.5px] border-ink bg-white text-ink hover:-translate-y-0.5 hover:shadow-[0_6px_0_0_#111]";
+  return (
+    <Link
+      className={`label-mono inline-flex items-center gap-3 rounded-[4px] p-1.5 pr-4 text-sm font-medium transition-[translate,box-shadow] duration-150 md:text-[15px] ${
+        icono ? "" : "pl-4"
+      } ${estilos} ${className}`}
+      {...ext}
+      {...props}
+    >
+      {icono ? (
+        <span className="inline-flex size-9 items-center justify-center rounded-[3px]" style={{ background: iconoBg }}>
+          <Icon name={icono} className="size-5 text-ink" secondary="#111" />
+        </span>
+      ) : null}
+      <span className="py-2">{children}</span>
+    </Link>
+  );
 }

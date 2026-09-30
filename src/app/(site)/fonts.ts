@@ -1,4 +1,4 @@
-import { Hanken_Grotesk, Newsreader } from "next/font/google";
+import { Hanken_Grotesk, JetBrains_Mono } from "next/font/google";
 
 export const hanken = Hanken_Grotesk({
   subsets: ["latin"],
@@ -6,9 +6,9 @@ export const hanken = Hanken_Grotesk({
   variable: "--font-hanken",
 });
 
-export const newsreader = Newsreader({
+export const mono = JetBrains_Mono({
   subsets: ["latin"],
+  weight: ["400", "500"],
   display: "swap",
-  variable: "--font-newsreader",
-  weight: "400",
+  variable: "--font-mono-jb",
 });

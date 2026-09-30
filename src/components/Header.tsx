@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { site } from "@/content/site";
+import { LiveClock } from "./canvas/LiveClock";
+import { Ruler } from "./canvas/Ruler";
 
 const nav = [
   { href: "/#trabajos", label: "Trabajos" },
@@ -8,36 +10,29 @@ const nav = [
   { href: "/#contacto", label: "Contacto" },
 ];
 
-export function Header({ clock }: { clock?: React.ReactNode }) {
+export function Header() {
   return (
-    <header className="col pt-5 md:pt-8">
-      <div className="flex items-center justify-between gap-4">
+    <header>
+      <Ruler />
+      <div className="wrap grid grid-cols-[1fr_auto] items-center gap-y-3 pt-4 md:grid-cols-[1fr_auto_1fr] md:pt-5">
         <Link href="/" className="font-semibold tracking-tight">
           {site.nombre}
         </Link>
-        <div className="flex items-center gap-3 text-sm text-muted">
-          {site.disponible ? (
-            <span className="inline-flex items-center gap-2 rounded-full border border-line px-2.5 py-1">
-              <span aria-hidden className="size-2 rounded-full bg-accent" />
-              <span>
-                Disponible<span className="hidden sm:inline"> para proyectos</span>
-              </span>
-            </span>
-          ) : null}
-          {clock}
+        <div className="justify-self-end md:justify-self-center">
+          <LiveClock />
         </div>
+        <nav aria-label="Principal" className="col-span-2 md:col-span-1 md:justify-self-end">
+          <ul className="label-mono flex flex-wrap gap-x-5 gap-y-1 text-[13px]">
+            {nav.map((item) => (
+              <li key={item.href}>
+                <Link href={item.href} className="text-muted transition-colors hover:text-ink">
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
       </div>
-      <nav aria-label="Principal" className="mt-4">
-        <ul className="flex flex-wrap gap-x-5 gap-y-1 text-sm">
-          {nav.map((item) => (
-            <li key={item.href}>
-              <Link href={item.href} className="text-muted transition-colors hover:text-ink">
-                {item.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
     </header>
   );
 }

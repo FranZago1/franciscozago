@@ -1,18 +1,17 @@
 import { Footer } from "@/components/Footer";
-import { CordobaClock } from "@/components/CordobaClock";
 import { Header } from "@/components/Header";
-import { hanken, newsreader } from "./fonts";
+import { hanken, mono } from "./fonts";
 
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className={`${hanken.variable} ${newsreader.variable} font-sans text-base`}>
+    <div className={`${hanken.variable} ${mono.variable} canvas-grid min-h-dvh font-sans text-base`}>
       <a
         href="#contenido"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-ink focus:px-4 focus:py-2 focus:text-white"
+        className="label-mono sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-ink focus:px-4 focus:py-2 focus:text-white"
       >
         Saltar al contenido
       </a>
-      <Header clock={<CordobaClock />} />
+      <Header />
       <main id="contenido">{children}</main>
       <Footer />
     </div>

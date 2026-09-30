@@ -60,6 +60,14 @@ Todos los links de WhatsApp se arman con un helper `waLink(mensaje: string)` que
 
 ## 4. Dirección visual
 
+> **Actualización (pedido de Fran, después del primer deploy):** el sitio pasó a un estilo de
+> "lienzo de diseño" más dinámico, inspirado en kushbothra.com pero con look profesional:
+> grilla, regla, marcos de selección, stickers arrastrables, proyectos como carpetas con
+> pestañas apiladas. Tipografía: Hanken Grotesk + JetBrains Mono (sin serif ni manuscrita).
+> Sin fotos personales. Esto reemplaza lo que se oponga en esta sección (columna única de 680 px,
+> serif display, y de la lista "NO van": mayúsculas mono, elementos inclinados y numeración).
+> Detalle vigente en `docs/tokens.md`.
+
 ### Referencias
 - **kushbothra.com**: de acá sale el tono editorial. Fondo blanco, titular grande con **imágenes chicas insertadas dentro del texto**, badge de disponibilidad, hora local visible, cierre "Hablemos" grande.
 - **sahilcodex.vercel.app**, **ashishgogula.in**, **ratneshc.com**: de acá sale la estructura. **Una sola columna angosta**, texto primero, listas limpias, mucho aire, nada de ruido.

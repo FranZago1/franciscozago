@@ -13,7 +13,7 @@ type Estado = "idle" | "enviando" | "enviado" | "error";
 const cargarEsquema = () => import("@/lib/contact-schema");
 
 const inputBase =
-  "w-full rounded-[10px] border bg-white font-sans px-3.5 py-3 text-base text-ink placeholder:text-muted/70 transition-colors focus:border-accent focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-accent";
+  "w-full rounded-[4px] border-[1.5px] bg-white font-sans px-3.5 py-3 text-base text-ink placeholder:text-muted/70 transition-colors focus:border-accent focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-accent";
 
 export function ContactForm() {
   const id = useId();
@@ -65,7 +65,7 @@ export function ContactForm() {
     name,
     "aria-invalid": errores[name] ? true : undefined,
     "aria-describedby": errores[name] ? `${id}-${name}-error` : undefined,
-    className: `${inputBase} ${errores[name] ? "border-[#B42318]" : "border-line"}`,
+    className: `${inputBase} ${errores[name] ? "border-[#B42318]" : "border-[#d4d4d4]"}`,
   });
 
   const error = (name: ContactField) =>
@@ -77,7 +77,7 @@ export function ContactForm() {
 
   if (estado === "enviado") {
     return (
-      <div role="status" className="rounded-card bg-surface p-6">
+      <div role="status" className="p-2">
         <p className="text-lg font-semibold">Listo, te escribo pronto.</p>
         <button type="button" onClick={() => setEstado("idle")} className="link mt-3 text-muted">
           Enviar otro mensaje
@@ -93,7 +93,7 @@ export function ContactForm() {
       </p>
 
       <div>
-        <label htmlFor={`${id}-nombre`} className="mb-1.5 block text-sm font-medium">
+        <label htmlFor={`${id}-nombre`} className="label-mono mb-1.5 block text-[12px] font-medium">
           Nombre
         </label>
         <input type="text" autoComplete="name" {...campo("nombre")} />
@@ -102,14 +102,14 @@ export function ContactForm() {
 
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
-          <label htmlFor={`${id}-email`} className="mb-1.5 block text-sm font-medium">
+          <label htmlFor={`${id}-email`} className="label-mono mb-1.5 block text-[12px] font-medium">
             Email
           </label>
           <input type="email" autoComplete="email" inputMode="email" {...campo("email")} />
           {error("email")}
         </div>
         <div>
-          <label htmlFor={`${id}-whatsapp`} className="mb-1.5 block text-sm font-medium">
+          <label htmlFor={`${id}-whatsapp`} className="label-mono mb-1.5 block text-[12px] font-medium">
             WhatsApp
           </label>
           <input type="tel" autoComplete="tel" inputMode="tel" placeholder="351 123 4567" {...campo("whatsapp")} />
@@ -118,7 +118,7 @@ export function ContactForm() {
       </div>
 
       <div>
-        <label htmlFor={`${id}-tipo`} className="mb-1.5 block text-sm font-medium">
+        <label htmlFor={`${id}-tipo`} className="label-mono mb-1.5 block text-[12px] font-medium">
           Tipo de proyecto
         </label>
         <select defaultValue="" {...campo("tipo")}>
@@ -135,7 +135,7 @@ export function ContactForm() {
       </div>
 
       <div>
-        <label htmlFor={`${id}-mensaje`} className="mb-1.5 block text-sm font-medium">
+        <label htmlFor={`${id}-mensaje`} className="label-mono mb-1.5 block text-[12px] font-medium">
           Mensaje
         </label>
         <textarea rows={5} placeholder="Qué necesitás, para cuándo, si ya tenés algo hecho…" {...campo("mensaje")} />
@@ -152,7 +152,7 @@ export function ContactForm() {
         <button
           type="submit"
           disabled={estado === "enviando"}
-          className="inline-flex items-center justify-center rounded-full bg-ink px-5 py-3 font-medium leading-none text-white transition-colors hover:bg-accent disabled:cursor-wait disabled:opacity-70"
+          className="label-mono inline-flex items-center justify-center rounded-[4px] bg-ink px-5 py-3.5 text-sm font-medium leading-none text-white transition-[translate,box-shadow] hover:-translate-y-0.5 hover:shadow-[0_6px_0_0_var(--color-accent)] disabled:cursor-wait disabled:opacity-70"
         >
           {estado === "enviando" ? "Enviando…" : "Enviar mensaje"}
         </button>

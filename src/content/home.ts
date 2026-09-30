@@ -1,44 +1,57 @@
+import type { IconName } from "@/components/canvas/Icons";
+import type { StickerColor } from "@/components/canvas/Sticker";
+
 /**
  * Textos del home. Los datos de trabajos, servicios, demos y stack viven en sus propios archivos.
  */
 
-export type HeroChip = { src: string; alt: string };
-export type HeroSegmento = string | { chip: HeroChip };
-
-/**
- * Titular del hero. Los strings son texto; los objetos son chips de imagen inline.
- * TODO: cuando estén las capturas reales, usar una de TrendaHaus o BenicioShop en un chip.
- * Alternativas propuestas (ver docs/tokens.md):
- *  A) "Construyo [chip] sitios, tiendas y sistemas [chip] que hacen crecer tu negocio."
- *  B) "Tu negocio, [chip] online y vendiendo, [chip] con un sitio hecho a medida."
- */
-export const heroTitular: HeroSegmento[] = [
-  "Diseño y desarrollo",
-  {
-    chip: {
-      src: "/demos/fotografia/documental/foto-01.webp",
-      alt: "Miniatura de la demo de portfolio de fotografía estilo documental",
-    },
-  },
-  "sitios y sistemas web",
-  {
-    chip: {
-      src: "/demos/fotografia/cinematico/foto-02.webp",
-      alt: "Miniatura de la demo de portfolio de fotografía estilo cinemático",
-    },
-  },
-  "para negocios que quieren vender más.",
-];
+/** Segmento de titular: texto o ícono en línea (cuadradito de color). */
+export type Segmento = string | { icono: IconName; bg: StickerColor };
 
 export const hero = {
-  saludo: "Hola, soy Fran.",
+  saludo: "Hola, me llamo",
+  disponible: "Disponible para proyectos",
+  /** Titular principal. Los objetos son íconos en línea. */
+  titular: [
+    "Diseño y desarrollo",
+    { icono: "pluma", bg: "menta" },
+    "sitios y sistemas web",
+    { icono: "chispa", bg: "rosa" },
+    "para negocios que quieren vender más.",
+  ] as Segmento[],
   bajada:
     "Desarrollador full-stack en Córdoba. Landing pages, tiendas online, sistemas de reservas y más, desde la idea hasta el sitio publicado.",
   ctaPrimario: {
     label: "Escribime por WhatsApp",
     mensajeWa: "Hola Fran, vi tu portfolio y quiero consultarte por un proyecto.",
   },
-  ctaSecundario: { label: "Ver demos", href: "#demos" },
+  ctaSecundario: { label: "Ver trabajos", href: "#trabajos" },
+};
+
+/** Stickers arrastrables del hero. Todo lo que dicen también está en el texto de la página. */
+export const heroStickers = {
+  rol: { texto: "Desarrollador full-stack", color: "menta" as StickerColor },
+  lugar: { texto: "Córdoba, Argentina", color: "celeste" as StickerColor },
+  cursorIzq: { texto: "E-commerce", color: "mostaza" as StickerColor },
+  cursorDer: { texto: "Reservas", color: "rosa" as StickerColor },
+  dato: { texto: "2 sitios en producción", color: "choco" as StickerColor },
+};
+
+export const sobreMi = {
+  marco: "¿Qué tal?",
+  frase: [
+    "Diseño",
+    { icono: "pluma", bg: "mostaza" },
+    "y programo",
+    { icono: "codigo", bg: "celeste" },
+    "sitios y sistemas completos, desde la idea hasta el sitio publicado.",
+  ] as Segmento[],
+  bloques: [
+    { texto: "Diseño web", icono: "cursor", color: "mostaza" },
+    { texto: "Desarrollo full-stack", icono: "codigo", color: "menta" },
+    { texto: "E-commerce", icono: "tienda", color: "rosa" },
+    { texto: "Sistemas a medida", icono: "gestion", color: "celeste" },
+  ] as { texto: string; icono: IconName; color: StickerColor }[],
 };
 
 export const serviciosCopy = {

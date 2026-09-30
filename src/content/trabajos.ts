@@ -13,6 +13,12 @@ export type TrabajoMedia = {
 
 export type Trabajo = {
   slug: string;
+  /** Número de carpeta en el home ("TRABAJO 01"). */
+  numero: string;
+  /** Color de la pestaña de carpeta. */
+  color: "celeste" | "ink" | "mostaza" | "menta" | "rosa";
+  /** Etiqueta sobre la captura. */
+  badge: string;
   categoria: TrabajoCategoria;
   nombre: string;
   /** Una línea de qué es (encabezado del caso). */
@@ -38,6 +44,9 @@ export type Trabajo = {
 export const trabajos: Trabajo[] = [
   {
     slug: "trendahaus",
+    numero: "01",
+    color: "celeste",
+    badge: "En producción",
     categoria: "cliente",
     nombre: "TrendaHaus",
     queEs: "Plataforma de reservas para un multiespacio creativo y estudio fotográfico en Córdoba.",
@@ -86,6 +95,9 @@ export const trabajos: Trabajo[] = [
   },
   {
     slug: "benicioshop",
+    numero: "02",
+    color: "ink",
+    badge: "En producción",
     categoria: "cliente",
     nombre: "BenicioShop",
     queEs: "Tienda online para una marca de ropa vintage, con lanzamientos por drops.",
@@ -138,6 +150,9 @@ export const trabajos: Trabajo[] = [
   },
   {
     slug: "unichat",
+    numero: "03",
+    color: "mostaza",
+    badge: "Proyecto universitario",
     categoria: "academico",
     nombre: "UniChat",
     queEs: "Un chat con IA que responde usando tus propios documentos.",

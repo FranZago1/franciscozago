@@ -1,133 +1,56 @@
 # Plan de tokens — Portfolio
 
-Revisado contra la sección 4 del brief. Contrastes calculados con la fórmula WCAG 2.x.
+Dirección actual: **lienzo de diseño profesional**. El sitio se presenta como un archivo abierto en
+un editor: grilla de fondo, regla con píxeles, marcos de selección con handles, elementos
+arrastrables y proyectos como carpetas con pestañas. La tipografía es sobria (grotesca + mono)
+para que el color y la interacción aporten la personalidad sin volverlo infantil.
 
-## Paleta (solo modo claro)
+Contrastes calculados con la fórmula WCAG 2.x.
 
-| Token | Hex | Uso | Contraste sobre `#FFFFFF` |
+## Paleta
+
+| Token | Hex | Uso | Contraste |
 |---|---|---|---|
 | `--color-bg` | `#FFFFFF` | Fondo | — |
-| `--color-ink` | `#111111` | Texto principal, titulares, botón primario | 18,88:1 |
-| `--color-muted` | `#5B5B5B` | Texto secundario, metadatos | 6,79:1 (AA texto normal) |
-| `--color-line` | `#E7E7E7` | Divisores, bordes de tarjetas (solo cuando separan información) | 1,24:1 (decorativo) |
-| `--color-surface` | `#F5F5F4` | Fondo de placeholders y de chips de imagen | — |
-| `--color-accent` | `#0E6A70` | Punto del badge, anillo de foco, link activo, subrayado en hover | 6,34:1 (AA texto y ≥3:1 no textual) |
+| `--color-grid` | `#EFEFEF` | Grilla de fondo (132 px) | decorativo |
+| `--color-ink` | `#111111` | Texto, bordes de marcos, botones | 18,88:1 sobre blanco |
+| `--color-muted` | `#5B5B5B` | Texto secundario, rótulos mono | 6,79:1 sobre blanco |
+| `--color-accent` | `#0E6A70` | Color de "selección": marcos, handles, foco, números de sección | blanco sobre petróleo 6,34:1 |
+| `--color-mostaza` | `#F2B705` | Stickers, bloques, íconos | tinta sobre mostaza 10,39:1 |
+| `--color-menta` | `#8FD6B4` | Stickers, bloques, íconos | tinta sobre menta 11,19:1 |
+| `--color-rosa` | `#D6284B` | Stickers, bloques, íconos | blanco sobre rosa 4,92:1 |
+| `--color-celeste` | `#7CC8F0` | Stickers, bloques, íconos | tinta sobre celeste 10,23:1 |
+| `--color-choco` | `#6B2E1F` | Stickers | blanco sobre choco 10,32:1 |
 
-**Por qué azul petróleo.** El brief descarta verde ácido, terracota y violeta SaaS. Un azul
-petróleo profundo es sobrio, se lee como "tinta" junto al negro, pasa AA incluso como texto
-y como anillo de foco, y no se confunde con el azul default de links del navegador. Se usa en
-tres lugares y nada más.
+## Tipografía
 
-## Tipografía (dos familias)
-
-| Rol | Familia | Dónde | Por qué |
-|---|---|---|---|
-| Display serif | **Newsreader** 400 (Google Fonts, instancia estática) | Solo el titular del hero y "Hablemos" | Serif editorial pensada para prensa: carácter sin ser decorativa. Se usa la instancia estática (~38 kB) y no la variable con eje óptico (129 kB): con la variable el LCP mobile subía a 2,9 s y Lighthouse bajaba a 93. Soporta bien acentos, ñ y ¿¡. Da el tono de kushbothra sin copiar su fuente. |
-| Sans de lectura | **Hanken Grotesk** (variable) | Todo lo demás | Grotesca con aperturas amplias y buena legibilidad en tamaños chicos de mobile. Es neutra sin ser genérica (proporciones algo más estrechas y terminaciones más cálidas que las grotescas de sistema) y no es Inter/Geist. |
-
-Ambas con `display: "swap"` y subset `latin` (incluye latin-1: á é í ó ú ñ ¿ ¡).
-
-## Escala tipográfica (base 17 px, razón ≈ 1,25)
-
-| Token | Tamaño | Uso |
+| Rol | Familia | Uso |
 |---|---|---|
-| `text-sm` | 14 px | Metadatos, etiquetas, footer |
-| `text-base` | 17 px | Cuerpo |
-| `text-lg` | 19 px | Bajada del hero, líneas destacadas |
-| `text-xl` | 22 px | Títulos de tarjeta |
-| `text-2xl` | 27 px | Títulos de sección (sans, peso 600, sin mayúsculas) |
-| `text-display` | `clamp(2.5rem, 7vw, 4.5rem)` | Hero y "Hablemos" (serif) |
+| Sans | **Hanken Grotesk** | Wordmark "Francisco Zago" (600, tracking −0,055 em), titulares (500, tracking −0,035 em) y cuerpo |
+| Mono | **JetBrains Mono** 400/500 | Rótulos en mayúsculas, números de sección `(01)`, reloj, regla, etiquetas de carpeta, botones |
 
-Interlineado: 1,6 cuerpo; 1,1 display. Largo de línea: el contenedor de 680 px con cuerpo de
-17 px da ≈ 70 caracteres (< 75).
+Se descartaron la manuscrita (Caveat) y un wordmark de bloques redondeados: daban un tono
+infantil. La personalidad la ponen el color, los marcos y la interacción, no la letra.
 
-## Espaciado, contenedor y radios
+Escala: cuerpo 17 px; titulares de sección `clamp(2.2rem, 5vw, 3.6rem)`; titulares grandes
+`clamp(2.4rem, 5.6vw, 4.6rem)`; wordmark `clamp(2.9rem, 9.5vw, 7.25rem)`.
 
-- Contenedor: `max-width: 680px`, alineado a la izquierda con margen izquierdo que crece en
-  desktop (`ml-[max(1.25rem,calc((100vw-1100px)/2))]`), padding lateral 20 px en mobile.
-- Separación entre secciones: 96 px mobile / 128 px desktop. Sin divisores entre secciones: el aire separa.
-- Radios con jerarquía:
-  - `--radius-card` 16 px — tarjetas de trabajo y demo.
-  - `--radius-media` 10 px — imágenes sueltas en casos.
-  - `--radius-chip` 8 px — chips de imagen dentro del titular.
-  - `--radius-pill` 999 px — badge de disponibilidad y botones.
+## Componentes del lienzo (`src/components/canvas/`)
+
+- `Ruler`: regla superior con marcador que sigue al mouse (solo con puntero fino).
+- `LiveClock`: hora de Córdoba con segundos.
+- `SelectionFrame`: marco con 4 handles, nombre del frame y etiqueta de medidas.
+- `Draggable`: arrastre propio con pointer events, limitado al contenedor, sin librerías.
+- `Sticker`: `Cinta` (etiqueta de color), `CursorTag` (cursor de colaboración con nombre), `Polaroid` (captura suelta).
+- `Icons`: íconos geométricos propios en grilla de 24, de dos colores.
+- `Eyebrow`: rótulo de sección `(0N) Nombre`.
 
 ## Motion
 
-Un solo momento orquestado: entrada del hero (línea a línea, chips con escala suave). El
-resto solo responde a acciones: hover de tarjetas (la imagen sube 1,5 % de escala), lightbox,
-estados del formulario. Con `prefers-reduced-motion` no hay entrada.
-
-## Chequeo contra "cosas que NO van"
-
-- Títulos de sección en sans, caja normal, sin tracking ni mono. ✔
-- Sin etiquetas decorativas sobre los títulos (las etiquetas "Demo con contenido ficticio" y
-  "Proyecto universitario" son informativas y obligatorias). ✔
-- El titular no tiene palabra en itálica ni en otro color. ✔
-- Botones y links sin "→". ✔
-- Metadatos como lista o separados por espacio/renglón, sin "·". ✔
-- Tarjetas sin sombra ni gradiente; el borde aparece solo en la imagen. ✔
-- Sin glass, 3D, cursor custom, loader ni emojis. ✔
-- Numeración solo en "Cómo trabajo". ✔
-
-## Wireframe del home (mobile primero; en desktop la misma columna, alineada a la izquierda)
-
-```
-┌──────────────────────────────────────────────┐
-│ Francisco Zago        ● Disponible   14:32   │  header
-│ Trabajos  Servicios  Demos  Contacto         │  (nav en una línea)
-├──────────────────────────────────────────────┤
-│ Hola, soy Fran.                              │
-│                                              │
-│ Diseño y desarrollo [▣] sitios               │  hero serif
-│ y sistemas web [▣] para negocios             │  con chips de imagen
-│ que quieren vender más.                      │
-│                                              │
-│ Desarrollador full-stack en Córdoba. …       │  bajada
-│ ( Escribime por WhatsApp )  Ver demos        │  CTAs
-├──────────────────────────────────────────────┤
-│ Trabajos                                     │
-│ ┌──────────────────────────────────────────┐ │
-│ │            captura / video               │ │
-│ └──────────────────────────────────────────┘ │
-│ TrendaHaus                                   │
-│ Plataforma de reservas, 2025                 │
-│ Sus clientes reservan…                       │
-│ Reservas online  Turnos  Panel  Landing      │  tags
-│ Ver sitio   Ver caso                         │
-│ (BenicioShop, igual)                         │
-├──────────────────────────────────────────────┤
-│ Qué puedo construirte                        │
-│ Landing pages ─ Una página pensada…          │  lista de 9
-│ E-commerce ─ Tu tienda propia… (Mirá el caso)│
-│ …                                            │
-│ Cada proyecto se presupuesta a medida…       │
-│ ( Escribime por WhatsApp )                   │
-├──────────────────────────────────────────────┤
-│ ¿Sos fotógrafo? Elegí un estilo.             │
-│ [captura] Editorial   Demo con cont. ficticio│  3 tarjetas apiladas
-│ [captura] Cinemático                         │  (2 columnas en desktop
-│ [captura] Documental cálido                  │   no: columna única)
-├──────────────────────────────────────────────┤
-│ Cómo trabajo                                 │
-│ 1 Charlamos  2 Propuesta  3 Diseño  4 Public.│  lista numerada
-├──────────────────────────────────────────────┤
-│ Otros proyectos                              │
-│ ┌ UniChat  [Proyecto universitario] ───────┐ │  tarjeta chica
-│ │ Un chat con IA… / microservicios en Go…  │ │
-│ └──────────────────────────────────────────┘ │
-├──────────────────────────────────────────────┤
-│ Stack                                        │
-│ Frontend   React, Next.js, …                 │  filas de texto
-├──────────────────────────────────────────────┤
-│ Hablemos                                     │  serif grande
-│ Contame tu idea y te respondo en el día.     │
-│ ( WhatsApp ) ( Instagram ) ( Email )         │
-│ [ formulario ]                               │
-├──────────────────────────────────────────────┤
-│ © 2026  Hecho en Córdoba   GitHub  LinkedIn  │
-└──────────────────────────────────────────────┘
-```
+Un solo momento orquestado: al cargar, entra el nombre y aparecen los stickers en secuencia
+(CSS puro). El resto responde al usuario: arrastre, hover (elementos que suben 2 px o se
+enderezan), marcador de la regla y apilado de carpetas con `position: sticky`. Con
+`prefers-reduced-motion` no hay entrada; el arrastre sigue disponible.
 
 ## Demos de fotografía (tokens propios, independientes del portfolio)
 
