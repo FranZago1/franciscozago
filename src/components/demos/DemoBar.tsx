@@ -14,6 +14,7 @@ export function DemoBar({
   mensaje,
   otrosHref = "/demos/fotografia",
   pregunta = "¿Querés uno así?",
+  minimizada = false,
 }: {
   /** Nombre del estilo de la demo (ej. "Impacto"). */
   estilo: string;
@@ -22,8 +23,10 @@ export function DemoBar({
   /** Pantalla con las otras demos de la misma vertical. */
   otrosHref?: string;
   pregunta?: string;
+  /** Arranca minimizada (para demos tipo aplicación, donde la barra taparía contenido). */
+  minimizada?: boolean;
 }) {
-  const [min, setMin] = useState(false);
+  const [min, setMin] = useState(minimizada);
   const wa = waLink(mensaje ?? `Hola Fran, me interesa un portfolio de fotografía estilo ${estilo}.`);
 
   return (

@@ -6,6 +6,7 @@ export default function StockDemo() {
     <>
       <StockApp />
       <DemoBar
+        minimizada
         estilo="Stock"
         mensaje="Hola Fran, vi la demo Stock y quiero algo así para mi negocio."
         otrosHref="/demos/gestion"

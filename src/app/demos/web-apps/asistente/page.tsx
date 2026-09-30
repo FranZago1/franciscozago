@@ -6,6 +6,7 @@ export default function AsistenteDemo() {
     <main className="min-h-dvh bg-[#0B1012] pb-28 sm:pb-24">
       <AsistenteApp />
       <DemoBar
+        minimizada
         estilo="Asistente"
         mensaje="Hola Fran, vi la demo Asistente y quiero algo así para mi negocio."
         otrosHref="/demos/web-apps"

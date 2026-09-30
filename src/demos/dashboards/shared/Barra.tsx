@@ -4,6 +4,7 @@ import { DemoBar } from "@/components/demos/DemoBar";
 export function BarraDashboards({ estilo, nombre }: { estilo: string; nombre: string }) {
   return (
     <DemoBar
+        minimizada
       estilo={estilo}
       mensaje={`Hola Fran, vi la demo ${nombre} y quiero algo así para mi negocio.`}
       otrosHref="/demos/dashboards"

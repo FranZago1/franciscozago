@@ -6,6 +6,7 @@ export default function PedidosDemo() {
     <>
       <PedidosApp />
       <DemoBar
+        minimizada
         estilo="Pedidos"
         mensaje="Hola Fran, vi la demo Pedidos y quiero algo así para mi negocio."
         otrosHref="/demos/gestion"

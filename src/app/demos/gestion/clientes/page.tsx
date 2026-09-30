@@ -6,6 +6,7 @@ export default function ClientesDemo() {
     <>
       <ClientesApp />
       <DemoBar
+        minimizada
         estilo="Clientes"
         mensaje="Hola Fran, vi la demo Clientes y quiero algo así para mi negocio."
         otrosHref="/demos/gestion"
