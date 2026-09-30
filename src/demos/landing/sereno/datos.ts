@@ -9,25 +9,25 @@ export const categorias: { id: CategoriaId; nombre: string; imagen: string; alt:
     id: "facial",
     nombre: "Facial",
     imagen: `${IMG}/producto-facial.webp`,
-    alt: "Frasco gotero de sérum verde salvia junto a dos hojas, sobre fondo verde claro",
+    alt: "Manos aplicando unas gotas de sérum con un frasco gotero ámbar, con luz cálida",
   },
   {
     id: "corporal",
     nombre: "Corporal",
     imagen: `${IMG}/producto-corporal.webp`,
-    alt: "Piedras de masaje apiladas con una rama de eucalipto lila, sobre fondo lavanda",
+    alt: "Masajista volcando aceite en la mano sobre la espalda de una clienta recostada en la camilla",
   },
   {
     id: "relax",
     nombre: "Relax",
     imagen: `${IMG}/producto-relax.webp`,
-    alt: "Toalla enrollada y una vela lila encendida, sobre fondo arena",
+    alt: "Masaje con piedras calientes sobre la espalda, con flores blancas en la camilla",
   },
   {
     id: "manos",
     nombre: "Manos y pies",
     imagen: `${IMG}/producto-manos.webp`,
-    alt: "Esmalte lila y crema de manos blanca con una hoja, sobre fondo gris azulado",
+    alt: "Frasco dosificador blanco de crema junto a una toalla enrollada, una vela y tulipanes rosas",
   },
 ];
 

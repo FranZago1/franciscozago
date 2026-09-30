@@ -100,7 +100,7 @@ export default function SerenoDemo() {
                 <div className="ac-entrada relative mx-auto aspect-[4/5] w-full max-w-[500px] overflow-hidden rounded-t-[999px] rounded-b-[36px] shadow-[0_40px_80px_-50px_rgba(38,48,42,0.55)]" style={{ animationDelay: "0.15s" }}>
                   <Image
                     src={`${IMG}/hero-retrato-calma.webp`}
-                    alt="Ilustración de una mujer serena con los ojos cerrados, rodeada de ramas de eucalipto, dentro de un arco verde salvia"
+                    alt="Mujer con los ojos cerrados y vincha blanca mientras le aplican una máscara facial con pincel"
                     fill
                     priority
                     sizes="(min-width: 1024px) 500px, 90vw"
@@ -231,7 +231,7 @@ export default function SerenoDemo() {
                 <div className="relative aspect-[7/5] overflow-hidden rounded-[32px]">
                   <Image
                     src={`${IMG}/espacio-cabina.webp`}
-                    alt="Ilustración de una cabina luminosa con camilla, ventana en arco, repisa con frascos y una planta"
+                    alt="Salón luminoso con sillones rosa viejo frente a un espejo largo y cuadros en la pared"
                     fill
                     sizes="(min-width: 1024px) 600px, 100vw"
                     className="object-cover"

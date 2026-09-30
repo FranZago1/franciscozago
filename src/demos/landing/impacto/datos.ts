@@ -13,7 +13,7 @@ export const disciplinas: {
   imagen: string;
   alt: string;
   color: string;
-  /** Color del número sobre la ilustración. */
+  /** Color del número sobre la foto (va sobre un degradé oscuro). */
   tinta: string;
 }[] = [
   {
@@ -22,9 +22,9 @@ export const disciplinas: {
     bajada: "Fuerza, potencia y resistencia en circuitos que cambian todos los días. La base de todo.",
     intensidad: 4,
     imagen: `${IMG}/disciplina-funcional.webp`,
-    alt: "Ilustración de una persona haciendo swing con pesa rusa sobre fondo naranja",
+    alt: "Mano con reloj agarrando una mancuerna en un gimnasio en penumbra",
     color: "#FF4D00",
-    tinta: "#0A0A0A",
+    tinta: "#F2EEE6",
   },
   {
     id: "halterofilia",
@@ -32,9 +32,9 @@ export const disciplinas: {
     bajada: "Arranque y envión con técnica de verdad. Grupos chicos y corrección en cada repetición.",
     intensidad: 3,
     imagen: `${IMG}/disciplina-halterofilia.webp`,
-    alt: "Ilustración de una persona levantando una barra olímpica por encima de la cabeza",
+    alt: "Barra olímpica con disco apoyada en el piso de goma, con una mano tomando el agarre",
     color: "#F2EEE6",
-    tinta: "#0A0A0A",
+    tinta: "#F2EEE6",
   },
   {
     id: "hiit",
@@ -42,7 +42,7 @@ export const disciplinas: {
     bajada: "Intervalos cortos, pulsaciones arriba y 40 minutos que se pasan volando. Salís nuevo.",
     intensidad: 5,
     imagen: `${IMG}/disciplina-hiit.webp`,
-    alt: "Ilustración naranja de una persona saltando con brazos y piernas abiertos sobre fondo negro",
+    alt: "Mujer haciendo abdominales sobre una colchoneta frente a un ventanal luminoso",
     color: "#D7FF3A",
     tinta: "#F2EEE6",
   },
@@ -52,9 +52,9 @@ export const disciplinas: {
     bajada: "Rango de movimiento, respiración y control. El complemento que tus rodillas te agradecen.",
     intensidad: 2,
     imagen: `${IMG}/disciplina-movilidad.webp`,
-    alt: "Ilustración de una persona en estocada con los brazos abiertos sobre fondo verde lima",
+    alt: "Silueta de una persona sentada en postura de yoga frente a una ventana al atardecer",
     color: "#7DD3FC",
-    tinta: "#0A0A0A",
+    tinta: "#F2EEE6",
   },
 ];
 

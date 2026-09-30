@@ -90,8 +90,8 @@ export default function UrbanoDemo() {
 
             <div className="relative">
               <div className="relative aspect-square overflow-hidden bg-[#D4FF2E] lg:aspect-auto lg:h-full lg:min-h-[560px]">
-                <Image src="/demos/ecommerce/urbano/drop-hero.webp" alt="Hoodie negro del drop Asfalto con estampa verde ácido, sobre fondo verde ácido" fill priority sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
-                <div className="absolute bottom-0 left-0 bg-[#0B0B0B] px-4 py-3 text-[11px] font-bold tracking-[0.18em] text-white uppercase">Hoodie Asfalto · preview</div>
+                <Image src="/demos/ecommerce/urbano/drop-hero.webp" alt="Perchero con remeras, buzos y camisas en negro, gris, crudo y terracota" fill priority sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
+                <div className="absolute bottom-0 left-0 bg-[#0B0B0B] px-4 py-3 text-[11px] font-bold tracking-[0.18em] text-white uppercase">Drop Asfalto · en el taller</div>
               </div>
               <svg viewBox="0 0 200 200" className="pc-giro absolute -top-6 -right-2 size-28 text-[#0B0B0B] sm:-top-8 sm:-right-6 sm:size-36" aria-hidden="true">
                 <circle cx="100" cy="100" r="96" fill="#F3F2EE" />

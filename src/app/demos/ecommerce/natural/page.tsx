@@ -71,7 +71,7 @@ export default function NaturalDemo() {
           </div>
           <div className="relative">
             <div className="relative mx-auto aspect-[4/5] max-w-[520px] overflow-hidden rounded-t-[999px] rounded-b-[2.5rem] bg-[#B8C4A6]">
-              <Image src="/demos/ecommerce/natural/hero-coleccion.webp" alt="Sérum Calma, crema nutritiva, tónico de rosas y jabón de arcilla sobre un pedestal, con sombra de hojas" fill priority sizes="(min-width: 768px) 520px, 100vw" className="object-cover" />
+              <Image src="/demos/ecommerce/natural/hero-coleccion.webp" alt="Frasco dosificador blanco junto a una toalla enrollada, una vela y un ramo de tulipanes rosas" fill priority sizes="(min-width: 768px) 520px, 100vw" className="object-cover" />
             </div>
             <div className="absolute bottom-6 -left-1 rounded-3xl bg-[#F6F5EF] p-4 shadow-[0_20px_40px_-20px_rgba(45,53,36,0.45)] sm:left-0 md:-left-6">
               <p className={`${serif} text-3xl`}>98 %</p>

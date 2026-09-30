@@ -22,17 +22,11 @@ const fotos = [
   { ruta: "marketplaces/productores/hero-puesto.webp", id: "1488459716781-31db52582fe9", w: 1600, h: 1100 },
   { ruta: "marketplaces/productores/producto-queso-semiduro.webp", id: "1486297678162-eb2a19b0a32d", w: 800, h: 800 },
   { ruta: "marketplaces/productores/producto-pan-masa-madre.webp", id: "1509440159596-0249088772ff", w: 800, h: 800 },
-  {
-    ruta: "marketplaces/productores/producto-bolson-de-estacion.webp",
-    id: "1542838132-92c53300491e",
-    w: 800,
-    h: 800,
-    extract: { left: 0, top: 0.52, width: 0.62, height: 0.48 },
-  },
+
 
   // Cava Aldea (nuevas: fondo del hero y banner de degustaciones)
-  { ruta: "catalogos/vinoteca/hero-copa.webp", id: "1553361371-9b22f78e8b1d", w: 1800, h: 1100 },
-  { ruta: "catalogos/vinoteca/degustacion.webp", id: "1510812431401-41d2bd2722f3", w: 1600, h: 700 },
+  { ruta: "catalogos/vinoteca/hero-copa.webp", id: "1474722883778-792e7990302f", w: 1800, h: 1100 },
+  { ruta: "catalogos/vinoteca/degustacion.webp", id: "1510812431401-41d2bd2722f3", w: 1600, h: 800 },
 
   // Nido (nueva: foto de la sección "Del taller a tu casa")
   { ruta: "catalogos/deco/casa-living.webp", id: "1600210492486-724fe5c67fb0", w: 1600, h: 800 },

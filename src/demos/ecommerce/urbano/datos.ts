@@ -248,9 +248,9 @@ export const porId: Record<string, ProductoUrbano> = Object.fromEntries(producto
 export const categorias: Categoria[] = ["Remeras", "Abrigos", "Pantalones", "Calzado", "Accesorios"];
 
 export const looks = [
-  { id: "01", titulo: "Calle", imagen: img("lookbook-01"), alt: "Look 01: hoodie ácido, cargo negro, gorra negra y zapatillas blancas", piezas: ["hoodie-acido", "cargo-negro", "gorra-pampa", "zapa-pista"] },
-  { id: "02", titulo: "Verano", imagen: img("lookbook-02"), alt: "Look 02: remera negra, cargo arena, riñonera y zapatillas negras", piezas: ["remera-pampa", "cargo-arena", "rinonera", "zapa-noche"] },
-  { id: "03", titulo: "Noche", imagen: img("lookbook-03"), alt: "Look 03: rompevientos con franja ácida, gorra hueso y medias", piezas: ["rompevientos", "gorra-hueso", "medias-club"] },
+  { id: "01", titulo: "Calle", imagen: img("lookbook-01"), alt: "Look 01: mujer con buzo corto y jogger amarillos y botas blancas, en una cancha de básquet al aire libre", piezas: ["hoodie-acido", "cargo-negro", "gorra-pampa", "zapa-pista"] },
+  { id: "02", titulo: "Verano", imagen: img("lookbook-02"), alt: "Look 02: remera blanca lisa y pantalón negro, en primer plano", piezas: ["remera-pampa", "cargo-arena", "rinonera", "zapa-noche"] },
+  { id: "03", titulo: "Capas", imagen: img("lookbook-03"), alt: "Look 03: chico sentado en un banco de madera con saco camel, remera blanca y pantalón claro", piezas: ["rompevientos", "gorra-hueso", "medias-club"] },
 ];
 
 export const guias = {

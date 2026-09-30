@@ -134,7 +134,7 @@ export default function ImpactoDemo() {
                   <div className="relative h-full overflow-hidden border-2 border-[#F2EEE6]/90">
                     <Image
                       src={`${IMG}/hero-atleta-envion.webp`}
-                      alt="Ilustración de una atleta haciendo un envión con barra olímpica sobre un gran círculo naranja"
+                      alt="Atleta con barba haciendo curl de bíceps con barra en un gimnasio oscuro"
                       fill
                       priority
                       sizes="(min-width: 1024px) 520px, (min-width: 640px) 520px, 100vw"
@@ -219,6 +219,7 @@ export default function ImpactoDemo() {
                           sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
                           className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06] motion-reduce:transition-none"
                         />
+                        <span aria-hidden="true" className="absolute inset-x-0 top-0 h-2/5 bg-gradient-to-b from-black/60 to-transparent" />
                         <span className={`${display} absolute top-2 left-3 text-4xl sm:top-3 sm:left-4 sm:text-6xl`} style={{ color: d.tinta }}>
                           0{i + 1}
                         </span>
