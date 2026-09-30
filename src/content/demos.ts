@@ -24,6 +24,8 @@ export type Demo = {
   servicios: { nombre: string; linea: string }[];
   testimonio?: { texto: string; autor: string };
   fotos: FotoDemo[];
+  /** Captura de la demo para la tarjeta del home (ruta en /public). Si falta, se usa la primera foto. */
+  captura?: string;
   /** true mientras las fotos sean placeholders generados (sin acceso a Unsplash). */
   placeholder: boolean;
 };

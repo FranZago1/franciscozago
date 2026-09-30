@@ -9,8 +9,6 @@
   --color-surface: #f5f5f4;
   --color-accent: #0e6a70;
 
-  --font-sans: var(--font-hanken), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-newsreader), ui-serif, Georgia, serif;
 
   --text-sm: 0.875rem;
   --text-sm--line-height: 1.5;
@@ -54,6 +52,13 @@
     outline-offset: 3px;
     border-radius: 4px;
   }
+}
+
+/* Las fuentes se definen por ruta con next/font; `inline` hace que la utilidad use la variable
+   del elemento (y no la de :root, donde no existe). */
+@theme inline {
+  --font-sans: var(--font-hanken), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-newsreader), ui-serif, Georgia, serif;
 }
 
 /* Contenedor de columna única, alineado a la izquierda. */
