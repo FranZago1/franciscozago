@@ -268,7 +268,6 @@ export function Calendario({
                               tabIndex={info.enfocado ? 0 : -1}
                               aria-disabled={est.deshabilitado || undefined}
                               aria-current={d === hoy ? "date" : undefined}
-                              aria-label={partesLabel.join(", ")}
                               className={tema.dia(info)}
                               onClick={() => {
                                 setFoco(d);
@@ -281,6 +280,8 @@ export function Calendario({
                               }}
                             >
                               {contenidoDia ? contenidoDia(info) : Number(d.slice(8))}
+                              {/* El nombre accesible empieza con el texto visible y suma la fecha completa y su estado. */}
+                              <span className="sr-only">, {partesLabel.join(", ")}</span>
                             </button>
                           </td>
                         );

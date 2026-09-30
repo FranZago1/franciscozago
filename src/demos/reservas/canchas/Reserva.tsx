@@ -383,20 +383,20 @@ export function Reserva() {
 
                 {/* Totales */}
                 <div className="grid gap-1.5 text-sm">
-                <dl className="grid gap-1.5">
-                  <Linea t={`Cancha (${duracion} min)`} v={cot.cancha} />
-                  {cot.luz ? <Linea t="Iluminación" v={cot.luz} /> : null}
-                  {paletas ? <Linea t={`Paletas × ${paletas}`} v={paletas * PRECIO_PALETA} /> : null}
-                  {pelotas ? <Linea t="Tubo de pelotas" v={PRECIO_PELOTAS} /> : null}
-                  <div className="mt-2 flex items-baseline justify-between border-t border-[#0a1b3d]/10 pt-3">
-                    <dt className="font-semibold">Total</dt>
-                    <dd className={`${display} text-4xl font-extrabold text-[#0a1b3d] tabular-nums`}>{pesos(total)}</dd>
-                  </div>
-                  <div className="flex items-center justify-between rounded-lg bg-[#d8f03c]/50 px-3 py-2">
-                    <dt className="font-semibold">Seña para confirmar (30 %)</dt>
-                    <dd className="font-bold tabular-nums">{pesos(sena)}</dd>
-                  </div>
-                </dl>
+                  <dl className="grid gap-1.5">
+                    <Linea t={`Cancha (${duracion} min)`} v={cot.cancha} />
+                    {cot.luz ? <Linea t="Iluminación" v={cot.luz} /> : null}
+                    {paletas ? <Linea t={`Paletas × ${paletas}`} v={paletas * PRECIO_PALETA} /> : null}
+                    {pelotas ? <Linea t="Tubo de pelotas" v={PRECIO_PELOTAS} /> : null}
+                    <div className="mt-2 flex items-baseline justify-between border-t border-[#0a1b3d]/10 pt-3">
+                      <dt className="font-semibold">Total</dt>
+                      <dd className={`${display} text-4xl font-extrabold text-[#0a1b3d] tabular-nums`}>{pesos(total)}</dd>
+                    </div>
+                    <div className="flex items-center justify-between rounded-lg bg-[#d8f03c]/50 px-3 py-2">
+                      <dt className="font-semibold">Seña para confirmar (30 %)</dt>
+                      <dd className="font-bold tabular-nums">{pesos(sena)}</dd>
+                    </div>
+                  </dl>
                   <p className="text-xs text-[#0a1b3d]/60">El resto ({pesos(total - sena)}) lo pagás en el club. Por jugador: {pesos(total / 4)}.</p>
                 </div>
 
