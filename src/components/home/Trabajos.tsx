@@ -5,6 +5,7 @@ import { DevTodo } from "@/components/DevTodo";
 import { Icon } from "@/components/canvas/Icons";
 import { SelectionFrame } from "@/components/canvas/SelectionFrame";
 import { trabajos, type Trabajo } from "@/content/trabajos";
+import { Apilado } from "./Apilado";
 
 export const colorTrabajo: Record<Trabajo["color"], { tab: string; borde: string }> = {
   celeste: { tab: "bg-celeste text-ink", borde: "border-celeste" },
@@ -38,8 +39,8 @@ export function FolderChip({ children }: { children: React.ReactNode }) {
 function Carpeta({ t, i }: { t: Trabajo; i: number }) {
   const c = colorTrabajo[t.color];
   return (
-    <article
-      aria-labelledby={`trabajo-${t.slug}`}
+    <Apilado
+      labelledBy={`trabajo-${t.slug}`}
       className="md:sticky md:top-3"
       style={{ zIndex: i + 1, "--offset": `${i * 200}px` } as React.CSSProperties}
     >
@@ -85,23 +86,37 @@ function Carpeta({ t, i }: { t: Trabajo; i: number }) {
           </ul>
         </div>
 
-        <SelectionFrame tono="ink" padding="p-0" className="min-h-[240px] md:min-h-0">
-          <div className="relative size-full min-h-[240px] overflow-hidden bg-surface md:min-h-0">
-            <Image
-              src={t.media.desktop}
-              alt={t.media.placeholder ? `Espacio para la captura del sitio de ${t.nombre}` : `Captura del sitio de ${t.nombre}`}
-              fill
-              sizes="(min-width: 768px) 640px, 100vw"
-              className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.02]"
-            />
-            <span className="label-mono absolute top-3 right-3 bg-ink px-3 py-1.5 text-[12px] text-white md:text-[13px]">
-              {t.badge}
-            </span>
-            {t.media.placeholder ? <DevTodo>captura real de {t.nombre}</DevTodo> : null}
+        {/* Capturas a su proporción real: desktop 16:10 y el celular superpuesto abajo a la derecha. */}
+        <div className="relative flex items-center pr-[9%] pb-[7%] md:pb-0">
+          <SelectionFrame tono="ink" padding="p-0" className="w-full">
+            <div className="relative aspect-[16/10] overflow-hidden bg-surface">
+              <Image
+                src={t.media.desktop}
+                alt={t.media.placeholder ? `Espacio para la captura del sitio de ${t.nombre}` : `Captura del sitio de ${t.nombre}`}
+                fill
+                sizes="(min-width: 768px) 600px, 90vw"
+                className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.02]"
+              />
+              <span className="label-mono absolute top-3 left-3 bg-ink px-3 py-1.5 text-[12px] text-white md:text-[13px]">
+                {t.badge}
+              </span>
+              {t.media.placeholder ? <DevTodo>captura real de {t.nombre}</DevTodo> : null}
+            </div>
+          </SelectionFrame>
+          <div className="absolute right-0 bottom-0 w-[24%] rounded-[14px] bg-ink p-[5px] shadow-[0_18px_40px_-16px_rgb(0_0_0/0.45)] transition-transform duration-500 ease-out group-hover:-translate-y-2 md:bottom-[8%]">
+            <div className="relative aspect-[390/800] overflow-hidden rounded-[10px] bg-surface">
+              <Image
+                src={t.media.mobile}
+                alt={t.media.placeholder ? "" : `${t.nombre} en el celular`}
+                fill
+                sizes="(min-width: 768px) 150px, 24vw"
+                className="object-cover object-top"
+              />
+            </div>
           </div>
-        </SelectionFrame>
+        </div>
       </div>
-    </article>
+    </Apilado>
   );
 }
 

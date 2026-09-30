@@ -12,13 +12,7 @@ export const hero = {
   saludo: "Hola, me llamo",
   disponible: "Disponible para proyectos",
   /** Titular principal. Los objetos son íconos en línea. */
-  titular: [
-    "Desarrollo",
-    { icono: "pluma", bg: "menta" },
-    "sitios y sistemas web",
-    { icono: "chispa", bg: "rosa" },
-    "para negocios que quieren vender más.",
-  ] as Segmento[],
+  titular: ["Desarrollo sitios y sistemas web para negocios que quieren vender más."] as Segmento[],
   bajada:
     "Desarrollador full-stack en Córdoba. Landing pages, tiendas online, sistemas de reservas y más, desde la idea hasta el sitio publicado.",
   ctaPrimario: {

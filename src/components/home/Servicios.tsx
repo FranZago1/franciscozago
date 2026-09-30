@@ -17,18 +17,18 @@ export function Servicios() {
 
       <ul className="mt-10 grid border-t-[1.5px] border-l-[1.5px] border-ink sm:grid-cols-2 lg:grid-cols-3">
         {servicios.map((s) => (
-          <li key={s.nombre} className="group relative border-r-[1.5px] border-b-[1.5px] border-ink bg-white p-5 transition-colors md:p-6">
+          <li key={s.nombre} className="group relative border-r-[1.5px] border-b-[1.5px] border-ink bg-white p-5 transition-colors duration-200 hover:bg-ink hover:text-white md:p-6">
             <span className={`flex size-11 items-center justify-center transition-transform duration-200 group-hover:-rotate-6 ${stickerBg[s.color]}`}>
               <Icon name={s.icono} className="size-6" secondary={stickerFill[s.color]} />
             </span>
             <h3 className="mt-5 text-2xl font-medium tracking-tight">{s.nombre}</h3>
-            <p className="mt-1.5 text-muted">{s.linea}</p>
+            <p className="mt-1.5 text-muted transition-colors duration-200 group-hover:text-white/70">{s.linea}</p>
             {s.demos || s.evidencia ? (
               <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2">
                 {s.demos ? (
                   <Link
                     href={`/demos/${s.demos}`}
-                    className="label-mono inline-flex items-center gap-1 border-b-[1.5px] border-ink pb-0.5 text-[13px] font-medium hover:border-accent hover:text-accent"
+                    className="label-mono inline-flex items-center gap-1 border-b-[1.5px] border-ink pb-0.5 text-[13px] font-medium group-hover:border-white hover:!border-mostaza hover:!text-mostaza"
                   >
                     Ver demos<span className="sr-only"> de {s.nombre}</span>
                     <Icon name="flecha" className="size-3.5" />
@@ -37,7 +37,7 @@ export function Servicios() {
                 {s.evidencia ? (
                   <Link
                     href={s.evidencia.href}
-                    className="label-mono inline-flex items-center gap-1 border-b-[1.5px] border-line pb-0.5 text-[13px] font-medium text-muted hover:border-accent hover:text-accent"
+                    className="label-mono inline-flex items-center gap-1 border-b-[1.5px] border-line pb-0.5 text-[13px] font-medium text-muted group-hover:border-white/40 group-hover:text-white/70 hover:!border-mostaza hover:!text-mostaza"
                   >
                     {s.evidencia.label}
                     <Icon name="flecha" className="size-3.5" />
