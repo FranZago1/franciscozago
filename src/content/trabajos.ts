@@ -82,11 +82,10 @@ export const trabajos: Trabajo[] = [
       "Vercel KV",
       "Vercel",
     ],
-    // TODO: reemplazar por capturas reales en /public/trabajos/trendahaus/ (desktop.webp, mobile.webp, opcional video.mp4)
     media: {
       desktop: "/trabajos/trendahaus/desktop.webp",
       mobile: "/trabajos/trendahaus/mobile.webp",
-      placeholder: true,
+      placeholder: false,
     },
     cta: {
       titulo: "¿Querés algo así para tu negocio?",
@@ -137,11 +136,10 @@ export const trabajos: Trabajo[] = [
       "JWT",
       "Vercel",
     ],
-    // TODO: reemplazar por capturas reales en /public/trabajos/benicioshop/ (desktop.webp, mobile.webp, opcional video.mp4)
     media: {
       desktop: "/trabajos/benicioshop/desktop.webp",
       mobile: "/trabajos/benicioshop/mobile.webp",
-      placeholder: true,
+      placeholder: false,
     },
     cta: {
       titulo: "¿Querés algo así para tu negocio?",

@@ -22,7 +22,7 @@ export function DemosVertical({ vertical }: { vertical: string }) {
         Volver a servicios
       </Link>
 
-      <Eyebrow n="02" className="mt-10 mb-4">
+      <Eyebrow n="01" className="mt-10 mb-4">
         Servicios / {v.servicio}
       </Eyebrow>
       <h1 id="demos-titulo" className="max-w-[20ch] text-[clamp(2.4rem,6vw,4.6rem)] leading-[0.98] font-medium tracking-[-0.04em]">

@@ -8,6 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const base = siteUrl();
   return [
     { url: `${base}/`, changeFrequency: "monthly", priority: 1 },
+    { url: `${base}/sobre-mi`, changeFrequency: "yearly", priority: 0.5 },
     ...verticalesInfo.map((v) => ({
       url: `${base}/demos/${v.slug}`,
       changeFrequency: "monthly" as const,

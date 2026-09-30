@@ -9,6 +9,15 @@ import { hero, heroStickers as st } from "@/content/home";
 import { getTrabajo } from "@/content/trabajos";
 import { waLink } from "@/lib/wa";
 
+/** Envoltorio que hace flotar y rotar suave un sticker (d: duración en s, g: giro en grados, dl: desfase). */
+function Flota({ d, g, dl, children }: { d: number; g: number; dl: number; children: React.ReactNode }) {
+  return (
+    <span className="flota block" style={{ "--d": `${d}s`, "--g": `${g}deg`, "--dl": `${dl}s` } as React.CSSProperties}>
+      {children}
+    </span>
+  );
+}
+
 const pop = (i: number) => ({ className: "pop-in block", style: { "--i": i } as React.CSSProperties });
 
 export function Hero() {
@@ -35,49 +44,79 @@ export function Hero() {
             {hero.disponible}
           </p>
 
-          {/* Stickers: decorativos, se pueden arrastrar */}
+          {/* Stickers: decorativos, se pueden arrastrar y flotan/rotan suave (clase .flota) */}
           {th ? (
-            <Draggable rotate={-4} className="absolute top-[2%] left-[0%] hidden lg:block">
-              <span {...pop(0)}>
-                <Polaroid src={th.media.desktop} alt="" epigrafe="trendahaus.com" className="w-52" />
-              </span>
+            <Draggable rotate={-4} className="absolute top-[7%] left-[0%] hidden lg:block">
+              <Flota d={8} g={2.5} dl={-1}>
+                <span {...pop(0)}>
+                  <Polaroid src={th.media.desktop} alt="" epigrafe="trendahaus.com" className="w-52" />
+                </span>
+              </Flota>
             </Draggable>
           ) : null}
           {bs ? (
-            <Draggable rotate={3} className="absolute top-[3%] right-[0%] hidden lg:block">
-              <span {...pop(1)}>
-                <Polaroid src={bs.media.desktop} alt="" epigrafe="benicioshop.com" className="w-48" />
-              </span>
+            <Draggable rotate={3} className="absolute top-[8%] right-[0%] hidden lg:block">
+              <Flota d={9} g={-2.5} dl={-3}>
+                <span {...pop(1)}>
+                  <Polaroid src={bs.media.desktop} alt="" epigrafe="benicioshop.com" className="w-48" />
+                </span>
+              </Flota>
             </Draggable>
           ) : null}
           <Draggable rotate={-3} className="absolute top-[3%] left-0 md:top-[66%] md:left-[6%]">
-            <span {...pop(2)}>
-              <Cinta color={st.rol.color}>{st.rol.texto}</Cinta>
-            </span>
+            <Flota d={7} g={4} dl={-2}>
+              <span {...pop(2)}>
+                <Cinta color={st.rol.color}>{st.rol.texto}</Cinta>
+              </span>
+            </Flota>
           </Draggable>
-          <Draggable rotate={3} className="absolute top-[11%] right-0 md:top-[62%] md:right-[6%]">
-            <span {...pop(3)}>
-              <Cinta color={st.lugar.color}>{st.lugar.texto}</Cinta>
-            </span>
+          <Draggable rotate={4} className="absolute top-[12%] right-0 md:top-[46%] md:right-[3%]">
+            <Flota d={6.5} g={-5} dl={-4}>
+              <span {...pop(3)}>
+                <Cinta color={st.portfolios.color}>{st.portfolios.texto}</Cinta>
+              </span>
+            </Flota>
           </Draggable>
           <Draggable className="absolute bottom-[10%] left-[4%] md:bottom-[13%] md:left-[27%]">
-            <span {...pop(4)}>
-              <CursorTag color={st.cursorIzq.color}>{st.cursorIzq.texto}</CursorTag>
-            </span>
+            <Flota d={6} g={-6} dl={-1.5}>
+              <span {...pop(4)}>
+                <CursorTag color={st.cursorIzq.color}>{st.cursorIzq.texto}</CursorTag>
+              </span>
+            </Flota>
           </Draggable>
           <Draggable className="absolute right-[4%] bottom-[3%] md:right-[26%] md:bottom-[17%]">
-            <span {...pop(5)}>
-              <CursorTag color={st.cursorDer.color} lado="der">
-                {st.cursorDer.texto}
-              </CursorTag>
-            </span>
+            <Flota d={7.5} g={6} dl={-3.5}>
+              <span {...pop(5)}>
+                <CursorTag color={st.cursorDer.color} lado="der">
+                  {st.cursorDer.texto}
+                </CursorTag>
+              </span>
+            </Flota>
           </Draggable>
-          <Draggable rotate={-2} className="absolute right-[9%] bottom-[5%] hidden md:block">
-            <span {...pop(6)}>
-              <Cinta color={st.dato.color}>{st.dato.texto}</Cinta>
-            </span>
+          <Draggable className="absolute top-[40%] left-[4%] hidden md:block">
+            <Flota d={8.5} g={-4} dl={-5}>
+              <span {...pop(6)}>
+                <CursorTag color={st.webApps.color}>{st.webApps.texto}</CursorTag>
+              </span>
+            </Flota>
           </Draggable>
-          <p className="label-mono pointer-events-none absolute bottom-2 left-5 hidden text-[11px] text-muted md:block">
+          <Draggable className="absolute right-[9%] bottom-[14%] hidden md:block">
+            <Flota d={7} g={5} dl={-2.5}>
+              <span {...pop(7)}>
+                <CursorTag color={st.dashboards.color} lado="der">
+                  {st.dashboards.texto}
+                </CursorTag>
+              </span>
+            </Flota>
+          </Draggable>
+          <Draggable rotate={-2} className="absolute bottom-[7%] left-[9%] hidden md:block">
+            <Flota d={9.5} g={3} dl={-6}>
+              <span {...pop(8)}>
+                <Cinta color={st.landing.color}>{st.landing.texto}</Cinta>
+              </span>
+            </Flota>
+          </Draggable>
+          <p className="label-mono pointer-events-none absolute right-5 bottom-2 hidden text-[11px] text-muted md:block">
             Arrastrá los elementos
           </p>
         </div>

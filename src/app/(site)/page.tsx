@@ -13,8 +13,8 @@ export default function Home() {
     <>
       <PersonJsonLd />
       <Hero />
-      <Trabajos />
       <Servicios />
+      <Trabajos />
       <Proceso />
       <Contacto />
     </>

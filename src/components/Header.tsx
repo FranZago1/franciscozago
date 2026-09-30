@@ -4,8 +4,9 @@ import { LiveClock } from "./canvas/LiveClock";
 import { Ruler } from "./canvas/Ruler";
 
 const nav = [
-  { href: "/#trabajos", label: "Trabajos" },
   { href: "/#servicios", label: "Servicios" },
+  { href: "/#trabajos", label: "Trabajos" },
+  { href: "/sobre-mi", label: "Sobre mí" },
   { href: "/#contacto", label: "Contacto" },
 ];
 
