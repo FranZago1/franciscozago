@@ -57,7 +57,7 @@ function wireframe(w, h, mobile, seed) {
 
 // ---------- Demos: composiciones abstractas con "luz" según el estilo ----------
 const PALETAS = {
-  editorial: { bg: ["#EDEAE6", "#E2DED8", "#F3F1EE", "#D9D4CD"], blobs: ["#C9C1B6", "#F8F6F2", "#B5ADA3", "#E9E3DB"] },
+  editorial: { bg: ["#DCD6CE", "#CFC8BE", "#E4DFD8", "#C4BCB1"], blobs: ["#A89E91", "#F4F1EC", "#8E857A", "#D8D0C5"] },
   cinematico: { bg: ["#0B0B0B", "#141414", "#1C1917", "#0E1216"], blobs: ["#8A8A8A", "#3D3D3D", "#B8B0A6", "#5A1E1E"] },
   documental: { bg: ["#F9D9B8", "#F6C8A8", "#FBE3C4", "#F4D08A"], blobs: ["#F2B233", "#FFF4E0", "#E88A6A", "#C98FA6"] },
 };

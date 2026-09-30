@@ -79,3 +79,8 @@
     text-decoration-color: var(--color-accent);
   }
 }
+
+/* La demo cinemática usa negro real también en el overscroll. */
+body:has([data-demo="cinematico"]) {
+  background: #000000;
+}

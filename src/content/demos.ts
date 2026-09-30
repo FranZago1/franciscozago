@@ -52,6 +52,7 @@ const fotos = (lista: [string, Orientacion][]): FotoDemo[] =>
 
 const editorial: Demo = {
   slug: "editorial",
+  captura: "/demos/fotografia/editorial/captura.webp",
   nombre: "Editorial",
   para: "Retrato y bodas",
   linea: "Blanco, mucho aire y fotos en una grilla asimétrica. Elegante y calmo.",
@@ -94,6 +95,7 @@ const editorial: Demo = {
 
 const cinematico: Demo = {
   slug: "cinematico",
+  captura: "/demos/fotografia/cinematico/captura.webp",
   nombre: "Cinemático",
   para: "Moda y trabajo conceptual",
   linea: "Fondo negro y fotos a sangre, una tras otra. Impacto y drama.",
@@ -131,6 +133,7 @@ const cinematico: Demo = {
 
 const documental: Demo = {
   slug: "documental",
+  captura: "/demos/fotografia/documental/captura.webp",
   nombre: "Documental cálido",
   para: "Familias, eventos y newborn",
   linea: "Colores cálidos y luminosos, galería tipo mosaico. Cercano y espontáneo.",
