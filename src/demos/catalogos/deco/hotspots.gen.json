@@ -1,0 +1,116 @@
+{
+  "living": [
+    {
+      "id": "biblioteca-quebracho",
+      "v": "roble",
+      "x": 83.44,
+      "y": 49.27
+    },
+    {
+      "id": "lampara-brisa",
+      "v": "laton",
+      "x": 70.75,
+      "y": 54.04
+    },
+    {
+      "id": "alfombra-pampa",
+      "v": "crudo",
+      "x": 68.75,
+      "y": 90.5
+    },
+    {
+      "id": "sofa-tala",
+      "v": "lino-crudo",
+      "x": 59.38,
+      "y": 69
+    },
+    {
+      "id": "almohadon-trama",
+      "v": "terracota",
+      "x": 40.31,
+      "y": 57.88
+    },
+    {
+      "id": "butaca-ceibo",
+      "v": "boucle",
+      "x": 20.63,
+      "y": 69.08
+    },
+    {
+      "id": "mesa-lapacho",
+      "v": "roble",
+      "x": 50.94,
+      "y": 83.77
+    },
+    {
+      "id": "jarron-barro",
+      "v": "terracota",
+      "x": 53.63,
+      "y": 62.2
+    }
+  ],
+  "comedor": [
+    {
+      "id": "aparador-tipa",
+      "v": "roble",
+      "x": 78.13,
+      "y": 60.54
+    },
+    {
+      "id": "jarron-barro",
+      "v": "crudo",
+      "x": 86.88,
+      "y": 36.6
+    },
+    {
+      "id": "silla-junco",
+      "v": "roble",
+      "x": 29.38,
+      "y": 66.91
+    },
+    {
+      "id": "colgante-luna",
+      "v": "terracota",
+      "x": 31.25,
+      "y": 36
+    },
+    {
+      "id": "mesa-algarrobo",
+      "v": "roble",
+      "x": 39.06,
+      "y": 73.87
+    }
+  ],
+  "dormitorio": [
+    {
+      "id": "espejo-arco",
+      "v": "laton",
+      "x": 15,
+      "y": 57.68
+    },
+    {
+      "id": "mesa-luz-pino",
+      "v": "roble",
+      "x": 31.25,
+      "y": 71.65
+    },
+    {
+      "id": "cama-sauce",
+      "v": "lino-crudo",
+      "x": 50.31,
+      "y": 66.08
+    },
+    {
+      "id": "almohadon-trama",
+      "v": "terracota",
+      "x": 51.88,
+      "y": 62
+    },
+    {
+      "id": "lampara-brisa",
+      "v": "laton",
+      "x": 82.5,
+      "y": 59.42
+    }
+  ]
+}
