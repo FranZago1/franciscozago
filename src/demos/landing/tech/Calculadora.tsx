@@ -49,7 +49,7 @@ function Rango({
         className="cc-rango mt-3 w-full"
         style={{ "--pct": `${pct}%` } as React.CSSProperties}
       />
-      <div className={`${mono} mt-1.5 flex justify-between text-[11px] text-slate-400`}>
+      <div className={`${mono} mt-1.5 flex justify-between text-[11px] text-slate-500`}>
         <span>{formato(min)}</span>
         <span>{formato(max)}</span>
       </div>

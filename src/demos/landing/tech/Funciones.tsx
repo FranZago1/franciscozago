@@ -52,7 +52,7 @@ function MockFacturacion() {
         <p className="text-[11px] text-slate-500">Cliente</p>
         <p className="mt-0.5 flex items-center justify-between text-sm text-slate-900">
           Estudio Nube Alta SRL
-          <span className={`${mono} text-[11px] text-slate-400`}>30-71234567-4</span>
+          <span className={`${mono} text-[11px] text-slate-500`}>30-71234567-4</span>
         </p>
       </div>
       <div className="rounded-xl ring-1 ring-slate-200/70">
@@ -193,7 +193,7 @@ function MockMonotributo() {
               <div className="h-2.5 overflow-hidden rounded-full bg-slate-200">
                 <div className={`h-full rounded-full ${c === "D" ? "bg-[#4F46E5]" : "bg-indigo-300"}`} style={{ width: `${v}%` }} />
               </div>
-              <p className={`${mono} mt-1.5 text-center text-[11px] ${c === "D" ? "font-medium text-indigo-700" : "text-slate-400"}`}>{c}</p>
+              <p className={`${mono} mt-1.5 text-center text-[11px] ${c === "D" ? "font-medium text-indigo-700" : "text-slate-500"}`}>{c}</p>
             </div>
           ))}
         </div>
@@ -251,7 +251,7 @@ export function Funciones() {
               onClick={() => setActiva(i)}
               onKeyDown={(e) => onKeyDown(e, i)}
               className={`inline-flex shrink-0 items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-medium transition-[background-color,color,box-shadow] duration-200 ${
-                sel ? "bg-white text-slate-900 shadow-sm ring-1 ring-slate-200" : "text-slate-500 hover:text-slate-900"
+                sel ? "bg-white text-slate-900 shadow-sm ring-1 ring-slate-200" : "text-slate-600 hover:text-slate-900"
               }`}
             >
               <Icono nombre={tab.icono} grosor={1.8} className={`size-4 ${sel ? "text-[#4F46E5]" : ""}`} />

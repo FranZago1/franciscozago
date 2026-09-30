@@ -164,7 +164,7 @@ export function PanelMock() {
               <div className="rounded-xl p-3 ring-1 ring-slate-200/80 sm:p-4">
                 <p className="text-[11px] text-slate-500">Facturado</p>
                 <p className="mt-1 text-[15px] font-semibold tracking-tight text-slate-900 tabular-nums sm:text-lg">${miles(kFacturado)}</p>
-                <p className="mt-1 text-[11px] font-medium text-emerald-600">+18 % vs. agosto</p>
+                <p className="mt-1 text-[11px] font-medium text-emerald-700">+18 % vs. agosto</p>
               </div>
               <div className="rounded-xl p-3 ring-1 ring-slate-200/80 sm:p-4">
                 <p className="text-[11px] text-slate-500">Cobrado</p>
@@ -174,7 +174,7 @@ export function PanelMock() {
               <div className="hidden rounded-xl p-3 ring-1 ring-slate-200/80 sm:p-4 lg:block">
                 <p className="text-[11px] text-slate-500">Por cobrar</p>
                 <p className="mt-1 text-lg font-semibold tracking-tight text-slate-900 tabular-nums">${miles(kFacturado - kCobrado)}</p>
-                <p className="mt-1 text-[11px] font-medium text-amber-600">{facturas.filter((f) => f.estado !== "pagada").length} facturas abiertas</p>
+                <p className="mt-1 text-[11px] font-medium text-amber-700">{facturas.filter((f) => f.estado !== "pagada").length} facturas abiertas</p>
               </div>
               <div className="hidden rounded-xl bg-indigo-50/60 p-3 ring-1 ring-indigo-100 sm:p-4 lg:block">
                 <p className="text-[11px] text-indigo-900/70">Tope categoría D</p>
@@ -203,7 +203,7 @@ export function PanelMock() {
                       >
                         <span className="min-w-0">
                           <span className="block truncate font-medium text-slate-900">{f.cliente}</span>
-                          <span className={`${mono} block text-[10.5px] text-slate-400 sm:hidden`}>{f.numero}</span>
+                          <span className={`${mono} block text-[10.5px] text-slate-500 sm:hidden`}>{f.numero}</span>
                         </span>
                         <span className={`${mono} hidden truncate text-[11px] text-slate-500 sm:block`}>{f.numero}</span>
                         <span className="text-right font-medium text-slate-900 tabular-nums">${miles(f.monto)}</span>
@@ -217,7 +217,7 @@ export function PanelMock() {
               <div className="hidden rounded-xl p-4 ring-1 ring-slate-200/80 lg:block">
                 <div className="flex items-center justify-between">
                   <p className="text-[13px] font-medium text-slate-900">Facturación mensual</p>
-                  <p className={`${mono} text-[11px] text-slate-400`}>millones $</p>
+                  <p className={`${mono} text-[11px] text-slate-500`}>millones $</p>
                 </div>
                 <div className="mt-4 flex h-40 items-end gap-2.5">
                   {barrasMeses.map((b, i) => (

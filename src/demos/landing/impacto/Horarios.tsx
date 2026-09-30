@@ -24,11 +24,9 @@ function etiquetaLugares(c: Clase) {
   return `${c.libres} lugares`;
 }
 
-function ariaClase(c: Clase) {
-  const d = disciplinaPorId[c.disciplina];
-  const coach = coachPorId[c.coach].nombre.split(" ")[0];
-  const lugares = c.libres === 0 ? "clase completa" : c.libres === 1 ? "queda 1 lugar" : `quedan ${c.libres} lugares`;
-  return `${diaPorId[c.dia].largo} ${c.hora}, ${d.nombre} con ${coach}, ${lugares}`;
+/** Texto solo para lectores de pantalla que completa el nombre visible del botón de clase. */
+function contextoClase(c: Clase) {
+  return `, ${diaPorId[c.dia].largo} ${c.hora}${c.libres === 0 ? "" : ". Elegir esta clase"}`;
 }
 
 function Barra({ libres }: { libres: number }) {
@@ -149,7 +147,6 @@ export function Horarios() {
                           type="button"
                           disabled={completa}
                           aria-pressed={activa}
-                          aria-label={completa ? ariaClase(c) : `${ariaClase(c)}. Elegir esta clase`}
                           onClick={() => elegirClase(c.id)}
                           className={`group relative flex h-[92px] w-full flex-col justify-between overflow-hidden border p-3 text-left transition-[transform,background-color,border-color] duration-200 ${
                             activa
@@ -178,6 +175,7 @@ export function Horarios() {
                                 {etiquetaLugares(c)}
                               </span>
                             </span>
+                            <span className="sr-only">{contextoClase(c)}</span>
                             {!completa && <Barra libres={c.libres} />}
                           </span>
                         </button>
@@ -229,7 +227,6 @@ export function Horarios() {
                     type="button"
                     disabled={completa}
                     aria-pressed={activa}
-                    aria-label={completa ? ariaClase(c) : `${ariaClase(c)}. Elegir esta clase`}
                     onClick={() => elegirClase(c.id)}
                     className={`flex w-full items-center gap-4 border p-4 text-left transition-colors ${
                       activa
@@ -252,6 +249,7 @@ export function Horarios() {
                     <span className={`text-xs font-semibold ${activa ? "" : !completa && c.libres <= 2 ? "text-[#FF6A2B]" : ""}`}>
                       {etiquetaLugares(c)}
                     </span>
+                    <span className="sr-only">{contextoClase(c)}</span>
                   </button>
                 </li>
               );

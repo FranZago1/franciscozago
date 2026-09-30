@@ -33,13 +33,13 @@ export function Carrusel() {
           inicioX.current = null;
         }}
       >
-        <ul
+        <div
           className="flex touch-pan-y transition-transform duration-700 ease-[cubic-bezier(.2,.7,.2,1)] motion-reduce:transition-none"
           style={{ transform: `translateX(-${i * 100}%)` }}
           aria-live="polite"
         >
           {testimonios.map((t, n) => (
-            <li
+            <div
               key={t.nombre}
               role="group"
               aria-roledescription="testimonio"
@@ -64,13 +64,13 @@ export function Carrusel() {
                   </span>
                   <span>
                     <span className="block text-[#26302A]">{t.nombre}</span>
-                    <span className="block text-sm text-[#3E4C43]/65">{t.tratamiento}</span>
+                    <span className="block text-sm text-[#3E4C43]/80">{t.tratamiento}</span>
                   </span>
                 </figcaption>
               </figure>
-            </li>
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
 
       <div className="mt-10 flex items-center justify-between gap-6">
@@ -93,7 +93,7 @@ export function Carrusel() {
           ))}
         </div>
         <div className="flex items-center gap-3">
-          <span className="text-sm text-[#3E4C43]/60 tabular-nums" aria-hidden="true">
+          <span className="text-sm text-[#3E4C43]/80 tabular-nums" aria-hidden="true">
             {String(i + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
           </span>
           <button

@@ -39,7 +39,7 @@ export function Precios() {
                 }}
                 tabIndex={sel ? 0 : -1}
                 className={`relative z-10 inline-flex items-center justify-center gap-2 rounded-full px-5 py-2 text-sm font-medium transition-colors sm:px-6 ${
-                  sel ? "text-slate-900" : "text-slate-500 hover:text-slate-800"
+                  sel ? "text-slate-900" : "text-slate-600 hover:text-slate-800"
                 }`}
               >
                 {t}

@@ -46,14 +46,14 @@ export function Tratamientos() {
                 }`}
               >
                 {c.nombre}
-                <sup className={`text-[11px] ${activo ? "text-[#F6F4EE]/70" : "text-[#3E4C43]/50"}`}>{n}</sup>
+                <sup className={`text-[11px] ${activo ? "text-[#F6F4EE]/70" : "text-[#3E4C43]/80"}`}>{n}</sup>
               </button>
             );
           })}
         </div>
         <fieldset className="flex min-w-0 flex-wrap items-center gap-x-4 gap-y-2">
           <legend className="sr-only">Filtrar por duración</legend>
-          <span aria-hidden="true" className="flex items-center gap-2 text-sm text-[#3E4C43]/60">
+          <span aria-hidden="true" className="flex items-center gap-2 text-sm text-[#3E4C43]/80">
             <Icono nombre="reloj" grosor={1.3} className="size-4" />
             Duración
           </span>
@@ -82,7 +82,7 @@ export function Tratamientos() {
         </fieldset>
       </div>
 
-      <p className="mt-5 text-sm text-[#3E4C43]/65" aria-live="polite">
+      <p className="mt-5 text-sm text-[#3E4C43]/80" aria-live="polite">
         {lista.length === 0
           ? "No hay tratamientos con esos filtros."
           : `${lista.length} ${lista.length === 1 ? "tratamiento" : "tratamientos"}${
@@ -93,7 +93,7 @@ export function Tratamientos() {
       {lista.length === 0 ? (
         <div className="mt-6 flex flex-col items-center rounded-[28px] border border-dashed border-[#3E4C43]/25 px-6 py-14 text-center">
           <p className={`${serif} text-2xl text-[#3E4C43]`}>Nada por acá… todavía.</p>
-          <p className="mt-2 max-w-sm text-[#3E4C43]/70">Probá con otra duración o mirá todos los tratamientos.</p>
+          <p className="mt-2 max-w-sm text-[#3E4C43]/80">Probá con otra duración o mirá todos los tratamientos.</p>
           <button
             type="button"
             onClick={() => {
@@ -129,7 +129,7 @@ export function Tratamientos() {
                       )}
                     </p>
                     <h3 className={`${serif} mt-1.5 text-[1.35rem] leading-tight text-[#26302A]`}>{t.nombre}</h3>
-                    <p className="mt-1.5 text-[15px] leading-relaxed text-[#3E4C43]/75">{t.descripcion}</p>
+                    <p className="mt-1.5 text-[15px] leading-relaxed text-[#3E4C43]/80">{t.descripcion}</p>
                     <div className="mt-auto flex items-center justify-between gap-3 pt-4">
                       <p className="text-sm whitespace-nowrap text-[#3E4C43]">
                         <span className="tabular-nums">{t.minutos} min</span>

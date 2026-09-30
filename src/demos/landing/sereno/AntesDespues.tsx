@@ -112,7 +112,7 @@ export function AntesDespues() {
             </div>
           </div>
         </div>
-        <p className="mt-4 text-sm text-[#F6F4EE]/60">
+        <p className="mt-4 text-sm text-[#F6F4EE]/70">
           Arrastrá el círculo o usá las flechas del teclado. Ilustraciones con fines demostrativos: los resultados varían en cada piel.
         </p>
       </div>
@@ -148,9 +148,9 @@ export function AntesDespues() {
               >
                 <span>
                   <span className={`${serif} block text-xl`}>{k.titulo}</span>
-                  <span className={`block text-sm ${activo ? "text-[#3E4C43]/70" : "text-[#F6F4EE]/55"}`}>{k.tratamiento}</span>
+                  <span className={`block text-sm ${activo ? "text-[#3E4C43]/80" : "text-[#F6F4EE]/70"}`}>{k.tratamiento}</span>
                 </span>
-                <span className={`${serif} text-sm italic ${activo ? "text-[#6E5D84]" : "text-[#F6F4EE]/40"}`}>0{i + 1}</span>
+                <span className={`${serif} text-sm italic ${activo ? "text-[#6E5D84]" : "text-[#F6F4EE]/70"}`}>0{i + 1}</span>
               </button>
             );
           })}

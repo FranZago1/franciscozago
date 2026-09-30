@@ -180,7 +180,7 @@ export default function TechDemo() {
                       <span className="flex size-12 items-center justify-center rounded-2xl bg-[#4F46E5] text-white shadow-lg shadow-indigo-600/25">
                         <Icono nombre={icono[i]!} grosor={1.8} className="size-5" />
                       </span>
-                      <span className={`${mono} text-sm text-slate-400`}>0{i + 1}</span>
+                      <span className={`${mono} text-sm text-slate-500`}>0{i + 1}</span>
                     </div>
                     <h3 className="mt-6 text-xl font-semibold tracking-tight">{p.titulo}</h3>
                     <p className="mt-2 leading-relaxed text-slate-600">{p.texto}</p>

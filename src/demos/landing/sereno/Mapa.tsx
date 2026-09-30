@@ -68,7 +68,7 @@ export function Mapa() {
       </svg>
       <div className="absolute bottom-4 left-4 rounded-2xl bg-[#F6F4EE]/90 px-4 py-3 text-sm text-[#26302A] shadow-[0_10px_30px_-18px_rgba(38,48,42,0.6)] backdrop-blur-sm">
         <span className="block font-medium">Alma Clara</span>
-        <span className="text-[#3E4C43]/70">Calle de los Tilos 245</span>
+        <span className="text-[#3E4C43]/80">Calle de los Tilos 245</span>
       </div>
     </div>
   );

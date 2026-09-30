@@ -536,9 +536,12 @@ export default function ImpactoDemo() {
             </div>
           </div>
           <div className={`${wrap} mt-16`}>
-            <p aria-hidden="true" className={`${display} text-center text-[15.5vw] leading-[0.8] whitespace-nowrap text-white/[0.06] uppercase select-none xl:text-[13.2rem]`}>
-              Fuerza Norte
-            </p>
+            {/* Marca de agua decorativa: el texto va en un pseudo-elemento para que no cuente como contenido. */}
+            <p
+              aria-hidden="true"
+              data-marca="Fuerza Norte"
+              className={`${display} text-center text-[15.5vw] leading-[0.8] whitespace-nowrap text-white/[0.06] uppercase select-none before:content-[attr(data-marca)] xl:text-[13.2rem]`}
+            />
           </div>
           <div className="border-t border-white/10">
             <div className={`${wrap} flex flex-col gap-2 py-6 text-xs text-white/60 sm:flex-row sm:justify-between`}>

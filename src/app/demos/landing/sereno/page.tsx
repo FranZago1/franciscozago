@@ -24,7 +24,7 @@ const estilos = `
 
 function Rotulo({ n, children, claro = false }: { n: string; children: React.ReactNode; claro?: boolean }) {
   return (
-    <p className={`flex items-center gap-3 text-sm ${claro ? "text-[#F6F4EE]/70" : "text-[#3E4C43]/75"}`}>
+    <p className={`flex items-center gap-3 text-sm ${claro ? "text-[#F6F4EE]/70" : "text-[#3E4C43]/80"}`}>
       <span className={`${serif} italic ${claro ? "text-[#C3B6CF]" : "text-[#6E5D84]"}`}>{n}</span>
       <span aria-hidden="true" className={`h-px w-8 ${claro ? "bg-[#F6F4EE]/30" : "bg-[#3E4C43]/25"}`} />
       {children}
@@ -108,7 +108,7 @@ export default function SerenoDemo() {
                   />
                 </div>
                 <div className="ac-flotar absolute bottom-10 left-0 max-w-[15rem] rounded-3xl bg-[#F6F4EE]/90 p-4 shadow-[0_20px_50px_-24px_rgba(38,48,42,0.5)] ring-1 ring-[#3E4C43]/10 backdrop-blur-md sm:left-2 lg:-left-6">
-                  <p className="flex items-center gap-2 text-xs tracking-[0.14em] text-[#3E4C43]/70 uppercase">
+                  <p className="flex items-center gap-2 text-xs tracking-[0.14em] text-[#3E4C43]/80 uppercase">
                     <span className="relative flex size-2">
                       <span className="absolute inset-0 rounded-full bg-[#7F8F7A] motion-safe:animate-ping" />
                       <span className="relative size-2 rounded-full bg-[#7F8F7A]" />
@@ -116,7 +116,7 @@ export default function SerenoDemo() {
                     Próximo turno libre
                   </p>
                   <p className={`${serif} mt-1.5 text-xl text-[#26302A]`}>Jueves, 10:30</p>
-                  <p className="text-sm text-[#3E4C43]/70">Limpieza facial profunda</p>
+                  <p className="text-sm text-[#3E4C43]/80">Limpieza facial profunda</p>
                 </div>
                 <div aria-hidden="true" className={`${serif} absolute top-6 right-2 flex size-24 flex-col items-center justify-center rounded-full bg-[#C3B6CF] text-center text-[#26302A] sm:right-6 lg:-right-2`}>
                   <span className="text-xs tracking-[0.2em] uppercase [font-family:var(--font-ac-sans)]">desde</span>
@@ -140,7 +140,7 @@ export default function SerenoDemo() {
                   </span>
                   <span>
                     <span className={`${serif} block text-xl text-[#26302A]`}>{t}</span>
-                    <span className="mt-1.5 block text-[15px] leading-relaxed text-[#3E4C43]/75">{d}</span>
+                    <span className="mt-1.5 block text-[15px] leading-relaxed text-[#3E4C43]/80">{d}</span>
                   </span>
                 </li>
               ))}
@@ -214,7 +214,7 @@ export default function SerenoDemo() {
                     </div>
                     <div className="mt-6 flex items-baseline justify-between gap-4">
                       <h3 className={`${serif} text-2xl text-[#26302A]`}>{p.nombre}</h3>
-                      <span className="shrink-0 text-xs tracking-wide text-[#3E4C43]/55">{p.matricula}</span>
+                      <span className="shrink-0 text-xs tracking-wide text-[#3E4C43]/80">{p.matricula}</span>
                     </div>
                     <p className="mt-1 text-sm tracking-[0.12em] text-[#6E5D84] uppercase">{p.rol}</p>
                     <p className="mt-3 text-[15px] leading-relaxed text-[#3E4C43]/80">{p.bio}</p>
@@ -237,7 +237,7 @@ export default function SerenoDemo() {
                     className="object-cover"
                   />
                 </div>
-                <p className="mt-4 text-sm text-[#3E4C43]/60">Cabinas privadas con luz natural, calefacción y ducha.</p>
+                <p className="mt-4 text-sm text-[#3E4C43]/80">Cabinas privadas con luz natural, calefacción y ducha.</p>
               </div>
               <div className="lg:col-span-6">
                 <Rotulo n="04">La experiencia</Rotulo>
@@ -334,7 +334,7 @@ export default function SerenoDemo() {
                 </h2>
                 <dl className="mt-10 space-y-6 text-[15px]">
                   <div className="flex gap-4">
-                    <dt className="w-24 shrink-0 text-[#3E4C43]/60">Dirección</dt>
+                    <dt className="w-24 shrink-0 text-[#3E4C43]/80">Dirección</dt>
                     <dd className="text-[#26302A]">
                       Calle de los Tilos 245
                       <br />
@@ -342,7 +342,7 @@ export default function SerenoDemo() {
                     </dd>
                   </div>
                   <div className="flex gap-4">
-                    <dt className="w-24 shrink-0 text-[#3E4C43]/60">Horarios</dt>
+                    <dt className="w-24 shrink-0 text-[#3E4C43]/80">Horarios</dt>
                     <dd className="text-[#26302A]">
                       Lunes a viernes, 9 a 20 h
                       <br />
@@ -350,13 +350,13 @@ export default function SerenoDemo() {
                     </dd>
                   </div>
                   <div className="flex gap-4">
-                    <dt className="w-24 shrink-0 text-[#3E4C43]/60">Cómo llegar</dt>
+                    <dt className="w-24 shrink-0 text-[#3E4C43]/80">Cómo llegar</dt>
                     <dd className="text-[#26302A]">
                       Parada de colectivo sobre Av. Las Acacias. Estacionamiento a media cuadra.
                     </dd>
                   </div>
                   <div className="flex gap-4">
-                    <dt className="w-24 shrink-0 text-[#3E4C43]/60">Accesible</dt>
+                    <dt className="w-24 shrink-0 text-[#3E4C43]/80">Accesible</dt>
                     <dd className="text-[#26302A]">Planta baja, sin escalones y con baño adaptado.</dd>
                   </div>
                 </dl>
@@ -374,7 +374,7 @@ export default function SerenoDemo() {
               </p>
             </div>
             <nav aria-label="Pie de página" className="md:col-span-3">
-              <h3 className="text-xs tracking-[0.18em] text-[#3E4C43]/55 uppercase">Explorá</h3>
+              <h3 className="text-xs tracking-[0.18em] text-[#3E4C43]/80 uppercase">Explorá</h3>
               <ul className="mt-4 space-y-2 text-[15px]">
                 {[
                   ["#tratamientos", "Tratamientos"],
@@ -391,17 +391,17 @@ export default function SerenoDemo() {
               </ul>
             </nav>
             <div className="md:col-span-4">
-              <h3 className="text-xs tracking-[0.18em] text-[#3E4C43]/55 uppercase">Seguinos</h3>
+              <h3 className="text-xs tracking-[0.18em] text-[#3E4C43]/80 uppercase">Seguinos</h3>
               <p className="mt-4 flex items-center gap-2 text-[15px] text-[#26302A]">
                 <Icono nombre="camara" grosor={1.3} className="size-5 text-[#6E5D84]" />
                 @almaclara.estetica
               </p>
-              <p className="mt-6 text-sm leading-relaxed text-[#3E4C43]/65">
+              <p className="mt-6 text-sm leading-relaxed text-[#3E4C43]/80">
                 *Opiniones, profesionales, precios y matrículas son ficticios.
               </p>
             </div>
           </div>
-          <div className={`${wrap} mt-16 flex flex-col gap-2 border-t border-[#3E4C43]/10 py-6 text-sm text-[#3E4C43]/60 sm:flex-row sm:justify-between`}>
+          <div className={`${wrap} mt-16 flex flex-col gap-2 border-t border-[#3E4C43]/10 py-6 text-sm text-[#3E4C43]/80 sm:flex-row sm:justify-between`}>
             <p>© 2026 Alma Clara. Demo con contenido ficticio.</p>
             <p>Diseño y desarrollo: Francisco Zago</p>
           </div>

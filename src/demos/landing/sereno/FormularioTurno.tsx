@@ -130,17 +130,17 @@ export function FormularioTurno() {
         </h3>
         <dl className="mt-8 grid grid-cols-1 gap-5 border-t border-[#F6F4EE]/15 pt-8 sm:grid-cols-3">
           <div>
-            <dt className="text-xs tracking-[0.18em] text-[#F6F4EE]/55 uppercase">Tratamiento</dt>
+            <dt className="text-xs tracking-[0.18em] text-[#F6F4EE]/70 uppercase">Tratamiento</dt>
             <dd className="mt-1">{t.nombre}</dd>
           </div>
           <div>
-            <dt className="text-xs tracking-[0.18em] text-[#F6F4EE]/55 uppercase">Cuándo</dt>
+            <dt className="text-xs tracking-[0.18em] text-[#F6F4EE]/70 uppercase">Cuándo</dt>
             <dd className="mt-1 first-letter:uppercase">
               {fechaLarga(f)}, {hora} h
             </dd>
           </div>
           <div>
-            <dt className="text-xs tracking-[0.18em] text-[#F6F4EE]/55 uppercase">Dónde</dt>
+            <dt className="text-xs tracking-[0.18em] text-[#F6F4EE]/70 uppercase">Dónde</dt>
             <dd className="mt-1">Calle de los Tilos 245</dd>
           </div>
         </dl>
@@ -234,7 +234,7 @@ export function FormularioTurno() {
           </p>
         ) : (
           t && (
-            <p className="mt-2 text-sm text-[#3E4C43]/65">
+            <p className="mt-2 text-sm text-[#3E4C43]/80">
               {t.minutos} minutos · {precioARS(t.precio)} · se abona en el centro
             </p>
           )
@@ -270,9 +270,9 @@ export function FormularioTurno() {
                       aria-label={fechaLarga(x)}
                       className="absolute inset-0 cursor-pointer opacity-0"
                     />
-                    <span className={`text-xs uppercase ${activo ? "text-[#F6F4EE]/70" : "text-[#3E4C43]/60"}`}>{DIAS_CORTOS[x.dia]}</span>
+                    <span className={`text-xs uppercase ${activo ? "text-[#F6F4EE]/70" : "text-[#3E4C43]/80"}`}>{DIAS_CORTOS[x.dia]}</span>
                     <span className={`${serif} text-2xl leading-tight`}>{x.num}</span>
-                    <span className={`text-[11px] ${activo ? "text-[#F6F4EE]/70" : "text-[#3E4C43]/50"}`}>{MESES[x.mes]!.slice(0, 3)}</span>
+                    <span className={`text-[11px] ${activo ? "text-[#F6F4EE]/70" : "text-[#3E4C43]/80"}`}>{MESES[x.mes]!.slice(0, 3)}</span>
                   </label>
                 );
               })}
@@ -316,7 +316,7 @@ export function FormularioTurno() {
             })}
           </div>
         ) : (
-          <p className="mt-3 rounded-2xl border border-dashed border-[#3E4C43]/20 px-4 py-3 text-sm text-[#3E4C43]/60">
+          <p className="mt-3 rounded-2xl border border-dashed border-[#3E4C43]/20 px-4 py-3 text-sm text-[#3E4C43]/80">
             Elegí un día para ver los horarios libres.
           </p>
         )}
@@ -376,7 +376,7 @@ export function FormularioTurno() {
 
       <div>
         <label htmlFor={id("nota")} className="text-sm text-[#3E4C43]">
-          ¿Algo que debamos saber? <span className="text-[#3E4C43]/50">(opcional)</span>
+          ¿Algo que debamos saber? <span className="text-[#3E4C43]/80">(opcional)</span>
         </label>
         <textarea
           id={id("nota")}
@@ -398,7 +398,7 @@ export function FormularioTurno() {
       </label>
 
       <div className="flex flex-col gap-4 border-t border-[#3E4C43]/10 pt-8 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-sm text-[#3E4C43]/60">Demo: no se envía nada, solo se simula la confirmación.</p>
+        <p className="text-sm text-[#3E4C43]/80">Demo: no se envía nada, solo se simula la confirmación.</p>
         <button
           type="submit"
           disabled={enviando}
