@@ -19,13 +19,14 @@ export function Hero() {
     <>
       {/* Lienzo con el wordmark y los stickers arrastrables */}
       <section aria-label="Presentación" className="relative overflow-hidden">
-        <InvertCursor />
         <div className="wrap relative flex min-h-[560px] flex-col items-center justify-center pt-24 pb-36 md:min-h-[640px] md:pt-20 md:pb-24">
           <p className="label-mono text-[13px] text-muted md:text-sm">
             <span className="text-accent">(00)</span> {hero.saludo}
           </p>
 
           <SelectionFrame nombre="francisco-zago" medida="Hug × Hug" className="mt-8" padding="px-3 pt-2 pb-4 md:px-6 md:pt-3 md:pb-6">
+            {/* El cursor inversor actúa solo sobre el nombre (su zona es este marco). */}
+            <InvertCursor />
             <Wordmark className="text-[clamp(2.9rem,9.5vw,7.25rem)] text-ink" />
           </SelectionFrame>
 

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const TAM = 240; // lado del cuadrado en px
+const TAM = 200; // lado del cuadrado en px (se recorta a la zona)
 
 /**
  * Cursor del hero: un cuadrado blanco con `mix-blend-mode: difference` que invierte los colores
@@ -38,8 +38,19 @@ export function InvertCursor({ etiqueta = "Vos" }: { etiqueta?: string }) {
       const k = suave ? 0.22 : 1;
       pos.x += (destino.x - pos.x) * k;
       pos.y += (destino.y - pos.y) * k;
-      const t = `translate3d(${pos.x - TAM / 2}px, ${pos.y - TAM / 2}px, 0)`;
-      if (cuadro.current) cuadro.current.style.transform = t;
+      const izq = pos.x - TAM / 2;
+      const arr = pos.y - TAM / 2;
+      const t = `translate3d(${izq}px, ${arr}px, 0)`;
+      if (cuadro.current) {
+        cuadro.current.style.transform = t;
+        // Recorte a la zona: el cuadrado solo invierte lo que está dentro del contenedor.
+        const z = zona.getBoundingClientRect();
+        const l = z.left - izq;
+        const tp = z.top - arr;
+        const r = z.right - izq;
+        const b = z.bottom - arr;
+        cuadro.current.style.clipPath = `polygon(${l}px ${tp}px, ${r}px ${tp}px, ${r}px ${b}px, ${l}px ${b}px)`;
+      }
       if (tag.current) tag.current.style.transform = t;
       if (dentro && (Math.abs(destino.x - pos.x) > 0.3 || Math.abs(destino.y - pos.y) > 0.3)) {
         raf = requestAnimationFrame(pintar);

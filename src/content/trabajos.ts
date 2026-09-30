@@ -179,11 +179,11 @@ export const trabajos: Trabajo[] = [
       "Proveedor de IA intercambiable entre local y nube.",
     ],
     stack: ["Go", "RabbitMQ", "Apache Solr", "RAG", "Embeddings", "SSE", "LLMs"],
-    // TODO: capturas reales en /public/trabajos/unichat/
+    // Recreación de la interfaz generada con scripts/unichat-capturas.mjs (no son capturas reales).
     media: {
       desktop: "/trabajos/unichat/desktop.webp",
       mobile: "/trabajos/unichat/mobile.webp",
-      placeholder: true,
+      placeholder: false,
     },
     cta: {
       titulo: "¿Te interesa un asistente con IA sobre tus documentos?",
