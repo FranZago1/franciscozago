@@ -1,0 +1,100 @@
+/* Estilos compartidos por los gráficos de las demos de dashboards (prefijo dv-). */
+
+.dv-tip {
+  background: var(--dv-tip-bg);
+  color: var(--dv-tip-ink);
+  border: 1px solid var(--dv-tip-border);
+  box-shadow:
+    0 1px 2px rgb(0 0 0 / 0.06),
+    0 8px 24px -6px rgb(0 0 0 / 0.18);
+  transition:
+    opacity 120ms ease-out,
+    left 90ms ease-out,
+    top 90ms ease-out;
+}
+
+.dv-fade {
+  animation: dv-fade 460ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+@keyframes dv-fade {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.dv-chart:focus-visible {
+  outline: 2px solid var(--dv-focus);
+  outline-offset: 4px;
+  border-radius: 10px;
+}
+.dv-chart:focus {
+  outline-style: none;
+}
+.dv-chart:focus-visible {
+  outline-style: solid;
+}
+
+.dv-medir {
+  transition: opacity 160ms ease-out;
+}
+
+.dv-barra {
+  transition:
+    width 520ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    height 520ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    background-color 200ms;
+}
+
+.dv-arco {
+  transition:
+    stroke-dasharray 700ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    stroke 300ms;
+}
+
+.dv-pulso {
+  animation: dv-pulso 1.8s ease-out infinite;
+}
+@keyframes dv-pulso {
+  0% {
+    box-shadow: 0 0 0 0 rgb(200 241 105 / 0.7);
+  }
+  100% {
+    box-shadow: 0 0 0 10px rgb(200 241 105 / 0);
+  }
+}
+
+.dv-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--dv-grid) transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dv-tip,
+  .dv-medir,
+  .dv-barra,
+  .dv-arco {
+    transition: none;
+  }
+  .dv-pulso {
+    animation: none;
+  }
+  .dv-fade {
+    animation: none;
+  }
+}
+
+@media (forced-colors: active) {
+  .dv-tip {
+    border: 1px solid CanvasText;
+  }
+}
+
+/* La demo de finanzas es oscura también en el overscroll. */
+body:has([data-demo="finanzas"]) {
+  background: #0b0d10;
+}
