@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { DemoBar } from "@/components/demos/DemoBar";
 import { CavaApp } from "@/demos/catalogos/vinoteca/CavaApp";
 
@@ -33,6 +34,19 @@ export default function VinotecaDemo() {
             <p className="text-[12px] tracking-[0.2em] text-[#A8998A] uppercase">Envíos</p>
             <p className="mt-2">Sin cargo en Córdoba capital desde 6 botellas. Al resto del país, en cajas protegidas.</p>
           </div>
+        </div>
+        <div className="relative mt-12 aspect-[4/3] overflow-hidden border border-[#2A1F20] sm:aspect-[2/1]">
+          <Image
+            src="/demos/catalogos/vinoteca/degustacion.webp"
+            alt="Amigos brindando con copas de vino tinto en una degustación"
+            fill
+            sizes="(min-width: 1320px) 1256px, 100vw"
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0E0B0B]/85 via-transparent to-transparent" aria-hidden="true" />
+          <p className={`${serif} absolute bottom-5 left-5 max-w-sm text-[24px] leading-tight sm:bottom-8 sm:left-8 sm:text-[32px]`}>
+            Seis vinos, una mesa larga <em className="text-[#E3C88A]">y sin apuro.</em>
+          </p>
         </div>
       </section>
 

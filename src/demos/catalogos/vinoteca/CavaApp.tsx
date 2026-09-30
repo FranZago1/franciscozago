@@ -591,24 +591,18 @@ export function CavaApp() {
 
       <main id="inicio">
         <section className="relative overflow-hidden" aria-labelledby={`${uid}-hero`}>
-          <div
-            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_70%_at_75%_80%,#4A1220_0%,transparent_70%)]"
-            aria-hidden="true"
-          />
-          <svg
-            className="pointer-events-none absolute -top-10 right-[-10%] h-[520px] w-[520px] text-[#C9A55A] opacity-[0.18] sm:right-[4%]"
-            viewBox="0 0 200 200"
-            aria-hidden="true"
-          >
-            <circle cx="100" cy="100" r="92" fill="none" stroke="currentColor" strokeWidth="0.4" />
-            <circle cx="100" cy="100" r="70" fill="none" stroke="currentColor" strokeWidth="0.3" />
-            <path
-              d="M40 150 C70 110 90 80 150 40 M95 90 c-10 -20 -30 -22 -40 -10 c14 4 26 8 40 10z M120 70 c4 -22 22 -32 36 -24 c-12 8 -22 16 -36 24z M70 125 c-18 -6 -30 4 -30 16 c12 -4 20 -8 30 -16z"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="0.6"
+          <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+            <Image
+              src="/demos/catalogos/vinoteca/hero-copa.webp"
+              alt=""
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover object-[70%_40%] opacity-55"
             />
-          </svg>
+            <div className="absolute inset-0 bg-[linear-gradient(90deg,#0E0B0B_0%,rgba(14,11,11,0.92)_35%,rgba(14,11,11,0.55)_70%,rgba(14,11,11,0.35)_100%)] max-md:bg-[linear-gradient(180deg,rgba(14,11,11,0.9)_0%,rgba(14,11,11,0.75)_55%,rgba(14,11,11,0.55)_100%)]" />
+            <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-[#0E0B0B]" />
+          </div>
           <div className="relative mx-auto grid max-w-[1320px] items-end gap-10 px-4 pt-14 pb-16 sm:px-8 md:grid-cols-[1.1fr_1fr] md:pt-24 md:pb-24">
             <div>
               <p className="text-[11px] tracking-[0.42em] text-[#C9A55A] uppercase">Vinos de autor · Selección 2026</p>

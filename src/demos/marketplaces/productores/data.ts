@@ -303,7 +303,7 @@ export const productos: Producto[] = [
     descripcion: "Tres meses de cava. Sabor intenso, ideal para la picada.",
     etiquetas: ["3 meses de cava"],
     imagen: img("producto-queso-semiduro"),
-    alt: "Horma de queso semiduro dorada con una cuña cortada adelante",
+    alt: "Dos hormas de queso semiduro estacionado, una con una cuña cortada, sobre una piedra",
   },
   {
     id: "dulce-de-leche-cabra",
@@ -441,7 +441,7 @@ export const productos: Producto[] = [
     descripcion: "Veinte horas de fermentación y horno a leña. Corteza crocante, miga húmeda.",
     etiquetas: ["Masa madre"],
     imagen: img("producto-pan-masa-madre"),
-    alt: "Hogaza redonda de pan de masa madre con cortes y harina, sobre un repasador",
+    alt: "Hogazas de masa madre con semillas y harina, junto a unas espigas de trigo",
     destacado: true,
   },
   {

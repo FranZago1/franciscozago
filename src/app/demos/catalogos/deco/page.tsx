@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { DemoBar } from "@/components/demos/DemoBar";
 import { NidoApp } from "@/demos/catalogos/deco/NidoApp";
 import { IcCamion, IcChat, IcLista, IcTaller } from "@/demos/catalogos/deco/ui";
@@ -33,6 +34,15 @@ export default function DecoDemo() {
             <p className="max-w-lg text-[15px] leading-relaxed text-[#D9D2C3]">
               Somos un equipo chico de carpinteros y tapiceros. Cada pieza sale firmada y con garantía de cinco años en estructura.
             </p>
+          </div>
+          <div className="relative mt-10 aspect-[4/3] overflow-hidden rounded-[16px] sm:aspect-[2/1]">
+            <Image
+              src="/demos/catalogos/deco/casa-living.webp"
+              alt="Living luminoso con sillones de cuero coñac, butacas blancas, mesa de centro redonda de madera y plantas"
+              fill
+              sizes="(min-width: 1240px) 1080px, 90vw"
+              className="object-cover"
+            />
           </div>
           <ol className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {pasos.map((p, i) => (

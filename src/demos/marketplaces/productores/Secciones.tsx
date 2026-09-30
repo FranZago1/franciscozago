@@ -161,7 +161,7 @@ export function Hero() {
           <div className="relative mr-1.5 overflow-hidden rounded-[2rem] border-2 border-(--dv-verde) bg-(--dv-papel2) shadow-[5px_5px_0_#1F4D2B] sm:mr-0 sm:shadow-[8px_8px_0_#1F4D2B]">
             <Image
               src="/demos/marketplaces/productores/hero-puesto.webp"
-              alt="Ilustración de un puesto de mercado con toldo verde a rayas, cajón de tomates, canasta de verduras, pan, frascos de miel y mermelada, quesos y vinos"
+              alt="Puesto de mercado repleto de frutas y verduras frescas: zapallos, morrones, tomates, hojas verdes y cítricos"
               width={1600}
               height={1100}
               priority

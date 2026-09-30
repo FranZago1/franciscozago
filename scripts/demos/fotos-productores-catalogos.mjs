@@ -23,9 +23,14 @@ const fotos = [
   { ruta: "marketplaces/productores/producto-queso-semiduro.webp", id: "1486297678162-eb2a19b0a32d", w: 800, h: 800 },
   { ruta: "marketplaces/productores/producto-pan-masa-madre.webp", id: "1509440159596-0249088772ff", w: 800, h: 800 },
 
-
   // Cava Aldea (nuevas: fondo del hero y banner de degustaciones)
-  { ruta: "catalogos/vinoteca/hero-copa.webp", id: "1474722883778-792e7990302f", w: 1800, h: 1100 },
+  {
+    ruta: "catalogos/vinoteca/hero-copa.webp",
+    id: "1474722883778-792e7990302f",
+    w: 1800,
+    h: 1100,
+    extract: { left: 0, top: 0.04, width: 1, height: 0.6 },
+  },
   { ruta: "catalogos/vinoteca/degustacion.webp", id: "1510812431401-41d2bd2722f3", w: 1600, h: 800 },
 
   // Nido (nueva: foto de la sección "Del taller a tu casa")
