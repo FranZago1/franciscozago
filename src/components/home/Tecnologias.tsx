@@ -6,10 +6,7 @@ export function Tecnologias() {
     <section aria-label="Tecnologías" className="wrap mt-24 md:mt-32">
       <details className="tecnologias group border-y-[1.5px] border-ink">
         <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-5 [&::-webkit-details-marker]:hidden">
-          <span className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-            <span className="text-xl font-medium tracking-tight md:text-2xl">Tecnologías e integraciones</span>
-            <span className="label-mono text-[12px] text-muted">Para los más técnicos</span>
-          </span>
+          <span className="text-xl font-medium tracking-tight md:text-2xl">Tecnologías e integraciones</span>
           <span
             aria-hidden
             className="relative grid size-9 shrink-0 place-items-center border-[1.5px] border-ink transition-colors group-hover:bg-ink group-hover:text-white"
