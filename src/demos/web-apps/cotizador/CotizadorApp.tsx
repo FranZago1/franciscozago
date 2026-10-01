@@ -152,6 +152,7 @@ export function CotizadorApp() {
       className="min-h-dvh bg-[#D9D7D1] text-[#1A1A18] font-[family-name:var(--font-of-sans)] [&_:focus-visible]:outline-[3px] [&_:focus-visible]:outline-offset-2 [&_:focus-visible]:outline-[#1A1A18] print:bg-white"
     >
       <Concreto />
+      <h1 className="sr-only">Obra Fina — Cotizador online de reformas</h1>
       <p className="sr-only" aria-live="polite">
         {anuncio}
       </p>

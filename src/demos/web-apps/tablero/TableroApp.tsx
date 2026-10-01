@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { Dialog } from "../shared/Dialog";
 import { useAvisos, usePersistentState } from "../shared/hooks";
 import {
@@ -87,7 +87,25 @@ function coincide(t: Tarea, f: Filtros) {
   return q.split(/\s+/).every((p) => texto.includes(p));
 }
 
+const sinSuscripcion = () => () => {};
+
+/**
+ * Las fechas del tablero se calculan relativas a hoy, así que el HTML estático (generado el día del build)
+ * no coincidiría con el cliente. Se renderiza recién después de montar.
+ */
 export function TableroApp() {
+  const montado = useSyncExternalStore(sinSuscripcion, () => true, () => false);
+  if (!montado) {
+    return (
+      <div className="grid min-h-dvh place-items-center text-sm text-zinc-500" role="status">
+        Cargando tablero…
+      </div>
+    );
+  }
+  return <TableroInterno />;
+}
+
+function TableroInterno() {
   const [tab, setTab, resetTab] = usePersistentState<Tablero>("fz-demo-tablero-v1", crearTablero, esTablero);
   const [filtros, setFiltros] = useState<Filtros>(FILTROS_VACIOS);
   const [vista, setVista] = useState<Vista>("tablero");

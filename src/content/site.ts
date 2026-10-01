@@ -11,7 +11,7 @@ export const site = {
   // Usuario de Instagram (sin @). Si es null, el botón de Instagram no se muestra.
   instagram: "fran.zago" as string | null,
   // Dominio definitivo. Si es null, se usa la URL de Vercel.
-  dominio: "https://franciscozago.dev" as string | null,
+  dominio: "https://www.franciscozago.dev" as string | null,
   disponible: true,
   titulo: "Francisco Zago — Desarrollo web en Córdoba",
   descripcion:
