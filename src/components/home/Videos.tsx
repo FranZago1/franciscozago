@@ -25,7 +25,7 @@ export function Videos() {
           <p className="mt-6 max-w-[34rem] text-lg text-muted">
             {videosCopy.bajada}
           </p>
-          <ul className="mt-8 grid max-w-[34rem] gap-3 text-lg">
+          <ul className="mt-8 grid max-w-[34rem] gap-3 text-lg max-md:hidden">
             {videosCopy.puntos.map((p) => (
               <li key={p} className="flex gap-3">
                 <span

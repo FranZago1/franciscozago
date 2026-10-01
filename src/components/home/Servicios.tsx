@@ -15,7 +15,52 @@ export function Servicios() {
         {serviciosCopy.titulo}
       </h2>
 
-      <ul className="mt-10 grid border-t-[1.5px] border-l-[1.5px] border-ink sm:grid-cols-2 lg:grid-cols-3">
+      {/* Mobile: lista desplegable compacta (uno abierto a la vez). */}
+      <ul className="mt-8 border-t-[1.5px] border-ink md:hidden">
+        {servicios.map((s) => (
+          <li key={s.nombre} className="border-b-[1.5px] border-ink">
+            <details name="servicio" className="group/acc">
+              <summary className="flex cursor-pointer list-none items-center gap-3.5 py-3.5 [&::-webkit-details-marker]:hidden">
+                <span className={`flex size-9 shrink-0 items-center justify-center ${stickerBg[s.color]}`}>
+                  <Icon name={s.icono} className="size-5" secondary={stickerFill[s.color]} />
+                </span>
+                <span className="text-xl font-medium tracking-tight">{s.nombre}</span>
+                <span aria-hidden className="relative ml-auto grid size-8 shrink-0 place-items-center">
+                  <span className="absolute h-[1.5px] w-3.5 bg-current" />
+                  <span className="absolute h-3.5 w-[1.5px] bg-current transition-transform duration-300 group-open/acc:rotate-90 group-open/acc:opacity-0" />
+                </span>
+              </summary>
+              <div className="pb-5 pl-[3.125rem]">
+                <p className="text-muted">{s.linea}</p>
+                {s.demos || s.evidencia ? (
+                  <div className="mt-3.5 flex flex-wrap gap-x-5 gap-y-2">
+                    {s.demos ? (
+                      <Link
+                        href={`/demos/${s.demos}`}
+                        className="label-mono inline-flex items-center gap-1 border-b-[1.5px] border-ink pb-0.5 text-[13px] font-medium"
+                      >
+                        Ver demos<span className="sr-only"> de {s.nombre}</span>
+                        <Icon name="flecha" className="size-3.5" />
+                      </Link>
+                    ) : null}
+                    {s.evidencia ? (
+                      <Link
+                        href={s.evidencia.href}
+                        className="label-mono inline-flex items-center gap-1 border-b-[1.5px] border-line pb-0.5 text-[13px] font-medium text-muted"
+                      >
+                        {s.evidencia.label}
+                        <Icon name="flecha" className="size-3.5" />
+                      </Link>
+                    ) : null}
+                  </div>
+                ) : null}
+              </div>
+            </details>
+          </li>
+        ))}
+      </ul>
+
+      <ul className="mt-10 grid border-t-[1.5px] border-l-[1.5px] border-ink max-md:hidden sm:grid-cols-2 lg:grid-cols-3">
         {servicios.map((s) => (
           <li key={s.nombre} className="group relative border-r-[1.5px] border-b-[1.5px] border-ink bg-white p-5 transition-colors duration-200 hover:bg-ink hover:text-white md:p-6">
             <span className={`flex size-11 items-center justify-center transition-transform duration-200 group-hover:-rotate-6 ${stickerBg[s.color]}`}>

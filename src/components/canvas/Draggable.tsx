@@ -34,6 +34,8 @@ export function Draggable({ children, className = "", rotate = 0, decorativo = t
 
   function onPointerDown(e: React.PointerEvent<HTMLDivElement>) {
     if (e.button !== 0) return;
+    // En mobile los stickers solo flotan: no se arrastran (el dedo tiene que poder scrollear).
+    if (!window.matchMedia("(min-width: 768px)").matches) return;
     const el = ref.current;
     const padre = el?.offsetParent as HTMLElement | null;
     if (!el || !padre) return;

@@ -11,8 +11,12 @@ import { waLink } from "@/lib/wa";
 
 /** Envoltorio que hace flotar y rotar suave un sticker (d: duración en s, g: giro en grados, dl: desfase). */
 function Flota({ d, g, dl, children }: { d: number; g: number; dl: number; children: React.ReactNode }) {
+  const variante = g >= 0 ? (g >= 4 ? "flota-c" : "flota-a") : g <= -4 ? "flota-d" : "flota-b";
   return (
-    <span className="flota block" style={{ "--d": `${d}s`, "--g": `${g}deg`, "--dl": `${dl}s` } as React.CSSProperties}>
+    <span
+      className={`flota ${variante} block`}
+      style={{ "--d": `${d}s`, "--g": `${g}deg`, "--dl": `${dl}s` } as React.CSSProperties}
+    >
       {children}
     </span>
   );

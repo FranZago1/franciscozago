@@ -16,17 +16,17 @@ export function Proceso() {
       <h2 id="proceso-titulo" className="text-[clamp(2.2rem,5vw,3.6rem)] leading-none font-medium tracking-[-0.035em]">
         Cómo trabajo
       </h2>
-      <ol className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      <ol className="mt-12 grid gap-5 max-md:mt-8 max-md:grid-cols-2 max-md:gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {proceso.map((p, i) => {
           const n = notas[i % notas.length]!;
           return (
             <li
               key={p.titulo}
-              className={`flex min-h-64 flex-col p-6 transition-transform duration-200 hover:-translate-y-1 ${stickerBg[n.color]}`}
+              className={`flex min-h-64 flex-col p-6 transition-transform duration-200 hover:-translate-y-1 max-md:min-h-0 max-md:p-4 ${stickerBg[n.color]}`}
             >
-              <span className="label-mono text-sm">Paso {String(i + 1).padStart(2, "0")}</span>
-              <h3 className="mt-auto text-3xl font-medium tracking-tight">{p.titulo}</h3>
-              <p className="mt-2 text-lg leading-snug">{p.linea}</p>
+              <span className="label-mono text-sm max-md:text-[11px]">Paso {String(i + 1).padStart(2, "0")}</span>
+              <h3 className="mt-auto text-3xl font-medium tracking-tight max-md:mt-6 max-md:text-xl max-md:leading-tight">{p.titulo}</h3>
+              <p className="mt-2 text-lg leading-snug max-md:mt-1 max-md:text-sm">{p.linea}</p>
             </li>
           );
         })}

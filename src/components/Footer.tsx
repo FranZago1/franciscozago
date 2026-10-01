@@ -21,6 +21,19 @@ export function Footer() {
           ) : null}
         </span>
       </div>
+      {/* Mobile: franja de cierre a todo el ancho, para que el final de la página se lea como final. */}
+      <div className="-mb-10 mt-10 ml-[calc(50%-50vw)] w-screen bg-ink px-5 pt-9 pb-12 text-white md:hidden">
+        <p className="text-4xl font-medium tracking-[-0.045em]">
+          {site.nombre}
+          <span className="text-mostaza">.</span>
+        </p>
+        <div className="label-mono mt-6 flex items-center justify-between text-[12px] text-white/60">
+          <span>Desarrollo web</span>
+          <a href="#" className="text-white">
+            Volver arriba ↑
+          </a>
+        </div>
+      </div>
     </footer>
   );
 }
