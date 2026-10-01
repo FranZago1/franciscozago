@@ -9,25 +9,23 @@ const TAM = 200; // lado del cuadrado en px (se recorta a la zona)
  * de lo que tiene debajo (sobre blanco se ve negro, sobre el celeste se ve naranja, etc.).
  * Se monta dentro del contenedor que lo usa y escucha los eventos de su elemento padre.
  * Solo con mouse; en pantallas táctiles no se renderiza.
- *
- * El cuadrado y la etiqueta son dos elementos fijos separados: si la etiqueta estuviera dentro,
- * también se invertiría; y si ambos estuvieran en un contenedor con transform, el blend dejaría
- * de mezclarse con la página.
+ * Es un elemento fijo sin contenedor con transform: si lo tuviera, el blend dejaría de mezclarse con la página.
  */
-export function InvertCursor({ etiqueta = "Vos" }: { etiqueta?: string }) {
+export function InvertCursor() {
   const [activo, setActivo] = useState(false);
   const ancla = useRef<HTMLSpanElement>(null);
   const cuadro = useRef<HTMLDivElement>(null);
-  const tag = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches)
+      return;
     const zona = ancla.current?.parentElement;
     if (!zona) return;
     setActivo(true);
     zona.classList.add("invert-zone");
 
-    const suave = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const suave = !window.matchMedia("(prefers-reduced-motion: reduce)")
+      .matches;
     const destino = { x: 0, y: 0 };
     const pos = { x: 0, y: 0 };
     let dentro = false;
@@ -51,8 +49,10 @@ export function InvertCursor({ etiqueta = "Vos" }: { etiqueta?: string }) {
         const b = z.bottom - arr;
         cuadro.current.style.clipPath = `polygon(${l}px ${tp}px, ${r}px ${tp}px, ${r}px ${b}px, ${l}px ${b}px)`;
       }
-      if (tag.current) tag.current.style.transform = t;
-      if (dentro && (Math.abs(destino.x - pos.x) > 0.3 || Math.abs(destino.y - pos.y) > 0.3)) {
+      if (
+        dentro &&
+        (Math.abs(destino.x - pos.x) > 0.3 || Math.abs(destino.y - pos.y) > 0.3)
+      ) {
         raf = requestAnimationFrame(pintar);
       }
     };
@@ -61,7 +61,7 @@ export function InvertCursor({ etiqueta = "Vos" }: { etiqueta?: string }) {
     };
 
     const mostrar = (v: boolean) => {
-      for (const el of [cuadro.current, tag.current]) if (el) el.style.opacity = v ? "1" : "0";
+      if (cuadro.current) cuadro.current.style.opacity = v ? "1" : "0";
     };
 
     const onEnter = (e: PointerEvent) => {
@@ -106,30 +106,18 @@ export function InvertCursor({ etiqueta = "Vos" }: { etiqueta?: string }) {
     <>
       <span ref={ancla} hidden />
       {activo ? (
-        <>
-          <div
-            ref={cuadro}
-            aria-hidden
-            className="pointer-events-none fixed top-0 left-0 z-[9998] bg-white opacity-0 mix-blend-difference transition-opacity duration-200"
-            style={{ width: TAM, height: TAM }}
-          >
-            {/* Handles: sobresalen de las esquinas, así se ven como cuadraditos oscuros. */}
-            <span className="absolute -top-2 -left-2 size-4 bg-white" />
-            <span className="absolute -top-2 -right-2 size-4 bg-white" />
-            <span className="absolute -bottom-2 -left-2 size-4 bg-white" />
-            <span className="absolute -right-2 -bottom-2 size-4 bg-white" />
-          </div>
-          <span
-            ref={tag}
-            aria-hidden
-            className="pointer-events-none fixed top-0 left-0 z-[9999] opacity-0 transition-opacity duration-200"
-            style={{ width: TAM, height: TAM }}
-          >
-            <span className="label-mono absolute -right-12 -bottom-9 rounded-full bg-ink px-3 py-1 text-[13px] text-white ring-2 ring-white">
-              {etiqueta}
-            </span>
-          </span>
-        </>
+        <div
+          ref={cuadro}
+          aria-hidden
+          className="pointer-events-none fixed top-0 left-0 z-[9998] bg-white opacity-0 mix-blend-difference transition-opacity duration-200"
+          style={{ width: TAM, height: TAM }}
+        >
+          {/* Handles: sobresalen de las esquinas, así se ven como cuadraditos oscuros. */}
+          <span className="absolute -top-2 -left-2 size-4 bg-white" />
+          <span className="absolute -top-2 -right-2 size-4 bg-white" />
+          <span className="absolute -bottom-2 -left-2 size-4 bg-white" />
+          <span className="absolute -right-2 -bottom-2 size-4 bg-white" />
+        </div>
       ) : null}
     </>
   );
