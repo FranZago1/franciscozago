@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<title>Francisco Zago — Flujo</title>
+<style>
+  @font-face { font-family: "Hanken"; src: url("hanken.woff2") format("woff2"); font-weight: 100 900; }
+  @font-face { font-family: "JB"; src: url("jetbrains.woff2") format("woff2"); font-weight: 400 500; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1440px; height: 1440px; overflow: hidden; background: #ECEAE6; }
+  body { font-family: "Hanken", system-ui, sans-serif; color: #111; -webkit-font-smoothing: antialiased; }
+  #stage { position: absolute; left: 720px; top: 720px; width: 0; height: 0; transform-origin: 0 0; }
+  #shape { position: absolute; overflow: hidden; }
+  .layer { position: absolute; left: 0; top: 0; width: 0; height: 0; }
+  .hud { position: absolute; font-family: "JB", monospace; font-size: 24px; letter-spacing: 0.08em; text-transform: uppercase; color: #6E6B66; white-space: nowrap; }
+  #cursor { position: absolute; left: 0; top: 0; width: 46px; height: 46px; transform-origin: 6px 4px; }
+  svg { display: block; overflow: visible; }
+</style>
+</head>
+<body>
+  <div class="hud" style="left:64px;top:56px;color:#111">Francisco Zago</div>
+  <div class="hud" style="right:64px;top:56px">Desarrollo web</div>
+  <div id="pasos" style="position:absolute;left:64px;right:64px;top:104px;height:6px"></div>
+  <div class="hud" id="etapa" style="left:64px;bottom:56px;color:#111"></div>
+  <div class="hud" style="right:64px;bottom:56px">franciscozago.dev</div>
+
+  <div id="stage"><div id="shape"><div class="layer" id="L"></div></div></div>
+
+  <svg id="cursor" viewBox="0 0 46 46">
+    <path d="M6 4 L6 36 L14.5 28.5 L20 41 L26 38.5 L20.5 26 L32 26 Z" fill="#111" stroke="#fff" stroke-width="2.6" stroke-linejoin="round" />
+  </svg>
+
+<script>
+"use strict";
+// ───────────────────────── Tiempo y resortes ─────────────────────────
+const BPM = 120, BEAT = 60 / BPM, BEATS = 44, T = BEATS * BEAT; // 11 compases = 22 s
+const b = (n) => n * BEAT;
+const ACC = [14, 106, 112], INK = [17, 17, 17], WHITE = [255, 255, 255], SOFT = [241, 239, 236], MUTED = [110, 107, 102];
+const WA_BG = [239, 234, 226], WA_OUT = "#D9FDD3", WA_GREEN = "#00A884";
+
+const P = {
+  shape: [2.3, 0.84], fast: [3.6, 0.82], lead: [4.6, 0.86], trail: [2.0, 0.92],
+  cam: [1.5, 0.96], cursor: [2.6, 0.9], soft: [1.8, 1.0], pop: [4.2, 0.62], scroll: [1.9, 0.98],
+};
+function S(t, p) {
+  if (t <= 0) return 0;
+  const [f, z] = P[p] || p, w = 2 * Math.PI * f;
+  if (z < 1) {
+    const wd = w * Math.sqrt(1 - z * z);
+    return 1 - Math.exp(-z * w * t) * (Math.cos(wd * t) + (z * w / wd) * Math.sin(wd * t));
+  }
+  return 1 - Math.exp(-w * t) * (1 + w * t);
+}
+// Suma de un resorte por cambio de objetivo, periódica (f(0) === f(T) con la misma velocidad).
+function track(ev, preset = "shape") {
+  const n = ev.length;
+  return (t) => {
+    let v = ev[n - 1][1], prev = v;
+    for (const e of ev) {
+      const d = e[1] - prev; prev = e[1];
+      const p = e[2] || preset;
+      v += d * (S(t - e[0], p) + S(t - e[0] + T, p));
+    }
+    return v;
+  };
+}
+const trackRGB = (ev, preset) => [0, 1, 2].map((i) => track(ev.map((e) => [e[0], e[1][i], e[2]]), preset));
+const rgb = (tr, t) => `rgb(${tr.map((f) => Math.round(Math.min(255, Math.max(0, f(t))))).join(",")})`;
+const clamp = (x, a = 0, c = 1) => Math.min(c, Math.max(a, x));
+const easeOut = (x) => 1 - Math.pow(1 - clamp(x), 3);
+const easeIn = (x) => Math.pow(clamp(x), 2);
+const mix = (a, c, k) => a + (c - a) * k;
+const mixC = (a, c, k) => `rgb(${a.map((v, i) => Math.round(mix(v, c[i], k))).join(",")})`;
+function win(t, a, z, dIn = 0.09, lIn = 0.2, lOut = 0.1) {
+  let best = 0;
+  for (const tt of [t, t + T, t - T]) best = Math.max(best, Math.min(easeOut((tt - a - dIn) / lIn), 1 - easeIn((tt - z) / lOut)));
+  return best;
+}
+const press = (t, tc) => {
+  let best = 0;
+  for (const tt of [t, t + T, t - T]) {
+    const x = tt - tc;
+    if (x >= -0.07 && x < 0) best = Math.max(best, easeOut((x + 0.07) / 0.07));
+    else if (x >= 0 && x < 0.6) best = Math.max(best, 1 - S(x, "fast"));
+  }
+  return clamp(best);
+};
+const typed = (t, s, t0, t1) => s.slice(0, Math.floor(clamp((t - t0) / (t1 - t0)) * s.length + 1e-6));
+const caretOn = (t) => (t % BEAT) < BEAT * 0.55;
+
+// ───────────────────────── DOM ─────────────────────────
+const L = document.getElementById("L");
+function el(tag, style = {}, html = "", parent = L) {
+  const e = document.createElement(tag);
+  Object.assign(e.style, { position: "absolute" }, style);
+  if (html) e.innerHTML = html;
+  parent.appendChild(e);
+  return e;
+}
+const box = (x, y, w, h, style = {}, html = "", parent = L) => el("div", { left: x - w / 2 + "px", top: y - h / 2 + "px", width: w + "px", height: h + "px", ...style }, html, parent);
+function text(x, y, html, style = {}, parent = L, anchor = "c") {
+  const e = el("div", { left: x + "px", top: y + "px", whiteSpace: "nowrap", ...style }, html, parent);
+  e.style.transform = anchor === "c" ? "translate(-50%,-50%)" : anchor === "l" ? "translate(0,-50%)" : "translate(-100%,-50%)";
+  return e;
+}
+const group = (parent = L) => el("div", { left: "0", top: "0" }, "", parent);
+function showG(g, o, dy = 10) {
+  g.style.opacity = o.toFixed(3);
+  g.style.filter = o < 0.999 ? `blur(${((1 - o) * 9).toFixed(2)}px)` : "none";
+  g.style.transform = `translateY(${((1 - o) * dy).toFixed(2)}px) scale(${(0.97 + 0.03 * o).toFixed(4)})`;
+  g.style.visibility = o < 0.002 ? "hidden" : "visible";
+}
+const ICON = (d, s = 30, c = "currentColor", sw = 2.2) =>
+  `<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="${c}" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
+const I = {
+  search: '<circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/>',
+  lock: '<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>',
+  back: '<path d="M15 5l-7 7 7 7"/>',
+  video: '<rect x="3" y="7" width="13" height="10" rx="2"/><path d="M16 11l5-3v8l-5-3"/>',
+  phone: '<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/>',
+  send: '<path d="M4 12l16-8-6 16-2.5-6.5z"/>',
+  check: '<path d="M5 12.5l4.2 4.2L19 7"/>',
+  cursor: '<path d="M6 4l12 6-5 2-2 5z"/>',
+  rect: '<rect x="4.5" y="6" width="15" height="12" rx="1.5"/>',
+  type: '<path d="M5 6h14M12 6v13"/>',
+  cal: '<rect x="4" y="5" width="16" height="15" rx="2.5"/><path d="M4 10h16M9 3v4M15 3v4"/>',
+  chat: '<path d="M5 18l1.2-3.6A7 7 0 1 1 9 17z"/>',
+};
+
+// ───────────────────────── Línea de tiempo ─────────────────────────
+// 01 Necesito una web 0-7 · 02 Entra a mi sitio 8-15 · 03 Charla 16-23 · 04 Trabajando 24-35 · 05 Publicado 36-39 · 06 Cierre 40-43
+const ETAPAS = [[0, 8, "01 — Necesito una web"], [8, 16, "02 — Entra a mi sitio"], [16, 24, "03 — Charla"], [24, 36, "04 — Trabajando en tu web"], [36, 40, "05 — Sitio publicado"], [40, 44, "06 — A medida"]];
+
+const W = track([[b(6), 820], [b(8), 1040], [b(16), 660], [b(24), 1080], [b(36), 760], [b(38), 760], [b(39), 780], [b(40), 1100], [b(43), 940]]);
+const H = track([[b(3), 330], [b(6), 120], [b(8), 760], [b(16), 980], [b(24), 780], [b(36), 150], [b(38), 130], [b(39), 190], [b(40), 560], [b(43), 210]]);
+const R = track([[b(6), 60], [b(8), 26], [b(16), 46], [b(24), 26], [b(36), 75], [b(38), 65], [b(39), 38], [b(40), 40], [b(43), 40]]);
+const BG = trackRGB([[b(16), WA_BG], [b(24), WHITE], [b(36), INK], [b(39), WHITE], [b(43), WHITE]]);
+const CAM = track([[b(6), 1.22], [b(8), 0.98], [b(16), 0.94], [b(24), 0.98], [b(36), 1.3], [b(39), 1.26], [b(40), 0.98], [b(43), 1.2]], "cam");
+
+// Cursor (mundo: relativo al centro de la forma)
+const CX = track([[3.2, 360], [4.2, 140], [5.1, 10], [6.5, 40], [7.7, 300], [8.0, 286], [8.75, 320], [9.62, 286], [10.2, 320], [11.12, 286], [11.9, -270], [12.3, 270, "soft"], [12.7, -240], [13.12, -10, "soft"], [13.6, 445], [14.1, 200], [14.6, 0], [15.1, -69], [15.6, 238], [16.1, 60], [16.7, 260], [17.05, 456], [17.8, 380], [19.6, 330], [20.4, 410], [21.6, 380]], "cursor");
+const CY = track([[3.2, 160], [4.2, -60], [5.1, 175], [6.5, 42], [7.7, 260], [8.0, 440], [8.75, 340], [9.62, 440], [10.2, 330], [11.12, 440], [11.9, -240], [12.3, -30, "soft"], [12.7, -80], [13.12, -28, "soft"], [13.6, -160], [14.1, 120], [14.6, 40], [15.1, 140], [15.6, 252], [16.1, -356], [16.7, 150], [17.05, -356], [17.8, 220], [19.6, 200], [20.4, 330], [21.6, 260]], "cursor");
+const CLICKS = [b(14), b(17), b(20), b(23), b(28), b(30), b(31), b(32), b(33), b(35)];
+const HOLDS = [[12.25, 12.55], [13.1, 13.45]];
+const KEYS = []; // teclas (para el audio)
+
+// ───────────────────────── 01 · Necesito una web ─────────────────────────
+const gBub = group();
+const bubTop = group(gBub);
+box(-410, 62, 56, 56, { background: "#2B2B2B", borderRadius: "999px", color: "#fff", font: "600 22px Hanken", display: "grid", placeItems: "center" }, "LR", bubTop);
+text(-370, 62, `Lucas <span style="color:#6E6B66;font-weight:400">· Barbería Rulo</span>`, { font: "600 26px Hanken" }, bubTop, "l");
+text(430, 62, "Ahora", { font: "500 18px JB", color: "#6E6B66", letterSpacing: "0.1em", textTransform: "uppercase" }, bubTop, "r");
+const bubTxt = text(-430, 142, "", { font: "600 46px Hanken", letterSpacing: "-0.03em" }, bubTop, "l");
+const bubCaret = el("div", { top: "118px", width: "4px", height: "50px", background: "#111" }, "", bubTop);
+const PROBLEMAS = ["Turnos por mensaje", "Agenda en papel", "No aparece en Google"];
+const probEls = [];
+{
+  let x = -430;
+  PROBLEMAS.forEach((p) => {
+    const w = p.length * 11.6 + 52;
+    const e = el("div", { left: x + "px", top: "220px", height: "56px", width: w + "px", borderRadius: "999px", background: "rgb(241,239,236)", font: "500 23px Hanken", color: "#3a3936", display: "flex", alignItems: "center", gap: "10px", paddingLeft: "18px" },
+      `<span style="width:10px;height:10px;border-radius:3px;background:#111;flex:none"></span>${p}`, bubTop);
+    probEls.push(e); x += w + 12;
+  });
+}
+const gSearch = group();
+text(-366, 0, ICON(I.search, 36, "#111", 2.4), {}, gSearch, "l");
+const searchTxt = text(-312, 0, "", { font: "500 38px Hanken", letterSpacing: "-0.02em" }, gSearch, "l");
+const searchCaret = el("div", { top: "-22px", width: "3px", height: "44px", background: "#111" }, "", gSearch);
+const searchKey = text(366, 0, "↵", { font: "500 24px JB", color: "#6E6B66", border: "2px solid rgb(222,219,214)", borderRadius: "10px", padding: "4px 12px" }, gSearch, "r");
+
+// ───────────────────────── 02 · Entra a mi sitio ─────────────────────────
+const gWeb = group();
+const chrome = el("div", { left: "-520px", top: "0", width: "1040px", height: "64px", borderBottom: "2px solid rgb(236,234,230)", background: "#fff" }, "", gWeb);
+[0, 1, 2].forEach((i) => el("div", { left: 26 + i * 24 + "px", top: "25px", width: "14px", height: "14px", borderRadius: "999px", background: "rgb(214,211,206)" }, "", chrome));
+el("div", { left: "320px", top: "12px", width: "400px", height: "40px", borderRadius: "999px", background: "rgb(241,239,236)", display: "flex", alignItems: "center", justifyContent: "center", gap: "8px", font: "500 19px JB", color: "#3a3936" }, `${ICON(I.lock, 18, "#3a3936", 2.2)}franciscozago.dev`, chrome);
+const vp = el("div", { left: "-520px", top: "64px", width: "1040px", height: "696px", overflow: "hidden", background: "#fff" }, "", gWeb);
+const page = el("div", { left: "0", top: "0", width: "1040px", height: "1700px" }, "", vp);
+// réplica del sitio (coordenadas de página: x desde el borde izquierdo, y desde arriba)
+const pt = (x, y, html, style, anchor = "c") => text(x, y, html, style, page, anchor);
+pt(60, 42, "Francisco Zago", { font: "600 22px Hanken" }, "l");
+pt(980, 42, "Servicios&nbsp;&nbsp; Trabajos&nbsp;&nbsp; Sobre mí&nbsp;&nbsp; Contacto", { font: "500 14px JB", color: "#6E6B66", letterSpacing: "0.08em", textTransform: "uppercase" }, "r");
+pt(520, 150, `<span style="color:rgb(${ACC})">(00)</span> Hola, soy`, { font: "500 18px JB", color: "#6E6B66", letterSpacing: "0.08em", textTransform: "uppercase" });
+el("div", { left: "170px", top: "196px", width: "700px", height: "148px", border: `2px solid rgb(${ACC})` }, "", page);
+[[170, 196], [870, 196], [170, 344], [870, 344]].forEach(([x, y]) => el("div", { left: x - 6 + "px", top: y - 6 + "px", width: "12px", height: "12px", background: "#fff", border: `2px solid rgb(${ACC})` }, "", page));
+pt(170, 184, "francisco-zago", { font: "500 13px JB", color: `rgb(${ACC})`, letterSpacing: "0.06em", textTransform: "uppercase" }, "l");
+pt(520, 268, `Francisco Zago<span style="display:inline-block;width:14px;height:14px;margin-left:6px;background:#F2B705"></span>`, { font: "600 100px Hanken", letterSpacing: "-0.05em" });
+pt(520, 410, `<span style="display:inline-block;width:12px;height:12px;border-radius:99px;background:rgb(${ACC});margin-right:10px"></span>Disponible para proyectos`, { font: "500 18px JB", letterSpacing: "0.08em", textTransform: "uppercase" });
+const stk = (x, y, txt, bg, fg, rot, font = "500 20px Hanken") => pt(x, y, txt, { background: bg, color: fg, padding: "8px 14px", font, transform: `translate(-50%,-50%) rotate(${rot}deg)` });
+stk(175, 470, "Desarrollador full-stack", "#8FD6B4", "#111", -3);
+stk(800, 120, "Estudiante de Ingeniería", "#111", "#fff", 3);
+stk(905, 400, "Portfolios", "#7CC8F0", "#111", 4);
+stk(720, 486, "RESERVAS", "#D6284B", "#fff", 0, "500 15px JB");
+stk(330, 520, "E-COMMERCE", "#F2B705", "#111", 0, "500 15px JB");
+pt(520, 600, "Desarrollo sitios y sistemas web<br>para negocios que quieren vender más.", { font: "500 44px Hanken", letterSpacing: "-0.03em", textAlign: "center", lineHeight: "1.08" });
+pt(70, 790, `<span style="color:rgb(${ACC})">(01)</span> Servicios`, { font: "500 16px JB", color: "#6E6B66", letterSpacing: "0.08em", textTransform: "uppercase" }, "l");
+pt(70, 846, "Qué puedo construirte", { font: "500 50px Hanken", letterSpacing: "-0.035em" }, "l");
+const CELDAS = [["Landing pages", "#F2B705"], ["E-commerce", "#D6284B"], ["Marketplaces", "#7CC8F0"], ["Sistemas de gestión", "#8FD6B4"], ["Reservas", "#7CC8F0"], ["Catálogos", "#D6284B"]];
+const celdas = CELDAS.map(([n, c], i) => {
+  const x = 70 + (i % 3) * 300, y = 900 + Math.floor(i / 3) * 170;
+  const cel = el("div", { left: x + "px", top: y + "px", width: "300px", height: "170px", border: "2px solid #111", marginLeft: i % 3 ? "-2px" : "0", marginTop: i > 2 ? "-2px" : "0", background: "#fff" }, "", page);
+  el("div", { left: "22px", top: "22px", width: "40px", height: "40px", background: c }, "", cel);
+  const nm = el("div", { left: "22px", top: "84px", font: "500 26px Hanken", letterSpacing: "-0.02em", whiteSpace: "nowrap" }, n, cel);
+  const vd = el("div", { left: "22px", top: "126px", font: "500 14px JB", letterSpacing: "0.08em", textTransform: "uppercase", borderBottom: "2px solid currentColor", paddingBottom: "2px" }, "Ver demos ↗", cel);
+  return { cel, nm, vd, x, y };
+});
+pt(70, 1330, `Hablemos<span style="color:rgb(${ACC})">.</span>`, { font: "500 110px Hanken", letterSpacing: "-0.05em" }, "l");
+pt(70, 1420, "Contame tu idea y te respondo en el día.", { font: "400 26px Hanken" }, "l");
+const ctaBtn = el("div", { left: "70px", top: "1462px", width: "380px", height: "72px", background: "#111", color: "#fff", display: "flex", alignItems: "center", gap: "16px", padding: "0 10px", font: "500 20px JB", letterSpacing: "0.06em", textTransform: "uppercase" },
+  `<span style="width:52px;height:52px;background:#8FD6B4;display:grid;place-items:center">${ICON(I.chat, 26, "#111", 2.2)}</span>Escribime por WhatsApp`, page);
+const SCROLL = track([[b(10), 720], [b(12), 1180], [b(16), 0, "soft"]], "scroll");
+
+// ───────────────────────── 03 · Charla (estilo WhatsApp) ─────────────────────────
+const gChat = group();
+const chatTop = group(gChat); // se ancla arriba de la forma
+const waHead = el("div", { left: "-330px", top: "0", width: "660px", height: "112px", background: "#F0F2F5", borderBottom: "1px solid rgb(222,219,214)" }, "", chatTop);
+el("div", { left: "18px", top: "40px" }, ICON(I.back, 32, "#3a3936", 2.4), waHead);
+el("div", { left: "60px", top: "26px", width: "60px", height: "60px", borderRadius: "999px", background: `rgb(${ACC})`, color: "#fff", font: "600 22px Hanken", display: "grid", placeItems: "center" }, "FZ", waHead);
+el("div", { left: "136px", top: "26px", font: "600 28px Hanken", whiteSpace: "nowrap" }, "Francisco Zago", waHead);
+const waEstado = el("div", { left: "136px", top: "62px", font: "400 20px Hanken", color: "#6E6B66", whiteSpace: "nowrap" }, "en línea", waHead);
+el("div", { left: "540px", top: "40px" }, ICON(I.video, 32, "#3a3936", 2), waHead);
+el("div", { left: "596px", top: "40px" }, ICON(I.phone, 30, "#3a3936", 2), waHead);
+const chatBot = group(gChat); // se ancla abajo
+const waInput = el("div", { left: "-310px", top: "-92px", width: "520px", height: "72px", borderRadius: "999px", background: "#fff", display: "flex", alignItems: "center", padding: "0 26px", font: "400 25px Hanken", color: "#8a8780", whiteSpace: "nowrap", overflow: "hidden" }, "", chatBot);
+const waSend = el("div", { left: "226px", top: "-92px", width: "72px", height: "72px", borderRadius: "999px", background: WA_GREEN, display: "grid", placeItems: "center" }, ICON(I.send, 30, "#fff", 2.2), chatBot);
+const MSGS = [
+  { yo: true, t: b(17), l: ["¡Hola Fran! Necesito una web", "para mi barbería"], h: "10:41" },
+  { yo: false, t: b(19), l: ["¡Hola Lucas! Contame cómo", "tomás los turnos hoy"], h: "10:41" },
+  { yo: true, t: b(20), l: ["Por mensaje… y se me pisan", "todo el tiempo"], h: "10:42" },
+  { yo: false, t: b(22), l: ["Te armo una web con reservas", "online y aviso por WhatsApp.", "Vos solo mirás la agenda."], h: "10:42" },
+  { yo: true, t: b(23), l: ["¡Me encanta! Arranquemos"], h: "10:43" },
+];
+const TYPING = [[b(18), b(19)], [b(21), b(22)]];
+const msgEls = MSGS.map((m) => {
+  const e = el("div", { left: "0", top: "0", background: m.yo ? WA_OUT : "#fff", borderRadius: m.yo ? "18px 4px 18px 18px" : "4px 18px 18px 18px", padding: "14px 18px 30px 20px", font: "400 26px Hanken", lineHeight: "34px", whiteSpace: "pre", boxShadow: "0 1px 1px rgba(0,0,0,.08)", minWidth: "170px" },
+    m.l.join("\n") + `<span style="position:absolute;right:14px;bottom:8px;font:500 15px JB;color:#6E6B66;letter-spacing:.02em">${m.h}${m.yo ? ` <span style="color:#53BDEB">✓✓</span>` : ""}</span>`, gChat);
+  return { e, h: 44 + 34 * m.l.length };
+});
+const typEl = el("div", { left: "0", top: "0", width: "96px", height: "56px", background: "#fff", borderRadius: "4px 18px 18px 18px", boxShadow: "0 1px 1px rgba(0,0,0,.08)" }, "", gChat);
+const dots = [0, 1, 2].map((i) => el("div", { left: 24 + i * 18 + "px", top: "23px", width: "11px", height: "11px", borderRadius: "999px", background: "#9a978f" }, "", typEl));
+const INPUTS = [[b(16) + 0.08, b(17) - 0.12, "¡Hola Fran! Necesito una web…"], [b(19) + 0.1, b(20) - 0.12, "Por mensaje… y se me pisan…"], [b(22) + 0.1, b(23) - 0.12, "¡Me encanta! Arranquemos"]];
+
+// ───────────────────────── 04 · Trabajando en tu web (editor) ─────────────────────────
+const gEd = group();
+const edBgSvg = el("div", { left: "-540px", top: "-326px", width: "1080px", height: "716px" },
+  `<svg width="1080" height="716"><defs><pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.6" fill="rgb(214,211,206)"/></pattern></defs><rect width="1080" height="716" fill="#F6F5F2"/><rect width="1080" height="716" fill="url(#dots)"/></svg>`, gEd);
+const tb = el("div", { left: "-540px", top: "-390px", width: "1080px", height: "64px", background: "#fff", borderBottom: "2px solid rgb(236,234,230)" }, "", gEd);
+el("div", { left: "24px", top: "20px", font: "500 18px JB", color: "#3a3936", letterSpacing: "0.04em", whiteSpace: "nowrap" }, "barberia-rulo <span style='color:#A8A49D'>/ inicio</span>", tb);
+[I.cursor, I.rect, I.type, I.cal].forEach((ic, i) => el("div", { left: 250 + i * 50 + "px", top: "14px", width: "38px", height: "36px", borderRadius: "8px", display: "grid", placeItems: "center", background: i === 0 ? "rgb(241,239,236)" : "transparent" }, ICON(ic, 22, "#111", 2), tb));
+const seg = el("div", { left: "420px", top: "11px", width: "240px", height: "42px", borderRadius: "999px", background: "rgb(241,239,236)" }, "", tb);
+const segInd = el("div", { top: "4px", height: "34px", borderRadius: "999px", background: "#fff", boxShadow: "0 1px 3px rgba(0,0,0,.14)" }, "", seg);
+const segA = el("div", { left: "0", top: "0", width: "120px", height: "42px", display: "grid", placeItems: "center", font: "500 15px JB", letterSpacing: "0.06em", textTransform: "uppercase" }, "Desktop", seg);
+const segB = el("div", { left: "120px", top: "0", width: "120px", height: "42px", display: "grid", placeItems: "center", font: "500 15px JB", letterSpacing: "0.06em", textTransform: "uppercase" }, "Mobile", seg);
+const pubBtn = el("div", { left: "936px", top: "10px", width: "120px", height: "44px", borderRadius: "999px", background: "#111", color: "#fff", display: "grid", placeItems: "center", font: "600 19px Hanken" }, "Publicar", tb);
+const artLbl = el("div", { top: "-300px", font: "500 15px JB", color: "#6E6B66", letterSpacing: "0.06em", textTransform: "uppercase", whiteSpace: "nowrap" }, "", gEd);
+const art = el("div", { top: "-270px", height: "620px", background: "#fff", border: "1px solid rgb(225,222,217)", boxShadow: "0 10px 30px -18px rgba(0,0,0,.35)", overflow: "hidden" }, "", gEd);
+// elementos del artboard (coordenadas del mundo; se recortan con el artboard en seek)
+const AB = group(gEd);
+const hero = el("div", {}, "", AB);
+const heroT = el("div", { font: "600 52px Hanken", color: "#fff", letterSpacing: "-0.035em", whiteSpace: "nowrap" }, "", AB);
+const heroS = el("div", { font: "400 22px Hanken", color: "rgba(255,255,255,.72)", whiteSpace: "nowrap" }, "Cortes y barba en Nueva Córdoba", AB);
+const btn = el("div", { display: "grid", placeItems: "center", whiteSpace: "nowrap", overflow: "hidden" }, "", AB);
+const btnT = el("div", { font: "600 21px Hanken", whiteSpace: "nowrap" }, "Reservá tu turno", AB);
+const DIAS = [["Lun", 13], ["Mar", 14], ["Mié", 15], ["Jue", 16], ["Vie", 17], ["Sáb", 18], ["Dom", 19]];
+const gCal = group(AB);
+const dayInd = el("div", { background: "#111", borderRadius: "14px" }, "", gCal);
+const dayEls = DIAS.map(([d, n]) => {
+  const c = el("div", { border: "2px solid rgb(232,229,224)", borderRadius: "14px" }, "", gCal);
+  const a = el("div", { font: "500 13px JB", letterSpacing: "0.06em", textTransform: "uppercase", transform: "translate(-50%,-50%)" }, d, gCal);
+  const nn = el("div", { font: "600 27px Hanken", transform: "translate(-50%,-50%)" }, String(n), gCal);
+  return { c, a, nn };
+});
+const SLOTS = ["10:00", "11:00", "12:00", "16:00"];
+const slotEls = SLOTS.map((s) => {
+  const c = el("div", { border: "2px solid rgb(222,219,214)", borderRadius: "999px" }, "", gCal);
+  const x = el("div", { font: "500 18px JB", transform: "translate(-50%,-50%)" }, s, gCal);
+  return { c, x };
+});
+const tglLbl = el("div", { font: "600 22px Hanken", whiteSpace: "nowrap", transform: "translate(0,-50%)" }, "Aviso por WhatsApp", gCal);
+const tglTrack = el("div", { width: "92px", height: "52px", borderRadius: "999px" }, "", gCal);
+const tglKnob = el("div", { width: "40px", height: "40px", borderRadius: "999px", background: "#fff", boxShadow: "0 2px 5px rgba(0,0,0,.2)" }, "", gCal);
+// selección estilo editor
+const sel = el("div", { border: `2px solid rgb(${ACC})`, pointerEvents: "none" }, "", gEd);
+const selH = [0, 1, 2, 3].map(() => el("div", { width: "12px", height: "12px", background: "#fff", border: `2px solid rgb(${ACC})` }, "", gEd));
+const selDim = el("div", { font: "500 14px JB", color: "#fff", background: `rgb(${ACC})`, padding: "3px 7px", borderRadius: "4px", whiteSpace: "nowrap", transform: "translate(-50%,0)" }, "", gEd);
+// panel de relleno
+const gPanel = group(gEd);
+box(425, -180, 200, 140, { background: "#fff", borderRadius: "16px", boxShadow: "0 12px 30px -14px rgba(0,0,0,.35)", border: "1px solid rgb(232,229,224)" }, "", gPanel);
+text(345, -222, "Relleno", { font: "500 15px JB", color: "#6E6B66", letterSpacing: "0.06em", textTransform: "uppercase" }, gPanel, "l");
+const SW = [["#fff", 365], ["#111", 405], [`rgb(${ACC})`, 445], ["#F2B705", 485]];
+const swEls = SW.map(([c, x]) => box(x, -160, 32, 32, { background: c, borderRadius: "8px", border: "2px solid rgb(222,219,214)" }, "", gPanel));
+const swRing = box(445, -160, 44, 44, { border: "2px solid #111", borderRadius: "11px" }, "", gPanel);
+const ARTW = track([[b(33), 360], [b(36), 600, "soft"]]);
+
+// ───────────────────────── 05 · Publicado ─────────────────────────
+const gPub = group();
+const pubTxt = text(-320, -10, "Publicando barberiarulo.com…", { font: "600 34px Hanken", color: "#fff", letterSpacing: "-0.02em" }, gPub, "l");
+box(0, 40, 640, 8, { background: "rgba(255,255,255,.16)", borderRadius: "99px" }, "", gPub);
+const pubBar = el("div", { left: "-320px", top: "36px", height: "8px", background: `rgb(${ACC})`, borderRadius: "99px" }, "", gPub);
+const gToast = group();
+box(-312, 0, 64, 64, { background: `rgb(${ACC})`, borderRadius: "999px", display: "grid", placeItems: "center" }, ICON(I.check, 34, "#fff", 2.8), gToast);
+text(-262, 0, "Sitio publicado", { font: "600 36px Hanken", color: "#fff", letterSpacing: "-0.02em" }, gToast, "l");
+text(344, 2, "barberiarulo.com", { font: "500 20px JB", color: "#A8A49D" }, gToast, "r");
+const gNoti = group();
+box(-300, 0, 92, 92, { background: "#111", borderRadius: "22px", display: "grid", placeItems: "center" }, ICON(I.cal, 46, "#fff", 2), gNoti);
+text(-232, -24, "Nueva reserva", { font: "600 34px Hanken", letterSpacing: "-0.02em" }, gNoti, "l");
+text(-232, 24, "Jue 16 · 11:00 · Corte + barba", { font: "400 26px Hanken", color: "#6E6B66" }, gNoti, "l");
+text(350, -26, "Ahora", { font: "500 18px JB", color: "#6E6B66", letterSpacing: "0.1em", textTransform: "uppercase" }, gNoti, "r");
+const notiDot = box(-262, -38, 22, 22, { background: `rgb(${ACC})`, borderRadius: "999px", border: "3px solid #fff" }, "", gNoti);
+
+// ───────────────────────── 06 · Cierre ─────────────────────────
+const gBrand = group();
+const brandSq = (() => { text(-470, -110, `Francisco Zago<span id="sq" style="display:inline-block;width:26px;height:26px;margin-left:10px;background:rgb(${ACC})"></span>`, { font: "600 124px Hanken", letterSpacing: "-0.055em" }, gBrand, "l"); return document.getElementById("sq"); })();
+const gBrand2 = group();
+text(-470, 40, "Diseño y desarrollo a medida lo que<br>necesites para tu negocio.", { font: "500 44px Hanken", letterSpacing: "-0.03em", lineHeight: "1.12", whiteSpace: "normal", width: "940px" }, gBrand2, "l");
+box(0, 170, 940, 2, { background: "#111" }, "", gBrand2);
+text(-470, 214, "Desarrollo web", { font: "500 22px JB", letterSpacing: "0.12em", textTransform: "uppercase" }, gBrand2, "l");
+text(470, 214, "franciscozago.dev", { font: "500 22px JB", letterSpacing: "0.06em", color: `rgb(${ACC})` }, gBrand2, "r");
+
+// HUD: progreso por etapas
+const pasos = document.getElementById("pasos");
+const pasoEls = ETAPAS.map(([a, z]) => {
+  const w = ((z - a) / BEATS) * 100;
+  const s = el("div", { left: `calc(${(a / BEATS) * 100}% + 3px)`, top: "0", width: `calc(${w}% - 6px)`, height: "6px", background: "#D6D2CB", borderRadius: "99px", overflow: "hidden" }, "", pasos);
+  const f = el("div", { left: "0", top: "0", height: "6px", background: `rgb(${ACC})` }, "", s);
+  return f;
+});
+const etapa = document.getElementById("etapa");
+const etapaEls = ETAPAS.map(([, , s]) => el("span", { left: "0", bottom: "0", whiteSpace: "nowrap" }, s, etapa));
+
+const shape = document.getElementById("shape"), stage = document.getElementById("stage"), cursor = document.getElementById("cursor");
+const place = (e, x, y, w, h) => { e.style.left = x + "px"; e.style.top = y + "px"; if (w !== undefined) e.style.width = Math.max(0, w) + "px"; if (h !== undefined) e.style.height = Math.max(0, h) + "px"; };
+
+function pressedAt(t) {
+  let pr = 0;
+  for (const c of CLICKS) pr = Math.max(pr, press(t, c));
+  for (const [a, z] of HOLDS) {
+    if (t >= a - 0.07 && t < z) pr = Math.max(pr, t < a ? easeOut((t - a + 0.07) / 0.07) : 1);
+    else if (t >= z) pr = Math.max(pr, press(t, z) * (t - z < 0.6 ? 1 : 0));
+  }
+  return pr;
+}
+
+// ───────────────────────── seek(t) ─────────────────────────
+function seek(tIn) {
+  const t = ((tIn % T) + T) % T;
+  const w = W(t), h = H(t), r = Math.min(R(t), w / 2, h / 2), cam = CAM(t);
+  stage.style.transform = `scale(${cam.toFixed(5)})`;
+  Object.assign(shape.style, { left: -w / 2 + "px", top: -h / 2 + "px", width: w + "px", height: h + "px", borderRadius: r + "px", background: rgb(BG, t) });
+  shape.style.transform = `scale(${(1 - 0.03 * press(t, b(7))).toFixed(4)})`;
+  L.style.left = w / 2 + "px"; L.style.top = h / 2 + "px";
+  const cx = CX(t), cy = CY(t);
+
+  // 01 · burbuja del cliente
+  showG(gBub, win(t, b(43), b(50)));
+  bubTop.style.top = -h / 2 + "px";
+  const frase = "Necesito una web para mi barbería";
+  bubTxt.textContent = typed(t > b(43) ? 0 : t, frase, 0.12, 1.25);
+  bubCaret.style.left = (-430 + bubTxt.getBoundingClientRect().width / cam + 6) + "px";
+  bubCaret.style.opacity = (t < 1.3 || caretOn(t)) && t < b(6) ? "1" : "0";
+  probEls.forEach((e, i) => {
+    const k = t > b(43) ? 0 : clamp(S(t - b(3 + i), "pop"), 0, 1.2);
+    e.style.opacity = clamp(k * 1.5).toFixed(3);
+    e.style.transform = `scale(${(0.6 + 0.4 * k).toFixed(4)})`;
+    e.style.transformOrigin = "left center";
+  });
+  showG(gSearch, win(t, b(6), b(8)));
+  const q = "desarrollador web córdoba";
+  searchTxt.textContent = typed(t, q, b(6) + 0.1, b(7) - 0.06);
+  searchCaret.style.left = (-312 + searchTxt.getBoundingClientRect().width / cam + 4) + "px";
+  searchCaret.style.opacity = caretOn(t) || (t > b(6) && t < b(7)) ? "1" : "0";
+  const ek = press(t, b(7));
+  searchKey.style.background = mixC(WHITE, INK, ek); searchKey.style.color = mixC(MUTED, WHITE, ek);
+
+  // 02 · mi sitio
+  showG(gWeb, win(t, b(8), b(16)));
+  chrome.style.top = -h / 2 + "px"; vp.style.top = -h / 2 + 64 + "px";
+  const sc = SCROLL(t);
+  page.style.transform = `translateY(${(-sc).toFixed(2)}px)`;
+  // hover del casillero: se calcula de la geometría del cursor (promediado en el tiempo, sigue siendo puro)
+  celdas.forEach((c) => {
+    let k = 0;
+    for (let i = 0; i < 5; i++) {
+      const tt = t - i * 0.035;
+      const lx = CX(tt) + 520, ly = CY(tt) - (-H(tt) / 2 + 64) + SCROLL(tt);
+      k += lx > c.x && lx < c.x + 300 && ly > c.y && ly < c.y + 170 && tt > b(8) && tt < b(16) ? 0.2 : 0;
+    }
+    c.cel.style.background = mixC(WHITE, INK, k); c.nm.style.color = mixC(INK, WHITE, k); c.vd.style.color = mixC(INK, WHITE, k);
+  });
+  ctaBtn.style.transform = `scale(${(1 - 0.04 * press(t, b(14))).toFixed(4)})`;
+  ctaBtn.style.transformOrigin = "left center";
+
+  // 03 · charla
+  showG(gChat, win(t, b(16), b(24)));
+  chatTop.style.top = -h / 2 + "px"; chatBot.style.top = h / 2 + "px";
+  let inp = "";
+  for (const [a, z, s] of INPUTS) if (t >= a && t < z + 0.12) inp = typed(t, s, a, z);
+  waInput.textContent = inp || "Mensaje";
+  waInput.style.color = inp ? "#111" : "#8a8780";
+  waSend.style.transform = `scale(${(1 - 0.1 * Math.max(press(t, b(17)), press(t, b(20)), press(t, b(23)))).toFixed(4)})`;
+  const typing = TYPING.some(([a, z]) => t >= a && t < z);
+  waEstado.textContent = typing ? "escribiendo…" : "en línea";
+  waEstado.style.color = typing ? WA_GREEN : "#6E6B66";
+  // pila de mensajes desde abajo
+  let y = h / 2 - 112 - 16;
+  // orden de la conversación (de arriba hacia abajo): m0, escribiendo, m1, m2, escribiendo, m3, m4
+  const kM = (i) => clamp(S(t - MSGS[i].t, "fast"), 0, 1.05);
+  const kT = (j) => clamp(S(t - TYPING[j][0], "fast")) * (1 - clamp(S(t - TYPING[j][1] + 0.02, "fast")));
+  const ordered = [["m", 0], ["t", 0], ["m", 1], ["m", 2], ["t", 1], ["m", 3], ["m", 4]];
+  let showTyping = null;
+  for (let i = ordered.length - 1; i >= 0; i--) {
+    const [kind, j] = ordered[i];
+    const kk = kind === "m" ? kM(j) : kT(j);
+    const k = clamp(kk);
+    y -= ((kind === "m" ? msgEls[j].h : 56) + 12) * k;
+    if (kind === "m") {
+      const e = msgEls[j].e, yo = MSGS[j].yo, sc = (0.85 + 0.15 * k).toFixed(4);
+      e.style.top = y + "px";
+      e.style.left = yo ? "306px" : "-306px";
+      e.style.transform = yo ? `translateX(-100%) scale(${sc})` : `scale(${sc})`;
+      e.style.transformOrigin = yo ? "right bottom" : "left bottom";
+      e.style.opacity = clamp(kk * 1.6).toFixed(3);
+    } else if (k > 0.001) showTyping = { y, k };
+  }
+  typEl.style.opacity = showTyping ? clamp(showTyping.k * 1.6).toFixed(3) : "0";
+  if (showTyping) { typEl.style.left = "-306px"; typEl.style.top = showTyping.y + "px"; }
+  dots.forEach((d, i) => (d.style.opacity = (0.35 + 0.65 * (0.5 + 0.5 * Math.sin(t * 12 - i * 1.1))).toFixed(3)));
+
+  // 04 · editor
+  showG(gEd, win(t, b(24), b(36)), 0);
+  const aw = ARTW(t), aL = -aw / 2, aR = aw / 2, mob = clamp((600 - aw) / 240);
+  place(art, aL, -270, aw, 620);
+  artLbl.style.left = aL + "px";
+  artLbl.textContent = mob > 0.5 ? "Inicio — Mobile" : "Inicio — Desktop";
+  const segK = clamp(S(t - b(33), "lead")) * (t < b(36) + 0.4 ? 1 : 0);
+  place(segInd, 4 + 116 * segK, 4, 112);
+  segA.style.color = mixC(INK, MUTED, segK); segB.style.color = mixC(MUTED, INK, segK);
+  pubBtn.style.transform = `scale(${(1 - 0.06 * press(t, b(35))).toFixed(4)})`;
+  pubBtn.style.background = mixC(INK, ACC, clamp(S(t - b(35), "fast")));
+  // recorte del contenido del artboard
+  AB.style.clipPath = `polygon(${aL}px -270px, ${aR}px -270px, ${aR}px 350px, ${aL}px 350px)`;
+  // hero: rectángulo dibujado con el cursor (manipulación directa) y después se ajusta al artboard
+  const [h0, h1] = HOLDS[0];
+  const heroFinal = [aL + 30, -240, aR - 30, -30];
+  let hr;
+  if (t < h0) hr = null;
+  else if (t < h1) hr = [-270, -240, cx, cy];
+  else { const rel = [-270, -240, CX(h1), CY(h1)]; const k = S(t - h1, "fast"); hr = heroFinal.map((v, i) => mix(rel[i], v, k)); }
+  const heroFill = clamp((t - h1) / 0.3);
+  if (hr) {
+    place(hero, Math.min(hr[0], hr[2]), Math.min(hr[1], hr[3]), Math.abs(hr[2] - hr[0]), Math.abs(hr[3] - hr[1]));
+    hero.style.background = t < h1 ? `rgba(${ACC},0.08)` : mixC([232, 240, 241], [28, 28, 27], heroFill);
+    hero.style.opacity = "1";
+  } else hero.style.opacity = "0";
+  const titleN = typed(t, "Barbería Rulo", h1 + 0.1, 12.95);
+  heroT.textContent = titleN;
+  const tf = mix(52, 38, mob);
+  heroT.style.fontSize = tf + "px";
+  place(heroT, aL + 60, -212);
+  heroS.style.fontSize = mix(22, 17, mob) + "px";
+  place(heroS, aL + 62, -212 + tf * 1.2 + 4);
+  heroS.style.opacity = clamp((t - 12.95) / 0.2).toFixed(3);
+  // botón: se dibuja, toma forma de píldora, recibe el texto y después el color
+  const [g0, g1] = HOLDS[1];
+  const btnFinal = [aL + 60, -98, aL + 60 + 230, -44];
+  let br;
+  if (t < g0) br = null;
+  else if (t < g1) br = [aL + 60, -98, cx, cy];
+  else { const rel = [aL + 60, -98, CX(g1), CY(g1)]; const k = S(t - g1, "fast"); br = btnFinal.map((v, i) => mix(rel[i], v, k)); }
+  const colorK = clamp(S(t - b(28), "fast"));
+  if (br) {
+    place(btn, Math.min(br[0], br[2]), Math.min(br[1], br[3]), Math.abs(br[2] - br[0]), Math.abs(br[3] - br[1]));
+    const pk = clamp(S(t - g1, "fast"));
+    btn.style.borderRadius = (pk * 27) + "px";
+    btn.style.background = t < g1 ? "rgba(255,255,255,0.12)" : mixC(WHITE, ACC, colorK);
+    btn.style.border = t < g1 ? "2px dashed rgba(255,255,255,.7)" : "none";
+    btn.style.opacity = "1";
+  } else btn.style.opacity = "0";
+  const btK = clamp((t - g1 - 0.08) / 0.2);
+  btnT.style.opacity = btK.toFixed(3);
+  btnT.style.filter = btK < 1 ? `blur(${((1 - btK) * 6).toFixed(2)}px)` : "none";
+  btnT.style.color = mixC(INK, WHITE, colorK);
+  place(btnT, aL + 60 + 115, -71);
+  btnT.style.transform = "translate(-50%,-50%)";
+  // selección (hero mientras se dibuja/titula, después el botón)
+  let sr = null;
+  if (hr && t < g0 - 0.1) sr = hr;
+  else if (br && t < b(29)) sr = br;
+  if (sr && t < b(36)) {
+    const x0 = Math.min(sr[0], sr[2]), y0 = Math.min(sr[1], sr[3]), x1 = Math.max(sr[0], sr[2]), y1 = Math.max(sr[1], sr[3]);
+    place(sel, x0 - 1, y0 - 1, x1 - x0 + 2, y1 - y0 + 2); sel.style.opacity = "1";
+    [[x0, y0], [x1, y0], [x0, y1], [x1, y1]].forEach(([x, yy], i) => { place(selH[i], x - 6, yy - 6); selH[i].style.opacity = "1"; });
+    selDim.textContent = `${Math.round(x1 - x0)} × ${Math.round(y1 - y0)}`;
+    place(selDim, (x0 + x1) / 2, y1 + 10); selDim.style.opacity = "1";
+  } else { sel.style.opacity = "0"; selH.forEach((e) => (e.style.opacity = "0")); selDim.style.opacity = "0"; }
+  // panel de relleno
+  showG(gPanel, win(t, b(27) - 0.1, b(29), 0.05, 0.2), 6);
+  swRing.style.opacity = clamp(S(t - b(28), "fast")).toFixed(3);
+  swEls[2].style.transform = `scale(${(1 - 0.12 * press(t, b(28))).toFixed(4)})`;
+  // calendario, horarios y aviso (layout que se adapta al ancho del artboard)
+  const calK = clamp(S(t - b(29), "fast"));
+  gCal.style.opacity = clamp(calK * 1.4).toFixed(3);
+  gCal.style.transform = `translateY(${((1 - clamp(calK)) * -18).toFixed(2)}px)`;
+  const inner = aw - 60, cw = (inner - 6 * 8) / 7;
+  const dx = (i) => aL + 30 + i * (cw + 8);
+  const indK = clamp(S(t - b(30), "lead")), indKt = clamp(S(t - b(30), "trail"));
+  const fromL = dx(0), toL = dx(3);
+  const il = mix(fromL, toL, indKt), ir = mix(fromL + cw, toL + cw, indK);
+  place(dayInd, il, 0, ir - il, 84);
+  dayEls.forEach((d, i) => {
+    place(d.c, dx(i), 0, cw, 84);
+    const k = clamp((Math.min(ir, dx(i) + cw) - Math.max(il, dx(i))) / cw);
+    place(d.a, dx(i) + cw / 2, 24); place(d.nn, dx(i) + cw / 2, 56);
+    d.a.style.color = mixC(MUTED, WHITE, k); d.nn.style.color = mixC(INK, WHITE, k);
+    d.nn.style.fontSize = mix(27, 20, mob) + "px"; d.a.style.fontSize = mix(13, 11, mob) + "px";
+  });
+  const sw = (inner - 3 * 12) / 4;
+  slotEls.forEach((s, i) => {
+    const x = aL + 30 + i * (sw + 12);
+    place(s.c, x, 112, sw, 56); place(s.x, x + sw / 2, 140);
+    const k = i === 1 ? clamp(S(t - b(31), "fast")) : 0;
+    s.c.style.background = mixC(WHITE, ACC, k); s.c.style.borderColor = mixC([222, 219, 214], ACC, k);
+    s.x.style.color = mixC(INK, WHITE, k); s.x.style.fontSize = mix(18, 15, mob) + "px";
+    s.c.style.transform = i === 1 ? `scale(${(1 - 0.06 * press(t, b(31))).toFixed(4)})` : "";
+  });
+  tglLbl.style.fontSize = mix(22, 18, mob) + "px";
+  place(tglLbl, aL + 30, 232);
+  const on = clamp(S(t - b(32), "fast"));
+  place(tglTrack, aR - 30 - 92, 206);
+  tglTrack.style.background = mixC([214, 211, 206], ACC, on);
+  const kl = mix(aR - 30 - 92 + 6, aR - 30 - 46, clamp(S(t - b(32), "trail"))), kr = mix(aR - 30 - 92 + 46, aR - 30 - 6, clamp(S(t - b(32), "lead")));
+  place(tglKnob, kl, 212, kr - kl, 40);
+  // la capa del calendario usa coordenadas del mundo; su origen es el del grupo
+  gCal.style.left = "0"; gCal.style.top = "0";
+
+  // 05 · publicado
+  showG(gPub, win(t, b(36), b(38)));
+  pubBar.style.width = (640 * easeOut((t - b(36) - 0.12) / 0.75)).toFixed(1) + "px";
+  showG(gToast, win(t, b(38), b(39)));
+  showG(gNoti, win(t, b(39), b(40)));
+  notiDot.style.transform = `scale(${Math.max(0, S(t - b(39) - 0.15, "pop")).toFixed(4)})`;
+
+  // 06 · cierre
+  showG(gBrand, win(t, b(40), b(43)));
+  showG(gBrand2, win(t, b(41), b(43), 0, 0.24), 14);
+  brandSq.style.transform = `scale(${Math.max(0, S(t - b(40) - 0.2, "pop")).toFixed(4)})`;
+
+  // cursor
+  const pr = pressedAt(t);
+  const sx = 720 + cx * cam, sy = 720 + cy * cam;
+  cursor.style.transform = `translate(${(sx - 6).toFixed(2)}px, ${(sy - 4).toFixed(2)}px) scale(${(1 - 0.16 * pr).toFixed(4)})`;
+  // En la burbuja inicial escribe el cliente: el cursor aparece después y se va antes del loop.
+  cursor.style.opacity = Math.min(clamp((t - b(2)) / 0.3), clamp((b(43) + 0.35 - t) / 0.3)).toFixed(3);
+
+  // HUD
+  const beat = t / BEAT;
+  // En el último medio beat la barra se apaga, así el loop empalma con todo vacío.
+  const fillO = t > b(43) ? 1 - easeIn((t - b(43)) / 0.45) : 1;
+  ETAPAS.forEach(([a, z], i) => {
+    pasoEls[i].style.width = (clamp((beat - a) / (z - a)) * 100).toFixed(2) + "%";
+    pasoEls[i].style.opacity = fillO.toFixed(3);
+    // el rótulo 01 arranca cuando vuelve la burbuja (beat 43) y el 06 termina ahí
+    const o = i === 0 ? win(t, b(43), b(z) + T, 0.04, 0.18, 0.1) : win(t, b(a), b(i === 5 ? 43 : z), 0.04, 0.18, 0.1);
+    etapaEls[i].style.opacity = o.toFixed(3);
+    etapaEls[i].style.filter = o < 0.999 ? `blur(${((1 - o) * 6).toFixed(2)}px)` : "none";
+  });
+}
+window.seek = seek;
+window.DURATION = T;
+document.fonts.ready.then(() => { seek(0); window.READY = true; });
+</script>
+</body>
+</html>

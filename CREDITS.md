@@ -124,4 +124,4 @@ Generadas por `scripts/demos/fotos-productores-catalogos.mjs`.
 
 ## Video de la sección "Videos"
 
-`public/videos/motion-*`: animación, música y sonidos originales, generados con los scripts de `scripts/video/` (sin samples ni material de terceros). Tipografías Hanken Grotesk y JetBrains Mono (SIL Open Font License).
+`public/videos/motion-*` y `public/videos/flujo-*`: animación, música y sonidos originales, generados con los scripts de `scripts/video/` (sin samples ni material de terceros). Tipografías Hanken Grotesk y JetBrains Mono (SIL Open Font License).

@@ -10,13 +10,15 @@ type Props = {
   poster: string;
   label: string;
   nota: string;
+  /** Rótulo del marco, p. ej. "1:1 · 22 s · 60 fps". */
+  medida: string;
 };
 
 /**
  * Video en loop: arranca sin sonido cuando entra en pantalla y se pausa al salir.
  * Con "reducir movimiento" no arranca solo: muestra el póster y un botón para reproducir.
  */
-export function VideoLoop({ src, srcMobile, poster, label, nota }: Props) {
+export function VideoLoop({ src, srcMobile, poster, label, nota, medida }: Props) {
   const ref = useRef<HTMLVideoElement>(null);
   const [sonido, setSonido] = useState(false);
   const [pausado, setPausado] = useState(true);
@@ -68,7 +70,7 @@ export function VideoLoop({ src, srcMobile, poster, label, nota }: Props) {
         tono="ink"
         padding="p-0"
         nombre="motion.mp4"
-        medida="1:1 · 14 s · 60 fps"
+        medida={medida}
       >
         <video
           ref={ref}

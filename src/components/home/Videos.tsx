@@ -48,12 +48,14 @@ export function Videos() {
           </div>
         </div>
 
+        {/* El primer video (motion-*) sigue en public/videos y scripts/video/motion.html. */}
         <VideoLoop
-          src="/videos/motion-1080"
-          srcMobile="/videos/motion-720"
-          poster="/videos/motion-poster.webp"
+          src="/videos/flujo-1080"
+          srcMobile="/videos/flujo-720"
+          poster="/videos/flujo-poster.webp"
+          medida="1:1 · 22 s · 60 fps"
           nota={videosCopy.nota}
-          label="Video de ejemplo: una forma que se transforma en botón, tienda online, reservas, dashboard, cotizador y buscador, hasta el cierre con el nombre Francisco Zago, desarrollo web."
+          label="Video de ejemplo: el dueño de una barbería necesita una web, entra a franciscozago.dev, charlamos por WhatsApp, diseño y desarrollo su sitio con reservas, se publica y le llega la primera reserva. Cierra con Francisco Zago: diseño y desarrollo a medida lo que necesites para tu negocio."
         />
       </div>
     </section>

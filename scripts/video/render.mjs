@@ -6,7 +6,7 @@ const { chromium } = createRequire(join(g, "/"))(join(g, "playwright"));
 const FF = execSync(`python3 -c "import imageio_ffmpeg as f;print(f.get_ffmpeg_exe())"`).toString().trim();
 const out = process.argv[2]; const FPS = 60, SUB = 4;
 const b = await chromium.launch(); const p = await b.newPage({ viewport: { width: 1440, height: 1440 } });
-await p.goto("file://" + join(import.meta.dirname, "motion.html")); await p.waitForFunction(() => window.READY);
+await p.goto("file://" + join(import.meta.dirname, process.env.HTML || "motion.html")); await p.waitForFunction(() => window.READY);
 const T = await p.evaluate(() => window.DURATION);
 const ff = spawn(FF, ["-y", "-loglevel", "error", "-f", "image2pipe", "-framerate", String(FPS * SUB), "-i", "-",
   "-vf", `tmix=frames=${SUB}:weights='1 1 1 1',select='eq(mod(n\\,${SUB})\\,${SUB - 1})',setpts=N/${FPS}/TB`,
