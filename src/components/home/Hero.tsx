@@ -88,6 +88,14 @@ export function Hero() {
               </span>
             </Flota>
           </Draggable>
+          {/* Espejo de "Estudiante de Ingeniería" del lado izquierdo (solo escritorio). */}
+          <Draggable rotate={-3} className="absolute top-[17%] left-[21%] hidden md:block">
+            <Flota d={7.6} g={3.5} dl={-1.2}>
+              <span {...pop(10)}>
+                <Cinta color={st.disenio.color}>{st.disenio.texto}</Cinta>
+              </span>
+            </Flota>
+          </Draggable>
           <Draggable className="absolute bottom-[10%] left-[4%] md:bottom-[13%] md:left-[27%]">
             <Flota d={6} g={-6} dl={-1.5}>
               <span {...pop(4)}>

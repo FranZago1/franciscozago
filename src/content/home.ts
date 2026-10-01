@@ -25,6 +25,7 @@ export const hero = {
 export const heroStickers = {
   rol: { texto: "Desarrollador full-stack", color: "menta" as StickerColor },
   estudiante: { texto: "Estudiante de Ingeniería", color: "ink" as StickerColor },
+  disenio: { texto: "Diseño UI/UX", color: "rosa" as StickerColor },
   cursorIzq: { texto: "E-commerce", color: "mostaza" as StickerColor },
   cursorDer: { texto: "Reservas", color: "rosa" as StickerColor },
   portfolios: { texto: "Portfolios", color: "celeste" as StickerColor },
