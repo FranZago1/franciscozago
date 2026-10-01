@@ -13,7 +13,7 @@ export const hero = {
   disponible: "Disponible para proyectos",
   /** Titular principal. Los objetos son íconos en línea. */
   titular: ["Desarrollo sitios y sistemas web para negocios que quieren vender más."] as Segmento[],
-  bajada: "Diseño y desarrollo a medida lo que necesites para tu negocio.",
+  bajada: "Soluciones a medida, desde la idea hasta el producto publicado.",
   ctaPrimario: {
     label: "Escribime por WhatsApp",
     mensajeWa: "Hola Fran, vi tu portfolio y quiero consultarte por un proyecto.",
