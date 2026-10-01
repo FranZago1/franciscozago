@@ -12,7 +12,7 @@ export function Contacto() {
     <section id="contacto" aria-labelledby="contacto-titulo" className="wrap mt-32 md:mt-48">
       <div className="grid gap-14 lg:grid-cols-[1fr_1fr] lg:gap-16">
         <div>
-          <Eyebrow n="04" className="mb-5">
+          <Eyebrow n="05" className="mb-5">
             Contacto
           </Eyebrow>
           <div className="relative inline-block">

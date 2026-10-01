@@ -121,3 +121,7 @@ Generadas por `scripts/demos/fotos-productores-catalogos.mjs`.
 | public/demos/catalogos/vinoteca/hero-copa.webp (nueva) | 1474722883778-792e7990302f | https://images.unsplash.com/photo-1474722883778-792e7990302f | Copa de tinto con uvas, fondo oscuro (fondo del hero) |
 | public/demos/catalogos/vinoteca/degustacion.webp (nueva) | 1510812431401-41d2bd2722f3 | https://images.unsplash.com/photo-1510812431401-41d2bd2722f3 | Brindis con copas de tinto (sección Visitanos) |
 | public/demos/catalogos/deco/casa-living.webp (nueva) | 1600210492486-724fe5c67fb0 | https://images.unsplash.com/photo-1600210492486-724fe5c67fb0 | Living amplio con sillones coñac y plantas (sección "Del taller a tu casa") |
+
+## Video de la sección "Videos"
+
+`public/videos/motion-*`: animación, música y sonidos originales, generados con los scripts de `scripts/video/` (sin samples ni material de terceros). Tipografías Hanken Grotesk y JetBrains Mono (SIL Open Font License).

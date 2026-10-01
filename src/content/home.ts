@@ -56,6 +56,19 @@ export const serviciosCopy = {
   mensajeWa: "Hola Fran, quiero pedirte una propuesta para un proyecto.",
 };
 
+export const videosCopy = {
+  titulo: "También hago videos de tu web",
+  bajada:
+    "Videos cortos con la interfaz de tu sitio o tu sistema en movimiento, para mostrarlo en redes, en tu web o en una presentación.",
+  puntos: [
+    "Con el diseño real de tu web, no con una plantilla.",
+    "Música y sonidos sincronizados con cada movimiento.",
+    "En formato cuadrado, vertical u horizontal.",
+  ],
+  mensajeWa: "Hola Fran, vi el video de tu portfolio y quiero uno para mi web.",
+  nota: "Ejemplo hecho para este portfolio: 14 segundos, 60 fps, en loop.",
+};
+
 export const contactoCopy = {
   titulo: "Hablemos",
   linea: "Contame tu idea y te respondo en el día.",
