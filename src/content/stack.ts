@@ -1,16 +1,40 @@
 export type StackFila = { categoria: string; items: string[] };
 
-/** Stack técnico. Hoy no se muestra en el home (se sacó la sección); queda como referencia. */
+/**
+ * Tecnologías e integraciones (desplegable "Para los técnicos", antes de Contacto).
+ * Incluye lo usado en los trabajos, en este portfolio y en sus demos.
+ */
 export const stack: StackFila[] = [
-  { categoria: "Frontend", items: ["React", "Next.js", "React Native", "Tailwind CSS", "Framer Motion", "GSAP"] },
-  { categoria: "Backend", items: ["Node.js", "NestJS", "Go (Gin)", "REST APIs", "JWT", "RBAC", "RabbitMQ"] },
-  { categoria: "Datos", items: ["PostgreSQL", "MySQL", "MongoDB", "Redis", "Prisma", "Apache Solr"] },
-  { categoria: "Infraestructura", items: ["Vercel", "Linux", "Docker", "MinIO S3", "cron jobs"] },
+  { categoria: "Lenguajes", items: ["TypeScript", "JavaScript", "Go", "SQL", "Python", "HTML y CSS"] },
   {
-    categoria: "IA",
-    items: ["RAG", "embeddings", "integración de LLMs (OpenAI, Ollama/Llama 3)", "búsqueda semántica"],
+    categoria: "Frontend",
+    items: ["React", "Next.js", "React Native", "Tailwind CSS", "Motion (Framer Motion)", "GSAP"],
   },
-  { categoria: "Pagos", items: ["MercadoPago"] },
+  {
+    categoria: "Backend",
+    items: ["Node.js", "NestJS", "Go (Gin)", "APIs REST", "Server-Sent Events", "RabbitMQ", "Cron jobs"],
+  },
+  {
+    categoria: "Bases de datos",
+    items: ["PostgreSQL", "MySQL", "MongoDB", "Redis (Upstash / Vercel KV)", "Prisma", "Apache Solr"],
+  },
+  {
+    categoria: "Integraciones",
+    items: [
+      "MercadoPago (pagos y webhooks)",
+      "WhatsApp (mensajes prearmados)",
+      "Resend (emails)",
+      "Vercel Blob",
+      "MinIO S3",
+      "OpenAI y Ollama (Llama 3)",
+    ],
+  },
+  { categoria: "Seguridad", items: ["JWT", "RBAC", "Validación con Zod", "Rate limiting", "Headers de seguridad"] },
+  { categoria: "IA", items: ["RAG", "Embeddings", "Búsqueda semántica", "Streaming de respuestas"] },
+  {
+    categoria: "Infra y herramientas",
+    items: ["Vercel", "Docker", "Linux", "Git y GitHub", "Playwright", "Lighthouse", "sharp", "ffmpeg"],
+  },
 ];
 
 export const proceso = [
