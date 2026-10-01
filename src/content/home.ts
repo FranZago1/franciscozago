@@ -9,12 +9,11 @@ import type { StickerColor } from "@/components/canvas/Sticker";
 export type Segmento = string | { icono: IconName; bg: StickerColor };
 
 export const hero = {
-  saludo: "Hola, me llamo",
+  saludo: "Hola, soy",
   disponible: "Disponible para proyectos",
   /** Titular principal. Los objetos son íconos en línea. */
   titular: ["Desarrollo sitios y sistemas web para negocios que quieren vender más."] as Segmento[],
-  bajada:
-    "Desarrollador full-stack en Córdoba. Landing pages, tiendas online, sistemas de reservas y más, desde la idea hasta el sitio publicado.",
+  bajada: "Diseño y desarrollo a medida lo que necesites para tu negocio.",
   ctaPrimario: {
     label: "Escribime por WhatsApp",
     mensajeWa: "Hola Fran, vi tu portfolio y quiero consultarte por un proyecto.",
@@ -25,6 +24,7 @@ export const hero = {
 /** Stickers arrastrables del hero (flotan y rotan suave). Todo lo que dicen también está en la página. */
 export const heroStickers = {
   rol: { texto: "Desarrollador full-stack", color: "menta" as StickerColor },
+  estudiante: { texto: "Estudiante de Ingeniería", color: "ink" as StickerColor },
   cursorIzq: { texto: "E-commerce", color: "mostaza" as StickerColor },
   cursorDer: { texto: "Reservas", color: "rosa" as StickerColor },
   portfolios: { texto: "Portfolios", color: "celeste" as StickerColor },
@@ -66,7 +66,7 @@ export const videosCopy = {
     "En formato cuadrado, vertical u horizontal.",
   ],
   mensajeWa: "Hola Fran, vi el video de tu portfolio y quiero uno para mi web.",
-  nota: "Ejemplo hecho para este portfolio: 14 segundos, 60 fps, en loop.",
+  nota: "Ejemplo hecho para este portfolio.",
 };
 
 export const contactoCopy = {

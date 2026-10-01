@@ -77,6 +77,13 @@ export function Hero() {
               </span>
             </Flota>
           </Draggable>
+          <Draggable rotate={3} className="absolute right-0 bottom-[21%] md:top-[17%] md:right-[21%] md:bottom-auto">
+            <Flota d={8} g={-3.5} dl={-3.2}>
+              <span {...pop(9)}>
+                <Cinta color={st.estudiante.color}>{st.estudiante.texto}</Cinta>
+              </span>
+            </Flota>
+          </Draggable>
           <Draggable className="absolute bottom-[10%] left-[4%] md:bottom-[13%] md:left-[27%]">
             <Flota d={6} g={-6} dl={-1.5}>
               <span {...pop(4)}>
